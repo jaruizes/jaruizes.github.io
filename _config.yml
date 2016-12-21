@@ -1,34 +1,21 @@
-title:            CodeInventory
-description:      "Talk is cheap. Show me the code!"
-logo:             logo.png
-disqus_shortname: codeinventorycom
+title:            José Alberto Ruiz
+description:      "Something related to Software Development and others stuff"
+disqus_shortname: jaruizes
 share:            true
 dropcap:	   true
 # Change url to your domain. Leave localhost server or blank when working locally.
 # or use the hint from http://jekyllrb.com/docs/github-pages/ to keep this the same 
 # whether working locally or remotely. Start Jekyll with: jekyll serve --baseurl ''
-url:        	 http://www.codeinventory.com
+url:        	 http://jaruizes.github.io
 
 # Owner/author information
 owner:
-  name:           Amey Jadiye
-  avatar:         ameyjadiye.jpg
-  email:          ameyjadiye@gmail.com
-  # Use the coder's toolbox at http://coderstoolbox.net/string/#!encoding=xml&action=encode&charset=us_ascii to encode your description into XML string
-  description:    Programming is 1% knowledge, 2% ability and 97% getting the ability to work with the knowledge :)
-  # Social networking links used in footer. Update and remove as you like.
-  twitter:        ameyjadiye
-  facebook:       ameyjadiye
-  github:         ameyjadiye    
-  instagram:      ameyjadiye
-  # For Google Authorship https://plus.google.com/authorship
-  google_plus:    https://plus.google.com/u/0/+AmeyJadiye
-
-# Analytics and webmaster tools stuff goes here
-google_analytics:   UA-46791108-1
-google_verify:      
-# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
-bing_verify:         
+  name:           José Alberto Ruiz
+  avatar:         logo.jpg
+  email:          jalb80@gmail.com
+  twitter:        jalb80
+  github:         jaruizes
+  linkedin: jalb80
 
 # Links to include in footer navigation
 # For external links add external: true
