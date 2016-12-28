@@ -6,7 +6,9 @@ tags: []
 chart: true
 ---
 
-Hello. I'm José Alberto Ruiz and I'm here because I'm, mainly, a Software Developer and I would like to share with you some topics that I think they could be interesting. 
+Hello. This is my name (José Alberto Ruiz).
+
+I'm here because I'm, mainly, a Software Developer and I would like to share with you some topics that I think they could be interesting. 
 
 I started in this world when I was a little child, 6-7 year old, more or less. My father bought a personal computer,INVES 640 X Turbo and for buying it they gave him an awesome Spectrum 128K as a present. 
 
