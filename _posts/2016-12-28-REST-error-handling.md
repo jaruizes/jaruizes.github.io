@@ -61,7 +61,7 @@ From the security point of view, we have to be cautious because we can reveal so
 
 This is all. I hope this post has been useful for you!
 
-###References:
+### References:
 
 * Apigee: http://apigee.com/about/blog/technology/restful-api-design-what-about-errors
 * IBM: https://www.ibm.com/support/knowledgecenter/SS964W/com.ibm.wbpm.bpc.doc/topics/rdev_restapis_statuscodes.html
