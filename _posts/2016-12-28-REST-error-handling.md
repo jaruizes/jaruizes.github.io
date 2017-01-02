@@ -9,19 +9,19 @@ tags:
  - API
  - REST
 ---
-One of the most important thing when you're designing an API is how it's going to handle errors and how will be the content and the status of the responses that it's going to send to its clients 
+One of the most important thing when you're designing an API is **how it's going to handle errors** and how will be the content and the status of the responses that it's going to send to its clients 
 
 Basically, there are two design strategies to face it but there isn't a standard way. This two different strategies are:
 
-* Handling errors as API part directly: this strategy consists on defining and documenting every error and its HTTP status code associated. The definition of the error is a part of the endpoint as the same way as input/output params are.
-* Handling errors not included in the API definition: there isn't a definition of the different errors associated to the endpoint, so the most of endpoints return the same status code independently of the result of the execution. For instance, this the strategy that Facebook uses.
+* **Handling errors as API part directly:** this strategy consists on defining and documenting every error and its HTTP status code associated. The definition of the error is a part of the endpoint as the same way as input/output params are.
+* **Handling errors not included in the API definition:** there isn't a definition of the different errors associated to the endpoint, so the most of endpoints return the same status code independently of the result of the execution. For instance, this the strategy that Facebook uses.
 
 If you have designed (and implemented) SOAP services you are familiarized with the decision of throwing a SOAP fault or not. More or less this is the same problem. The key is in the design phase. 
 
-In my opinion, the default strategy has to be including errors as part of the API but in some cases or in some projects we have to keep in mind the ecosystem around the API. So, there isn't a clear answer to the question. 
+_In my opinion, the default strategy has to be including errors as part of the API but in some cases or in some projects we have to keep in mind the ecosystem around the API. So, there isn't a clear answer to the question._
 
 ### 4xx vs 5xx
-If we are chosen the first one, the next question will be what is the difference between a status code 4xx and a status code 5xx. It seems obvious but it's something that appears in a lot of projects when the team is designing or implementing the API.
+If we are chosen the first one, **the next question will be what is the difference between a status code 4xx and a status code 5xx.** It seems obvious but it's something that appears in a lot of projects when the team is designing or implementing the API.
 
 Basically, when something goes wrong because the client sent some wrong data, the status code should be 4xx. The error is recoverable from the client side. But when something goes wrong because there is a failure in the server side, the status code should be 5xx. In this case, the error is not recoverable from the client side.  
 
