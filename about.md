@@ -14,6 +14,8 @@ I started in this world when I was a little child, 6-7 year old, more or less. M
 
 Finally, I studied Computer Engineering at the University and started working professionally in Software Development. Since then I've done everything, programming in several languages and in several layers of the architecture. 
 
+I've participated in a lot of projects of different size and with different roles. As I said before, I consider myself a software developer or technical architect but I like methodologies or team managing so I've also had the project manager role along my career.    
+
 I'm not very theoretical because I like much more the practical way but I recognize that a solid base of concepts is necessary because Software Development is much more than throwing lines of code. It's necessary to understand why coding in one way or in other, why we choose one technology or another, which patterns we can apply,...,etc. 
 
 I hope you enjoy this blog and it's useful for you.
