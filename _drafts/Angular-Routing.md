@@ -11,10 +11,26 @@ tags:
 ---
 
 In this post I would like to talk about the routing in Angular 2. The idea is to write several posts about this topic, from the basic aspects to the advanced ones.
+I would like to structure this post in this order:
+
+* Introduction 
+* Navigation in Angular
+   * Navigation service
+   * Location strategy
+   * Outlets
+   * Static navigation
+   * Dynamic navigation
+   * What about params?
+   * Static data
+* Hands-on: putting all together
+   * Example code
+   
+   
+   
 
 ### Introduction
 
-If you are new in this type of frameworks "SPA oriented" you have to keep in mind that a navigation action doesn't have to be a request to the server. Actually, it isn't. In a SPA, the main page (named as shell) is loaded from the server but then, depending on the calls to the API or the user action, some sections or pages will shown or hidden without server interaction. 
+If you are new in this type of frameworks "SPA oriented" you have to keep in mind that a navigation action doesn't have to be a request to the server. Actually, it isn't. In a SPA, the main page (named as shell) is loaded from the server but then, depending on the calls to the API or the user action, some sections or pages will shown or hidden without server interaction. In a SPA, the common behaviour is calling to the server to get data. 
 
 In a non SPA application (like a JSP application), the navigation is performed by sending a request to the server in order that this one responds with the HTML that the new page has to have. This produces a complete reload of the application in the browser.
 
@@ -52,7 +68,9 @@ const routes: Routes = [
 ...
 ```
 &nbsp;
-### Navigation Service
+### Navigation in Angular
+
+##### Navigation Service
 Angular doesn't provide a navigation service in its core. The navigation service is an additional module that it's necessary to import in our project.
 
 ```typescript
@@ -69,15 +87,7 @@ So, we are importing two elements:
 Basically, the Route object is in charge of "listening" the target URL to show the specified view (in Angular, each view is associated to a component).  
 
 
-### Basic Navigation
-After the introduction we're going to implement a basic navigation from the example above. You can download the complete code of this section by executing this command:
-
-```textmate
-   git clone -b basic-navigation https://github.com/jaruizes/angular2-routing.git
-```
-<br>
-
-##### Selecting a location strategy
+##### Location strategy
 We have to keep in mind that we want our application to navigate to several pages/views without a server call, modifying the URL and managing browser's history. 
 
 If our browser supports HTML5, the Route object will use the methods **_pushState()_** and **_replaceState()_** to manage the browser's history object and perform the navigation. This methods don't execute any server call.
@@ -110,6 +120,55 @@ providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}]
 
 We are going to select **HashLocationStrategy** to start the example and then, we'll change the strategy and we'll see the impact. The strategy by default is PathLocationStrategy. If we are going to use this strategy we don't have to anything to configure it
 
+
+##### Outlets
+Our application needs a place where views associated to components are going to be shown when a navigation action is performed. Remember that every "path" defined in the navigation map has associated a component. 
+
+Angular defines a directive called [RouterOutlet](https://angular.io/docs/ts/latest/api/router/index/RouterOutlet-directive.html). This directive is used to display views for a given path. 
+
+The easiest way to use it is without declaring anything. This means that you don't have to specify the target outlet in the navigation map, you don't have to specify the name in the outlet directive and you don't have to specify the target outlet in the navigation action. This is:
+
+* Navigation map
+```typescript
+...
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'feature1', component: Feature1Component},
+  { path: 'feature2', component: Feature2Component},
+  { path: 'feature3', component: Feature3Component,
+    children: [
+      { path: 'feature31', component: Feature31Component},
+      { path: 'feature32', component: Feature32Component},
+      { path: 'feature33/:origin', component: Feature33Component}
+    ]
+  }
+];
+
+export const routing = RouterModule.forRoot(routes);
+```
+&nbsp;
+
+* Outlet directive (for instance in app.component.ts)
+```typescript
+...
+<h1>{{title}}</h1>
+<router-outlet></router-outlet>
+...
+```
+&nbsp;
+
+* Navigation action (for instance in app.component.ts)
+```typescript
+<nav style="border: 2px solid black; padding: 1rem; background-color: lightgrey">
+  <a [routerLink]="['/']">Home</a>
+  <a [routerLink]="['/feature1']">Feature1</a>
+  <a [routerLink]="['/feature2']">Feature2</a>
+  <a [routerLink]="['/feature3']">Feature3</a>
+</nav>
+```
+&nbsp;
+
+In following posts will see the way of defining several outlets and how to use them but for the moment, let's following with the next concepts.
 
 ##### Static navigation
 
@@ -210,9 +269,19 @@ goDirectlyTo33() {
 ...
 ```
 &nbsp;  
+
+
+##### Static data
+
+
+
  
-### Putting all together
-Once we've configured the routes and defined the navigation actions, we can execute the whole application to check how the navigation is working. You can find the code in [github](https://github.com/angular/angular/tree/master/modules/@angular/router).
+### Hands-on: putting all together
+
+This the moment when we can execute the whole application to check how the navigation is working. 
+
+##### Example code
+You can find the code in [github](https://github.com/angular/angular/tree/master/modules/@angular/router).
 
 To launch the project you have to execute this command:
 
@@ -224,6 +293,7 @@ To launch the project you have to execute this command:
 
 Angular will build and package the application but it'll not open our browser...so you have to open the browser and write the following URL: _http://localhost:4200_
 
+##### Navigation
 The first view of the application is the following:
 
 ![Home](/images/routing-basics/screen_1.png)
