@@ -639,3 +639,17 @@ iframe {
     vertical-align: super;
     color: black;
 }
+blockquote.trick {
+  font: 12px/18px normal "Courier New", sans-serif;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  background-image: url(/images/more-information.png);
+  background-position: 10px;
+  background-repeat: no-repeat;
+}
+blockquote.trick div {
+  padding: 0.5rem 0.5rem 0.5rem 4rem;
+  display: block;
+  text-indent: 23px;
+}
