@@ -15,13 +15,13 @@ In this post I would like to talk about the routing in Angular 2. The idea is to
 
 ### What does "routing" means in the client-side? 
 
-If you are new in this kind of frameworks "SPA oriented" or you're used to build server-side applications, you have to keep in mind that a navigation action doesn't have to be a request to the server. Actually, in SPA, it isn't. 
+If you are new in this kind of frameworks "SPA oriented" or you're used to build server-side applications, you have to keep in mind that a navigation action doesn't have to be a request to the server. Actually, in a SPA, it isn't. 
 
-In a non SPA application (like a JSP application), the navigation is performed by sending a request to the server in order that this one responds with the HTML that the new page has to have. This produces a complete reload of the application in the browser.
+In a non SPA application (like a JSP application), the navigation is performed by sending a request to the server in order that this one responds with the HTML of the new page. This produces a complete reload of the application in the browser.
 
-In a SPA, the main page (named as shell) is loaded initially from the server but then, depending on the calls to the API or the user action, some views will shown or hidden without server interaction. In a SPA, the common behaviour is calling to the server to get data. 
+In a SPA, the main page (known as "shell") is loaded initially from the server. This shell contains everything the application need to start working (libraries, main application files,...etc) and after that, depending on the calls to the API or the user action, some views will shown or hidden without any server interaction. In a SPA, the common behaviour is calling to the server to get data. If the application implements any lazy loading method, when the application needs a new javascript file (for instance a javascript of a module) call to the server to get the file and then, the file is catched.
 
-Frameworks like Angular need something to perform this kind of navigation in the client-side, without sending a navigation action to the server. It's important that each navigation produces a change in the URL because, for instance, maybe the user wants to add it to his bookmarks. Have you ever thought about an application that all the pages have the same URL? How will you save subsections in your bookmarks?
+Frameworks like Angular need something to perform navigation in the client-side, without sending a navigation action to the server. It's important that each navigation produces a change in the URL because, for instance, maybe the user wants to add it to his bookmarks. _Have you ever thought about an application that all the pages have the same URL?_ _How will you save subsections in your bookmarks?_
 
 &nbsp;
 
@@ -35,13 +35,13 @@ import { RouterModule, Routes } from '@angular/router';
 ```
 &nbsp;
 
-So, we are importing two elements:
+We are importing two elements:
 
-* **[Routes](https://angular.io/docs/ts/latest/api/router/index/Routes-type-alias.html){:target="_blank"}**: This is a Type representing an array of elements [Route](https://angular.io/docs/ts/latest/api/router/index/Route-interface.html){:target="_blank"}. Route is an interface that declares all the properties that a route can have. Later, in this and in future posts, we will see this properties and theirs uses.   
+* **[Routes](https://angular.io/docs/ts/latest/api/router/index/Routes-type-alias.html){:target="_blank"}**: This is a Type representing an array of elements [Route](https://angular.io/docs/ts/latest/api/router/index/Route-interface.html){:target="_blank"}. Route is an interface that declares all the properties that a route can have. Later on, in this and future posts, we will see these properties and their uses.   
 * **[RouterModule](https://angular.io/docs/ts/latest/api/router/index/RouterModule-class.html){:target="_blank"}**: adds directives and providers.   
 
 
-Basically, the Route object is in charge of "listening" the target URL to show the specified view (in Angular, each view is associated to a component).  
+Basically, the Route object is in charge of "listening" the target URL to show the view associated to a component (in Angular, each view is associated to a component).  
 
 ##### Navigation map
 The next step is to define the navigation map. In our example, we're going to have this navigation map:
@@ -55,8 +55,9 @@ The next step is to define the navigation map. In our example, we're going to ha
 >     * Feature32 = feature3/feature32
 >     * Feature33 = feature3/feature33
 
+&nbsp;
 
-We're going to create a new file, _app.routing.ts_ and we're going to put the routes there. Each route has associated a component:
+We're going to create a new file, _app.routing.ts_ and putting the routes there. Each route has associated a component:
 
 ```typescript
 ...
@@ -76,9 +77,9 @@ const routes: Routes = [
 ```
 &nbsp;
 
-When the browser "navigates" to a path defined in this map, the route service will show the view linked to the component associated. 
+When the browser "navigates" to a path defined in this map, the route service will show the view linked to the component. 
 
-In Angular we have to keep in mind that **the Router has a "first-match" strategy** so when it finds the first path that matches with the path requested, it shows the view linked to the component associated to the path. 
+In Angular we have to keep in mind that **the Router has a "first-match" strategy** so, when it finds the first path that matches with the path requested, it shows the view linked to the component and finish its job. 
 
 
 ##### Location strategy
@@ -101,7 +102,7 @@ The location strategy is configured by a provider. We have to add the [LocationS
   * [PathLocationStrategy](https://angular.io/docs/ts/latest/api/common/index/PathLocationStrategy-class.html)
   * [HashLocationStrategy](https://angular.io/docs/ts/latest/api/common/index/HashLocationStrategy-class.html)
 
-These ones are not part of Angular core. They are located in the  [Common module]()https://github.com/angular/angular/tree/master/modules/@angular/common). 
+These ones are not part of Angular core. They are located in the  [Common module](https://github.com/angular/angular/tree/master/modules/@angular/common){:target=_blank}. 
 So to configure our app to use a strategy, we have to add a provider and specify the class that implements the strategy. In this case, we add it in _app.module.ts_ file:
 
 ```typescript
@@ -112,15 +113,16 @@ providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}]
 ...
 ```
 &nbsp;
+
 We are going to select **HashLocationStrategy** to start the example and then, we'll change the strategy and we'll see the impact. The strategy by default is PathLocationStrategy. If we are going to use this strategy we don't have to anything to configure it
 
 
 ##### Outlets
-Our application/component needs a place where views associated to components are going to be shown when a navigation action is performed. Remember that every "path" defined in the navigation map has associated a component. 
+Our application needs a place where views associated to components are going to be shown when a navigation action is performed. Remember that every "path" defined in the navigation map has associated a component. 
 
 Angular defines a directive called **[RouterOutlet](https://angular.io/docs/ts/latest/api/router/index/RouterOutlet-directive.html){:target="_blank"}**. This directive is used to display views for a given path. 
 
-The easiest way to use it is without declaring anything, that is without specifying the target outlet in the navigation map, you don't have to specify the name in the outlet directive and you don't have to specify the target outlet in the navigation action. 
+The easiest way is just using the tag, without declaring anything, that is without specifying the target outlet in the navigation map, you don't have to specify the name in the outlet directive and you don't have to specify the target outlet in the navigation action. 
 
 * Navigation map
 
@@ -149,7 +151,7 @@ export const routing = RouterModule.forRoot(routes);
 ```
 &nbsp;
 
-This is independent of the outer layout, that is the view will be rendered in the space of the component where the tag is placed. In this case, we have placed the tag inside the main view of our application but in other cases, the tag can be placed in a secondary component. For instance, our component associated to the "feature3" includes a subnavigation in its view and adds the <router-outlet> tag to display the views associated to its children (_feature3.component.ts_):
+This is independent of the outer layout, that is, the view will be rendered in the space of the component where the tag is placed. In this case, we have placed the tag inside the main view of our application but in other cases, the tag can be placed in a secondary component. For instance, our component associated to the "feature3" includes a subnavigation in its view and adds the <router-outlet> tag to display the views associated to its children (_feature3.component.ts_):
 
 ```typescript
 <h2>This is the feature 3</h2>
@@ -178,7 +180,7 @@ In following posts will see the way of defining several outlets and how to use t
 
 ##### Static navigation
 
-The easy way consist on a simple <a> tag with the [routerLink directive](https://angular.io/docs/ts/latest/api/router/index/RouterLink-directive.html) associated.
+The easy way consists on a simple <a> tag with the [routerLink directive](https://angular.io/docs/ts/latest/api/router/index/RouterLink-directive.html) associated.
 For instance, we add a navigation bar in the main page of our application:
 
 ```typescript
@@ -193,7 +195,7 @@ For instance, we add a navigation bar in the main page of our application:
 
 ##### Dynamic Navigation
 
-In the real world, we usually have to perform navigation actions depending on business logic and we can not use just anchor tags.
+Static navigation is good but we usually have to perform navigation actions depending on business logic and we can not use just anchor tags.
 A easy way to do this is using the method _navigate_ of [Router class](https://angular.io/docs/ts/latest/api/router/index/Router-class.html#!#navigate-anchor).
 Programatically we select the target path and it allows to pass some params or for instance, take a relative or absolute path. 
 
@@ -214,6 +216,7 @@ This is an example:
    ...
    ```
 &nbsp;
+
 You can check the official documentation to know more detail of the params of the [navigate method](https://angular.io/docs/ts/latest/api/router/index/Router-class.html#!#navigate-anchor).
 
 
@@ -226,17 +229,18 @@ The way to declare them is by using "/:param". For instance:
 { path: 'feature33/:origin', component: Feature33Component}
 ```
 &nbsp;
-*Sending params*
+
+**Sending params**
 And the ways to navigate passing params are the followings:
 
-* Static navigation
+- Static navigation
 ```typescript
 ...
 <a [routerLink]="['./feature33', 'feature3']">Feature 3-3</a>
 ...
 ```
-
-* Dynamic navigation
+&nbsp; 
+- Dynamic navigation
 ```typescript
 ...
 goDirectlyTo33() {
@@ -252,7 +256,7 @@ To get this data we have to use [ActivatedRoute](https://angular.io/docs/ts/late
 
 > Contains the information about a route associated with a component loaded in an outlet
 
-If we want to get the params sent we have to get the current value of the route. To do that, we have to access to the _snapshot_ property, typed by [ActivatedRouteSnapshot](https://angular.io/docs/ts/latest/api/router/index/ActivatedRouteSnapshot-interface.html). This interface provides several properties to work with the activated route. In this case, we need to access to the "params" property. In our example, we're getting the "origin" param:
+If we want to get the params sent, we have to get the current value of the route. To do that, we have to access to the _snapshot_ property, typed by [ActivatedRouteSnapshot](https://angular.io/docs/ts/latest/api/router/index/ActivatedRouteSnapshot-interface.html). This interface provides several properties to work with the activated route. In this case, we need to access to the "params" property. In our example, we're getting the "origin" param:
 
 ```typescript
 ...
@@ -309,6 +313,7 @@ let navigationExtras:NavigationExtras = {
 this._router.navigate([target], navigationExtras);
 ```
 &nbsp;
+
 We can also use them in a static navigation using anchor:
 ```typescript
 ...
@@ -316,6 +321,7 @@ We can also use them in a static navigation using anchor:
 ...
 ```
 &nbsp;
+
 The way to get them is similar to route params. We can use the "_snapshot_" property or directly, the "_queryParams_" property (Observable) of ActivatedRoute. For instance, we're going to use the second one:
 
 ```typescript
@@ -332,7 +338,7 @@ The way to get them is similar to route params. We can use the "_snapshot_" prop
 &nbsp;
 ##### Static data
 Angular offers the capability to associate some data to a path at the time of route configuration. This is the property "data" of the Route interface. 
-This property is represented by an array of objects {key:value}. For instance:
+This property can be associated to an object, array, etc... For instance:
 
 ```typescript
 ....
@@ -364,7 +370,7 @@ export class HomeComponent {
 &nbsp;
 
 ##### Handling "Page not Found (404)"
-We can define a component to handle not defined paths in our application, that is named typically by "Page Not Found" (404). 
+We can define a component to handle not defined paths in our application, that is, named typically by "Page Not Found" (404). 
 
 As we've said before, the order or the routes is so important when we define the navigation map of the application because the router uses a "**first-match wins**" strategy to get a route. This means that when the router finds a path matching to the target URL launch the component associated. If the router doesn't find a match, throws an error.
 
@@ -429,3 +435,4 @@ If you click on whatever button, you'll perform a dynamic navigation. For instan
 If we type a non existent URL, the route will show the view associated to "_PageNotFoundComponent_":
 
 ![PageNotFound](/images/routing-basics/screen_4_notfound.png)
+
