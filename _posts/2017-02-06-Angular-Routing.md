@@ -11,11 +11,11 @@ tags:
  - Routing
 ---
 
+If you are new in this kind of frameworks "SPA oriented" or you're used to build server-side applications, you have to keep in mind that a navigation action doesn't have to be a request to the server. Actually, in a SPA, it isn't. 
+
 In this post I would like to talk about the routing in Angular 2. The idea is to write several posts about this topic, from the basic aspects to the advanced ones.
 
 ### What does "routing" means in the client-side? 
-
-If you are new in this kind of frameworks "SPA oriented" or you're used to build server-side applications, you have to keep in mind that a navigation action doesn't have to be a request to the server. Actually, in a SPA, it isn't. 
 
 In a non SPA application (like a JSP application), the navigation is performed by sending a request to the server in order that this one responds with the HTML of the new page. This produces a complete reload of the application in the browser.
 
