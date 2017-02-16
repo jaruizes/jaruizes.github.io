@@ -87,7 +87,9 @@ goToSecretFeature(user, password) {
 ...
 ```
 
-And now, magic comes. Angular define some router hooks to do some action during the navigation. In this case we're going to show how to deny the access to some components in base on certain logic. We define a new path associated to a new component (_feature4.component.ts_) and we want to protect this path to a not allowed users. We modify _app.routing.ts_ to do this:
+#### Guards
+
+Angular define some router hooks to do some action during the navigation. In this case we're going to show how to deny the access to some components in base on certain logic. We define a new path associated to a new component (_feature4.component.ts_) and we want to protect this path to a not allowed users. We modify _app.routing.ts_ to do this:
 
 ```typescript
 const routes: Routes = [
@@ -109,9 +111,15 @@ const routes: Routes = [
 
 If you check the path 'feature4' you'll see that we've added two properties: canActivate and canDeactivate.
 
+Both of them are known as "_Guards_". In Angular, Guards are, in a high level, interfaces that define methods that every application has to implement as it wants but these methods have to return either Observable<boolean>, Promise<boolean> or boolean.
+
+When a navigation action is going to be performed, Route checks if there is a Guard associated to the target path and it is so, it executes the method that implements the guard.
+
+Let's talk about canActivate and canDeactivate.
+
 #### CanActivate 
 
-CanActivate is just an interface. Its [definition](https://angular.io/docs/ts/latest/api/router/index/CanActivate-interface.html){:target="_blank"} says:
+CanActivate is jan interface. Its [definition](https://angular.io/docs/ts/latest/api/router/index/CanActivate-interface.html){:target="_blank"} says:
 
 > Indicates that a class can implement to be a guard deciding if a route can be activated.
 
@@ -134,11 +142,34 @@ export class HasPrivateAccessGuard implements CanActivate {
 
 ```
 
-If the _loginService.isUserLogged()_ returns false, the navigation action to '/feature4' is not done. 
+We've created a class _HasPrivateAccessGuard_ that implements _CanActivate_ interface so, by this way, it has to implement a canActivate method. The implementation in our case is so simple: if the _loginService.isUserLogged()_ returns false, the navigation action to '/feature4' is not done. 
+
+If we try to access directly to /feature4, nothing happens. If we add a _console.log()_ sentence in _HasPrivateAccessGuard_ we can asses that the guard is executed. The logic inside the guard could be so complex as you want:
+
+```typescript
+@Injectable()
+export class HasPrivateAccessGuard implements CanActivate {
+    ...
+    canActivate() {
+     console.log('This is the HasPrivateAccessGuard...');
+     return this.loginService.isUserLogged();
+    }
+}
+```
+
+![Acces denied](/images/guards-canactivate/access_denied.png)
+
+Now we are trying to get to "/feature4" using the login form. We have to enter the user (in our case is 'admin') and password (in our case is '1234') and click on the button:
+
+![Login form](/images/guards-canactivate/login_form.png)
+
+The Router calls to the guard (_HasPrivateAccessGuard_), the login service says that everything is ok and finally the navigation action is done, showing the view associated to "_/feature4_":
+
+![Feature 4](/images/guards-canactivate/feature4.png)
 
 #### CanDeactivate 
 
-Its definition says:
+This is other interface and its definition says:
 
 > Indicates that a class can implement to be a guard deciding if a route can be deactivated.
 
@@ -151,7 +182,7 @@ export interface CanDeactivate<T> {
 }
 ```
 
-So you need to implement the method _canDeactivate_ but you need to call to a component in order to execute the logic required:
+So you need to implement the method _canDeactivate_ but you need to define a type/interface to associate as type of CanDeactivate:
 
 ```typescript
 import {Injectable} from "@angular/core";
@@ -180,4 +211,6 @@ export class ConfirmExitPrivateZoneGuard implements CanDeactivate<CanComponentDe
 }
 ```
 
-This means that the component is who has to decide if the navigation action can be done or not. 
+This means that the component associated to the path must implement _CanComponentDeactivate_ because the Router is going to call to the _canDeactivate_ method of the guard with a param of type _CanComponentDeactivate_. 
+
+In other words, if we associated a CanDeactivate guard to a path, the component linked to this path has to implement a method (or methods) defined in the Type associated to the CanDeactivate guard and the component is responsible to implement the logic to determine if the navigation can be done or not. 
