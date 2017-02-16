@@ -11,9 +11,9 @@ tags:
  - Routing
 ---
 
-In this post we're going to see how we can protect some views or components. This is so easy in Angular 2. 
+In this post we're going to see how we can protect some views or components. This is so easy in Angular 2. The use case is very simple: building a login and if the credentials (user and password) are right, navigating to a protected view. 
 
-The use case is very simple: building a login and if the credentials (user and password) are right, navigating to a protected view. 
+The code is uploaded in [github](https://github.com/jaruizes/angular2-routing/tree/router-hooks).
 
 The first we need is a login service. We're going to build a easy one (login.service.ts):
 
@@ -123,6 +123,8 @@ CanActivate is jan interface. Its [definition](https://angular.io/docs/ts/latest
 
 > Indicates that a class can implement to be a guard deciding if a route can be activated.
 
+This guard is "executed" before enter to a target path in order to check if is possible to activate the route or not. 
+
 So, as interface, you have to create a class that implements this interface. This interface declares the _canActivate_ method and you have to implement the logic that you need in your application in order grant the access to the component. In our example this logic is so easy. Basically, call to the login service to check whether the user is logged or not (_has-private-access.guard.ts_):
 
 ```typescript
@@ -173,6 +175,8 @@ This is other interface and its definition says:
 
 > Indicates that a class can implement to be a guard deciding if a route can be deactivated.
 
+So, this guard is "executed" over the current path when a navigation action to a other path is required. 
+
 Using this interface is a little bit trickier than _CanActivate_ because is declaring a generic type in its definition:
 
 ```typescript
@@ -214,3 +218,24 @@ export class ConfirmExitPrivateZoneGuard implements CanDeactivate<CanComponentDe
 This means that the component associated to the path must implement _CanComponentDeactivate_ because the Router is going to call to the _canDeactivate_ method of the guard with a param of type _CanComponentDeactivate_. 
 
 In other words, if we associated a CanDeactivate guard to a path, the component linked to this path has to implement a method (or methods) defined in the Type associated to the CanDeactivate guard and the component is responsible to implement the logic to determine if the navigation can be done or not. 
+
+In our example, we add the following logic to _Feature4Component_:
+
+```typescript
+import {Component} from '@angular/core';
+import {CanComponentDeactivate} from "../guards/confirm-exit-private-zone.guard";
+@Component({
+  selector: 'feature4',
+  templateUrl: './feature4.component.html'
+})
+export class Feature4Component implements CanComponentDeactivate {
+
+  canDeactivate() {
+    return window.confirm('Do you really want to exit?');
+  }
+}
+```
+
+If the user is in "_/feature4" and decide to navigate to other path, the _ConfirmExitPrivateZoneGuard_ is executed and finally the method _canDeactivate_ of Feature4Component is called, showing the confirm dialog to the user:
+
+![CanDeactivate](/images/guards-canactivate/candeactivate.png)

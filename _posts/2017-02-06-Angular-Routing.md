@@ -402,7 +402,7 @@ So when the routes can't find a match, it'll launch the view associated to "_Pag
 This the moment when we can execute the whole application to check how the navigation is working. 
 
 ##### Example code
-The code is uploaded in [github](https://github.com/angular/angular/tree/master/modules/@angular/router).
+The code is uploaded in [github](https://github.com/jaruizes/angular2-routing/tree/routing-basics).
 
 To launch the project you have to execute this command:
 
