@@ -15,7 +15,7 @@ In this post we're going to see how we can protect some views or components. Thi
 
 The code is uploaded in [github](https://github.com/jaruizes/angular2-routing/tree/router-hooks).
 
-The first we need is a login service. We're going to build a easy one (login.service.ts):
+Well, let's start. The first we need for our use case is a login service. We're going to build a easy one (_login.service.ts_):
 
 ```typescript
 import {Injectable} from "@angular/core";
@@ -42,14 +42,17 @@ export class LoginService {
 
 }
 ```
-We've declared just three methods:
+&nbsp;
 
-- login(user, password): this method is used to perform a login in the system. If the user and password are OK, it sets a auth key in the session storage.
-- closeSession(): removes the auth key stored in the session storage.
-- isUserLogged(): get the auth key and checks if its value is 'true'
+In this service, we've declared three methods:
+
+- **login(user, password)**: this method is used to perform a login in the system. If the user and password are OK, it sets a auth key in the session storage.
+- **closeSession()**: removes the auth key stored in the session storage.
+- **isUserLogged()**: get the auth key and checks if its value is 'true'
 
 
-The second we need is building a login form. We are going to build a light one adding it to the _feature1.component.html::
+The second thing we need is a login form (sorry about the CSS but it's not the target of this post). We are going to build a light one adding it to the _feature1.component.html_:
+
 ```html
 ...
 
@@ -70,8 +73,9 @@ The second we need is building a login form. We are going to build a light one a
 ...
 
 ```
+&nbsp;
 
-And we use the login service to check the credentials in _feature1.component.ts_:
+And we use the login service to check credentials in _feature1.component.ts_:
 
 ```typescript
 ...
@@ -86,10 +90,12 @@ goToSecretFeature(user, password) {
 }
 ...
 ```
+&nbsp;
+&nbsp;
 
 #### Guards
 
-Angular define some router hooks to do some action during the navigation. In this case we're going to show how to deny the access to some components in base on certain logic. We define a new path associated to a new component (_feature4.component.ts_) and we want to protect this path to a not allowed users. We modify _app.routing.ts_ to do this:
+Angular define some router hooks to do some action during the navigation. In this case we're going to show how to deny the access to some components in base on certain logic. We define a new path associated to a new component (_feature4.component.ts_) and we want to protect this path to a not allowed users. Let's modify _app.routing.ts_ to do this:
 
 ```typescript
 const routes: Routes = [
@@ -108,8 +114,9 @@ const routes: Routes = [
   { path: '**', component: PageNotFoundComponent}
 ];
 ```
+&nbsp;
 
-If you check the path 'feature4' you'll see that we've added two properties: canActivate and canDeactivate.
+If you check the path 'feature4' you'll see that we've added two properties: **canActivate** and **canDeactivate**.
 
 Both of them are known as "_Guards_". In Angular, Guards are, in a high level, interfaces that define methods that every application has to implement as it wants but these methods have to return either Observable<boolean>, Promise<boolean> or boolean.
 
@@ -119,13 +126,15 @@ Let's talk about canActivate and canDeactivate.
 
 #### CanActivate 
 
-CanActivate is jan interface. Its [definition](https://angular.io/docs/ts/latest/api/router/index/CanActivate-interface.html){:target="_blank"} says:
+CanActivate is an interface. Its [definition](https://angular.io/docs/ts/latest/api/router/index/CanActivate-interface.html){:target="_blank"} says:
 
 > Indicates that a class can implement to be a guard deciding if a route can be activated.
 
 This guard is "executed" before enter to a target path in order to check if is possible to activate the route or not. 
 
-So, as interface, you have to create a class that implements this interface. This interface declares the _canActivate_ method and you have to implement the logic that you need in your application in order grant the access to the component. In our example this logic is so easy. Basically, call to the login service to check whether the user is logged or not (_has-private-access.guard.ts_):
+So, as interface, you have to create a class that implements this interface. This interface declares the _canActivate_ method and you have to implement the logic that you need in your application in order to grant access to the component. 
+
+In our example this logic is so easy. Basically, calls to the login service to check whether the user is logged or not (_has-private-access.guard.ts_):
 
 ```typescript
 import {Injectable} from "@angular/core";
@@ -143,6 +152,7 @@ export class HasPrivateAccessGuard implements CanActivate {
 }
 
 ```
+&nbsp;
 
 We've created a class _HasPrivateAccessGuard_ that implements _CanActivate_ interface so, by this way, it has to implement a canActivate method. The implementation in our case is so simple: if the _loginService.isUserLogged()_ returns false, the navigation action to '/feature4' is not done. 
 
@@ -158,6 +168,9 @@ export class HasPrivateAccessGuard implements CanActivate {
     }
 }
 ```
+&nbsp;
+
+In the console we can check that the message is written:
 
 ![Acces denied](/images/guards-canactivate/access_denied.png)
 
@@ -185,6 +198,7 @@ export interface CanDeactivate<T> {
       Observable<boolean>|Promise<boolean>|boolean;
 }
 ```
+&nbsp;
 
 So you need to implement the method _canDeactivate_ but you need to define a type/interface to associate as type of CanDeactivate:
 
@@ -214,6 +228,7 @@ export class ConfirmExitPrivateZoneGuard implements CanDeactivate<CanComponentDe
 
 }
 ```
+&nbsp;
 
 This means that the component associated to the path must implement _CanComponentDeactivate_ because the Router is going to call to the _canDeactivate_ method of the guard with a param of type _CanComponentDeactivate_. 
 
@@ -235,6 +250,7 @@ export class Feature4Component implements CanComponentDeactivate {
   }
 }
 ```
+&nsbp;
 
 If the user is in "_/feature4" and decide to navigate to other path, the _ConfirmExitPrivateZoneGuard_ is executed and finally the method _canDeactivate_ of Feature4Component is called, showing the confirm dialog to the user:
 
