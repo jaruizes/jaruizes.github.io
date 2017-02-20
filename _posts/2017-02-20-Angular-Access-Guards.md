@@ -1,8 +1,8 @@
 ---
 author: jaruizes
 layout: post
-title: "Angular - Router Hooks: Guards"
-date: 2017-02-07 10:00
+title: "Angular Router Hooks: Guards"
+date: 2017-02-20 19:00
 category : Angular
 comments: false
 tags:
@@ -11,11 +11,19 @@ tags:
  - Routing
 ---
 
-In this post we're going to see how we can protect some views or components. This is so easy in Angular 2. The use case is very simple: building a login and if the credentials (user and password) are right, navigating to a protected view. 
+In this post we're going to see how we can protect some views or components. The use case is very simple: building a login component and if the credentials (user and password) are right, go to a protected view. 
 
-The code is uploaded in [github](https://github.com/jaruizes/angular2-routing/tree/router-hooks).
+You can find the code in [github](https://github.com/jaruizes/angular2-routing/tree/router-hooks). To launch the project you have to execute this command:
 
-Well, let's start. The first we need for our use case is a login service. We're going to build a easy one (_login.service.ts_):
+```bash
+   ng serve
+```
+&nbsp;
+(you need to have installed **[angular-cli](https://cli.angular.io/){:target=_blank}**.
+
+Angular will build and package the application but it'll not open our browser...so you have to open the browser and write the following URL: _http://localhost:4200_
+
+Well, let's start. The first we need for our use case is a login service. We're going to build an easy one (_login.service.ts_):
 
 ```typescript
 import {Injectable} from "@angular/core";
@@ -95,7 +103,9 @@ goToSecretFeature(user, password) {
 
 #### Guards
 
-Angular define some router hooks to do some action during the navigation. In this case we're going to show how to deny the access to some components in base on certain logic. We define a new path associated to a new component (_feature4.component.ts_) and we want to protect this path to a not allowed users. Let's modify _app.routing.ts_ to do this:
+Angular defines some router hooks to do some action during the navigation. In this case we're going to show how to deny the access to some components in base on a certain logic. We define a new path associated to a new component (_feature4.component.ts_) and we want to protect this path. 
+
+Let's modify _app.routing.ts_ to do this:
 
 ```typescript
 const routes: Routes = [
@@ -184,7 +194,7 @@ The Router calls to the guard (_HasPrivateAccessGuard_), the login service says 
 
 #### CanDeactivate 
 
-This is other interface and its definition says:
+This is other interface and its [definition](https://angular.io/docs/ts/latest/api/router/index/CanDeactivate-interface.html){:target="_blank"} says:
 
 > Indicates that a class can implement to be a guard deciding if a route can be deactivated.
 
@@ -255,3 +265,157 @@ export class Feature4Component implements CanComponentDeactivate {
 If the user is in "_/feature4" and decide to navigate to other path, the _ConfirmExitPrivateZoneGuard_ is executed and finally the method _canDeactivate_ of Feature4Component is called, showing the confirm dialog to the user:
 
 ![CanDeactivate](/images/guards-canactivate/candeactivate.png)
+
+
+#### CanActivateChild
+ if you read the Router's documentation you'll see the **[CanActivateChildGuard](https://angular.io/docs/js/latest/api/router/index/CanActivateChild-interface.html){:target="_blank"}**. Its definition says:
+ 
+ > Indicates that a class can implement to be a guard deciding if a child route can be activated.
+ 
+I must say that it could be a little confused because you can assign a CanActivate guard to a parent component and this guard would be applied before activating the child routes. But, for instance, we can have the requirement of activating groups of paths depending on the user's roles. We're modifying _app.routing.ts_ to add child paths to _/feature4_:
+
+```typescript
+...
+{ path: 'feature4', component: Feature4Component, canActivate: [HasPrivateAccessGuard], canDeactivate: [ConfirmExitPrivateZoneGuard],
+    children: [
+      {path: 'rol1', canActivateChild: [HasPrivateAccessGuard],
+        children: [
+          {path: 'feature41', component: Feature41Component},
+          {path: 'feature42', component: Feature42Component}
+        ]
+      },
+      {path: 'rol2'
+        ,
+        children: [
+          {path: 'feature43', component: Feature43Component}
+        ]
+      }
+    ]
+ }
+...
+```
+&nbsp;
+
+We've defined two different groups based on roles:
+- feature41 and feature42 need the user to have 'rol1'
+- feature43 needs the user to have 'rol2'
+
+We need to modify _login.service.ts_ to add logic in order to support this model. The _login.service.ts_ will have the following code:
+
+```typescript
+import {Injectable} from "@angular/core";
+
+export interface User {
+  name:String,
+  password:String,
+  roles:String[]
+}
+
+@Injectable()
+export class LoginService {
+
+  readonly users:User[] = [
+    {name: 'admin', password: '1234', roles: ['rol1', 'rol2']},
+    {name: 'noadmin', password: '1234', roles: ['rol2']}
+  ];
+
+  private userLogged:String;
+
+  login(user:string, password: string):boolean {
+    let usersFound:User[] = this.users.filter(_user => {
+      return user === _user.name && password === _user.password;
+    });
+
+    if (usersFound.length === 1) {
+      sessionStorage.setItem('userlogged', user);
+      this.userLogged = user;
+      return true;
+    }
+    return false;
+  }
+
+  closeSession():void {
+    sessionStorage.removeItem('userlogged');
+  }
+
+  isUserLogged():boolean {
+    let userStored:string = sessionStorage.getItem('userlogged');
+    return this.userLogged === userStored;
+  }
+
+  userisAllowed(url:string) {
+    let rolAllowedArr:string[] = /(rol[0-9]{1})/g.exec(url);
+    if (rolAllowedArr.length > 0) {
+      let usersFound:User[] = this.users.filter(_user => {
+        return  _user.name === this.userLogged && _user.roles.indexOf(rolAllowedArr[0]) >= 0;
+      });
+
+      return usersFound.length === 1;
+    }
+
+    return true;
+  }
+
+}
+```
+&nsbp;
+
+We've added an User type and an array of two users. One with roles _'rol1'_ and _'rol2'_ and one with just _'rol2'_. We've also added a _userisAllowed_ method that receives an URL and evaluates whether the user can access to this URL or not. 
+
+We also add a navigation bar in _Feature4Component_ modifying the template associated (_feature4.component.html_):
+
+```typescript
+<h2>This is the Feature 4</h2>
+<p>You got it!!!</p>
+
+<nav style="border: 2px solid black; padding: 1rem; background-color: lightblue">
+  <a [routerLink]="['./rol1/feature41']">Feature41</a>
+  <a [routerLink]="['./rol1/feature42']">Feature42</a>
+  <a [routerLink]="['./rol2/feature43']">Feature43</a>
+</nav>
+
+<router-outlet></router-outlet>
+```
+&nsbp;
+
+And, finally we have to modify the _HasPrivateAccessGuard_ to implement the CanActivateChild interface:
+
+```typescript
+import {Injectable} from "@angular/core";
+import {CanActivate, CanActivateChild, RouterStateSnapshot, ActivatedRouteSnapshot} from "@angular/router";
+import {LoginService} from "../services/login.service";
+
+@Injectable()
+export class HasPrivateAccessGuard implements CanActivate, CanActivateChild {
+  constructor(private loginService:LoginService) {}
+
+  canActivate() {
+    console.log('This is the HasPrivateAccessGuard...');
+    return this.loginService.isUserLogged();
+  }
+
+  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    console.log('This is the HasPrivateAccessGuard-child...');
+    return this.loginService.userisAllowed(state.url);
+  }
+}
+```
+&nbsp;
+
+So, if the user does login in the application and the application navigates to _/feature4_, the canActivate method is executed, evaluating if the user can get the target path. 
+
+![CanActivate](/images/guards-canactivate/feature4-console.png)
+
+
+Once the user is in _/feature4_, if the user clicks some link in the navigation bar (feature41, feature42 or feature43), the _canActivateChild_ is evaluated.
+
+![CanActivateChild](/images/guards-canactivate/canactivatechild.png)
+
+If we are not logged and try to access directly to the feature41 path writing the url _http://localhost:4200/#/feature4/rol1/feature41_, we can see that just the _canActivate_ is evaluated. As this guard return false, no more guards are evaluated. 
+
+But if we do login as 'noadmin' and we try to access to the _feature41_, we'll see that just the canActivateChild is evaluated because we are already in the parent path (_/feature4_):
+
+![CanActivateChild](/images/guards-canactivate/canActivateChildDenied.png)
+
+Nothing happens because the _canActivateChild_ method returns false so for that reason we're still in _/feature4_
+
