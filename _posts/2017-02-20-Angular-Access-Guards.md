@@ -260,7 +260,7 @@ export class Feature4Component implements CanComponentDeactivate {
   }
 }
 ```
-&nsbp;
+&nbsp;
 
 If the user is in "_/feature4" and decide to navigate to other path, the _ConfirmExitPrivateZoneGuard_ is executed and finally the method _canDeactivate_ of Feature4Component is called, showing the confirm dialog to the user:
 
@@ -376,7 +376,7 @@ We also add a navigation bar in _Feature4Component_ modifying the template assoc
 
 <router-outlet></router-outlet>
 ```
-&nsbp;
+&nbsp;
 
 And, finally we have to modify the _HasPrivateAccessGuard_ to implement the CanActivateChild interface:
 
