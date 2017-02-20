@@ -419,3 +419,6 @@ But if we do login as 'noadmin' and we try to access to the _feature41_, we'll s
 
 Nothing happens because the _canActivateChild_ method returns false so for that reason we're still in _/feature4_
 
+
+
+That's all. I hope this post is useful for you!
