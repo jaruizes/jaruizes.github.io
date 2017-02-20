@@ -358,7 +358,7 @@ export class LoginService {
 
 }
 ```
-&nsbp;
+&nbsp;
 
 We've added an User type and an array of two users. One with roles _'rol1'_ and _'rol2'_ and one with just _'rol2'_. We've also added a _userisAllowed_ method that receives an URL and evaluates whether the user can access to this URL or not. 
 
