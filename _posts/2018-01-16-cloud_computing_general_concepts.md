@@ -38,17 +38,17 @@ It’s wanted to test a new technology to decide wether making an investment or 
 
 What if instead of spending much time provisioning and managing infrastructure resources, could we just push a button and getting those machines and platforms up and running almost immediately? And…
 
-- what if it could be possible to pay only for the time that the resources are being used and then shut them down and left paying for them?
-- what if it could be possible to scale up or down your system just with a few clicks or dinamically setting several properties about workload?
-- what if it could be possible to create new environments on demand and removing them when they aren’t used?
-- …
+&nbsp;&nbsp; - what if it could be possible to pay only for the time that the resources are being used and then shut them down and left paying for them?
+&nbsp;&nbsp; - what if it could be possible to scale up or down your system just with a few clicks or dinamically setting several properties about workload?
+&nbsp;&nbsp; - what if it could be possible to create new environments on demand and removing them when they aren’t used?
+&nbsp;&nbsp; - …
 
 So, from a bird’s eye view, this is Cloud Computing. It means that
 
-- you don’t need to buy physically hardware or software and store it in your datacenter,
-- you don’t need to manage and maintenance all those machines with their main software,
-- you don’t need to worry about if your machines are enough good to address days like “Cyber Monday” and even,
-- you don’t need an own datacenter
+&nbsp;&nbsp; - you don’t need to buy physically hardware or software and store it in your datacenter,
+&nbsp;&nbsp; - you don’t need to manage and maintenance all those machines with their main software,
+&nbsp;&nbsp; - you don’t need to worry about if your machines are enough good to address days like “Cyber Monday” and even,
+&nbsp;&nbsp; - you don’t need an own datacenter
 
 because **an other company do it for you as a service**.
 
@@ -77,55 +77,55 @@ them a better user experience.
 
 Amazon, in its documentation, identifies very well six advantages of Cloud Computing:
 
-- **Cost efficient**: by using Cloud Computing you only pay when you are consuming resources so it means that you don’t need to make an investment at the beginning of the project buying resources in base of a supposition. The cost now is focusing in the operational phase, when software is really in use.
+&nbsp;&nbsp; - **Cost efficient**: by using Cloud Computing you only pay when you are consuming resources so it means that you don’t need to make an investment at the beginning of the project buying resources in base of a supposition. The cost now is focusing in the operational phase, when software is really in use.
 
-- **Time to market**: you are going to provision resources and deploy your software much faster than if you have to buy new resources or configure your current resources to add new business solutions.
+&nbsp;&nbsp; - **Time to market**: you are going to provision resources and deploy your software much faster than if you have to buy new resources or configure your current resources to add new business solutions.
 
-- **Better prices**: Cloud Computing providers buy and manage resources for a huge amount of customer so they get better prices for the resources that a single company.
+&nbsp;&nbsp; - **Better prices**: Cloud Computing providers buy and manage resources for a huge amount of customer so they get better prices for the resources that a single company.
 
-- **Focus in business**: by using a Cloud Computing provider you are going to spend much less time provisioning and managing infrastructure resources, base software or backups so you can focus your efforts in business and customers.
+&nbsp;&nbsp; - **Focus in business**: by using a Cloud Computing provider you are going to spend much less time provisioning and managing infrastructure resources, base software or backups so you can focus your efforts in business and customers.
 
-- **Closer to your customer**: when your business is global, Cloud Computing helps you to deploy your applications in data centers located around the world with low redundancy and improving your customer experience.
+&nbsp;&nbsp; - **Closer to your customer**: when your business is global, Cloud Computing helps you to deploy your applications in data centers located around the world with low redundancy and improving your customer experience.
 
-- **Scalability on demand**: it’s so easy to scale up or down your system whenever your business need and you only pay your real requirements
+&nbsp;&nbsp; - **Scalability on demand**: it’s so easy to scale up or down your system whenever your business need and you only pay your real requirements
 
 &nbsp;
 # Disadvantages of Cloud Computing
 
 Cloud is not perfect and everything, it has some drawbacks:
 
-- **Security**: cloud providers are a good target for hack attacks. This is the main concern of the cloud companies but we also have to say that cloud provides better mechanisms to recover from an attack.
+&nbsp;&nbsp; - **Security**: cloud providers are a good target for hack attacks. This is the main concern of the cloud companies but we also have to say that cloud provides better mechanisms to recover from an attack.
 
-- **Internet dependency**: every interaction with cloud providers are based on Internet and sometimes network connectivity could not be the best. So, a good Internet connection is something to keep in mind when
+&nbsp;&nbsp; - **Internet dependency**: every interaction with cloud providers are based on Internet and sometimes network connectivity could not be the best. So, a good Internet connection is something to keep in mind when
 we are going to work with cloud providers.
 
-- **Technical issues**: even the best cloud providers have technical issues that can affect to the service. For that reason, it's important to choose a good cloud architecture and strategy deploying our applications in several
+&nbsp;&nbsp; - **Technical issues**: even the best cloud providers have technical issues that can affect to the service. For that reason, it's important to choose a good cloud architecture and strategy deploying our applications in several
 zones or regions.
 
-- **Legal issues**: storing data in the cloud could have associated legal requirements that our company has to fulfill. When we manage sensible data is very important to know what the security best practices are
+&nbsp;&nbsp; - **Legal issues**: storing data in the cloud could have associated legal requirements that our company has to fulfill. When we manage sensible data is very important to know what the security best practices are
 and if we are allowed to manage or store data outside of its origin country.
 
-- **Vendor lock-in**: migrating from one platform to another could be very difficult if our cloud provider: proprietary formats to store data, proprietary tools or platforms…,etc.
+&nbsp;&nbsp; - **Vendor lock-in**: migrating from one platform to another could be very difficult if our cloud provider: proprietary formats to store data, proprietary tools or platforms…,etc.
 
 &nbsp;
 # Cloud layers
 
 To finalize this general post and once we know what Cloud Computing is and its pros and cons, we need to know that there are three “layers” (or types) in Cloud services:
 
-- **Infrastructure as a Service (IaaS)**: it’s the bottom level of cloud and it includes services like virtual machines, servers, storage, load balancers, backup, and security. Basically,
+&nbsp;&nbsp; - **Infrastructure as a Service (IaaS)**: it’s the bottom level of cloud and it includes services like virtual machines, servers, storage, load balancers, backup, and security. Basically,
 the cloud provider provides the infrastructure to you and you have to install on top of it the software you need for your business. Examples of this are: Amazon EC2, Amazon S3, GCE,…,etc
 
-- **Platform as a Service (PaaS)**: it’s the next layer and it includes frameworks or products that you can use out of the box or customize for developing and executing your applications.
+&nbsp;&nbsp; - **Platform as a Service (PaaS)**: it’s the next layer and it includes frameworks or products that you can use out of the box or customize for developing and executing your applications.
 Google App Engine or Heroku are good examples of this concept.
 
-- **Software as a Service (SaaS)**: this is the upper layer and it includes software that you can use directly for your business: Office 365, Salesforce, Google Apps….
+&nbsp;&nbsp; - **Software as a Service (SaaS)**: this is the upper layer and it includes software that you can use directly for your business: Office 365, Salesforce, Google Apps….
 
 
 To explain this better, a good metaphor could be a trip:
 
-- IaaS: a car is provided to you. You have to buy a navigator (whatever you want) or not and enter the route you want to go to target and you have to drive, however you want, to the destination.
-- PaaS: a car and the navigator is provided to you. You can customize the route (not the navigator) and have to drive to the destination.
-- SaaS: you take a taxi and you say to the driver where you want to go but you don’t drive the car.
+&nbsp;&nbsp; - IaaS: a car is provided to you. You have to buy a navigator (whatever you want) or not and enter the route you want to go to target and you have to drive, however you want, to the destination.
+&nbsp;&nbsp; - PaaS: a car and the navigator is provided to you. You can customize the route (not the navigator) and have to drive to the destination.
+&nbsp;&nbsp; - SaaS: you take a taxi and you say to the driver where you want to go but you don’t drive the car.
 
 
 
