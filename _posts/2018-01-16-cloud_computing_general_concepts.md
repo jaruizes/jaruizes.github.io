@@ -128,6 +128,24 @@ To explain this better, a good metaphor could be a trip:
 - SaaS: you take a taxi and you say to the driver where you want to go but you don’t drive the car.
 
 
+&nbsp;
+# Do I have to move everything to Cloud or I'll die?
+
+Moving to Cloud is a big step for companies that have a lot of systems on-premise so the strategy has to be move to Cloud step by step, not
+a big bang. This is call as Hybrid Cloud.
+
+The first step usually is using Cloud as store provider for some data, synchronizing or migrating on-premise data to cloud data, removing some on-premise
+database instances.
+
+Rehosting some machines to resources in cloud could be a initial step. There are some services to import/export virtual machines from one system to the other one.
+When your are rehosting your applications it's a good moment to redesign its architecture taking advantage of cloud services.
+
+Creating a **Virtual Private Cloud (VPC)** is also a common step at the beginning. By this service, companies can integrate systems on cloud with systems on-premise building
+a common network and also, it's possible to have a dedicated line between cloud data center and its own data center.
+
+By last, there could be some applications that can not move to cloud for legal reason or simply because the company prefers keeping them in its
+datacenter.
+
 
 <br/>
 <br/>
