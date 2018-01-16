@@ -90,7 +90,7 @@ Amazon, in its documentation, identifies very well six advantages of Cloud Compu
 - **Scalability on demand**: it’s so easy to scale up or down your system whenever your business need and you only pay your real requirements
 
 &nbsp;
-# Disadvantages of Cloud Computing
+# Is Cloud so beautiful and perfect?
 
 Cloud is not perfect and everything, it has some drawbacks:
 
@@ -129,7 +129,7 @@ To explain this better, a good metaphor could be a trip:
 
 
 &nbsp;
-# Do I have to move everything to Cloud or I'll die?
+# Do I have to move everything to Cloud?
 
 Moving to Cloud is a big step for companies that have a lot of systems on-premise so the strategy has to be move to Cloud step by step, not
 a big bang. This is call as Hybrid Cloud.
