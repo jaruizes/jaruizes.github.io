@@ -77,17 +77,17 @@ them a better user experience.
 
 Amazon, in its documentation, identifies very well six advantages of Cloud Computing:
 
-    - **Cost efficient**: by using Cloud Computing you only pay when you are consuming resources so it means that you don’t need to make an investment at the beginning of the project buying resources in base of a supposition. The cost now is focusing in the operational phase, when software is really in use.
+   - **Cost efficient**: by using Cloud Computing you only pay when you are consuming resources so it means that you don’t need to make an investment at the beginning of the project buying resources in base of a supposition. The cost now is focusing in the operational phase, when software is really in use.
 
-    - **Time to market**: you are going to provision resources and deploy your software much faster than if you have to buy new resources or configure your current resources to add new business solutions.
+   - **Time to market**: you are going to provision resources and deploy your software much faster than if you have to buy new resources or configure your current resources to add new business solutions.
 
-    - **Better prices**: Cloud Computing providers buy and manage resources for a huge amount of customer so they get better prices for the resources that a single company.
+   - **Better prices**: Cloud Computing providers buy and manage resources for a huge amount of customer so they get better prices for the resources that a single company.
 
-    - **Focus in business**: by using a Cloud Computing provider you are going to spend much less time provisioning and managing infrastructure resources, base software or backups so you can focus your efforts in business and customers.
+   - **Focus in business**: by using a Cloud Computing provider you are going to spend much less time provisioning and managing infrastructure resources, base software or backups so you can focus your efforts in business and customers.
 
-    - **Closer to your customer**: when your business is global, Cloud Computing helps you to deploy your applications in data centers located around the world with low redundancy and improving your customer experience.
+   - **Closer to your customer**: when your business is global, Cloud Computing helps you to deploy your applications in data centers located around the world with low redundancy and improving your customer experience.
 
-    - **Scalability on demand**: it’s so easy to scale up or down your system whenever your business need and you only pay your real requirements
+   - **Scalability on demand**: it’s so easy to scale up or down your system whenever your business need and you only pay your real requirements
 
 &nbsp;
 # Disadvantages of Cloud Computing
@@ -128,7 +128,8 @@ To explain this better, a good metaphor could be a trip:
     - SaaS: you take a taxi and you say to the driver where you want to go but you don’t drive the car.
 
 
-&nbsp;
+
+<br/>
 I hope you’ve liked this post. I’ll try to detail the main cloud providers and its services (Amazon Web Services and Google Cloud) in next posts.
 
 
