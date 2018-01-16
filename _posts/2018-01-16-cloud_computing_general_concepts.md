@@ -33,7 +33,7 @@ Infrastructure team has to work in building both environments too and the develo
 
 It’s wanted to test a new technology to decide wether making an investment or not. The new technology needs a concrete resources that are not present in the current infrastructure so new resources are buying and configuring only for this PoC, spending time and money for this task. Once the infrastructure is up, the PoC starts but at the end, the result is not good and the investment will not be made.
 
-
+&nbsp;
 # Cloud Computing
 
 What if instead of spending much time provisioning and managing infrastructure resources, could we just push a button and getting those machines and platforms up and running almost immediately? And…
@@ -58,45 +58,70 @@ With Cloud Computing, changing your IT environment to adapt new business require
 
 So Cloud Computing is a service that helps you to focus just in business by providing exactly the IT resources (hardware and software) you need in each moment.
 
+&nbsp;
+# But...where are my server and data?
 
-# Where are my servers, data and components?
+Everything said till now, sounds very well but, does that means that we are not going to know where my components are deployed?
+Many people when talk about cloud, say that the data could be in every place in the world…That’s true, your data, your servers
+and your applications can be in any place in the world but you choose where is the right place.
 
-Everything said till now, sounds very well but, does that means that we are not going to know where my components are deployed? Many people when talk about cloud, say that the data could be in every place in the world…That’s true, your data, your servers and your applications can be in any place in the world but you choose where is the right place.
+Cloud providers, in order to offer high availability, low redundancy and fault tolerance have data centers located around the world.
+They usually manage regions and zones: each region is independent and is located in a separate geographic area (USA, Europe, Asia, Africa,…)
+and has multiple and isolate areas called zones. Basically, a zone is associated to a one or more data centers, isolated
+from failures in other zones and, a region, is a cluster of data centers.
 
-Cloud providers, in order to offer high availability, low redundancy and fault tolerance have data centers located around the world. They usually manage regions and zones: each region is independent and is located in a separate geographic area (USA, Europe, Asia, Africa,…) and has multiple and isolate areas called zones. Basically, a zone is associated to a one or more data centers, isolated from failures in other zones and, a region, is a cluster of data centers.
+So when your are designing your cloud architecture, you decide where you want to create your machines. A good practice is deploying your components in several zones
+in one or more regions. This is very important in order to prevent fails in a single location that can affect to your business or being closer to your customers giving
+them a better user experience.
 
-So when your are designing your cloud architecture, you decide where you want to create your machines. A good practice is deploying your components in several zones in one or more regions. This is very important in order to prevent fails in a single location that can affect to your business or being closer to your customers giving them a better user experience.
-
-
+&nbsp;
 # Advantages to move to Cloud
 
 Amazon, in its documentation, identifies very well six advantages of Cloud Computing:
 
-- Cost efficient: by using Cloud Computing you only pay when you are consuming resources so it means that you don’t need to make an investment at the beginning of the project buying resources in base of a supposition. The cost now is focusing in the operational phase, when software is really in use.
-- Time to market: you are going to provision resources and deploy your software much faster than if you have to buy new resources or configure your current resources to add new business solutions.
-- Better prices: Cloud Computing providers buy and manage resources for a huge amount of customer so they get better prices for the resources that a single company.
-- Focus in business: by using a Cloud Computing provider you are going to spend much less time provisioning and managing infrastructure resources, base software or backups so you can focus your efforts in business and customers.
-- Closer to your customer: when your business is global, Cloud Computing helps you to deploy your applications in data centers located around the world with low redundancy and improving your customer experience.
-- Scalability on demand: it’s so easy to scale up or down your system whenever your business need and you only pay your real requirements
+- **Cost efficient**: by using Cloud Computing you only pay when you are consuming resources so it means that you don’t need to make an investment at the beginning of the project buying resources in base of a supposition. The cost now is focusing in the operational phase, when software is really in use.
 
+- **Time to market**: you are going to provision resources and deploy your software much faster than if you have to buy new resources or configure your current resources to add new business solutions.
 
+- **Better prices**: Cloud Computing providers buy and manage resources for a huge amount of customer so they get better prices for the resources that a single company.
+
+- **Focus in business**: by using a Cloud Computing provider you are going to spend much less time provisioning and managing infrastructure resources, base software or backups so you can focus your efforts in business and customers.
+
+- **Closer to your customer**: when your business is global, Cloud Computing helps you to deploy your applications in data centers located around the world with low redundancy and improving your customer experience.
+
+- **Scalability on demand**: it’s so easy to scale up or down your system whenever your business need and you only pay your real requirements
+
+&nbsp;
 # Disadvantages of Cloud Computing
 
 Cloud is not perfect and everything, it has some drawbacks:
 
-- Security: cloud providers are a good target for hack attacks. This is the main concern of the cloud companies but we also have to say that cloud provides better mechanisms to recover from an attack.
-- Internet dependency: cloud providers are technology companies based on Internet so sometimes, they have technical issues or network connectivity is not the best in certain moments.
-- Legal issues: storing data in the cloud could have associated legal requirements that our company has to fulfill. When we manage sensible data is very important to know what the security best practices are and if we are allowed to manage or store data outside of its origin country.
-- Vendor lock-in: migrating from one platform to another could be very difficult if our cloud provider: proprietary formats to store data, changes in the service conditions, proprietary tools or platforms…,etc.
+- **Security**: cloud providers are a good target for hack attacks. This is the main concern of the cloud companies but we also have to say that cloud provides better mechanisms to recover from an attack.
 
+- **Internet dependency**: every interaction with cloud providers are based on Internet and sometimes network connectivity could not be the best. So, a good Internet connection is something to keep in mind when
+we are going to work with cloud providers.
 
+- **Technical issues**: even the best cloud providers have technical issues that can affect to the service. For that reason, it's important to choose a good cloud architecture and strategy deploying our applications in several
+zones or regions.
+
+- **Legal issues**: storing data in the cloud could have associated legal requirements that our company has to fulfill. When we manage sensible data is very important to know what the security best practices are
+and if we are allowed to manage or store data outside of its origin country.
+
+- **Vendor lock-in**: migrating from one platform to another could be very difficult if our cloud provider: proprietary formats to store data, proprietary tools or platforms…,etc.
+
+&nbsp;
 # Cloud layers
 
-To finalize this general post and once we know what Cloud is and its pros and cons, we need to know that there are three “layers” (or types) in Cloud services:
+To finalize this general post and once we know what Cloud Computing is and its pros and cons, we need to know that there are three “layers” (or types) in Cloud services:
 
-- Infrastructure as a Service (**IaaS**): it’s the bottom level of cloud and it includes services like virtual machines, servers, storage, load balancers, backup, and security. Basically, the cloud provider provides the infrastructure to you and you have to install on top of it the software you need for your business. Examples of this are: Amazon EC2, Amazon S3, GCE,…,etc
-- Platform as a Service (**PaaS**): it’s the next layer and it includes frameworks or products that you can use out of the box or customize for developing and executing your applications.  Google App Engine or Heroku are good examples of this concept.
-- Software as a Service (**SaaS**): this is the upper layer and it includes software that you can use directly for your business: Office 365, Salesforce, Google Apps….
+- **Infrastructure as a Service (IaaS)**: it’s the bottom level of cloud and it includes services like virtual machines, servers, storage, load balancers, backup, and security. Basically,
+the cloud provider provides the infrastructure to you and you have to install on top of it the software you need for your business. Examples of this are: Amazon EC2, Amazon S3, GCE,…,etc
+
+- **Platform as a Service (PaaS)**: it’s the next layer and it includes frameworks or products that you can use out of the box or customize for developing and executing your applications.
+Google App Engine or Heroku are good examples of this concept.
+
+- **Software as a Service (SaaS)**: this is the upper layer and it includes software that you can use directly for your business: Office 365, Salesforce, Google Apps….
+
 
 To explain this better, a good metaphor could be a trip:
 
@@ -105,6 +130,8 @@ To explain this better, a good metaphor could be a trip:
 - SaaS: you take a taxi and you say to the driver where you want to go but you don’t drive the car.
 
 
+&nbsp;
+&nbsp;
 I hope you’ve liked this post. I’ll try to detail the main cloud providers and its services (Amazon Web Services and Google Cloud) in next posts.
 
 
