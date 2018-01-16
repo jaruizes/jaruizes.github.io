@@ -9,9 +9,7 @@ tags:
     - Cloud Computing
 ---
 
-# Cloud Computing
-
-## Context
+# Context
 
 I would like to start showing you three common scenarios in IT:
 
@@ -35,7 +33,8 @@ Infrastructure team has to work in building both environments too and the develo
 
 It’s wanted to test a new technology to decide wether making an investment or not. The new technology needs a concrete resources that are not present in the current infrastructure so new resources are buying and configuring only for this PoC, spending time and money for this task. Once the infrastructure is up, the PoC starts but at the end, the result is not good and the investment will not be made.
 
-## Cloud Computing
+
+# Cloud Computing
 
 What if instead of spending much time provisioning and managing infrastructure resources, could we just push a button and getting those machines and platforms up and running almost immediately? And…
 
@@ -59,7 +58,8 @@ With Cloud Computing, changing your IT environment to adapt new business require
 
 So Cloud Computing is a service that helps you to focus just in business by providing exactly the IT resources (hardware and software) you need in each moment.
 
-## Where are my servers, data and components?
+
+# Where are my servers, data and components?
 
 Everything said till now, sounds very well but, does that means that we are not going to know where my components are deployed? Many people when talk about cloud, say that the data could be in every place in the world…That’s true, your data, your servers and your applications can be in any place in the world but you choose where is the right place.
 
@@ -67,7 +67,8 @@ Cloud providers, in order to offer high availability, low redundancy and fault t
 
 So when your are designing your cloud architecture, you decide where you want to create your machines. A good practice is deploying your components in several zones in one or more regions. This is very important in order to prevent fails in a single location that can affect to your business or being closer to your customers giving them a better user experience.
 
-## Advantages to move to Cloud
+
+# Advantages to move to Cloud
 
 Amazon, in its documentation, identifies very well six advantages of Cloud Computing:
 
@@ -79,7 +80,7 @@ Amazon, in its documentation, identifies very well six advantages of Cloud Compu
 - Scalability on demand: it’s so easy to scale up or down your system whenever your business need and you only pay your real requirements
 
 
-## Disadvantages of Cloud Computing
+# Disadvantages of Cloud Computing
 
 Cloud is not perfect and everything, it has some drawbacks:
 
@@ -89,7 +90,7 @@ Cloud is not perfect and everything, it has some drawbacks:
 - Vendor lock-in: migrating from one platform to another could be very difficult if our cloud provider: proprietary formats to store data, changes in the service conditions, proprietary tools or platforms…,etc.
 
 
-## Cloud layers
+# Cloud layers
 
 To finalize this general post and once we know what Cloud is and its pros and cons, we need to know that there are three “layers” (or types) in Cloud services:
 
