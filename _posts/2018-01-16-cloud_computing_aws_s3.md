@@ -10,6 +10,8 @@ tags:
     - AWS
     - S3
 ---
+![S3](/images/aws_s3_1/s3_logo.png)
+
 AWS S3 is one of the first services that Amazon introduced and it's used for storing data (objects) in the cloud. By an API you can performance
 CRUD operations in S3. This service is billed for the storage you really use so you don't have to worry about capacity estimated and so on.
 
