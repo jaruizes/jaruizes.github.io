@@ -2,7 +2,7 @@
 author: jaruizes
 layout: post
 title: "AWS S3 - basic concepts"
-date: 2018-01-18 23:30
+date: 2018-01-19 00:30
 category : Cloud
 comments: false
 tags:
