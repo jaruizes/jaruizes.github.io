@@ -2,7 +2,7 @@
 author: jaruizes
 layout: post
 title: "Cloud Computing: basic concepts"
-date: 2018-01-16 18:30
+date: 2018-04-09 18:30
 category : Cloud
 comments: false
 tags:
