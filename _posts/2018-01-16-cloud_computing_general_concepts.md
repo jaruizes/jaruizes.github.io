@@ -110,35 +110,30 @@ and if we are allowed to manage or store data outside of its origin country.
 &nbsp;
 # Cloud layers
 
-To finalize this general post and once we know what Cloud Computing is and its pros and cons, we need to know that there are three “layers” (or types) in Cloud services:
+To finalize this general post, once we know what Cloud Computing is and its pros and cons, we need to know that there are three “layers” (or types) in Cloud services:
 
 - **Infrastructure as a Service (IaaS)**: it’s the bottom level of cloud and it includes services like virtual machines, servers, storage, load balancers, backup, and security. Basically,
-the cloud provider provides the infrastructure to you and you have to install on top of it the software you need for your business. Examples of this are: Amazon EC2, Amazon S3, GCE,…,etc
+the cloud provider provides the infrastructure to you and you have to install on top of it the software you need for your business. Examples of this are: Openstack, some AWS products like Amazon EC2, Amazon S3 or
+Google Cloud products like GCE
 
-- **Platform as a Service (PaaS)**: it’s the next layer and it includes frameworks or products that you can use out of the box or customize for developing and executing your applications.
-Google App Engine or Heroku are good examples of this concept.
+- **Platform as a Service (PaaS)**: it includes capabilities to develop, deploy, execute and manage your apps. Openshift, CloudFoundry or Heroku are good examples of this concept.
 
-- **Software as a Service (SaaS)**: this is the upper layer and it includes software that you can use directly for your business: Office 365, Salesforce, Google Apps….
+- **Software as a Service (SaaS)**: it includes software that you can use directly for your business: Office 365, Salesforce, Google Apps….
 
-
-To explain this better, a good metaphor could be a trip:
-
-- IaaS: a car is provided to you. You have to buy a navigator (whatever you want) or not and enter the route you want to go to target and you have to drive, however you want, to the destination.
-- PaaS: a car and the navigator is provided to you. You can customize the route (not the navigator) and have to drive to the destination.
-- SaaS: you take a taxi and you say to the driver where you want to go but you don’t drive the car.
+- **Function as a Service (FaaS)**: it provides everything you need to execute pieces of code (functions). You just worry about your code, anything else: no servers, no infrastructure, scaling, etc...
 
 
 &nbsp;
 # Do I have to move everything to Cloud?
 
-Moving to Cloud is a big step for companies that have a lot of systems on-premise so the strategy has to be move to Cloud step by step, not
-a big bang. This is call as Hybrid Cloud.
+Moving to Cloud is a big step for companies that have a lot of systems on-premise so, the strategy has to be move to Cloud step by step, not
+a big bang. This is called as Hybrid Cloud because some componentes go to Cloud while others are kept on premise.
 
 The first step usually is using Cloud as store provider for some data, synchronizing or migrating on-premise data to cloud data, removing some on-premise
 database instances.
 
-Rehosting some machines to resources in cloud could be a initial step. There are some services to import/export virtual machines from one system to the other one.
-When your are rehosting your applications it's a good moment to redesign its architecture taking advantage of cloud services.
+Rehosting some machines to resources in the cloud could be also an initial step. Cloud providers offer some services to import/export virtual machines from one system to the other one.
+When your are rehosting your applications it's a good moment to redesign its architecture taking advantage of cloud services and new architecture models like microservices.
 
 Creating a **Virtual Private Cloud (VPC)** is also a common step at the beginning. By this service, companies can integrate systems on cloud with systems on-premise building
 a common network and also, it's possible to have a dedicated line between cloud data center and its own data center.
