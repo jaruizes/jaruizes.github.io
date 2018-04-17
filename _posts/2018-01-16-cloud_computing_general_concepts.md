@@ -2,7 +2,7 @@
 author: jaruizes
 layout: post
 title: "Cloud Computing: basic concepts"
-date: 2018-04-09 18:30
+date: 2018-04-17 18:30
 category : Cloud
 comments: false
 tags:
@@ -127,19 +127,17 @@ Google Cloud products like GCE
 # Do I have to move everything to Cloud?
 
 Moving to Cloud is a big step for companies that have a lot of systems on-premise so, the strategy has to be move to Cloud step by step, not
-a big bang. This is called as Hybrid Cloud because some componentes go to Cloud while others are kept on premise.
+a big bang.
 
 The first step usually is using Cloud as store provider for some data, synchronizing or migrating on-premise data to cloud data, removing some on-premise
 database instances.
 
 Rehosting some machines to resources in the cloud could be also an initial step. Cloud providers offer some services to import/export virtual machines from one system to the other one.
-When your are rehosting your applications it's a good moment to redesign its architecture taking advantage of cloud services and new architecture models like microservices.
+When your are rehosting your applications it's a good moment to redesign its architecture taking advantage of cloud services and new architecture models like microservices. By Virtual Private
+Clouds, companies can integrate systems on cloud with systems on-premise building a common network and also, it's possible to have a dedicated line between cloud data center and its
+own data center. This is called as Hybrid Cloud because some components go to the cloud while others are kept on premise.
 
-Creating a **Virtual Private Cloud (VPC)** is also a common step at the beginning. By this service, companies can integrate systems on cloud with systems on-premise building
-a common network and also, it's possible to have a dedicated line between cloud data center and its own data center.
-
-By last, there could be some applications that can not move to cloud for legal reason or simply because the company prefers keeping them in its
-datacenter.
+By last, there could be some applications that can not move to cloud for legal reason or simply because the company prefers keeping them in its datacenter.
 
 
 <br/>
