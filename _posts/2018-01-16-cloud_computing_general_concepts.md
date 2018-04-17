@@ -7,6 +7,7 @@ category : Cloud
 comments: false
 tags:
     - Cloud Computing
+imagefeature: cloud-computing/cloud-computing.jpg
 ---
 
 # Context
