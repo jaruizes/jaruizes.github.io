@@ -3,7 +3,7 @@ author: jaruizes
 layout: post
 title: "Digital Transformation: is it just about technology?"
 date: 2017-07-12 19:00
-category : DigitalTransformation
+category : Digital Transformation
 comments: false
 tags:
  - Digital Transformation
