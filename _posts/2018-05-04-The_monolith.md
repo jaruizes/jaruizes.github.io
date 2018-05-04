@@ -28,8 +28,8 @@ Once upon a time, many years ago, there was only a channel to interact with a co
 to routines that called to more programs or routines. Business people was very close to developers and developers could touch any program. The communication flow between Business and IT was
 direct.
 
-As everything worked well and it was better using computers instead doing the things manually, more features was added and little by little developers and business people had to dedicate just
-a some areas. The knowledge began to be distributed within the company and in consequence, dependencies between areas were more visible. The communication between Business and IT wasn't
+As everything worked well and it was better using computers instead doing the things manually, more features was added and little by little developers and business people had to work just
+in some areas. The knowledge began to be distributed within the company and in consequence, dependencies between areas were more visible. The communication between Business and IT wasn't
 so direct anymore and it was necessary put some rules in order to express requirements and features, build the software without breaking anything and promoting to production.
 
 Years later, the raise of Internet made possible other ways to interact with the company: direct channels. With direct channels, business grew exponentially. Companies had to build
@@ -144,7 +144,7 @@ Another important thing is that you haven't to refactor everything if it's not n
 keep the monolith working.
 
 
-# Think about the real world
+## Think about the real world
 
 Before end, I would like to compare with a common scenario in the real world.
 
