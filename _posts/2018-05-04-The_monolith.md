@@ -53,7 +53,7 @@ Some people begin to talk about 'The microservices hell' and the Mainframe rule 
 
 # Why is everything so complicated?
 
-Do you know how to use Spring Boot? Do you know how to use Eureka? You are ready to built microservices. Let's do it. Bad idea.
+"Do you know how to use Spring Boot? Do you know how to use Eureka? You are ready to built microservices". Let's do it. Bad idea.
 
 __Building "just microservices" is relatively easy. Building a microservices platform is complicated__
 
