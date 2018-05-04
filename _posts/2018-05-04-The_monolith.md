@@ -73,7 +73,7 @@ A pattern is a "solution" to a common problem. If you don't have that problem, t
 Microservices is about Business. If business people don't help to design the system/platform, your company is going to fail.
 
 Many people talks about "The monolith" referring to a big number of lines of code that must be packaged together in order to work well. You can refactor your code and generate a
-serie of services that can be deployed independently. It's not bad because maybe you are going to reduce your technical doubt and you are going be able to manage each service individually.
+serie of services that can be deployed independently. It's not bad because maybe you are going to reduce your technical debt and you are going be able to manage each service individually.
 But, for instance...
 
 - What about the ownershipt of the services?
@@ -128,17 +128,17 @@ But, if you decided to move to Microservices, some interesting questions you hav
 For instance, a Microservice Architecture without independent and cross-functional teams hasn't any sense. If business people aren't going to collaborate, your microservices haven't got any business ownership...
 If your organization is like this:
 
-.![Non cross](/images/monolith/non-cross-teams.png) {:height="70%" width="70%"}
+.![Non cross](/images/monolith/non-cross-teams.png){:height="70%" width="70%"}
 
 You are going to fail. Your teams must have all the necessary skills to build any feature:
 
-.![All phases](/images/monolith/cross-functional-teams.png) {:height="70%" width="70%"}
+.![All phases](/images/monolith/cross-functional-teams.png){:height="70%" width="70%"}
 
 Besides that, your team should be able to design a feature, build it and deploy it to production in a "independent way". If your teams depend of
 other departments when they are building the software and try to test or promote to other environments, your Microservices Architecture is going to
-fail because you are doing the same as usual but working with distributing systems. So, teams should be autonomous along the whole process:
+fail because you are doing the same as usual but working with distributed systems. So, teams should be autonomous along the whole process:
 
-.![All phases](/images/monolith/cross-functional-teams-2.png) {:height="70%" width="70%"}
+.![All phases](/images/monolith/cross-functional-teams-2.png){:height="70%" width="70%"}
 
 Another important thing is that you haven't to refactor everything if it's not necessary. The key is solving problems. For instantce, if you need to scale dynamically some features, you can extract this features to a Microservices and
 keep the monolith working.
