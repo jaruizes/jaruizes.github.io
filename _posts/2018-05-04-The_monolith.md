@@ -1,13 +1,14 @@
 ---
 author: jaruizes
 layout: post
-title: "The monolith and the microservices"
+title: "Culture and microservices"
 date: 2018-05-04 00:30
 category : Microservices
 comments: false
 tags:
  - Digital Transformation
  - Microservices
+imagefeature: monolith/culture.png
 ---
 
 Microservices are in the air, in everywhere but when someone talk about Microservices, the most of times, they are talking about "technical" aspects:
@@ -153,8 +154,6 @@ You can not make some changes if the community doesn't accept them. But this has
 
 When you're living in a independent house, you set the rules, you are more autonomous and you can paint the wall and the door of the color you choose. Maybe you have other needs like take your car to go to work.
 
-![Real Monolith](/images/monolith/real-monolith.png){:height="70%" width="70%"}
-
 Living in a flat doesn't have to be better than living in a house ouside the city, depends on your needs. What do you need? Do you need more space? Do you need to be close to the center? There are many reasons to choose one or the other.
 
 But you have to know very clear what you need because if you sell your apartment and you move to a house outside the city without a strong reason to do it, you are going to be frustrated in a short time. If you like noise or you don't like to
@@ -163,6 +162,6 @@ drive, you are going to be crazy. If you do it just because it's the edge, you'r
 
 <br/>
 <br/>
-I hope you’ve liked this post. It just my vision about what the monolith is.
+I hope you’ve liked this post.
 .
 
