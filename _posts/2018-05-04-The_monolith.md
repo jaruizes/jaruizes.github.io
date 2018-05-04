@@ -47,47 +47,72 @@ In many companies, IT decides that refactoring all the code is the solution, ins
 being able to deploy hundred of times per day to production, like Netflix or Amazon. But, the number of microservices is out of control, there is no ownership, developers do not how to test a
 feature end-to-end, business people say that IT is a disaster,...,etc.
 
-Some people begin to talk about 'The microservices hell'.
-
-The Mainframe rule the world again :)
+Some people begin to talk about 'The microservices hell' and the Mainframe rule the world again :)
 
 
-# What happens?
+
+# Why is everything so complicated?
+
+Do you know how to use Spring Boot? Do you know how to use Eureka? You are ready to built microservices. Let's do it. Bad idea.
 
 __Building "just microservices" is relatively easy. Building a microservices platform is complicated__
 
-Think about the real world. When you're living in a flat, you have to follow some rules based on the community. You can not make some changes in
- the flat if the community doesn't accept them. When you're living in a independent house, you are free to make the changes you want.
-
-![Real Monolith](/images/monolith/real-monolith.png){:height="70%" width="70%"}
+Microservices is just a concept, a big pattern. Technology is just a way to perform the patterns related to Microservices but the key is understanding so well what it implies. Microservices is Business. If business people don't think anything about
+Microservices, your company is going to fail. If business people don't help to design the system/platform, your company is going to fail. If your company don't need Microservices, your company is going be in a big trouble if you transform your ecosystem to
+use Microservices.
 
 __Your "monolith" is not just your code. Your monolith is the set formed by: people and culture, platform, tools and architecture, processes, methodology and government.__
 
 If you really want to split your "monolith" you have to make changes in some layers of your organization before refactoring your code or install some tools.
-
-
-
-# Your Monolith
-The reality shows that culture is the key factor. If you don't transform your culture, you're not going to success with "Microservices"
+The culture is a key factor. If you don't transform your culture, you're not going to success with "Microservices". Culture is the more powerful strenght in your company.
 
 ![Culture](/images/monolith/culture.png){:height="70%" width="70%"}
 
-Your company are not Netflix: your company has other problems, other context and other people. So you have to work in order to adapt your culture to
- the new challenges (your new challenges not Netflix ones)
+And you have to think that your company is not Netflix: your company has other problems, other context and other people. So you have to work in order to adapt your culture to the new challenges (your new challenges not Netflix ones)
 
-So, what your monolith is? What people see is just technology but the reality is that your moolith is much more:
+So, what your monolith is? What people see is just technology but the reality is that your moolith is much more. I think this is what people see and what it's the reality:
 
 ![Iceberg](/images/monolith/iceberg.png){:height="70%" width="70%"}
 
-In this point, before refactoring everything and adopting the whole Netflix OSS, you have to find the best solution for your needs and if the best solution is
- going to microservices, check if your organization is ready for that. For example:
+So, at this point, before refactoring everything and adopting the whole Netflix OSS, you need to think about your problems and your goals. What are you pains?
 
-- How are your teams organized? Are they a cross-functional teams?
-- How are your business people organized?
-- Are your teams independent?
-- How are you communication flows?
-- What size are your teams?
+- Do you need to scale up and down some parts of your system because when Black Friday comes your system goes down?
+- Do you need different technologies in your ecosystem because some features need to be implemented in a certain technology?
+- Have you identified some parts of your system that have much more changes than the others and you need to be splitted those parts?
+- Have you identified some parts of your system than need a time-to-market different than the others?
 - ...
+
+Maybe, a solution for your problems or needs is going to Microservices, but remember, you have to go as a whole. Only applying technical aspects is not going to work.
+Maybe, there are other solutions (not Microservices) that can solve your problems. But, if you decided to move to Microservices, some interesting questions you have to ask yourself are:
+
+- How are my teams organized? Are they a cross-functional teams?
+- How are my business people organized?
+- Are business people going to collaborate?
+- Are my teams independent?
+- How are my communication flows?
+- What size are my teams?
+- ...
+
+For instance, a Microservice Architecture without independent teams hasn't any sense. If business people aren't going to collaborate, your microservices haven't got any business ownership...
+
+Another important thing is that you haven't to refactor everything if it's not necessary. The key is solving problems. For instantce, if you need to scale dynamically some features, you can extract this features to a Microservices and
+keep the monolith working.
+
+
+# Think about the real world
+
+If you're living in a flat, in the middle of the city, sure you have to follow some rules set by the community. You have many facilities but for example, you can't paint your wall different than the others.
+You can not make some changes if the community doesn't accept them. But this hasn't to be bad if you don't have problems associated to the location or space or noise, for example.
+
+When you're living in a independent house, you set the rules, you are more autonomous and you can paint the wall and the door of the color you choose. Maybe you have other needs like take your car to go to work.
+
+![Real Monolith](/images/monolith/real-monolith.png){:height="70%" width="70%"}
+
+Living in a flat doesn't have to be better than living in a house ouside the city, depends on your needs. What do you need? Do you need more space? Do you need to be close to the center? There are many reasons to choose one or the other.
+
+But you have to know very clear what you need because if you sell your apartment and you move to a house outside the city without a strong reason to do it, you are going to be frustrated in a short time. If you like noise or you don't like to
+drive, you are going to be crazy. If you do it just because it's the edge, you're going to fail.
+
 
 <br/>
 <br/>
