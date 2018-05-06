@@ -121,7 +121,7 @@ to work. Maybe, there are other solutions (not Microservices) that can solve you
 
 ### Think about the real world
 
-Take a minute to think about the real world and how the decissions are made.
+Take a minute to think about the real world and how the decissions are made and theirs consequences.
 
 If you're living in a flat, in the middle of the city, you have to follow some rules set by the community, for instance, you can't paint your wall different than the others.
 You can not make some changes if the community doesn't accept them. This hasn't to be bad if you don't have problems associated to the location or space or noise, for example.
