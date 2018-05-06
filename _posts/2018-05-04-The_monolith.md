@@ -116,7 +116,26 @@ At this point, before refactoring everything and adopting the whole Netflix OSS,
 Maybe, a solution for your problems or needs is going to Microservices or not, but remember, if you decide to go, you have to go as a whole. Applying only technical aspects is not going
 to work. Maybe, there are other solutions (not Microservices) that can solve your problems.
 
-But, if you decided to move to Microservices, some interesting questions you have to ask yourself are:
+
+## Are you ready for Microservices?
+
+### Think about the real world
+
+Take a minute to think about the real world and how the decissions are made.
+
+If you're living in a flat, in the middle of the city, you have to follow some rules set by the community, for instance, you can't paint your wall different than the others.
+You can not make some changes if the community doesn't accept them. This hasn't to be bad if you don't have problems associated to the location or space or noise, for example.
+
+When you're living in a independent house, you set the rules, you are more autonomous and you can paint the wall and the door of the color you choose. Maybe you have other needs like take your car to go to work.
+
+Living in a flat doesn't have to be better than living in a house ouside the city, depends on your needs. What do you need? Do you need more space? Do you need to be close to the center? There are many reasons to choose one or the other.
+
+But you have to know very clear what you need because if you sell your apartment and you move to a house outside the city without a strong reason to do it, you are going to be frustrated in a short time. If you like noise or you don't like to
+drive, you are going to be crazy. If you do it just because it's the edge, you're going to fail.
+
+### Microservices
+
+If you decided to move to Microservices, some interesting questions you have to ask yourself are:
 
 - How are my teams organized? Are they a cross-functional teams?
 - How are my business people organized?
@@ -124,7 +143,12 @@ But, if you decided to move to Microservices, some interesting questions you hav
 - Are my teams independent?
 - How are my communication flows?
 - What size are my teams?
+- Am I thinking in projects or in products?
 - ...
+
+#### Do you know Melvin Conway?
+
+.![Conway](/images/monolith/conway.png){:height="70%" width="70%"}
 
 For instance, a Microservice Architecture without independent and cross-functional teams hasn't any sense. If business people aren't going to collaborate, your microservices haven't got any business ownership...
 If your organization is like this:
@@ -141,27 +165,25 @@ fail because you are doing the same as usual but working with distributed system
 
 .![All phases](/images/monolith/cross-functional-teams-2.png){:height="70%" width="70%"}
 
-Another important thing is that you haven't to refactor everything if it's not necessary. The key is solving problems. For instantce, if you need to scale dynamically some features, you can extract this features to a Microservices and
-keep the monolith working.
+#### Projects vs Products?
 
+When you're moving to Microservices you must stop thinking in projects and start thinking in products.
 
-## Think about the real world
+The definition of project of PMI is the following:
 
-Before end, I would like to compare with a common scenario in the real world.
+.![All phases](/images/monolith/project.png){:height="70%" width="70%"}
 
-If you're living in a flat, in the middle of the city, sure you have to follow some rules set by the community. You have many facilities but for example, you can't paint your wall different than the others.
-You can not make some changes if the community doesn't accept them. But this hasn't to be bad if you don't have problems associated to the location or space or noise, for example.
+A project starts with a team and can finish with a different team. Actually, when a project pass to a maintenance, the team responsible for maintaning the result of the project, usually is not the same that
+executed the project.
 
-When you're living in a independent house, you set the rules, you are more autonomous and you can paint the wall and the door of the color you choose. Maybe you have other needs like take your car to go to work.
+Do you think a Microservice is "something" that has a definied beginning and end in time? If you or your company think so, you would be happy in the hell.
 
-Living in a flat doesn't have to be better than living in a house ouside the city, depends on your needs. What do you need? Do you need more space? Do you need to be close to the center? There are many reasons to choose one or the other.
-
-But you have to know very clear what you need because if you sell your apartment and you move to a house outside the city without a strong reason to do it, you are going to be frustrated in a short time. If you like noise or you don't like to
-drive, you are going to be crazy. If you do it just because it's the edge, you're going to fail.
+A Microservice is not a project. A Microservice is the development of a business feature that has to evolve while your company needs or offers that feature. The team responsible for the Microservice (from business to DevOps) has to
+has to design it, develop it, run it and maintain it util the feature is decomissed. The team knows how the life of the Microservice starts but doesn't know how it's going to dead.
+It's like the team's son and the team has to care about it like a son. It's a product that the team offers to customers (other teams, applications, third parties,...,etc).
 
 
 <br/>
 <br/>
-I hope you’ve liked this post.
-.
+I hope you’ve liked this post. In next post we'll talk about a strategies to split the monolith (if you need to do it).
 
