@@ -148,22 +148,22 @@ If you decided to move to Microservices, some interesting questions you have to 
 
 #### Do you know Melvin Conway?
 
-.![Conway](/images/monolith/conway.png){:height="70%" width="70%"}
+.![Conway](/images/monolith/conway.png)
 
-For instance, a Microservice Architecture without independent and cross-functional teams hasn't any sense. If business people aren't going to collaborate, your microservices haven't got any business ownership...
-If your organization is like this:
+For instance, a Microservices Architecture without independent and cross-functional teams hasn't any sense. If business people aren't going to collaborate, your microservices haven't got any business ownership...
+If you need different teams to develop a Microservice end-to-end, you are going to have many problems and it's better for you keep working as you do currently. For instance, this doesn't work well with Microservices:
 
-.![Non cross](/images/monolith/non-cross-teams.png){:height="70%" width="70%"}
+.![Non cross](/images/monolith/non-cross-teams.png)
 
-You are going to fail. Your teams must have all the necessary skills to build any feature:
+Your teams must have all the necessary skills to build any feature:
 
-.![All phases](/images/monolith/cross-functional-teams.png){:height="70%" width="70%"}
+.![All phases](/images/monolith/cross-functional-teams.png)
 
 Besides that, your team should be able to design a feature, build it and deploy it to production in a "independent way". If your teams depend of
 other departments when they are building the software and try to test or promote to other environments, your Microservices Architecture is going to
 fail because you are doing the same as usual but working with distributed systems. So, teams should be autonomous along the whole process:
 
-.![All phases](/images/monolith/cross-functional-teams-2.png){:height="70%" width="70%"}
+.![All phases](/images/monolith/cross-functional-teams-2.png){:height="60%" width="60%"}
 
 #### Projects vs Products?
 
@@ -178,8 +178,8 @@ executed the project.
 
 Do you think a Microservice is "something" that has a definied beginning and end in time? If you or your company think so, you would be happy in the hell.
 
-A Microservice is not a project. A Microservice is the development of a business feature that has to evolve while your company needs or offers that feature. The team responsible for the Microservice (from business to DevOps) has to
-has to design it, develop it, run it and maintain it util the feature is decomissed. The team knows how the life of the Microservice starts but doesn't know how it's going to dead.
+A Microservice is not a project. __A Microservice is the development of a business feature that has to evolve while your company needs or offers that feature.__
+The team responsible for the Microservice (from business to DevOps) has to design it, develop it, run it and maintain it util the feature is decomissed. The team knows when the life of the Microservice starts but doesn't know how it's going to dead.
 It's like the team's son and the team has to care about it like a son. It's a product that the team offers to customers (other teams, applications, third parties,...,etc).
 
 
