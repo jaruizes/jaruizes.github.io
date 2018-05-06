@@ -100,7 +100,7 @@ So, what is your monolith? What people usually see is just technology or archite
 If you really want to split your "monolith" you have to make changes in some layers of your organization before refactoring your code or install some tools.
 The culture is a key factor. If you don't transform your culture, you're not going to success with "Microservices". Culture is the more powerful strenght in your company.
 
-![Culture](/images/monolith/culture.png){:height="50%" width="70%"}
+![Culture](/images/monolith/culture.png){:height="40%" width="70%"}
 
 And you have to think that your company is not Netflix: your company has other problems, other context and other people. So you have to work in order to adapt your culture to the
 new challenges (your new challenges not Netflix ones).
