@@ -100,7 +100,7 @@ So, what is your monolith? What people usually see is just technology or archite
 If you really want to split your "monolith" you have to make changes in some layers of your organization before refactoring your code or install some tools.
 The culture is a key factor. If you don't transform your culture, you're not going to success with "Microservices". Culture is the more powerful strenght in your company.
 
-![Culture](/images/monolith/culture.png){:height="70%" width="70%"}
+![Culture](/images/monolith/culture.png){:height="50%" width="70%"}
 
 And you have to think that your company is not Netflix: your company has other problems, other context and other people. So you have to work in order to adapt your culture to the
 new challenges (your new challenges not Netflix ones).
@@ -163,7 +163,7 @@ Besides that, your team should be able to design a feature, build it and deploy 
 other departments when they are building the software and try to test or promote to other environments, your Microservices Architecture is going to
 fail because you are doing the same as usual but working with distributed systems. So, teams should be autonomous along the whole process:
 
-.![All phases](/images/monolith/cross-functional-teams-2.png){:height="60%" width="60%"}
+.![All phases](/images/monolith/cross-functional-teams-2.png)
 
 #### Projects vs Products?
 
@@ -171,7 +171,7 @@ When you're moving to Microservices you must stop thinking in projects and start
 
 The definition of project of PMI is the following:
 
-.![All phases](/images/monolith/project.png){:height="70%" width="70%"}
+.![All phases](/images/monolith/project.png)
 
 A project starts with a team and can finish with a different team. Actually, when a project pass to a maintenance, the team responsible for maintaning the result of the project, usually is not the same that
 executed the project.
