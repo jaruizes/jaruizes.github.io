@@ -1,14 +1,14 @@
 ---
 author: jaruizes
 layout: post
-title: "Culture and microservices"
+title: "Monoliths, Microservices and Culture"
 date: 2018-05-04 00:30
 category : Microservices
 comments: false
 tags:
  - Digital Transformation
  - Microservices
-imagefeature: monolith/culture.png
+imagefeature: monolith/iceberg.png
 ---
 
 Microservices are in the air, in everywhere but when someone talk about Microservices, the most of times, they are talking about "technical" aspects:
