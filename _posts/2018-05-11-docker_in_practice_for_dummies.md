@@ -5,7 +5,9 @@ title: "Docker in practice for dummies (I)"
 date: 2018-05-11 14:30
 category : Docker
 comments: false
+imagefeature: docker/docker-logo.png
 tags:
+    - docker
 ---
 
 In this post I'm not going to talk about containers technology and differences between Docker and Virtual Machines I think that there is a lot of documentation about
