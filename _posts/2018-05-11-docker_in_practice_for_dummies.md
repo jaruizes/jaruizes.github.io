@@ -1,7 +1,7 @@
 ---
 author: jaruizes
 layout: post
-title: "Docker Basic Commands"
+title: "Docker in practice for dummies (I)"
 date: 2018-05-11 14:30
 category : Docker
 comments: false
@@ -12,7 +12,7 @@ In this post I'm not going to talk about containers technology and differences b
 that.
 
 I'm going to try to use informal/practice language to talk abot but because I'm not friend of theory and I prefer understanding the concepts and put them in practice.
-This post could be "Docker for dummies in practice" so if you already know Docker, it's not going to be interesting for you, sorry...
+This post is the first one of the serie titled "Docker in practice for dummies" so if you already know Docker, it's not going to be interesting for you, sorry...
 
 ## Key Concepts: images and containers
 
