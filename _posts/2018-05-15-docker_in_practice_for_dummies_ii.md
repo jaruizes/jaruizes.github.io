@@ -10,59 +10,67 @@ tags:
     - docker
 ---
 
-In the [previous post](/docker/2018/05/11/docker_in_practice_for_dummies/) we saw a starting point to work with Docker. We learnt how to
+In the [previous post](/docker/2018/05/11/docker_in_practice_for_dummies) we saw a starting point to work with Docker. We learnt how to
 pull an image and run it.
 
 In this post we are going to explain more in detail the concept of images.
 
 ## Docker Hub and Repositories: introduction
 
-If you remember the previous post, we "built" a Nginx Server. The first step we did was "download" the official image. We executed this command to do that:
+Before speaking about images, how they can be built and so on, maybe you're wondering where the images "live". If you remember the previous post, we "built" a containerized Nginx Server and the first step we did was "download" the official image
+executing `docker pull nginx:alpine`. Magically, the image was downloaded from somewhere over the rainbow where the images live...
 
-```
-docker pull nginx:alpine
-```
-
-<br/>And the result of this command is something like this:
-
-![Nginx Pull](/images/docker/nginx-pull-alpine-image.png)
-
-What are we saying to Docker? Just "pull the version tagged <alpine> of the Nginx image" and our docker-cli searchs in __Docker Hub__ about this image.
+When you say "pull this image" to Docker without saying anymore else, Docker is going to get the image from __Docker Hub__.
 
 Docker Hub? What is Docker Hub? If you look at in the official page, the definition is:
 
 ![Nginx Pull](/images/docker-ii/dockerhub.png)
 
-Awesome! So many functionalities! For a better understanding about Docker Hub, is a site where there are many docker images and where you register in and you can upload your own images to share them.
-It's like a Git of docker images. There is also a store (Docker Store), introduced in DockerCon 2016, more oriented to companies. If you want to read more about that, I recommend you [this article](https://techcrunch.com/2016/06/21/docker-launches-a-new-marketplace-for-containerized-software/?es_p=2041463)
+Awesome! For a better understanding, a "practical" definition about Docker Hub could be "a site where many docker images are uploaded and where you can upload your own images to share them". It's like the Gitlab of docker images.
+There is also a store (Docker Store), introduced in DockerCon 2016, more oriented to companies. If you want to read more about that, I recommend you [this article](https://techcrunch.com/2016/06/21/docker-launches-a-new-marketplace-for-containerized-software/?es_p=2041463)
 
-Comming back to Docker Hub, there are official images and there are also custom images that you can pull from it. The URL associated to Docker Hub is [https://hub.docker.com/](https://hub.docker.com/)
+Comming back to Docker Hub, companies put there their official images of their software but there are also custom images that you can pull from it.
 
-I'm not going to write about how to register in it because I think it's very easy. Once you registered, you'll see the dashboard and an option is "Create a Repository":
+You can find images in Docker Hub using the web application or executing the command `docker search <image>`. For instance:
+
+![Nginx Pull](/images/docker-ii/docker-hub-search.png)
+
+The result shows the list of images associated with a nginx server and you can also check wether the image is an official one or not.
+
+#### Our first Docker repository
+
+I'm not going to write about how to register in it because I think it's very easy.
+The URL associated to Docker Hub is [https://hub.docker.com/](https://hub.docker.com/). Once you registered, you'll see the dashboard and an option is "Create a Repository":
 
 ![Dashboard](/images/docker-ii/dockerhub-dashboard.png)
 
-So, **what is a repository?** A repository is a bucket of images. If you think in Git, a repository is a bucket of commits of a project. Let's create one to see clearly:
+So, **what is a repository?** A repository is a bucket of images, that means, a place where you publish your images and theirs different versions. Let's create one to see clearly:
 
 ![Create repo init](/images/docker-ii/dockerhub-create.png)
 
-And if you click to create it:
+And if you click on "create" button to create it:
 
 ![Create repo](/images/docker-ii/dockerhub-create-ii.png)
 
-We've created a repository to share our Nginx images but we haven't any image yet. Later on, we'll come back to our repo but we need to create our own image to publish it and share it.
+We've created a repository to share our Nginx images but we haven't any image yet. Later on in this post, we'll come back to our repo but we need to create our own image to publish it and share it.
+Now, we're going to talk about images
 
 
 ## Images and Dockerfile
 
-Maybe you've heard of "dockerfiles" everywhere. What are dockerfiles?
+In the [previous post](/docker/2018/05/11/docker_in_practice_for_dummies) we talked about images and containers. In a practical way of speaking, an image is a kind of template from you can generate identical executable artifacts called containers.
+But we haven't said anything about how images can be created...
 
-> A Dockerfile is a file used to describe the steps to build a Docker image.
+There are several ways to create Docker images but I'm going to start with the "Dockerfile" way.
+
+__What are dockerfiles?__
+
+> A Dockerfile is a text file used to describe the steps to build a Docker image.
 
 Let's create our first Dockerfile! Remember that we are building an image to publish our website, you we need some personal website.
 
-I've created a repo in Github to be used in these post about Docker. Each branch will be used in a concrete post. By this post, I've created the branch called "nginx-mysite", containing a
-basic site (just an index.html) and a Dockerfile. We don't need anymore to introduce dockerfiles:
+I've created a repo in Github to be used in these post about Docker. Each branch will be used in a concrete post. By this post, I've created the branch called "nginx-mysite", containing a basic website (just an index.html) and a Dockerfile.
+We don't need anymore to introduce dockerfiles:
 
 ![Git structure for this post](/images/docker-ii/docker-myfirst-dockerfile.png)
 
@@ -80,19 +88,19 @@ COPY mysite /usr/share/nginx/html
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-This is a Dockerfile. Summarizing, we're saying to Docker the necessary steps to build our image:
+<br/>This is a Dockerfile. Summarizing, we're saying to Docker the necessary steps to build our image:
 
 1) Take the Nginx Alpine image as a base image
 2) Copy the static files from our website to the folder where Nginx expose the static files
 3) Execute a command to stay Nginx in the foreground
 
-That's all. If you remember the previous post and the engineering team creating the design to build a specifiq car model, this would be the true design.
+That's all. But, how do you transform it to an image? You just need to say "__build the image__" to Docker:
 
-But, how do you transform it to an image? You need to __build__ the image. Just executing this command in the project root folder:
+```
+docker build -t nginx-mysite:1.0.0 .
+```
 
-```docker build -t nginx-mysite:1.0.0 .```
-
-And the result should be similar like this picture:
+In this command, we also say "tag the image as nginx-mysite:1.0.0" to Docker. And the result should be similar like this picture:
 
 ![Building first image](/images/docker-ii/docker-build-first-image.png)
 
@@ -100,27 +108,52 @@ If you execute `docker images` you'll see:
 
 ![Listing images](/images/docker-ii/docker-images-first-image.png)
 
-And now, you can run your image and generate and contaniner to serve your website. Just execute `docker run --name nginx-mysite-container -d -p 8080:80 nginx-mysite:1.0.0` and open
-__http://localhost:8080__ in your browser:
+And now, you can run your image and generate and contaniner to serve your website:
+
+```
+docker run --name nginx-mysite-container -d -p 8080:80 nginx-mysite:1.0.0
+```
+
+Open __http://localhost:8080__ in your browser:
 
 ![Running my first image](/images/docker-ii/docker-myfirst-image-run.png)
 
-For the moment, I think this is enough to understand the concept of Dockerfile. We'll see in next posts how to build a good Dockerfile and its commands.
 
-## Images in dept
-Ok, we have already our website running and we can generating as many identical containers of our website as we want from our first image, but you must have a lot of questions about
-images.
 
-The first question could be "why have I two images if I've only created one?". If you execute `docker images -a`, docker-cli lists three images: nginx, nginx-mysite and another one without name.
+For the moment, I think this is enough to understand the concept of Dockerfile. In this post we don't care about best practices to write dockerfiles because we'll see it in detail in a specifiq post
+
+
+## Images and layers
+Ok, we have already our website up and running and we can generate as many identical containers of our website as we want, but you must have a lot of questions about images.
+
+The first question could be "why have I two images if I've only created one?". If you execute
+
+```docker images -a```
+
+Docker lists three images:
+- nginx,
+- nginx-mysite
+- \<none\>
+
 Why the hell is that? Take a look to the following image associating the steps performed in the construction and the ids of the images you have:
 
 ![Running my first image](/images/docker-ii/docker-layers-images.png)
 
-When Docker is building the image, each step of the Dockerfile is a "layer", that is, another image. We're going to modify our website in order to explain it better:
+When Docker is building the image, each step of the Dockerfile is a "layer", that is, something added, modified or removed from the previous layer.
+Technically, this modification over the previous layer is associated to a file, so an image is the union of several layers/files.
+
+We're going to modify our website in order to explain it better:
 
 ![Creating new image](/images/docker-ii/docker-images-modify-website.png)
 
-So, we're creating a new image from this version executing `docker build -t nginx-mysite:1.0.1 .` and let's look at what happens:
+And now, we're going to create a new image executing
+
+```
+docker build -t nginx-mysite:1.0.1 .
+```
+
+
+<br/>and the result should be something like this:
 
 ![New image created](/images/docker-ii/docker-new-image-created.png)
 
@@ -129,27 +162,30 @@ If we execute again the command `docker images -a` we can analyse in detail what
 
 ![All images](/images/docker-ii/docker-images-bases.png)
 
-In this case, Docker hasn't to download the Ngnix image because it downloaded before and Docker has created two new images taking Nginx image as image base. Docker manages images as a hierarchy. In this
-case, the hierarchy is the following:
+In this case, Docker hasn't to download the Ngnix image because it downloaded before and takes the image with id `eb2c7c61055`. Then, taking this image as a base, Docker has created two new images.
+Why does Docker do that? Docker manages images as a hierarchy. In this case, the hierarchy is the following:
 
 ![Images hierarchy](/images/docker-ii/docker-images-hierarchy.png)
 
 Images can have relationships with any other image, including images in different repositories with different owners. Each node in the hierachy is called as a layer. A layer is generated from each command in the
 Dockerfile. If two Dockerfiles has the same "FROM" like in this example, the same layer is shared by both images, then the size of the image depends directly on the layer structure.
 
-#### What is the size of an image?
-
-You're wondering why when you execute `docker images -a` all the images listed have the same size. The column "size" is the cumulative space taken up by the image and all its parent images.
-In our example, the size is 18MB because they are sharing the main layer (nginx:alpine), but it's important to know that each command in the Dockerfile adds a layer in the final image. If you declare a command
-to delete anything, maybe the size will not decrease as you expect because a new layer will be created and added to the final image.
-
-You can show all the changes in a image and the layers associated to them by executing the command `docker history <image>`:
+Docker re-uses images to build new ones on top of them and it gets saving a lot of disk space. You can show all the layers associated to an image by executing the command `docker history <image>`:
 
 ![Images history](/images/docker-ii/docker-image-history.png)
 
-In the picture, we can show that the command necessary in order to stay Nginx in the foreground is duplicated and it's creating a new layer.
+In the picture, we can show that the command executed in order to stay Nginx in the foreground is duplicated and it's creating a new layer.
 
-There is another interesting command to check the real space used in disk. This command is `docker system df -v`:
+#### What is the size of an image?
+
+You're wondering why when you execute `docker images -a` all the images listed have the same size.
+
+The column "size" is the cumulative space taken up by the image and all its parent images.
+
+In our example, the size is 18MB because they are sharing the main layer (nginx:alpine), but it's important to know that each command in the Dockerfile adds a layer in the final image. If you declare a command
+to delete anything, maybe the size will not decrease as you expect because a new layer will be created and added to the final image.
+
+There is an interesting command to check the real space used in disk: `docker system df -v`:
 
 ![Docker system df](/images/docker-ii/docker-system-df.png)
 
