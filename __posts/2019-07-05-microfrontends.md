@@ -2,7 +2,7 @@
 author: jaruizes
 layout: post
 title: "Microfrontends"
-date: 2019-07-05 01:30
+date: 2019-08-15 01:30
 category : Microfrontends
 comments: false
 tags:
@@ -10,27 +10,26 @@ tags:
     - microfrontends
 ---
 
-Today we're hearing "microservices" everywhere but there are several views associated to that. Summarizing, this term is related to backend architecture and how a system could be decomposed in autonomous and independent pieces, 
-owned and developed by single teams, deployed independently and working all together.
+Today we're hearing "microservices" everywhere. Sometimes the experience is positive, sometimes is negative but the word is in the air. If you don't know what they are, summarizing, this term is usually related to backend architecture and how a system could be decomposed in autonomous and independent pieces, owned and developed by single teams, deployed independently and working all together.
 
 But, when we are developing a product or a feature, we shouldn't forget that the most of them contains backend and frontend services and, if we want to deliver value to our customers we have to deliver end-to-end features. 
 Just applying an architectural style to our backend, based on microservices (or not), we won't get enough autonomy to deliver (and maintain) end-to-end features. 
 
 It seems that the next step is being able to delivering value end-to-end. In this context, the term **Microfrontend** really begins to make sense
 
-# Are we building an end-to-end products?
+# Products not just "services"
 
-Usually when we talk about a software product we are talking about something with an UI with which an end user interacts. The UI hides backend calls to the end user. We understand so well this concept when we're talking about applications we consume, 
-internal or external, but we have more difficult to understand it when we are developing them or when we're talking about frontend and backend worlds. We have to keep in mind that the piece of software we're developing needs other pieces to 
-provide value to the end user. If we are building services, we can't deliver them directly to final user because the final user don't expect that and, in the other side, if we're building an UI, we're going to need to consume backend services in 
-order to provide value to end user because the end user expects a dynamic UI (a great UI) showing __real information__.
+Usually when we talk about a software product we are talking about something with an user interface (UI) with which an end user interacts. 
 
+The UI hides backend calls to the end user. We understand so well this concept when we're talking about applications we consume, internal or external, but we have more difficult to understand it when we are developing them or when we're talking about frontend and backend worlds. We have to keep in mind that the piece of software we're developing needs other pieces to provide value to the end user. 
 
+If we are building services, we can't deliver them directly to final user because the final user don't expect that and, in the other side, if we're building an UI, we're going to need to consume backend services in order to provide value to end user because the end user expects a dynamic UI (a great UI) showing __real information__.
 
-You can be thinking about APIs and products based on APIs. Your right. This could be a kind of product that a company provide to an other company in order to that company builds an UI over this APIs and provide applications to an end user or only to integrate 
-those two companies. In the first case, the product is offered by the last company but it's an end-to-end product, so we're talking about the same: __providing end-to-end products__.  
+Well, you can be thinking about APIs and products based on APIs. Your right. This could be a kind of product that a company provide to an other company in order to that company builds an UI over this APIs and provide applications to an end user or only to integrate those two companies. 
 
+The product of the first company is the API but this API, in the most of cases, isn't going to be consumed directly by an end user, so an UI needs to be built becoming a product. The product is offered by the last company but it's an end-to-end product, so we're talking about the same: __providing end-to-end products__.  
 
+> And if we could build independent and fully functional components, composed of all the necessary elements (data, services and user interface), versionables, developed, owned and maintained by a team and integrated at runtime in the application used by end users? They would be like little products
 
 # Microfrontends: an architecture style
 
@@ -38,7 +37,7 @@ I would like to introduce Microfrontends talking about some principles of this a
 Building microfrontends means building end-to-end business pieces to be consumed, in runtime, within a frontend application or even by other microfrontends.
 
 Microfrontends are about an architecture style. Like others architecture styles, it's important to define:
- 
+
 - principles: which are the main principles set in this style of architecture,
 - patterns: in which patterns is based on, 
 - target: which kind of problems or challenges could resolve and when it's worth applying or not.
