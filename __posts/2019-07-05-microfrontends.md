@@ -29,7 +29,13 @@ Well, you can be thinking about APIs and products based on APIs. Your right. Thi
 
 The product of the first company is the API but this API, in the most of cases, isn't going to be consumed directly by an end user, so an UI needs to be built becoming a product. The product is offered by the last company but it's an end-to-end product, so we're talking about the same: __providing end-to-end products__.  
 
-> And if we could build independent and fully functional components, composed of all the necessary elements (data, services and user interface), versionables, developed, owned and maintained by a team and integrated at runtime in the application used by end users? They would be like little products
+| And if we could build independent and fully functional components, composed of all the necessary elements (data, services and user interface), versionables, developed, owned and maintained by a team and integrated at runtime in the application used by end users? They would be like little products |
+| :----------------------------------------------------------- |
+|                                                              |
+
+
+
+> 
 
 # Microfrontends: an architecture style
 
