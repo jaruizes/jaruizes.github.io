@@ -31,11 +31,6 @@ The product of the first company is the API but this API, in the most of cases, 
 
 | And if we could build independent and fully functional components, composed of all the necessary elements (data, services and user interface), versionables, developed, owned and maintained by a team and integrated at runtime in the application used by end users? They would be like little products |
 | :----------------------------------------------------------- |
-|                                                              |
-
-
-
-> 
 
 # Microfrontends: an architecture style
 
