@@ -17,39 +17,50 @@ Just applying an architectural style to our backend, based on microservices (or 
 
 It seems that the next step is being able to delivering value end-to-end. In this context, the term **Microfrontend** really begins to make sense
 
+# End-to-end perspective
+
+Many companies have staterd their way to modernize their architectures in order to build better applications, more scalables and more evolvables. 
+
+Some of theses companies have "adopted" Microservices, others have decided to back to monolith and others are thinking about how improve the way to build software. In the most of them there is something common: they think about services, independent teams, agility, etc but focused on backend systems (APIs, backend services, migration HOST to (micro) services, etc...). 
+
+In this "technical transformation", having an end-to-end perspective is very important:
+
+![why_microfrontends](/images/microfrontends/why_microfrontends.jpg)
+
+- If you build wonderful (backend) services around business capabilities but you don't build an UI associated to those business capabilities your are not building unique business capabilities. You are building differents flavours of the same business capability, that means, you are consuming the same services but you are building similar views in different apps. 
+
+  For instance, in a banking environment, why do you have to develop the account movements view in the main consumer application and you also develop a similar view in the backoffice application or in another application also used by the customers? 
+
+  
+
+- If you achieve a great autonomy in backend systems but you don't do the same in the frontend apps, your (backend) autonomy is not real because you can not deliver end-to-end features to the end user without depending others. 
+
 # Building (little) products not just "services"
 
-Usually when we talk about a software product we are talking about something with an user interface (UI) with which an end user interacts. 
-
-The UI hides backend calls to the end user. We understand so well this concept when we're talking about applications we consume, internal or external, but we have more difficult to understand it when we are developing them or when we're talking about frontend and backend worlds. We have to keep in mind that the piece of software we're developing needs other pieces to provide value to the end user. 
+Usually when we talk about a software product we are talking about something with an user interface (UI) with which an end user interacts. The UI hides backend calls to the end user. We understand so well this concept when we're talking about applications we consume, internal or external, but we have more difficult to understand it when we are developing them or when we're talking about frontend and backend worlds. We have to keep in mind that the piece of software we're developing needs other pieces to provide value to the end user. 
 
 If we are building services, we can't deliver them directly to final user because the final user don't expect that and, in the other side, if we're building an UI, we're going to need to consume backend services in order to provide value to end user because the end user expects a dynamic UI (a great UI) showing __real information__.
+
+> __if we could build independent and fully functional components, composed of all the necessary elements (data, services and user interface), versionables, developed, owned and maintained by a team and integrated at runtime in the application used by end users? They would be like little products or "Microfrontends"__
+
+![why_microfrontends](/images/microfrontends/microfrontends_idea.jpg)
 
 Well, you can be thinking about APIs and products based on APIs. Your right. This could be a kind of product that a company provide to an other company in order to that company builds an UI over this APIs and provide applications to an end user or only to integrate those two companies. 
 
 The product of the first company is the API but this API, in the most of cases, isn't going to be consumed directly by an end user, so an UI needs to be built becoming a product. The product is offered by the last company but it's an end-to-end product, so we're talking about the same: __providing end-to-end products__.  
 
-> __And if we could build independent and fully functional components, composed of all the necessary elements (data, services and user interface), versionables, developed, owned and maintained by a team and integrated at runtime in the application used by end users? They would be like little products or "Microfrontends"__
->
-
-Summarizing, the following picture shows the reality of many companies:
-
-![why_microfrontends](/images/microfrontends/why_microfrontends.jpg)
-
-# Microfrontends: an architecture style
+# Microfrontends
 
 I would like to introduce Microfrontends talking about some principles instead of talking about implementations. Why? Microfrotends goes beyond frontend frameworks and their power fight: Angular vs React vs Vue vs ...
 
-> Building microfrontends means building end-to-end business pieces to be consumed, in runtime, within a frontend application or even by other microfrontends.
+> Building microfrontends means adopting an archytecture style, building end-to-end business pieces to be consumed, in runtime, within a frontend application or even by other microfrontends.
 
 Microfrontends are about an architecture style not about an specific implementation. Like some architecture styles, it's important to set:
 
 - which **kind of problems or challenges could resolve** and when it's worth applying or not.
 - which are the **main principles and patterns**
 
-Fowler and Lewis wrote a post in 2014 talking about Microservices and what they mean. It was some years ago but I think it is a "master post" we always have to keep in mind. 
-
-In this post, nine principles are set:
+Fowler and Lewis wrote a post in 2014 talking about Microservices and what they mean. It was some years ago but I think it is a "master post" we always have to keep in mind. In this post, nine principles are set:
 
 - Componentization via Services
 - Organized around Business Capabilities
@@ -67,46 +78,41 @@ In this post, nine principles are set:
 
 ### Componentization via Services
 
-We're used to build UI components, package them into libraries or packages and publish them in the NPM repository. This means that every application uses these components by importing them in build time. If a component changes, the application has to be rebuilt to get the changes.
+We're used to build UI components, package them into libraries and publish them in the NPM (or bower) repository. This means that every application uses these components by importing them in build time, packaging all together. Although you are using lazy loading and components are loaded on demand, the application consist on a single package "deployed" in the same location. If a component changes, the whole application has to be rebuilt to get the changes and redeployed.
 
-Besides that, UI components, normally, are just visual components, more or less complex but they doesn't implement logic or call business APIs. This logic is provided by the parent app. 
+So, in this scenario, autonomy isn't the main characteristic…But, the idea behind "microfrontends" is just the opposite:
 
-So, in this environment, autonomy isn't the main characteristic…But, the idea behind "microfrontends" is just the opposite:
-
-- __what if we'd build "UI Services" instead "UI Components"?__
-- __what if we'd build artifacts that encapsulate end-to-end features and we could consume them at runtime by http calls?__
-
-> The idea behind Micro frontends is building "headfull services", that means, delivering end-to-end features by components consumed in runtime by http calls.
+> __what if we'd build artifacts that encapsulate end-to-end features and we could consume them at runtime by http calls?__ The idea behind Micro frontends is building "headfull services", that means, delivering end-to-end features by components consumed in runtime by http calls.
 
 Consuming frontends as services means that:
 
-- Micro frontends are developed by a team
-- Micro frontends encapsulate backend API calls, so they aren't just UI but they are end-to-end components
-- Micro frontends expose contracts as services do, input and outputs.
-- Micro frontends are tested individually
-- Micro frontends are deployed independently, so it's not necessary to rebult the parent application is something change in the micro frontend
+- Microfrontends encapsulate all the backend API calls they need, so they aren't just UI. They are end-to-end components
+- Microfrontends expose contracts as services do, input and outputs, events and styles.
+- Microfrontends are tested individually
+- Microfrontends are deployed independently, so it's not necessary to rebult the parent application is something change in the microfrontend
+- Microfrontends are developed and owned by a team
 
 
 
 ### Organized around Business Capabilities
 
-Micro frontends aren't UI components. Micro frontends means implementing end-to-end business features "as a service" so descomposing the system into business capabilities should be the first step if we want to adopt this architecural style.
+Microfrontends aren't UI components (later we'll see the differences between them). Microfrontends means implementing end-to-end business features "as a service". Descomposing the system into business capabilities should be the first step if we want to adopt this architecural style.
 
 We do this exercise when we're defining microservices associated to our system but we do not do the same from the UI point of view and we build the same views in many applications. 
 
-It's also true that in some companies business capabilities are treated from the frontend but sometimes this exercise is done taking just an application and not a system and in other times, frontends are built and packaged into NPM packages and not are consumed in runtime.
+It's also true that, in some companies, business capabilities are treated from the frontend but sometimes this exercise is done taking only one application.
 
-In this point, the key is delivering a complete business feature to consumers instead of offering business APIs to the final application implements the UI. Not confusing this with Open APIs.
+In this point, the key is delivering a complete business feature to consumers instead of offering business APIs to the final applications implements the UI. Not confusing this with Open APIs.
 
 
 
 ### Products not Projects
 
-Building Micro frontends means building products, not projects. A team builds and maintain one or more microfrontends of which is the owner. The team is responsible for the "UI Service" over its full lifecycle.
+Building Microfrontends means building products, not projects. A team builds and maintain one or more microfrontends of which is the owner. The team is responsible for the "UI Service" over its full lifecycle.
 
-As the Micro frontend encapsulates backend API calls and the user of the Micro frontend only "receives" the UI Service, the team is also responsible to maintain these API calls updated and working. 
+As the Microfrontend encapsulates backend API calls and the user of the Micro frontend only "receives" the UI Service, the team is also responsible to maintain these API calls updated and working. 
 
-Besides that, several versions of a Micro frontend could be published and be consumed, so the team also has to keep in mind this aspect and managing the retirement of versions out-of-date.
+Besides that, several versions of a Microfrontend could be published and be consumed, so the team also has to keep in mind this aspect and managing the retirement of versions out-of-date.
 
 
 
@@ -114,13 +120,9 @@ Besides that, several versions of a Micro frontend could be published and be con
 
 Currently there are a lot of frameworks or products to build frontend applications and its business logic (ok, presentation logic). Communication between components within the application is supported by the framework choosen capabilities. 
 
-In a Micro frontend style, components are designed and developed as decoupled and as cohesive as possible, so components has to be independent, loaded in runtime and communications between components couldn't be supported by a framework. 
+In a Microfrontend style, components are designed and developed as decoupled as possible, so components has to be independent, loaded in runtime and communications between components couldn't be supported by a framework. 
 
-Micro frontends communications are supported by DOM standards: html tags, attributes and DOM events, no more. It's possible to use some libraries to abstract the frontend event bus but this tool only has to be used to provide publish/sibscribe capabilities. It means that application logic isn't in the event bus.
-
-Some core actions need to be defined to be implemented in every microfrontend. For instance, actions like language changing to suppont multilanguage sites. Microfrontends should listen to an "language changed" and reacting to this event.
-
-With styling, in a microfrontends world, each microfrontend implements its style and could declare some variables in order to make some customizations. Themes are helpful in these contexts. 
+Microfrontends communications must be supported by DOM standards: html tags, attributes and DOM events. It's possible to use some libraries to abstract the frontend event bus but this tool only has to be used to provide publish/sibscribe capabilities. Application logic never is in the event bus.
 
 
 
@@ -128,30 +130,39 @@ With styling, in a microfrontends world, each microfrontend implements its style
 
 Similar to Microservices, a centralized governance implies a single technology o framework. Once a framework is choosen then libraries or some components are built to be delivered to development teams in order to get more productivity. When several applications have been developed, changing the framework becomes a big challenge.
 
-With one technology or framework we could have several problems like:
+Choosing just one technology or framework we could cause several problems like:
 
-- Not using the best technology/framework to solve a problem
+- Not using the best tool to solve a problem
 - People gets bore because "it's always the same"
 - Locking to a framework, components or even a way (the framework way) to develop.
-- Teams not 100% responsible for all aspects of the software they build 
 
-If we can load components in runtime by a http call and these components are used as the same way as other HTML components, why do I have to centralize the technology or frameworks?
+> If we can load components in runtime by a http call and these components are used as the same way as other HTML components, why do I have to centralize the technology or frameworks?
+>
 
-Micro frontends associated to business features can be developed with the best technology or framework  according to the complexity, requirements or business context. 
+So adopting Microfrontends is not adopting one framework or technology. It's adopting a way to build UI Services that can be consumed at runtime by any application, similar to backend services (http) are consumed.
 
-Context is very important because for instance, my company could be in a context where time-to-market is so aggresive and it's necessary to deliver some features to final customer in a short period of time in order to catch those customers. If we can choose a technology or framework that allows us to develop a functional prototype faster than others, let's build that micro frontend with that technology, catch the customer and then, improve the micro frontend in that technology or in other because that micro frontend is loaded in runtime by a http call, there is a contract saying how to consume and the team is the owner.
+Microfrontends associated to business features can be developed with the best technology or framework according to the complexity, requirements or business context. 
+
+This doesn't mean that there is no Governance. Governace means principles, rules, patterns,...,etc not technical implementations. Normally, some "core actions" need to be defined to be implemented in every microfrontend. For instance, actions like language changing to suppont multilanguage sites: your company can set the principle that every Microfrontends should listen to an "language changed" event and reacting to it.
+
+Similar with Security concerns. This needs to be defined globally and teams in charge of microfrontends must follow the patterns and rules.
 
 
 
 ### Decentralized Data Management
 
-In a Microservices world when we talk about this point we mean how to manage data associated to each micro service:  which database or which model the service is going to use.
+In Microservices, when we talk about this subject we mean how to manage data associated to each microservice:  which database or which model the service is going to use.
 
-In Microfrontends, __data management means backend API calls__. How the microfrontend is going to get its data? Technically speaking you can be thinking about REST or GraphQL for instance, but the key isn't that, the key is getting autonomy end-to-end in order to deliver a complete business feature. 
+In Microfrontends, __data management means "backend API calls"__. How the microfrontend is going to get its data? Technically speaking you can be thinking about REST or GraphQL for instance, but the key isn't that, the key is getting autonomy end-to-end in order to deliver a complete business feature. 
 
-Patterns like Backend For Frontends are really helpful in this target because if a microfrontend needs to manage data from several domains to solve some business feature, it's necessary a piece to encapsulate this logic. Or for instance, it could be necessary that the micro frontend shows different amount of information depending of the channel.
+Patterns like Backend For Frontends are really helpful in this target because if a microfrontend needs to manage data from several domains to solve some business feature, it's necessary a piece to encapsulate this logic. Or for instance, it could be necessary that the microfrontend shows different amount of information depending of the channel.
 
-Security is also in this point. How security is managed for every micro frontend to access to the backend API. In this point, we have to know that the authentication isn't in the micro frontends. Micro frontends are loaded in runtime, dinamically, some of then in public areas and some of then in private areas. They can not implement authentication  logic because they are responsible for other business functionality
+Maybe you are wondering about security and how the microfrontends get their data in a secure way. Microfrontends are loaded in runtime, dinamically, some of then in public areas and some of then in private areas. To access this private areas is neccessary that the user is authenticated. This is responsability of the main application, not of the microfrontends. 
+
+Microfrontends need to know if the user is athenticated and how to get the tokens (or whatever you use) in order to invoke backend APIs. In this point, two strategies are possible:
+
+- The main app intercepts all the backend calls and adds the security headers so microfrontends don't have to implement it
+- Microfrontends are allowed to get the tokens received when the user is authenticated and they are responsible for generating the security headers they need to access to the backend services.
 
 
 
@@ -205,3 +216,21 @@ A Microfrontend is a piece that makes sense for the end user. If the final user 
 - Microfrontend - Customer Profile: UI views and backend API calls for managing customer profile
 
 UI Components packaging as Web Components could be used in Microfrontends in order to have a common palette of basics components. Web Components are instantiated in runtime and they could be consumed in every HTML application, so they are framework agnostics
+
+# Roadmap to Microfrontends
+
+![why_microfrontends](/images/microfrontends/roadmap.jpg)
+
+
+
+# Microfrontends styling 
+
+Bla bla bla ....
+
+# Microfrontends contract 
+
+Bla bla bla ..
+
+# A silver bullet? 
+
+Bla bla bla ....
