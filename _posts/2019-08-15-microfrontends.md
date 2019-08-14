@@ -17,7 +17,7 @@ Just applying an architectural style to our backend, based on microservices (or 
 
 It seems that the next step is being able to delivering value end-to-end. In this context, the term **Microfrontend** really begins to make sense
 
-# Products not just "services"
+# Building (little) products not just "services"
 
 Usually when we talk about a software product we are talking about something with an user interface (UI) with which an end user interacts. 
 
@@ -29,23 +29,41 @@ Well, you can be thinking about APIs and products based on APIs. Your right. Thi
 
 The product of the first company is the API but this API, in the most of cases, isn't going to be consumed directly by an end user, so an UI needs to be built becoming a product. The product is offered by the last company but it's an end-to-end product, so we're talking about the same: __providing end-to-end products__.  
 
-| And if we could build independent and fully functional components, composed of all the necessary elements (data, services and user interface), versionables, developed, owned and maintained by a team and integrated at runtime in the application used by end users? They would be like little products |
-| :----------------------------------------------------------- |
+> __And if we could build independent and fully functional components, composed of all the necessary elements (data, services and user interface), versionables, developed, owned and maintained by a team and integrated at runtime in the application used by end users? They would be like little products or "Microfrontends"__
+>
+
+Summarizing, the following picture shows the reality of many companies:
+
+![why_microfrontends](/images/microfrontends/why_microfrontends.jpg)
 
 # Microfrontends: an architecture style
 
-I would like to introduce Microfrontends talking about some principles of this architecture instead of talking about implementations. Why? Microfrotends goes beyond frontend frameworks and their power fight: Angular vs React vs Vue vs ...
-Building microfrontends means building end-to-end business pieces to be consumed, in runtime, within a frontend application or even by other microfrontends.
+I would like to introduce Microfrontends talking about some principles instead of talking about implementations. Why? Microfrotends goes beyond frontend frameworks and their power fight: Angular vs React vs Vue vs ...
 
-Microfrontends are about an architecture style. Like others architecture styles, it's important to define:
+> Building microfrontends means building end-to-end business pieces to be consumed, in runtime, within a frontend application or even by other microfrontends.
 
-- principles: which are the main principles set in this style of architecture,
-- patterns: in which patterns is based on, 
-- target: which kind of problems or challenges could resolve and when it's worth applying or not.
+Microfrontends are about an architecture style not about an specific implementation. Like some architecture styles, it's important to set:
+
+- which **kind of problems or challenges could resolve** and when it's worth applying or not.
+- which are the **main principles and patterns**
+
+Fowler and Lewis wrote a post in 2014 talking about Microservices and what they mean. It was some years ago but I think it is a "master post" we always have to keep in mind. 
+
+In this post, nine principles are set:
+
+- Componentization via Services
+- Organized around Business Capabilities
+- Products not Projects
+- Smart endpoints and dumb pipes
+- Decentralized Governance
+- Decentralized Data Management
+- Infrastructure Automation
+- Design for failure
+- Evolutionary Design
+
+ Let's try to apply microservices principles to frontend world
 
 
-
-Fowler and Lewis wrote a post in 2014 talking about Microservices and what they mean. It was some years ago but I think is a "master post" we always have to keep in mind. So, let's try to apply microservices principles to frontend world:
 
 ### Componentization via Services
 
@@ -170,9 +188,7 @@ But thinking about how to divide the system is crucial, not considering just one
 Build a microfrontend just for being consumed in runtime instead building the same functionality inside the application or in a package, could make sense if that business component has many changes or if it should be implemented in other technology, but if you don't have these kind of problems, only are adding complexity. 
 
 
-
-
-## UI Components VS Microfrontends
+# UI Components VS Microfrontends
 
 It's habitual in many companies having a set of components to be used in the different applications. These components could be from tables, layouts, buttons, inputs, etc to complex headers, tables with a lot of UI functionalities or menus structures. This components can be Web Components and being loaded in runtime but they aren't Microfrontends.
 
