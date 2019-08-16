@@ -17,9 +17,23 @@ Just applying an architectural style to our backend, based on microservices (or 
 
 It seems that the next step is being able to delivering value end-to-end. In this context, the term **Microfrontend** really begins to make sense
 
+# Building (little) products not just "services"
+
+Usually when we talk about a software productswe are talking about something with an user interface (UI) with which an end user interacts to perform any action. The user doesn't know how the system is getting data or wether the UI calls an API or no. UI hides backend calls to the end user. 
+
+The end-user interact with the UI and the UI is only the user sees but the UI needs to perform API calls to backend services in order to complete the user requests (get data, update or create data,..., etc). 
+
+If backend services don't work well (or not exist) the UI doesn't provide any value to the user. If backend services work great but there is no UI or the UI doesn't work, the system doesn't provide any value to the user. If several applications have similar business need (features) and the UI looks different in each one or works differently (because UI or services), the user experience is so bad
+
+ ![why_microfrontends](/images/microfrontends/products.jpg)
+
+Well, you can be thinking about APIs and products based on APIs. Your right. This could be a kind of product that a company provide to an other company in order to that company builds an UI over this APIs and provide applications to an end user or only to integrate those two companies. 
+
+The product of the first company is the API but this API, in the most of cases, isn't going to be consumed directly by an end user, so an UI needs to be built becoming a product. The product is offered by the last company but it's an end-to-end product, so we're talking about the same: __providing end-to-end products__.  
+
 # End-to-end perspective
 
-Many companies have staterd their way to modernize their architectures in order to build better applications, more scalables and more evolvables. 
+Many companies have stated their way to modernize their architectures in order to build better applications, more scalables and more evolvables. 
 
 Some of theses companies have "adopted" Microservices, others have decided to back to monolith and others are thinking about how improve the way to build software. In the most of them there is something common: they think about services, independent teams, agility, etc but focused on backend systems (APIs, backend services, migration HOST to (micro) services, etc...). 
 
@@ -34,20 +48,6 @@ In this "technical transformation", having an end-to-end perspective is very imp
   
 
 - If you achieve a great autonomy in backend systems but you don't do the same in the frontend apps, your (backend) autonomy is not real because you can not deliver end-to-end features to the end user without depending others. 
-
-# Building (little) products not just "services"
-
-Usually when we talk about a software productswe are talking about something with an user interface (UI) with which an end user interacts to perform any action. The user doesn't know how the system is getting data or wether the UI calls an API or no. UI hides backend calls to the end user. 
-
-The end-user interact with the UI and the UI is only the user sees but the UI needs to perform API calls to backend services in order to complete the user requests (get data, update or create data,..., etc). 
-
-If backend services don't work well (or not exist) the UI doesn't provide any value to the user. If backend services work great but there is no UI or the UI doesn't work, the system doesn't provide any value to the user. If several applications have similar business need (features) and the UI looks different in each one or works differently (because UI or services), the user experience is so bad
-
- ![why_microfrontends](/images/microfrontends/products.jpg)
-
-Well, you can be thinking about APIs and products based on APIs. Your right. This could be a kind of product that a company provide to an other company in order to that company builds an UI over this APIs and provide applications to an end user or only to integrate those two companies. 
-
-The product of the first company is the API but this API, in the most of cases, isn't going to be consumed directly by an end user, so an UI needs to be built becoming a product. The product is offered by the last company but it's an end-to-end product, so we're talking about the same: __providing end-to-end products__.  
 
 # Microfrontends
 
