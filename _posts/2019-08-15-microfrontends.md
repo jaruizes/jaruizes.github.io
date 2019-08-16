@@ -37,17 +37,23 @@ In this "technical transformation", having an end-to-end perspective is very imp
 
 # Building (little) products not just "services"
 
-Usually when we talk about a software product we are talking about something with an user interface (UI) with which an end user interacts. The UI hides backend calls to the end user. We understand so well this concept when we're talking about applications we consume, internal or external, but we have more difficult to understand it when we are developing them or when we're talking about frontend and backend worlds. We have to keep in mind that the piece of software we're developing needs other pieces to provide value to the end user. 
+Usually when we talk about a software productswe are talking about something with an user interface (UI) with which an end user interacts to perform any action. The user doesn't know how the system is getting data or wether the UI calls an API or no. UI hides backend calls to the end user. 
 
-If we are building services, we can't deliver them directly to final user because the final user don't expect that and, in the other side, if we're building an UI, we're going to need to consume backend services in order to provide value to end user because the end user expects a dynamic UI (a great UI) showing __real information__.
+The end-user interact with the UI and the UI is only the user sees but the UI needs to perform API calls to backend services in order to complete the user requests (get data, update or create data,..., etc). 
 
-> __if we could build independent and fully functional components, composed of all the necessary elements (data, services and user interface), versionables, developed, owned and maintained by a team and integrated at runtime in the application used by end users? They would be like little products or "Microfrontends"__
+If backend services don't work well (or not exist) the UI doesn't provide any value to the user. If backend services work great but there is no UI or the UI doesn't work, the system doesn't provide any value to the user. If several applications have similar business need (features) and the UI looks different in each one or works differently (because UI or services), the user experience is so bad
 
-![why_microfrontends](/images/microfrontends/microfrontends_idea.jpg)
+ ![why_microfrontends](/images/microfrontends/products.jpg)
 
 Well, you can be thinking about APIs and products based on APIs. Your right. This could be a kind of product that a company provide to an other company in order to that company builds an UI over this APIs and provide applications to an end user or only to integrate those two companies. 
 
 The product of the first company is the API but this API, in the most of cases, isn't going to be consumed directly by an end user, so an UI needs to be built becoming a product. The product is offered by the last company but it's an end-to-end product, so we're talking about the same: __providing end-to-end products__.  
+
+# Microfrontends
+
+> __if we could build independent and fully functional components, composed of all the necessary elements (data, services, integrations and user interface), versionables, developed, owned and maintained by a team and integrated at runtime in the application used by end users? They would be like little products or "Microfrontends"__
+
+![why_microfrontends](/images/microfrontends/microfrontends_idea.jpg)
 
 # Microfrontends
 
