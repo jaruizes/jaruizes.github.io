@@ -116,8 +116,9 @@ This approach isn't the ideal one because there is a "strong" coupling between t
 
 The most of companies have developed a set of UI components, from simple inputs to complex tables or elements. This components doesn't work by themselves because they don't call to the API to manage data. Instead, they need other components call to the API.
 
-> Microfrontends means end-to-end business components:
+> Microfrontends means:
 >
+> - End-to-end business components
 > - UI components, views and behaviours
 > - Backend API calls
 > - Logic or State
@@ -280,6 +281,42 @@ Working with microfrontends means working with components loaded in runtime, tot
 But thinking about how to divide the system is crucial, not considering just one application but a set of domains, subdomains and applications so that microfronteds could be consumed by several applications. 
 
 Build a microfrontend just for being consumed in runtime instead building the same functionality inside the application or in a package, could make sense if that business component has many changes or if it should be implemented in other technology, but if you don't have these kind of problems, only are adding complexity. 
+
+
+
+# Microfrontends: a company strategy
+
+We are talking about microfrontends means:
+
+- End-to-end business components
+- UI components, views and behaviours
+- Backend API calls
+- Logic or State
+
+
+
+## Domain Driven Design
+
+Microfrontends are technical representation of a business subdomain and they birth because a business need. Within a domain or subdomain we'll find Backend Services but we'll also find "visual services" or Microfrontends. Both of them provide business capabilities and because of that, a business owner is required. 
+
+If people from business departments are not involved in adopting this architectural style, you are going to fail working with this architectural style because only are going to add complexity to the system. Microfrontends will appears everywhere and the governance will be impossible.
+
+A Microfrontend is (should be) like an usual business service defined from the business point of view:
+
+- Resolves a business need
+- Changes in functionality must be always origined by business changes
+
+
+
+## Where's the limit?
+
+One of the main principles is to provide (visual) fully functional independent components, manage API calls and backend services. 
+
+The user of the microfrontend is going to use it from the UI point of view so he doesn't care about API calls or backend services. The owner of the microfrontend is responsible for keeping the "business piece" up and running so, the ideal situation would be the owner were responsible for all the necessary services, from the backend for frontend to the deepest service. 
+
+Depending of how the company is organized it may be more feasible or not. Therefore, once again, adopting an architectural style implies organization and cultural changes to be successful.
+
+Microfrontends' style is not dividing frontend applications into pieces and managing backend calls within them. Microfrontends' style is to provide ownership throughout full business functionalities. 
 
 
 
