@@ -25,7 +25,7 @@ The end-user interact with the UI and the UI is only the user sees but the UI ne
 
 If backend services don't work well (or not exist) the UI doesn't provide any value to the user. If backend services work great but there is no UI or the UI doesn't work, the system doesn't provide any value to the user. If several applications have similar business need (features) and the UI looks different in each one or works differently (because UI or services), the user experience is so bad
 
- ![why_microfrontends](/images/microfrontends/products.jpg)
+ ![why_microfrontends](/images/microfrontends/products.png)
 
 Well, you can be thinking about APIs and products based on APIs. Your right. This could be a kind of product that a company provide to an other company in order to that company builds an UI over this APIs and provide applications to an end user or only to integrate those two companies. 
 
