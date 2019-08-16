@@ -49,7 +49,7 @@ This approach is not enough efficient:
 
   ![why_microfrontends](/images/microfrontends/feature-different-views.png)
 
-  
+  From the business point of view, with this approach you are building **"headless business features"** and you have to develop "different heads" in order to provide these features to the final users. 
 
   For instance, in a banking environment, why do you have to develop the account movements view in the main consumer application and you also develop a similar view in the backoffice application or in another application also used by the customers? 
 
@@ -67,11 +67,9 @@ If we are adopting Microservices or not, it seems that building end-to-end featu
 
 ![why_microfrontends](/images/microfrontends/end-to-end-features.png)
 
- 
+# Microfrontends: fully business components
 
-# Microfrontends
-
-So, if we could build independent and fully functional components, composed of all the necessary elements (data, services, integrations and user interface), loaded at runtime, versionables, developed, owned and maintained by a team and integrated at runtime in the application used by end users? They would be like little products
+So, if we could build independent and fully business components, composed of all the necessary elements (data, services, integrations and user interface), **loaded at runtime**, versionables, developed, owned and maintained by a team and integrated at runtime in the application used by end users? They would be like little products
 
 ![why_microfrontends](/images/microfrontends/microfrontends-idea.png)
 
@@ -81,7 +79,7 @@ So, if we could build independent and fully functional components, composed of a
 
 This is the key when we talk about independent and autonomy pieces. The devil is in the detail. 
 
-Think about **REST services** are consumed by the applications or another services:
+Think about **Rest services** are consumed by the applications or another services:
 
 - There is a contract where the endpoint information is declared: request, response, security if needed, etc...
 - Consumers only send an HTTP call to an URL as the service contrat says and wait for a response. Consumers doen't know any detail about the internal implementation of the service or how the service manages its data. Languages/frameworks can be different between consumers and service.
@@ -100,21 +98,49 @@ Those models are similar but different:
 
 > both of them can load components at runtime but the first approach (consuming a REST service) is totally decoupled while the second one is totally coupled.
 
-You can be thinking about Web Components. Well, the main approach to use them is by NPM (or Bower) packages: 
+You can be thinking about Web Components. Well, the approach to use them is mainly by NPM (or Bower) packages: 
 
 - need to be declared in development time (package.json / bower.json), 
 - need to be downloaded in development time
 - need to be packaged and deployed with the application 
 
-This approach isn't the ideal one because there is a kind of "strong" coupling between the application and the components.
+For instance, __[Webcomponents.org](https://www.webcomponents.org/introduction)__ and __[LitElement](https://lit-element.polymer-project.org/)__:
 
-# Microfrontends
+![why_microfrontends](/images/microfrontends/webcomponents-publish.png)
 
-I would like to introduce Microfrontends talking about some principles instead of talking about implementations. Why? Microfrotends goes beyond frontend frameworks and their power fight: Angular vs React vs Vue vs ...
+This approach isn't the ideal one because there is a "strong" coupling between the application and its components. 
 
-> Building microfrontends means adopting an archytecture style, building end-to-end business pieces to be consumed, in runtime, within a frontend application or even by other microfrontends.
+> The target is being able to consume fully functional components like services without packaging them inside the application
 
-Microfrontends are about an architecture style not about an specific implementation. Like some architecture styles, it's important to set:
+## UI Components vs Microfrontends (Business Components)
+
+The most of companies have developed a set of UI components, from simple inputs to complex tables or elements. This components doesn't work by themselves because they don't call to the API to manage data. Instead, they need other components call to the API.
+
+> Microfrontends means end-to-end business components:
+>
+> - UI components, views and behaviours
+> - Backend API calls
+> - Logic or State
+
+**A Microfrontend is a piece of software that makes sense for the end user by itself**. If the final user access to the Microfrontend directly, the final user gets value from that Microfrontend and he could do a business operation. For instance: 
+
+- Microfrontend - Account Detail: UI views and backend API calls for getting the account info
+- Microfrontend - Products Catalog: UI views and backend API calls for showing the products catalog
+- Microfrontend - Customer Profile: UI views and backend API calls for managing customer profile
+
+An UI Component, doesn't have sense by itself to the end user because it doesn't manage backend services. 
+
+As I said in the previous section, Microfrontends require to be loaded at runtime and not being packaging inside the application. Usually, the components catalog is published in NPM and it's declared in the application is going to use them. 
+
+If the components are Web Components they can be imported in any application independently of how it's built. This is OK for Microfrontends because we'll see later a principle of Microfrontends Architecture about different technology choices. But, if the components are built with an specific framework to be imported in applications built with the same framework there is a limitation about setting a Microfrontends Architecture because a "vendor coupling" is declared
+
+# Microfrontends: an architectural style
+
+Microfrontends goes beyond frontend frameworks and their power fight: Angular vs React vs Vue vs ...
+
+> Building microfrontends means adopting an **archytecture style**, building end-to-end business pieces, defined by a formal contract and with a clear ownership, packaged and deployed independently, to be consumed at runtime within a frontend application or even by other microfrontends.
+
+Microfrontends are not about an specific implementation. Like some architecture styles, it's important to set:
 
 - which **kind of problems or challenges could resolve** and when it's worth applying or not.
 - which are the **main principles and patterns**
@@ -131,9 +157,7 @@ Fowler and Lewis wrote a post in 2014 talking about Microservices and what they 
 - Design for failure
 - Evolutionary Design
 
- Let's try to apply microservices principles to frontend world
-
-
+Let's try to apply microservices principles to frontend world:
 
 ### Componentization via Services
 
@@ -258,23 +282,6 @@ But thinking about how to divide the system is crucial, not considering just one
 Build a microfrontend just for being consumed in runtime instead building the same functionality inside the application or in a package, could make sense if that business component has many changes or if it should be implemented in other technology, but if you don't have these kind of problems, only are adding complexity. 
 
 
-# UI Components VS Microfrontends
-
-It's habitual in many companies having a set of components to be used in the different applications. These components could be from tables, layouts, buttons, inputs, etc to complex headers, tables with a lot of UI functionalities or menus structures. This components can be Web Components and being loaded in runtime but they aren't Microfrontends.
-
-When we talk about Microfrontends we are talking about end-to-end business components:
-
-- UI components, views and behaviours
-- Backend API calls
-- Logic or State
-
-A Microfrontend is a piece that makes sense for the end user. If the final user access to the Microfrontend directly, the final user gets value from that Microfrontend and he could do a business operation. For instance: 
-
-- Microfrontend - Account Detail: UI views and backend API calls for getting the account info
-- Microfrontend - Products Catalog: UI views and backend API calls for showing the products catalog
-- Microfrontend - Customer Profile: UI views and backend API calls for managing customer profile
-
-UI Components packaging as Web Components could be used in Microfrontends in order to have a common palette of basics components. Web Components are instantiated in runtime and they could be consumed in every HTML application, so they are framework agnostics
 
 # Roadmap to Microfrontends
 
