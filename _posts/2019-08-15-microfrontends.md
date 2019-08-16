@@ -37,17 +37,35 @@ Many companies have stated their way to modernize their architectures in order t
 
 Some of theses companies have "adopted" Microservices, others have decided to back to monolith and others are thinking about how improve the way to build software. In the most of them there is something common: they think about services, independent teams, agility, etc but focused on backend systems (APIs, backend services, migration HOST to (micro) services, etc...). 
 
-In this "technical transformation", having an end-to-end perspective is very important:
+The most of features are end-to-end, composing for elements in every layer. For this reason, in this "technical transformation", having an end-to-end perspective is very important:
 
 ![why_microfrontends](/images/microfrontends/focus_in_backend.png)
 
+This approach is not enough efficient:
+
 - If you build wonderful (backend) services around business capabilities but you don't build an UI associated to those business capabilities your are not building unique business capabilities. You are building differents flavours of the same business capability, that means, you are consuming the same services but you are building similar views in different apps. 
+
+  ![why_microfrontends](/images/microfrontends/feature-different-views.png)
+
+  
 
   For instance, in a banking environment, why do you have to develop the account movements view in the main consumer application and you also develop a similar view in the backoffice application or in another application also used by the customers? 
 
   
 
 - If you achieve a great autonomy in backend systems but you don't do the same in the frontend apps, your (backend) autonomy is not real because you can not deliver end-to-end features to the end user without depending others. 
+
+  ![why_microfrontends](/images/microfrontends/autonomy.png)
+
+If we are adopting Microservices or not, it seems that building end-to-end features is more efficient, isn't it? If one team is able to develop all the necessary elements for deliver a feature, 
+
+- autonomy is great because the team doesn't depend on others
+- the feature is owned by a team (functionally and technically)
+- quality is applied end-to-end
+
+![why_microfrontends](/images/microfrontends/end-to-end-features.png)
+
+ 
 
 # Microfrontends
 
