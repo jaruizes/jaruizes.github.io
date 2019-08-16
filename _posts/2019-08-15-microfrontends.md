@@ -10,6 +10,8 @@ tags:
     - microfrontends
 ---
 
+# (WORK IN PROGRESS)
+
 Today we're hearing "microservices" everywhere. Sometimes the experience is positive, sometimes is negative but the word is in the air. If you don't know what they are, summarizing, this term is usually related to backend architecture and how a system could be decomposed in autonomous and independent pieces, owned and developed by single teams, deployed independently and working all together.
 
 But, when we are developing a product or a feature, we shouldn't forget that the most of them contains backend and frontend services and, if we want to deliver value to our customers we have to deliver end-to-end features. 
@@ -69,9 +71,42 @@ If we are adopting Microservices or not, it seems that building end-to-end featu
 
 # Microfrontends
 
-> __if we could build independent and fully functional components, composed of all the necessary elements (data, services, integrations and user interface), versionables, developed, owned and maintained by a team and integrated at runtime in the application used by end users? They would be like little products or "Microfrontends"__
+So, if we could build independent and fully functional components, composed of all the necessary elements (data, services, integrations and user interface), loaded at runtime, versionables, developed, owned and maintained by a team and integrated at runtime in the application used by end users? They would be like little products
 
-![why_microfrontends](/images/microfrontends/microfrontends_idea.jpg)
+![why_microfrontends](/images/microfrontends/microfrontends-idea.png)
+
+
+
+## Loaded at runtime (like services)
+
+This is the key when we talk about independent and autonomy pieces. The devil is in the detail. 
+
+Think about **REST services** are consumed by the applications or another services:
+
+- There is a contract where the endpoint information is declared: request, response, security if needed, etc...
+- Consumers only send an HTTP call to an URL as the service contrat says and wait for a response. Consumers doen't know any detail about the internal implementation of the service or how the service manages its data. Languages/frameworks can be different between consumers and service.
+- Consumers are deployed in a different server that the service
+- If the service needs to be updated by some reason (fix a bug for instance), the application doesn't need to be rebuilt and redeployed to get the changes.
+
+Now, think about **modern frontend apps** are working:
+
+- The application is coded in a specific language/framework, mainly javascript
+- The application can be divided in components and components can be loaded on demand, at rutime, if the user navigates to the view using those components
+- The application needs to be package with its components although they are loaded at runtime
+- The components and the application are deployed in the same server
+- If a component needs to be updated by some reason (fix a bug for instance), the application needs to be rebuilt to package the new version of the component and redeployed. 
+
+Those models are similar but different: 
+
+> both of them can load components at runtime but the first approach (consuming a REST service) is totally decoupled while the second one is totally coupled.
+
+You can be thinking about Web Components. Well, the main approach to use them is by NPM (or Bower) packages: 
+
+- need to be declared in development time (package.json / bower.json), 
+- need to be downloaded in development time
+- need to be packaged and deployed with the application 
+
+This approach isn't the ideal one because there is a kind of "strong" coupling between the application and the components.
 
 # Microfrontends
 
