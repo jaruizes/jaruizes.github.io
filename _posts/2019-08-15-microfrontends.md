@@ -112,29 +112,6 @@ This approach isn't the ideal one because there is a "strong" coupling between t
 
 > The target is being able to consume fully functional components like services without packaging them inside the application
 
-## UI Components vs Microfrontends (Business Components)
-
-The most of companies have developed a set of UI components, from simple inputs to complex tables or elements. This components doesn't work by themselves because they don't call to the API to manage data. Instead, they need other components call to the API.
-
-> Microfrontends means:
->
-> - End-to-end business components
-> - UI components, views and behaviours
-> - Backend API calls
-> - Logic or State
-
-**A Microfrontend is a piece of software that makes sense for the end user by itself**. If the final user access to the Microfrontend directly, the final user gets value from that Microfrontend and he could do a business operation. For instance: 
-
-- Microfrontend - Account Detail: UI views and backend API calls for getting the account info
-- Microfrontend - Products Catalog: UI views and backend API calls for showing the products catalog
-- Microfrontend - Customer Profile: UI views and backend API calls for managing customer profile
-
-An UI Component, doesn't have sense by itself to the end user because it doesn't manage backend services. 
-
-As I said in the previous section, Microfrontends require to be loaded at runtime and not being packaging inside the application. Usually, the components catalog is published in NPM and it's declared in the application is going to use them. 
-
-If the components are Web Components they can be imported in any application independently of how it's built. This is OK for Microfrontends because we'll see later a principle of Microfrontends Architecture about different technology choices. But, if the components are built with an specific framework to be imported in applications built with the same framework there is a limitation about setting a Microfrontends Architecture because a "vendor coupling" is declared
-
 # Microfrontends: an architectural style
 
 Microfrontends goes beyond frontend frameworks and their power fight: Angular vs React vs Vue vs ...
@@ -284,6 +261,98 @@ Build a microfrontend just for being consumed in runtime instead building the sa
 
 
 
+# UI Components vs Microfrontends (Business Components)
+
+The most of companies have developed a set of UI components, from simple inputs to complex tables or elements. This components doesn't work by themselves because they don't call to the API to manage data. Instead, they need other components call to the API.
+
+> Microfrontends means:
+>
+> - End-to-end business components
+> - UI components, views and behaviours
+> - Backend API calls
+> - Logic or State
+
+**A Microfrontend is a piece of software that makes sense for the end user by itself**. If the final user access to the Microfrontend directly, the final user gets value from that Microfrontend and he could do a business operation. For instance: 
+
+- Microfrontend - Account Detail: UI views and backend API calls for getting the account info
+- Microfrontend - Products Catalog: UI views and backend API calls for showing the products catalog
+- Microfrontend - Customer Profile: UI views and backend API calls for managing customer profile
+
+An UI Component, doesn't have sense by itself to the end user because it doesn't manage backend services. 
+
+As I said in the previous section, Microfrontends require to be loaded at runtime and not being packaging inside the application. Usually, the components catalog is published in NPM and it's declared in the application is going to use them. 
+
+If the components are Web Components they can be imported in any application independently of how it's built. This is OK for Microfrontends because we'll see later a principle of Microfrontends Architecture about different technology choices. But, if the components are built with an specific framework to be imported in applications built with the same framework there is a limitation about setting a Microfrontends Architecture because a "vendor coupling" is declared
+
+> UI Components could be part of the visual layer of a microfrontend. Within a microfrontend, those UI Components acquire real business capabilities to the final user.
+
+# Working with Microfrontends 
+
+## Developing a Microfrontend
+
+Developing a Microfrontend is similar to develop a little application. Depending on the complexity of the Microfrontend may be necessary to include several views and routes, several API calls, loading language files in order to manage several languages,...,etc.
+
+In this phase, developers work the same way as the work when they are developing an application: code, test and review. 
+
+Microfrontends are independent pieces that 
+
+- receive some parameters (html attributes), 
+- listen to some events and react to them
+- throw some events responding to some actions
+- declare some visual properties to be customized
+
+so they have to be tested individually covering all the test cases. 
+
+## Publishing a Microfrontend
+
+When the Microfrontend is developed and tested individually, it can be deployed and published. 
+
+Microfrontends are like little applications and they are packaging and registering in a "Microfrontend Server". This could be like "Register & Discovery" capabilities of a Microservices environment. 
+
+A Microfrontend package should contain:
+
+- **main file**: this file will be loaded by the application in order to "execute" the microfrontend. When this file is loaded, it begins to request on demand the rest of files of the microfrontend (assets, config files, language files,...,etc). It's similar a SPA application. This main file usually is a Javascript file.
+- **other files**: these files are requested on demand when the microfrontend is running. For instance:
+  - media files
+  - language files
+  - config files
+
+
+
+# Visual concerns 
+
+When you listen the term "microfrontend" for the first time you wonder:
+
+- Responsive? Is this responsive? Mobile first?
+- Are they "static"? If do we need to change some visual properties depending on the "parent application"?
+
+Well, **those questions are not about microfrontends. They are about UI components.**
+
+Think about your UI catalog components and its complex components. They are designed thinking about responsive concerns or if they are going to be used in mobile applications or not. Does your company have UI components designed for mobile applications? If it does, you could build microfrontends over them
+
+> A Microfrontend could have several views depending of the channel it was instantiated. The restriction is all those views belong to the same logical piece, are owned by the same owner (business and technical) and provide the same business functionality in order to be reused in another applications.
+
+Microfrontends don't have to be static and closed pieces from a visual point of view. They could declare some properties in order to customize their aspect or appliying themes. Custom CSS properties are very helpful to achieve this capability.
+
+# Microfrontend contract
+
+If we want to treat Microfrontends as services we need to define a contract to be used by the customers to work with them. What should a Microfrontend define?
+
+- Basic data: name, description, owner, area
+- Attributes: input parameters to be set when the microfrontend is used
+- Events: 
+  - Which events is listening to
+  - Which events is throwing and when
+- Custom visual properties: which visual variables could be modified
+
+# Roadmap to Microfrontends
+
+![why_microfrontends](/images/microfrontends/roadmap.jpg)
+
+
+
+
+
 # Microfrontends: a company strategy
 
 We are talking about microfrontends means:
@@ -308,7 +377,7 @@ A Microfrontend is (should be) like an usual business service defined from the b
 
 
 
-## Where's the limit?
+## API Calls: Where's the limit?
 
 One of the main principles is to provide (visual) fully functional independent components, manage API calls and backend services. 
 
@@ -320,19 +389,9 @@ Microfrontends' style is not dividing frontend applications into pieces and mana
 
 
 
-# Roadmap to Microfrontends
-
-![why_microfrontends](/images/microfrontends/roadmap.jpg)
 
 
 
-# Microfrontends styling 
-
-Bla bla bla ....
-
-# Microfrontends contract 
-
-Bla bla bla ..
 
 # A silver bullet? 
 
