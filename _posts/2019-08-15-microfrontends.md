@@ -39,7 +39,7 @@ Some of theses companies have "adopted" Microservices, others have decided to ba
 
 In this "technical transformation", having an end-to-end perspective is very important:
 
-![why_microfrontends](/images/microfrontends/why_microfrontends.jpg)
+![why_microfrontends](/images/microfrontends/focus_in_backend.png)
 
 - If you build wonderful (backend) services around business capabilities but you don't build an UI associated to those business capabilities your are not building unique business capabilities. You are building differents flavours of the same business capability, that means, you are consuming the same services but you are building similar views in different apps. 
 
