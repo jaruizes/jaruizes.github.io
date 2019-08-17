@@ -75,6 +75,22 @@ So, if we could build independent and fully business components, composed of all
 
 
 
+## What is a Microfrontend?
+
+The idea behind this concept is to provide a "headfull" business service instead just a backend service ("headless") to build views consuming it. So obviously, the main part of a microfrontend is the frontend part. This part is what will be consumed and loaded by applications or another microfrontends. 
+
+When we talk about Microfrontend we talk about products so, usually, call to services will be necessary (at least one) to provide real functionality to the product. Here, there are several possibilities:
+
+- Building a backend piece (backend for frontend) in order to manage calls to business API, orchestration, information adaptation to the channel,...,etc. This piece will be also part of the microfrontend, sharing ownership.
+
+- Access to a business service already implemented in the same domain or in different domains or event external. In this case, the microfrontend is the part that is exposed to the consumer (it's the product), so it has to guarantee everything works. The consumer doesn't care about which services are consumed by the views provided for the microfrontend. The consumer only sees the UI part. 
+
+  If the services consumed by the microfrontend change, if it's necessary the microfrontend will have to be updated relasing a new version of the microfrontend. 
+
+  If services are in the same domain or have the same owner it will be easier to keep the microfrontend updated than if the services are in other domains or they are external. 
+
+  
+
 ## Loaded at runtime (like services)
 
 This is the key when we talk about independent and autonomy pieces. The devil is in the detail. 
@@ -328,32 +344,42 @@ Once these questions are resolved, then we have to answer other questions (almos
 
 ## Build
 
-Once requirements are set, building a Microfrontend is similar to develop a service or little application. Depending on the complexity of the Microfrontend may be necessary to include several views and routes, several API calls, loading language files in order to manage several languages,...,etc.
+Once requirements are set, building a Microfrontend is similar to develop a little application. Depending on the complexity of the Microfrontend may be necessary to include several views and routes, several API calls, loading language files in order to manage several languages,...,etc. Maybe, a backend for frontend will be necessary.
 
-In this phase, developers work the same way as the work when they are developing an application: code, test and review. Remember that Microfrontends are independent pieces that 
+Developers work the same way as the work when they are developing an application: code, test and review. Remember that Microfrontends are independent pieces that 
 
 - receive some parameters (html attributes), 
 - listen to some events and react to them
 - throw some events responding to some actions
 - declare some visual properties to be customized
 
-so they have to be tested individually covering all the test cases. 
+so they have to be tested individually, the frontend part, the backend part if exists and everything together. 
 
+In this part, technical decissions are made:
 
+- which is the best technology to build all the components?
+
+- how are the frontend and backend for frontend going to communicated (Rest, GraphQL,...,etc)
+
+- how are the pieces going to be deployed and published?
+
+  
 
 ## Publish
 
 Microfrontends are like services and they need to be packaged and registered (deployed) in a "Microfrontend Registry Server" in order to be discovered by consumers, similar to "Register & Discovery" capabilities of a Microservices environment. 
 
-A Microfrontend package should contain:
+The main part of a microfrontend is the UI that it'll be loaded for the consumers. The UI package should contain:
 
-- **main file**: this file will be loaded by the application in order to "execute" the microfrontend. When this file is loaded, it begins to request on demand the rest of files of the microfrontend (assets, config files, language files,...,etc). It's similar a SPA application. This main file usually is a Javascript file.
+- **main file**: this file will be loaded by the consumer in order to run the microfrontend. When this file is loaded, it begins to request on demand the rest of files of the microfrontend (assets, config files, language files,...,etc). It's similar a SPA application. This main file usually is a Javascript file.
 - **other files**: these files are requested on demand when the microfrontend is running. For instance:
   - media files
   - language files
   - config files
 
+This package (can be a zip file) will be "deployed" in the "Microfrontend Registry Server".
 
+**If the microfrontend has a backend part like a backend for frontend, it has to be treat as a whole, versioning, deploying and publishing everything at the same time. **
 
 # Visual concerns 
 
@@ -405,16 +431,18 @@ A Microfrontend is (should be) like an usual business service defined from the b
 
 
 
-## API Calls: Where's the limit?
+## Backend: Where's the limit?
 
-One of the main principles is to provide (visual) fully functional independent components, manage API calls and backend services. 
+As I said previously, one of the main principles is to provide (visual) fully functional independent components that manage API calls and backend services. 
 
-The user of the microfrontend is going to use it from the UI point of view so he doesn't care about API calls or backend services. The owner of the microfrontend is responsible for keeping the "business piece" up and running so, the ideal situation would be the owner were responsible for all the necessary services, from the backend for frontend to the deepest service. 
+A microfrontend is a product that is offered to a consumer. The user of the microfrontend doesn't care about API calls or backend services that the microfrontend performs. The owner of the microfrontend is responsible for keeping the "business piece" up and running so, the ideal situation would be one in wich the owner is responsible for all the elements, from UI part till the backend for frontend or the deepest service and all of those components are managed by the same team
 
-Depending of how the company is organized it may be more feasible or not. Therefore, once again, adopting an architectural style implies organization and cultural changes to be successful.
+Depending of how the company is organized it may be more feasible or not. Therefore, once again, adopting an architectural style implies organization and cultural changes to be successful. 
 
-Microfrontends' style is not dividing frontend applications into pieces and managing backend calls within them. Microfrontends' style is to provide ownership throughout full business functionalities. 
+Microfrontends' style is not dividing frontend applications into pieces and managing backend calls within them. Microfrontends' style is to provide ownership and autonomy throughout full business functionalities. 
 
-# A silver bullet? 
 
-Bla bla bla ....
+
+## A silver bullet? 
+
+To be completed
