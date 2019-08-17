@@ -218,7 +218,7 @@ In Microfrontends, __data management means "backend API calls"__. How the microf
 
 Patterns like Backend For Frontends are really helpful in this target because if a microfrontend needs to manage data from several domains to solve some business feature, it's necessary a piece to encapsulate this logic. Or for instance, it could be necessary that the microfrontend shows different amount of information depending of the channel.
 
-Maybe you are wondering about security and how the microfrontends get their data in a secure way. Microfrontends are loaded in runtime, dinamically, some of then in public areas and some of then in private areas. To access this private areas is neccessary that the user is authenticated. This is responsability of the main application, not of the microfrontends. 
+Maybe you are wondering about security and how the microfrontends get their data in a secure way. Microfrontends are loaded at runtime, dinamically, some of then in public areas and some of then in private areas. To access this private areas is neccessary that the user is authenticated. This is responsability of the main application, not of the microfrontends. 
 
 Microfrontends need to know if the user is athenticated and how to get the tokens (or whatever you use) in order to invoke backend APIs. In this point, two strategies are possible:
 
@@ -286,15 +286,51 @@ If the components are Web Components they can be imported in any application ind
 
 > UI Components could be part of the visual layer of a microfrontend. Within a microfrontend, those UI Components acquire real business capabilities to the final user.
 
-# Working with Microfrontends 
+# Microfrontends Development Lifecycle
 
-## Developing a Microfrontend
+Working with Microfrontends is not different as working with backend services. First and the most important part is to design the microfrontend from a business point of view, setting its functionality and contract. Then, the Microfrontend will be developed and tested. Finally, the microfrontend needs to be deployed and published in a "Microfrontends  Server" or "Microfrontends Registry" to be consumed.
 
-Developing a Microfrontend is similar to develop a little application. Depending on the complexity of the Microfrontend may be necessary to include several views and routes, several API calls, loading language files in order to manage several languages,...,etc.
+## Product Desing
 
-In this phase, developers work the same way as the work when they are developing an application: code, test and review. 
+This is the first phase and it's the most important because the microfrontend is a product that has to be defined from a business point of view. We have to keep in mind that a microfrontend isn't just an UI or visual components, so we need to have an end-to-end vision. 
 
-Microfrontends are independent pieces that 
+We'll have to answer questions like these in order to define our product:
+
+- Why do we need a new microfrontend and what is the business need it resolves?
+- There is other microfrontend to resolve the business need?
+- Which is the domain or subdomain? 
+- Which data is going to be necessary? 
+- Who is going to be the owner?
+
+Once these questions are resolved, then we have to answer other questions (almost technical) like:
+
+- UI Design
+
+  - Which channels is it going to be consumed in?
+
+  - Which events is it going to listen to and fire?
+
+  - Which visual properties are going to be customizables?
+
+  - Which framework or technology is the best suitable?
+
+    
+
+- Backend Services
+
+  - How does data has to be managed? How many services does it to manage?
+
+  - Which services need to be consumed? All the services belong to the same domain or it's going to be necessary to consume services from several domains? 
+
+  - How does security capabilities are implemented (or should be)?
+
+    
+
+## Build
+
+Once requirements are set, building a Microfrontend is similar to develop a service or little application. Depending on the complexity of the Microfrontend may be necessary to include several views and routes, several API calls, loading language files in order to manage several languages,...,etc.
+
+In this phase, developers work the same way as the work when they are developing an application: code, test and review. Remember that Microfrontends are independent pieces that 
 
 - receive some parameters (html attributes), 
 - listen to some events and react to them
@@ -303,11 +339,11 @@ Microfrontends are independent pieces that
 
 so they have to be tested individually covering all the test cases. 
 
-## Publishing a Microfrontend
 
-When the Microfrontend is developed and tested individually, it can be deployed and published. 
 
-Microfrontends are like little applications and they are packaging and registering in a "Microfrontend Server". This could be like "Register & Discovery" capabilities of a Microservices environment. 
+## Publish
+
+Microfrontends are like services and they need to be packaged and registered (deployed) in a "Microfrontend Registry Server" in order to be discovered by consumers, similar to "Register & Discovery" capabilities of a Microservices environment. 
 
 A Microfrontend package should contain:
 
@@ -345,14 +381,6 @@ If we want to treat Microfrontends as services we need to define a contract to b
   - Which events is throwing and when
 - Custom visual properties: which visual variables could be modified
 
-# Roadmap to Microfrontends
-
-![why_microfrontends](/images/microfrontends/roadmap.jpg)
-
-
-
-
-
 # Microfrontends: a company strategy
 
 We are talking about microfrontends means:
@@ -386,12 +414,6 @@ The user of the microfrontend is going to use it from the UI point of view so he
 Depending of how the company is organized it may be more feasible or not. Therefore, once again, adopting an architectural style implies organization and cultural changes to be successful.
 
 Microfrontends' style is not dividing frontend applications into pieces and managing backend calls within them. Microfrontends' style is to provide ownership throughout full business functionalities. 
-
-
-
-
-
-
 
 # A silver bullet? 
 
