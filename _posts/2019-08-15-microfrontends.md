@@ -19,37 +19,42 @@ Just applying an architectural style to our backend, based on microservices (or 
 
 It seems that the next step is being able to delivering value end-to-end. In this context, the term **Microfrontend** really begins to make sense
 
-# Building (little) products not just "services"
+# Building products not just "services"
 
-Usually when we talk about a software productswe are talking about something with an user interface (UI) with which an end user interacts to perform any action. The user doesn't know how the system is getting data or wether the UI calls an API or no. UI hides backend calls to the end user. 
+Usually when we talk about a software products we are talking about something with an user interface (UI) with which an end user interacts to perform any business action. For instance, when we access to our banking application, we are using a product given by our bank. We only want to perform actions (business) in that application and receive a result. We doesn't care if the application calls to a REST API or if our data is showing there magically. We want to application works well, just that.
 
-The end-user interact with the UI and the UI is only the user sees but the UI needs to perform API calls to backend services in order to complete the user requests (get data, update or create data,..., etc). 
+Ok, this is what an end user perceives. But we know that behind that UI there are services, data and other systems working together in order to provide business capabilities to the end users.
 
-If backend services don't work well (or not exist) the UI doesn't provide any value to the user. If backend services work great but there is no UI or the UI doesn't work, the system doesn't provide any value to the user. If several applications have similar business need (features) and the UI looks different in each one or works differently (because UI or services), the user experience is so bad
+Where is the value that the end user expects?
 
- ![why_microfrontends](/images/microfrontends/products.png)
+- If the UI is great but backend services don't work well (or not exist) the UI will not provide value to the user. 
+- If backend services work well but there is no UI or the UI doesn't work, the system will not provide value to the user. If several applications have similar business need (features) and the UI looks different in each one or works differently (because UI or services), the user experience is so bad
+
+![why_microfrontends](/images/microfrontends/products.png)
+
+Summarizing, if we want to provide business value to end users we will need a good UIs working with good services. And, many times using the same UI accross applications is necessary because we'll keep the business functionality inmutable and we will also manage better the user experience: the same UIs will be used in internal applications so we'll detect bugs earlier and we'll suffer using those UIs.
 
 Well, you can be thinking about APIs and products based on APIs. Your right. This could be a kind of product that a company provide to an other company in order to that company builds an UI over this APIs and provide applications to an end user or only to integrate those two companies. 
 
 The product of the first company is the API but this API, in the most of cases, isn't going to be consumed directly by an end user, so an UI needs to be built becoming a product. The product is offered by the last company but it's an end-to-end product, so we're talking about the same: __providing end-to-end products__.  
 
-# End-to-end perspective
 
-Many companies have stated their way to modernize their architectures in order to build better applications, more scalables and more evolvables. 
 
-Some of theses companies have "adopted" Microservices, others have decided to back to monolith and others are thinking about how improve the way to build software. In the most of them there is something common: they think about services, independent teams, agility, etc but focused on backend systems (APIs, backend services, migration HOST to (micro) services, etc...). 
+## Adopt and end-to-end perspective
 
-The most of features are end-to-end, composing for elements in every layer. For this reason, in this "technical transformation", having an end-to-end perspective is very important:
+Many companies have stated their way to modernize their architectures in order to build better applications, more scalables and more evolvables. Some of theses companies use a Microservices style, others have decided to back to monolith and others are thinking about how improve the way to build software. In the most of them there is something common: they think about services, independent teams, agility, etc but focused on backend systems (APIs, backend services, migration HOST to (micro) services, etc...). 
+
+But, something is true: the most of features are end-to-end, composing for elements in every layer:
 
 ![why_microfrontends](/images/microfrontends/focus_in_backend.png)
 
-This approach is not enough efficient:
+So, taking an approach focused in backend services or systems is not enough efficient:
 
-- If you build wonderful (backend) services around business capabilities but you don't build an UI associated to those business capabilities your are not building unique business capabilities. You are building differents flavours of the same business capability, that means, you are consuming the same services but you are building similar views in different apps. 
+- If you build wonderful (backend) services around business capabilities but you don't build an UI associated to those business capabilities your are not building unique or inmutable business capabilities. You are building differents flavours of the same business capability. 
 
   ![why_microfrontends](/images/microfrontends/feature-different-views.png)
 
-  From the business point of view, with this approach you are building **"headless business features"** and you have to develop "different heads" in order to provide these features to the final users. 
+  You are building **"headless business features"** and you have to develop "different heads" in order to provide these features to the final users. 
 
   For instance, in a banking environment, why do you have to develop the account movements view in the main consumer application and you also develop a similar view in the backoffice application or in another application also used by the customers? 
 
@@ -59,7 +64,7 @@ This approach is not enough efficient:
 
   ![why_microfrontends](/images/microfrontends/autonomy.png)
 
-If we are adopting Microservices or not, it seems that building end-to-end features is more efficient, isn't it? If one team is able to develop all the necessary elements for deliver a feature, 
+It seems that building end-to-end features would be more efficient, isn't it? If one team is able to develop all the necessary elements for deliver a feature, 
 
 - autonomy is great because the team doesn't depend on others
 - the feature is owned by a team (functionally and technically)
@@ -67,9 +72,11 @@ If we are adopting Microservices or not, it seems that building end-to-end featu
 
 ![why_microfrontends](/images/microfrontends/end-to-end-features.png)
 
+> The main principle behind this approach is reusing business features within the company
+
 # Microfrontends: fully business components
 
-So, if we could build independent and fully business components, composed of all the necessary elements (data, services, integrations and user interface), **loaded at runtime**, versionables, developed, owned and maintained by a team and integrated at runtime in the application used by end users? They would be like little products
+So, if we could build independent and fully business components, composed of all the necessary elements (data, services, integrations and user interface), versionables, developed, owned and maintained by a team and **loaded and integrated at runtime in the application** used by end users? They would be like little products
 
 ![why_microfrontends](/images/microfrontends/microfrontends-idea.png)
 
@@ -77,11 +84,11 @@ So, if we could build independent and fully business components, composed of all
 
 ## What is a Microfrontend?
 
-The idea behind this concept is to provide a "headfull" business service instead just a backend service ("headless") to build views consuming it. So obviously, the main part of a microfrontend is the frontend part. This part is what will be consumed and loaded by applications or another microfrontends. 
+The target associated to this concept is to provide a "headfull" business service instead just a backend service ("headless"). So obviously, the main part of a microfrontend is the frontend part. This part is what will be consumed and loaded by applications or another microfrontends. 
 
-When we talk about Microfrontend we talk about products so, usually, call to services will be necessary (at least one) to provide real functionality to the product. Here, there are several possibilities:
+To get fully business capabilities, calling to backend services will be necessary. How is it managed? Here, there are several possibilities:
 
-- Building a backend piece (backend for frontend) in order to manage calls to business API, orchestration, information adaptation to the channel,...,etc. This piece will be also part of the microfrontend, sharing ownership.
+- Building a backend piece (**backend for frontend**) in order to manage calls to business API, orchestration, information adaptation to the channel,...,etc. This piece will be also part of the microfrontend, sharing ownership. This approach will be the most usual because in real systems, orchestration of services is very common in the most functionalities.
 
 - Access to a business service already implemented in the same domain or in different domains or event external. In this case, the microfrontend is the part that is exposed to the consumer (it's the product), so it has to guarantee everything works. The consumer doesn't care about which services are consumed by the views provided for the microfrontend. The consumer only sees the UI part. 
 
@@ -89,13 +96,21 @@ When we talk about Microfrontend we talk about products so, usually, call to ser
 
   If services are in the same domain or have the same owner it will be easier to keep the microfrontend updated than if the services are in other domains or they are external. 
 
+So, in the most of cases a microfrontend will be composed by:
+
+- An user interface implemented in any frontend technology
+
+- A Backend for Frontend implemented in any technology that supports interaction with the UI component.
+
   
 
-## Loaded at runtime (like services)
+It's very important to consider all the components associated to the microfrontend as a whole. 
 
-This is the key when we talk about independent and autonomy pieces. The devil is in the detail. 
 
-Think about **Rest services** are consumed by the applications or another services:
+
+## Loaded and integrated at runtime (like services)
+
+This is the key when we talk about independent and autonomy components. The devil is in the detail. Think about **Rest services** are consumed by the applications or another services:
 
 - There is a contract where the endpoint information is declared: request, response, security if needed, etc...
 - Consumers only send an HTTP call to an URL as the service contrat says and wait for a response. Consumers doen't know any detail about the internal implementation of the service or how the service manages its data. Languages/frameworks can be different between consumers and service.
@@ -288,7 +303,9 @@ The most of companies have developed a set of UI components, from simple inputs 
 > - Backend API calls
 > - Logic or State
 
-**A Microfrontend is a piece of software that makes sense for the end user by itself**. If the final user access to the Microfrontend directly, the final user gets value from that Microfrontend and he could do a business operation. For instance: 
+
+
+A Microfrontend is a piece of software that makes sense for the end user by itself**. If the final user access to the Microfrontend directly, the final user gets value from that Microfrontend and he could do a business operation. For instance: 
 
 - Microfrontend - Account Detail: UI views and backend API calls for getting the account info
 - Microfrontend - Products Catalog: UI views and backend API calls for showing the products catalog
@@ -302,7 +319,35 @@ If the components are Web Components they can be imported in any application ind
 
 > UI Components could be part of the visual layer of a microfrontend. Within a microfrontend, those UI Components acquire real business capabilities to the final user.
 
-# Microfrontends Development Lifecycle
+# Visual concerns 
+
+When you listen the term "microfrontend" for the first time you wonder:
+
+- Responsive? Is this responsive? Mobile first?
+- Are they "static"? If do we need to change some visual properties depending on the "parent application"?
+
+Well, **those questions are not about microfrontends. They are about UI components.**
+
+Think about your UI catalog components and its complex components. They are designed thinking about responsive concerns or if they are going to be used in mobile applications or not. Does your company have UI components designed for mobile applications? If it does, you could build microfrontends over them
+
+> A Microfrontend could have several views depending of the channel it was instantiated. The restriction is all those views belong to the same logical piece, are owned by the same owner (business and technical) and provide the same business functionality in order to be reused in another applications.
+
+Microfrontends don't have to be static and closed pieces from a visual point of view. They could declare some properties in order to customize their aspect or appliying themes. Custom CSS properties are very helpful to achieve this capability.
+
+# Microfrontend contract
+
+If we want to treat Microfrontends as services we need to define a contract to be used by the customers to work with them. What should a Microfrontend define?
+
+- Basic data: name, description, owner, area
+- Attributes: input parameters to be set when the microfrontend is used
+- Events: 
+  - Which events is listening to
+  - Which events is throwing and when
+- Custom visual properties: which visual variables could be modified
+
+
+
+# Microfrontends Development 
 
 Working with Microfrontends is not different as working with backend services. First and the most important part is to design the microfrontend from a business point of view, setting its functionality and contract. Then, the Microfrontend will be developed and tested. Finally, the microfrontend needs to be deployed and published in a "Microfrontends  Server" or "Microfrontends Registry" to be consumed.
 
@@ -313,7 +358,7 @@ This is the first phase and it's the most important because the microfrontend is
 We'll have to answer questions like these in order to define our product:
 
 - Why do we need a new microfrontend and what is the business need it resolves?
-- There is other microfrontend to resolve the business need?
+- There is other microfrontend or component in any existing application to resolve the business need?
 - Which is the domain or subdomain? 
 - Which data is going to be necessary? 
 - Who is going to be the owner?
@@ -335,12 +380,10 @@ Once these questions are resolved, then we have to answer other questions (almos
 - Backend Services
 
   - How does data has to be managed? How many services does it to manage?
-
   - Which services need to be consumed? All the services belong to the same domain or it's going to be necessary to consume services from several domains? 
-
   - How does security capabilities are implemented (or should be)?
 
-    
+
 
 ## Build
 
@@ -381,40 +424,7 @@ This package (can be a zip file) will be "deployed" in the "Microfrontend Regist
 
 **If the microfrontend has a backend part like a backend for frontend, it has to be treat as a whole, versioning, deploying and publishing everything at the same time. **
 
-# Visual concerns 
-
-When you listen the term "microfrontend" for the first time you wonder:
-
-- Responsive? Is this responsive? Mobile first?
-- Are they "static"? If do we need to change some visual properties depending on the "parent application"?
-
-Well, **those questions are not about microfrontends. They are about UI components.**
-
-Think about your UI catalog components and its complex components. They are designed thinking about responsive concerns or if they are going to be used in mobile applications or not. Does your company have UI components designed for mobile applications? If it does, you could build microfrontends over them
-
-> A Microfrontend could have several views depending of the channel it was instantiated. The restriction is all those views belong to the same logical piece, are owned by the same owner (business and technical) and provide the same business functionality in order to be reused in another applications.
-
-Microfrontends don't have to be static and closed pieces from a visual point of view. They could declare some properties in order to customize their aspect or appliying themes. Custom CSS properties are very helpful to achieve this capability.
-
-# Microfrontend contract
-
-If we want to treat Microfrontends as services we need to define a contract to be used by the customers to work with them. What should a Microfrontend define?
-
-- Basic data: name, description, owner, area
-- Attributes: input parameters to be set when the microfrontend is used
-- Events: 
-  - Which events is listening to
-  - Which events is throwing and when
-- Custom visual properties: which visual variables could be modified
-
-# Microfrontends: a company strategy
-
-We are talking about microfrontends means:
-
-- End-to-end business components
-- UI components, views and behaviours
-- Backend API calls
-- Logic or State
+# Microfrontends is a company decission
 
 
 
@@ -445,4 +455,16 @@ Microfrontends' style is not dividing frontend applications into pieces and mana
 
 ## A silver bullet? 
 
-To be completed
+As I mentioned before, Microfrontends is an architectural style that try to resolve concrete problems. Maybe you have these problems in your entire company or only in certain areas. The key is to adopt this style when it was necessary because more complexity is being added to the system, more pieces and components that have to be managed.
+
+For instance, Microfrontends may help you if:
+
+- There are several business parts with different maintenance requirements than others. 
+- Building fast prototypes of new features is requiered by Business but the current technology and processes difficult it
+- The frontend team is very huge and compact and it would be better to distribute it in smaller teams around business capabilities
+- Frontend applications are complex and big
+- Applying a different technology (or framework) than the main one to build some functionalities is necessary 
+- Your company is used to work in autonomous teams around domains and subdomains
+
+
+
