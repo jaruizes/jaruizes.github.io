@@ -202,6 +202,16 @@ Consuming frontends as services means that:
 
 
 
+##### Tip for Java developers
+
+If you use Maven, the most of the libraries are integrated in build-time and everything is packaged in the same artifact. If a dependency changes, rebuilt and repackage is necessary. 
+
+The most of times, we extract some dependencies and package them to be deployed independently as a service and consumed by a simple HTTP call. Using Maven, you also find dependencies with "provided" scope. Dependencies tagged with this scope will not be packaged and will be provided by the execution environment (usually an application server). In both cases, the code of these services are inside the parent application anymore. 
+
+This is similar to the target of Microfrontend: not packaging all the pieces within the parent application and being integrated and consumed at runtime
+
+
+
 ### Organized around Business Capabilities
 
 Microfrontends aren't UI components (later we'll see the differences between them). Microfrontends means implementing end-to-end business features "as a service". Descomposing the system into business capabilities should be the first step if we want to adopt this architecural style.
