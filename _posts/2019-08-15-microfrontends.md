@@ -114,22 +114,26 @@ This is the key when we talk about independent and autonomy components. The devi
 
 - There is a contract where the endpoint information is declared: request, response, security if needed, etc...
 - Consumers only send an HTTP call to an URL as the service contrat says and wait for a response. Consumers doen't know any detail about the internal implementation of the service or how the service manages its data. Languages/frameworks can be different between consumers and service.
-- Consumers are deployed in a different server that the service
+- Consumers are deployed in a different server that the service artifact
 - If the service needs to be updated by some reason (fix a bug for instance), the application doesn't need to be rebuilt and redeployed to get the changes.
 
 Now, think about **modern frontend apps** are working:
 
 - The application is coded in a specific language/framework, mainly javascript
 - The application can be divided in components and components can be loaded on demand, at rutime, if the user navigates to the view using those components
-- The application needs to be package with its components although they are loaded at runtime
-- The components and the application are deployed in the same server
+- The application needs to be packaged with its components although they can be loaded at runtime (on demand) or all together when the application starts
+- The components and the application are deployed in the same server, as a whole
 - If a component needs to be updated by some reason (fix a bug for instance), the application needs to be rebuilt to package the new version of the component and redeployed. 
 
-Those models are similar but different: 
+These models are similar but different because a REST service is totally decoupled to the client application and, both of them are independent in development, deployment and maintaining. 
 
-> both of them can load components at runtime but the first approach (consuming a REST service) is totally decoupled while the second one is totally coupled.
 
-You can be thinking about Web Components. Well, the approach to use them is mainly by NPM (or Bower) packages: 
+
+### Web Components
+
+You can be thinking about Web Components and Microfrontends. It's true that a microfrontend is loaded like a web component by the parent application, using it like other HTML tag. But, once again, the different is when the component is integrated in the parent application. Buid-time? Runtime?  
+
+In the most of cases, the approach to use Web Components is mainly by NPM (or Bower) packages: 
 
 - need to be declared in development time (package.json / bower.json), 
 - need to be downloaded in development time
@@ -143,11 +147,23 @@ This approach isn't the ideal one because there is a "strong" coupling between t
 
 > The target is being able to consume fully functional components like services without packaging them inside the application
 
+
+
+## Stages
+
+I'm going to summarize the stages to go to Microfrontends in three:
+
+![why_microfrontends](/images/microfrontends/microfrontends-stages.png)
+
+- **No Microfrontend**: there is no UI components. There are just applications
+- **"Pseudo Microfrontends"**: there are UI components with a business sense. These components access to backend services to perform business actions and even could be owned and managed by independent teams, but they all deployed and published by libraries (NPM or similar) and the consumer applications integrate them in build-time. So, a complex integration phase is realized in order to build and package the final applications. A change in a component implies rebuild and repackage the affected applications. Problems related to responsive or not, channels (mobile, web,...,etc) should be alredy being managed in this stage
+- **Microfrontends**: it's an evolution of the previous stage. In this stage, UI business components are deployed and published independently, in a "Microfrontend (registry) server" that serves them to the parent applications in runtime. There is no complex integration phase. Parent applications and Microfrontends manage a contract in order to know how to use them. Like a service, if a Microfrontend changes and the contract is the same, the parent application doesn't need to be redeployed becase the new version of the Microfrontend will be loaded when the parent application is reloaded in the user browser.
+
 # Microfrontends: an architectural style
 
 Microfrontends goes beyond frontend frameworks and their power fight: Angular vs React vs Vue vs ...
 
-> Building microfrontends means adopting an **archytecture style**, building end-to-end business pieces, defined by a formal contract and with a clear ownership, packaged and deployed independently, to be consumed at runtime within a frontend application or even by other microfrontends.
+> Building microfrontends means adopting an **archytecture style**, building and delivering end-to-end business pieces, defined by a formal contract and with a clear ownership, packaged and deployed independently, to be integrated and consumed at runtime within a frontend application or even by other microfrontends.
 
 Microfrontends are not about an specific implementation. Like some architecture styles, it's important to set:
 
