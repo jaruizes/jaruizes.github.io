@@ -21,16 +21,16 @@ It seems that the next step is being able to delivering value end-to-end. In thi
 
 # Building products not just "services"
 
-Usually when we talk about a software products we are talking about something with an user interface with which an end user interacts to perform some business actions. For instance, when we access to a banking application we want to see our global balance, last movements of some account or make a transfer. We only interact with the user interface but we expect actions to be done and receive a result. We doesn't care if the application calls to an API or if our data is showing there magically. We want to application works well, just that.
+Usually when we talk about a software products we are talking about something with an user interface with which an end user interacts to perform some business actions. For instance, when we access to a banking application we want to see our global balance, last movements of some account or make a transfer. We only interact with the user interface but we expect to make actions and receive a result. We doesn't care if the application calls to an API or if our data is showing there magically. We want to application works well, just that.
 
-We know that behind the UI there are services, data and other systems working together in order to provide business capabilities to the end users. Everything working together is what is providing value to the end user because:
+As software developers, we know that behind the UI there are services, data and other systems working together in order to provide business capabilities to the end users. Everything working together is what is providing value to the end user because:
 
 - If the UI is great but backend services don't work well (or not exist) the UI will not provide value to the user. 
 - If backend services work well but there is no UI or the UI doesn't work, the system will not provide value to the user. If several applications have similar business need (features) and the UI looks different in each one or works differently (because UI or services), the user experience is so bad
 
 ![why_microfrontends](/images/microfrontends/products.png)
 
-In summary, if we want to provide business value to end users we will need a good user interface working with good services like a whole. 
+So, if we want to provide business value to end users we will need a good user interface working with good services like a whole. 
 
 ---
 
@@ -68,17 +68,19 @@ So, taking an approach focused in backend services or systems is not enough effi
 
   ![why_microfrontends](/images/microfrontends/autonomy.png)
 
-It seems that building end-to-end features would be more efficient, isn't it? If one team is able to develop all the necessary elements for deliver a feature, 
+It seems that building end-to-end features would be more efficient, isn't it? 
+
+![why_microfrontends](/images/microfrontends/end-to-end-features.png)
+
+If one team is able to develop all the necessary elements for deliver a feature, 
 
 - autonomy is great because the team doesn't depend on others
 - the feature is owned by a team (functionally and technically)
 - quality is applied end-to-end
 
-![why_microfrontends](/images/microfrontends/end-to-end-features.png)
 
-> The main principle behind this approach is reusing business features within the company
 
-## Keep the business features inmutables to the user
+## Keep the business features inmutables to the user and reuse them
 
 Imagine this situation (could be your company):
 
