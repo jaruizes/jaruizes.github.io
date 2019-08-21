@@ -107,6 +107,7 @@ It we can isolate business capabilities in the frontend part (UI and Backend For
 ![example](/images/microfrontends/inmutable-fetatures.png)
 
 
+
 # Microfrontends: fully business components
 
 As we saw in the previous section, if we could build independent and fully business components, composed of all the necessary elements, versionables, developed, owned and maintained by a team and **loaded and integrated at runtime in the application** we are building little products
@@ -189,8 +190,12 @@ I'm going to summarize the stages to go to Microfrontends in three:
 ![why_microfrontends](/images/microfrontends/microfrontends-stages.png)
 
 - **No Microfrontend**: there is no UI components. There are just applications
+
 - **"Pseudo Microfrontends"**: there are UI components with a business sense. These components access to backend services to perform business actions and even could be owned and managed by independent teams, but they all deployed and published by libraries (NPM or similar) and the consumer applications integrate them in build-time. So, a complex integration phase is realized in order to build and package the final applications. A change in a component implies rebuild and repackage the affected applications. Problems related to responsive or not, channels (mobile, web,...,etc) should be alredy being managed in this stage
+
 - **Microfrontends**: it's an evolution of the previous stage. In this stage, UI business components are deployed and published independently, in a "Microfrontend (registry) server" that serves them to the parent applications in runtime. There is no complex integration phase. Parent applications and Microfrontends manage a contract in order to know how to use them. Like a service, if a Microfrontend changes and the contract is the same, the parent application doesn't need to be redeployed becase the new version of the Microfrontend will be loaded when the parent application is reloaded in the user browser.
+
+  
 
 # Microfrontends: an architectural style
 
@@ -366,7 +371,7 @@ The most of companies have developed a set of UI components, from simple inputs 
 
 A Microfrontend is a piece of software that makes sense for the end user by itself**. If the final user access to the Microfrontend directly, the final user gets value from that Microfrontend and he could do a business operation. For instance: 
 
-- Microfrontend - Account Detail: UI views and backend API calls for getting the account info
+- Microfrontend - Account Detail: UI views and backend for frontend making the necessary API calls for getting the account info
 - Microfrontend - Products Catalog: UI views and backend API calls for showing the products catalog
 - Microfrontend - Customer Profile: UI views and backend API calls for managing customer profile
 
@@ -376,7 +381,9 @@ As I said in the previous section, Microfrontends require to be loaded at runtim
 
 If the components are Web Components they can be imported in any application independently of how it's built. This is OK for Microfrontends because we'll see later a principle of Microfrontends Architecture about different technology choices. But, if the components are built with an specific framework to be imported in applications built with the same framework there is a limitation about setting a Microfrontends Architecture because a "vendor coupling" is declared
 
-> UI Components could be part of the visual layer of a microfrontend. Within a microfrontend, those UI Components acquire real business capabilities to the final user.
+UI Components could be part of the visual layer of a microfrontend. Within a microfrontend, those UI Components plus backend components acquire real business capabilities to the final user:
+
+![microfrontend-vs-uicomponents](/images/microfrontends/microfrontend-vs-uicomponents.png)
 
 # Visual concerns 
 
