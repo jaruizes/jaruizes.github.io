@@ -82,13 +82,23 @@ If one team is able to develop all the necessary elements for deliver a feature,
 
 ## Keep the business features inmutables to the user and reuse them
 
-Imagine this situation (could be your company):
+Imagine this scenario. It's not the best approach to organize a company architecture but it could be something real in many companies:
 
 ![example](/images/microfrontends/situation-example.png)
 
-In that picture, we can see two applications: Customers and Customer Care. In the Customer Care applications, there are some functionalities similar to the Customer application in order to give a good service to the end customer. In some companys, a different frontend developments are built in each application but consuming the same backend services. In others, the decission is to build a frontend module containing the functionality and this module is integrated in both applications. 
+We can see two applications: 
 
-Business backend services are usually consumed by different applications composing different business features depending of how they are orchestrated or the user interface managing operations of the user. 
+- Customers: application in which customers perform business actions. 
+
+- Customer Care: application used by company employees to help to their customers. This application try to be similar to the Customers application in order to give a good service to the customer.
+
+Both applications have their own backend for frontend in order to orchestrate calls to different services and manage details regarding to different channels. In some companys, a different frontend developments are built in each application. In others, the decission is to build a frontend module containing the functionality and this module is integrated in both applications. The backend for frontend usually depends on the application and it isn't reused and backend services are the same in both applications. 
+
+If the implementations of similar business features between applications is not considered as a whole, they are **mutable**. That means they are differents implementations of the same business capability:
+
+![example](/images/microfrontends/mutable-fetatures.png)
+
+
 
 
 
