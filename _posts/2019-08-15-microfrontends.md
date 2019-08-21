@@ -400,16 +400,20 @@ Think about your UI catalog components and its complex components. They are desi
 
 Microfrontends don't have to be static and closed pieces from a visual point of view. They could declare some properties in order to customize their aspect or appliying themes. Custom CSS properties are very helpful to achieve this capability.
 
+
+
 # Microfrontend contract
 
 If we want to treat Microfrontends as services we need to define a contract to be used by the customers to work with them. What should a Microfrontend define?
 
-- Basic data: name, description, owner, area
+![contract](/images/microfrontends/contract.png)
+
+- Basic data / metadata: name, description, owner, area
 - Attributes: input parameters to be set when the microfrontend is used
+- Custom visual properties: which visual variables could be modified
 - Events: 
   - Which events is listening to
-  - Which events is throwing and when
-- Custom visual properties: which visual variables could be modified
+  - Which events is firing and when
 
 
 
@@ -423,11 +427,10 @@ This is the first phase and it's the most important because the microfrontend is
 
 We'll have to answer questions like these in order to define our product:
 
-- Why do we need a new microfrontend and what is the business need it resolves?
-- There is other microfrontend or component in any existing application to resolve the business need?
-- Which is the domain or subdomain? 
-- Which data is going to be necessary? 
-- Who is going to be the owner?
+- Why do we need a new microfrontend and what is the business need it resolves? There could be many reasons: many changes over the business capability, different technology needed, reusability between applications,...,etc
+- There is other microfrontend or component in any existing application to resolve the business need? I prefer "monolith-first approach" (modularized and well designed). Then, if a microfrontend is needed to cover some functionality implemented in the monolith, refactoring to a microfrontend shouldn't be so complex.
+- Which is the domain or subdomain that the microfrontend would belong to? We are building business pieces so it's very important set the microfrontend into a concrete domain.
+- Who is going to be the owner? The owner will be responsible for the microfrontend along all its life. 
 
 Once these questions are resolved, then we have to answer other questions (almost technical) like:
 
@@ -462,17 +465,9 @@ Developers work the same way as the work when they are developing an application
 - throw some events responding to some actions
 - declare some visual properties to be customized
 
-so they have to be tested individually, the frontend part, the backend part if exists and everything together. 
+so they have to be tested end-to-end before releasing it: the frontend part, the backend part and everything together. 
 
-In this part, technical decissions are made:
 
-- which is the best technology to build all the components?
-
-- how are the frontend and backend for frontend going to communicated (Rest, GraphQL,...,etc)
-
-- how are the pieces going to be deployed and published?
-
-  
 
 ## Publish
 
@@ -480,7 +475,7 @@ Microfrontends are like services and they need to be packaged and registered (de
 
 The main part of a microfrontend is the UI that it'll be loaded for the consumers. The UI package should contain:
 
-- **main file**: this file will be loaded by the consumer in order to run the microfrontend. When this file is loaded, it begins to request on demand the rest of files of the microfrontend (assets, config files, language files,...,etc). It's similar a SPA application. This main file usually is a Javascript file.
+- **main file**: this file will be loaded by the consumer in order to run the microfrontend. When this file is loaded, it begins to request on demand the rest of files of the microfrontend (assets, config files, language files,...,etc) and API calls. It's similar a SPA application. This main file usually is a Javascript file.
 - **other files**: these files are requested on demand when the microfrontend is running. For instance:
   - media files
   - language files
@@ -490,9 +485,9 @@ This package (can be a zip file) will be "deployed" in the "Microfrontend Regist
 
 **If the microfrontend has a backend part like a backend for frontend, it has to be treat as a whole, versioning, deploying and publishing everything at the same time. **
 
+
+
 # Microfrontends is a company decission
-
-
 
 ## Domain Driven Design
 
