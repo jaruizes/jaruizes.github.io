@@ -98,6 +98,8 @@ If the implementations of similar business features between applications is not 
 
 ![example](/images/microfrontends/mutable-fetatures.png | max-width=80%)
 
+<img src="/images/microfrontends/mutable-fetatures.png" alt="drawing" style="max-width:80%;"/>
+
 
 
 
