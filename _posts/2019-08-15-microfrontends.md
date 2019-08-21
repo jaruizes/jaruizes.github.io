@@ -21,28 +21,32 @@ It seems that the next step is being able to delivering value end-to-end. In thi
 
 # Building products not just "services"
 
-Usually when we talk about a software products we are talking about something with an user interface (UI) with which an end user interacts to perform any business action. For instance, when we access to our banking application, we are using a product given by our bank. We only want to perform actions (business) in that application and receive a result. We doesn't care if the application calls to a REST API or if our data is showing there magically. We want to application works well, just that.
+Usually when we talk about a software products we are talking about something with an user interface with which an end user interacts to perform some business actions. For instance, when we access to a banking application we want to see our global balance, last movements of some account or make a transfer. We only interact with the user interface but we expect actions to be done and receive a result. We doesn't care if the application calls to an API or if our data is showing there magically. We want to application works well, just that.
 
-Ok, this is what an end user perceives. But we know that behind that UI there are services, data and other systems working together in order to provide business capabilities to the end users.
-
-Where is the value that the end user expects?
+We know that behind the UI there are services, data and other systems working together in order to provide business capabilities to the end users. Everything working together is what is providing value to the end user because:
 
 - If the UI is great but backend services don't work well (or not exist) the UI will not provide value to the user. 
 - If backend services work well but there is no UI or the UI doesn't work, the system will not provide value to the user. If several applications have similar business need (features) and the UI looks different in each one or works differently (because UI or services), the user experience is so bad
 
 ![why_microfrontends](/images/microfrontends/products.png)
 
-Summarizing, if we want to provide business value to end users we will need a good UIs working with good services. And, many times using the same UI accross applications is necessary because we'll keep the business functionality inmutable and we will also manage better the user experience: the same UIs will be used in internal applications so we'll detect bugs earlier and we'll suffer using those UIs.
+In summary, if we want to provide business value to end users we will need a good user interface working with good services like a whole. 
+
+---
+
+And, many times using the same UI accross applications is necessary because we'll keep the business functionality inmutable and we will also manage better the user experience: the same UIs will be used in internal applications so we'll detect bugs earlier and we'll suffer using those UIs.
 
 Well, you can be thinking about APIs and products based on APIs. Your right. This could be a kind of product that a company provide to an other company in order to that company builds an UI over this APIs and provide applications to an end user or only to integrate those two companies. 
 
 The product of the first company is the API but this API, in the most of cases, isn't going to be consumed directly by an end user, so an UI needs to be built becoming a product. The product is offered by the last company but it's an end-to-end product, so we're talking about the same: __providing end-to-end products__.  
 
+---
 
 
-## Adopt and end-to-end perspective
 
-Many companies have stated their way to modernize their architectures in order to build better applications, more scalables and more evolvables. Some of theses companies use a Microservices style, others have decided to back to monolith and others are thinking about how improve the way to build software. In the most of them there is something common: they think about services, independent teams, agility, etc but focused on backend systems (APIs, backend services, migration HOST to (micro) services, etc...). 
+## End-to-end perspective
+
+Many companies have started to modernize their architectures in order to build better applications, more scalables and more evolvables. Some of theses companies use a Microservices style, others have decided to back to better monoliths and others are thinking about how improve the way to build software. In the most of them there is something common: they think about services, independent teams, agility, etc but focused on backend systems (APIs, backend services, migration HOST to (micro) services, etc...). 
 
 But, something is true: the most of features are end-to-end, composing for elements in every layer:
 
@@ -73,6 +77,20 @@ It seems that building end-to-end features would be more efficient, isn't it? If
 ![why_microfrontends](/images/microfrontends/end-to-end-features.png)
 
 > The main principle behind this approach is reusing business features within the company
+
+## Keep the business features inmutables to the user
+
+Imagine this situation (could be your company):
+
+![example](/images/microfrontends/situation-example.png)
+
+In that picture, we can see two applications: Customers and Customer Care. In the Customer Care applications, there are some functionalities similar to the Customer application in order to give a good service to the end customer. In some companys, a different frontend developments are built in each application but consuming the same backend services. In others, the decission is to build a frontend module containing the functionality and this module is integrated in both applications. 
+
+Business backend services are usually consumed by different applications composing different business features depending of how they are orchestrated or the user interface managing operations of the user. 
+
+
+
+
 
 # Microfrontends: fully business components
 
