@@ -94,11 +94,17 @@ We can see two applications:
 
 Both applications have their own backend for frontend in order to orchestrate calls to different services and manage details regarding to different channels. In some companys, a different frontend developments are built in each application. In others, the decission is to build a frontend module containing the functionality and this module is integrated in both applications. The backend for frontend usually depends on the application and it isn't reused and backend services are the same in both applications. 
 
+If a backend service change and a new version is released, the backend for frontend will consume this new version of the service. So, business capabilities provided by backed services could be defined as inmutables.
+
 If the implementations of similar business features between applications is not considered as a whole, they are **mutable**. That means they are differents implementations of the same business capability:
 
-![example](/images/microfrontends/mutable-fetatures.png )
+![example](/images/microfrontends/mutable-fetatures.png)
 
+The ideal situation would be that the business feature was reused from the top layers to the bottom layers, but in some cases you are not responsible for all the elements (for instance external services). The target is to build end-to-end blocks of business capabilities to be reused. 
 
+It we can isolate business capabilities in the frontend part (UI and Backend For Frontend), consuming instances of these business capabilities and releasing new versions when something changes, we are building inmutables business capabilities in the frontend layer:
+
+![example](/images/microfrontends/inmutable-fetatures.png)
 
 
 # Microfrontends: fully business components
