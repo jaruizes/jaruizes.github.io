@@ -96,12 +96,7 @@ Both applications have their own backend for frontend in order to orchestrate ca
 
 If the implementations of similar business features between applications is not considered as a whole, they are **mutable**. That means they are differents implementations of the same business capability:
 
-![example](/images/microfrontends/mutable-fetatures.png | max-width=80%)
-
-<img src="/images/microfrontends/mutable-fetatures.png" alt="drawing" style="max-width:80%;"/>
-
-
-
+![example](/images/microfrontends/mutable-fetatures.png )
 
 
 
