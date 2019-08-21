@@ -109,9 +109,9 @@ It we can isolate business capabilities in the frontend part (UI and Backend For
 
 # Microfrontends: fully business components
 
-So, if we could build independent and fully business components, composed of all the necessary elements (data, services, integrations and user interface), versionables, developed, owned and maintained by a team and **loaded and integrated at runtime in the application** used by end users? They would be like little products
+As we saw in the previous section, if we could build independent and fully business components, composed of all the necessary elements, versionables, developed, owned and maintained by a team and **loaded and integrated at runtime in the application** we are building little products
 
-![why_microfrontends](/images/microfrontends/microfrontends-idea.png)
+![microfrontends-idea](/images/microfrontends/microfrontends-idea.png)
 
 
 
