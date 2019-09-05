@@ -12,8 +12,8 @@ tags:
 
 Microservices are everywhere. Sometimes the experience is positive, sometimes is negative but the term is in the air. It is usually related to backend architecture and how a system could be decomposed in autonomous and independent pieces, owned and developed by single teams, deployed independently and working all together.
 
-But, when we are developing a product or features, we shouldn't forget that the most of features contains backend and frontend parts and, if we want to deliver value to the customers, we should deliver end-to-end features. 
-Just applying an architectural style to our backend (based on microservices or not), we won't get enough autonomy to deliver (and maintain) end-to-end features. 
+But, when we are developing a product or features, we shouldn't forget that the most of features contains backend and frontend parts. If we really want to deliver value to the customers, we should deliver end-to-end features within a team. 
+Just applying an architectural style to our backend (based on microservices or not) or organized in teams with no end-end skills, we won't get enough autonomy to deliver (and maintain) end-to-end features. 
 
 ![Sam Newman Tweet](/images/microfrontends/newman.png)
 
