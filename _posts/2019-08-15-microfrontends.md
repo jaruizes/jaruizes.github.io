@@ -10,14 +10,14 @@ tags:
     - microfrontends
 ---
 
-# (WORK IN PROGRESS)
+Microservices are everywhere. Sometimes the experience is positive, sometimes is negative but the term is in the air. It is usually related to backend architecture and how a system could be decomposed in autonomous and independent pieces, owned and developed by single teams, deployed independently and working all together.
 
-Today we're hearing "microservices" everywhere. Sometimes the experience is positive, sometimes is negative but the word is in the air. If you don't know what they are, summarizing, this term is usually related to backend architecture and how a system could be decomposed in autonomous and independent pieces, owned and developed by single teams, deployed independently and working all together.
+But, when we are developing a product or features, we shouldn't forget that the most of features contains backend and frontend parts and, if we want to deliver value to the customers, we should deliver end-to-end features. 
+Just applying an architectural style to our backend (based on microservices or not), we won't get enough autonomy to deliver (and maintain) end-to-end features. 
 
-But, when we are developing a product or a feature, we shouldn't forget that the most of them contains backend and frontend services and, if we want to deliver value to our customers we have to deliver end-to-end features. 
-Just applying an architectural style to our backend, based on microservices (or not), we won't get enough autonomy to deliver (and maintain) end-to-end features. 
+![Sam Newman Tweet](/images/microfrontends/newman.png)
 
-It seems that the next step is being able to delivering value end-to-end. In this context, the term **Microfrontend** really begins to make sense
+It seems logical that the next step should be build end-to-end functionalities. In this context, the term **Microfrontend** really begins to make sense
 
 # Building products not just "services"
 
