@@ -10,13 +10,17 @@ tags:
     - microfrontends
 ---
 
-I would like to begin this post with the term "Microservices" in order to introduce "Microfrontends". 
+I would like to begin this post with the term "Microservices" in order to introduce the term "Microfrontends". 
 
-Microservices are everywhere. Sometimes the experience is positive, sometimes is negative but the term is in the air. It is usually related to backend architecture but talking about how a system could be decomposed in autonomous and independent pieces, owned and developed by single teams, deployed independently and working all together.
+Microservices are everywhere. Sometimes the experience is positive, sometimes is negative but the term is in the air. It is usually related to backend architecture and talking about how a system could be decomposed in autonomous and independent pieces, owned and developed by single teams, deployed independently and working all together.
 
-Why most of the companies are only focusing on backend? When we are developing a product or features, we shouldn't forget that the most of features contains backend and frontend parts. If we really want to deliver value to the customers, we should deliver end-to-end features within a team. Having dedicated teams to frontend or backend layers isn't efficient and productive. Applying an architectural style to our backend (based on microservices or not) or trying to be organized in teams with no end-end skills, we won't get enough autonomy to deliver (and maintain) end-to-end features and provide value to the final user:
+But...,why most of the companies are only focusing on backend? When we are developing a product or features, we shouldn't forget that the most of features contains backend and frontend parts. If we really want to deliver value to the customers, we should deliver end-to-end features within a team. Having dedicated teams to frontend or backend layers isn't efficient and productive. Applying an architectural style to our backend (based on microservices or not) or trying to be organized in teams with no end-end skills, we won't get enough autonomy to deliver (and maintain) end-to-end features and provide value to the final user:
 
 ![Sam Newman Tweet](/images/microfrontends/newman.png)
+
+Business is changing everyday. Companies doesn't know how their business needs will be in a few months. So, why does a company have to adopt a concrete framework or technology to build solutions to resolve all its business problems? 
+
+> Companies need an architecture based on independent pieces to build end-to-end solutions and technology agnostic in order to be able to evolve easily according to business needs.
 
 So, it seems logical that the next step should be build end-to-end functionalities within a team. In this context, the term **Microfrontend** really begins to make sense
 
