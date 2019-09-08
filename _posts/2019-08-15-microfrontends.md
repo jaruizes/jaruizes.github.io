@@ -37,16 +37,6 @@ As software developers, we know that behind the UI there are services, data and 
 
 So, if we want to provide business value to end users we will need a good user interface working with good services like a whole. 
 
----
-
-And, many times using the same UI accross applications is necessary because we'll keep the business functionality inmutable and we will also manage better the user experience: the same UIs will be used in internal applications so we'll detect bugs earlier and we'll suffer using those UIs.
-
-Well, you can be thinking about APIs and products based on APIs. Your right. This could be a kind of product that a company provide to an other company in order to that company builds an UI over this APIs and provide applications to an end user or only to integrate those two companies. 
-
-The product of the first company is the API but this API, in the most of cases, isn't going to be consumed directly by an end user, so an UI needs to be built becoming a product. The product is offered by the last company but it's an end-to-end product, so we're talking about the same: __providing end-to-end products__.  
-
----
-
 
 
 ## End-to-end perspective
