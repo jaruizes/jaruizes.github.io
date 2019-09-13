@@ -24,32 +24,36 @@ Business is changing everyday. Companies doesn't know how their business needs w
 
 So, it seems logical that the next step should be build end-to-end functionalities within a team. In this context, the term **Microfrontend** really begins to make sense
 
-# Building products not just "services"
+# Build products, not just "services"
 
-Usually when we talk about a software products we are talking about something with an user interface with which an end user interacts to perform some business actions. For instance, when we access to a banking application we want to see our global balance, last movements of some account or make a transfer. We only interact with the user interface but we expect to make actions and receive a result. We doesn't care if the application calls to an API or if our data is showing there magically. We want to application works well, just that.
+If you think about software products, for sure you are thinking about applications where you perform business actions. You use these applications through the user interface and you don't care about what is behind that UI, do you? 
 
-As software developers, we know that behind the UI there are services, data and other systems working together in order to provide business capabilities to the end users. Everything working together is what is providing value to the end user because:
+For instance, you use your banking application to check your global balance, last movements of some account or make a transfer and you want actions to be done. You only interact with the user interface, not with the services behind that UI. You want the application to work well, just that.
+
+As final user, you don't care If your bank release a new version of backend payment service or a new version of some frontend components. A final user wants an end-to-end solution. 
+
+Ok, as software developers, we know that behind the UI there are services, data and other systems. But, everything needs to work together in order to provide business capabilities to the end users:
 
 - If the UI is great but backend services don't work well (or not exist) the UI will not provide value to the user. 
 - If backend services work well but there is no UI or the UI doesn't work, the system will not provide value to the user. If several applications have similar business need (features) and the UI looks different in each one or works differently (because UI or services), the user experience is so bad
 
 ![why_microfrontends](/images/microfrontends/products.png)
 
-So, if we want to provide business value to end users we will need a good user interface working with good services like a whole. 
+The truth is that if we want to provide business value to end users we will need a good user interface working with good services like a whole. 
 
 
 
 ## End-to-end perspective
 
-Many companies have started to modernize their architectures in order to build better applications, more scalables and more evolvables. Some of theses companies use a Microservices style, others have decided to back to better monoliths and others are thinking about how improve the way to build software. In the most of them there is something common: they think about services, independent teams, agility, etc but focused on backend systems (APIs, backend services, migration HOST to (micro) services, etc...). 
+Many companies have started to modernize their architectures in order to build better applications, more scalables and more evolvables. Some of theses companies use a Microservices style, others have decided to back to better monoliths and others are thinking about how improve the way to build software. In the most of them there is something common: they think about services, decomposition in pieces, independent teams, agility, etc but focused on backend systems (APIs, backend services, migration HOST to (micro) services, etc...). 
 
-But, something is true: the most of features are end-to-end, composing for elements in every layer:
+But, as we have seen in the previous section, something is true: the most of features are end-to-end and they are  composed for elements in every layer:
 
 ![why_microfrontends](/images/microfrontends/focus_in_backend.png)
 
-So, taking an approach focused in backend services or systems is not enough efficient:
+So, taking an approach only focused in backend services (or systems) is not enough efficient and productive:
 
-- If you build wonderful (backend) services around business capabilities but you don't build an UI associated to those business capabilities your are not building unique or inmutable business capabilities. You are building differents flavours of the same business capability. 
+- If you build wonderful (backend) services around business capabilities but you don't build an UI associated to those business capabilities your will not be building unique or inmutable business capabilities. You are building differents flavours of the same business capability because you will build several UIs in different applications to perfom the same business capability (or very similar)  
 
   ![why_microfrontends](/images/microfrontends/feature-different-views.png)
 
@@ -63,7 +67,7 @@ So, taking an approach focused in backend services or systems is not enough effi
 
   ![why_microfrontends](/images/microfrontends/autonomy.png)
 
-It seems that building end-to-end features would be more efficient, isn't it? 
+It seems that building end-to-end features leaded and owned by a team would be more efficient, isn't it? 
 
 ![why_microfrontends](/images/microfrontends/end-to-end-features.png)
 
@@ -75,7 +79,7 @@ If one team is able to develop all the necessary elements for deliver a feature,
 
 
 
-## Keep the business features inmutables to the user and reuse them
+## Keep the business features inmutables and reuse them
 
 Imagine this scenario. It's not the best approach to organize a company architecture but it could be something real in many companies:
 
@@ -83,15 +87,19 @@ Imagine this scenario. It's not the best approach to organize a company architec
 
 We can see two applications: 
 
-- Customers: application in which customers perform business actions. 
+- Customers: application in which customers (final users) perform business actions. 
 
-- Customer Care: application used by company employees to help to their customers. This application try to be similar to the Customers application in order to give a good service to the customer.
+- Customer Care: application used by employees to help to their customers. This application tries to be similar to the Customers application in order to give a good service to the customer.
 
-Both applications have their own backend for frontend in order to orchestrate calls to different services and manage details regarding to different channels. In some companys, a different frontend developments are built in each application. In others, the decission is to build a frontend module containing the functionality and this module is integrated in both applications. The backend for frontend usually depends on the application and it isn't reused and backend services are the same in both applications. 
 
-If a backend service change and a new version is released, the backend for frontend will consume this new version of the service. So, business capabilities provided by backed services could be defined as inmutables.
 
-If the implementations of similar business features between applications is not considered as a whole, they are **mutable**. That means they are differents implementations of the same business capability:
+#### How could this be implemented?
+
+One approach could be that both applications have their own backend for frontend in order to orchestrate calls to different services and manage details regarding to different channels and different frontend developments are built in each application. Other approach could be to build a frontend module containing the functionality and this module is integrated in both applications. The backend for frontend usually depends on the application and it isn't reused and backend services are the same in both applications. In other companies, there will not be backend for frontend and frontend applications will consume directly backend services.
+
+In all the approaches, backend services are uniques but frontend parts are not uniques. If a backend service change and a new version is released, the backend for frontend or the frontend will consume this new version of the service. So, business capabilities provided by backed services could be defined as inmutables. 
+
+If the implementations of similar business features between applications is not considered as a whole, they are **mutables**. That means they are differents implementations of the same business capability:
 
 ![example](/images/microfrontends/mutable-fetatures.png)
 
