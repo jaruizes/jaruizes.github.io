@@ -167,7 +167,7 @@ Now, think about how **modern frontend apps** works:
 - The components and the application are deployed in the same server, as a whole
 - If a component needs to be updated by some reason (fix a bug for instance), the application needs to be rebuilt to package the new version of the component and redeployed. 
 
-These models are similar but a little different because 
+These models are similar but with little differences: 
 
 - a REST service is totally decoupled to the client application because is consumed by a HTTP call instead being included in the application package. 
 - the Rest service maybe can be implemented in a language totally different of the frontend applications or the other Rest services, but they interact by HTTP calls
