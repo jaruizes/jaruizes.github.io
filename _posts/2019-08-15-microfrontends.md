@@ -49,13 +49,13 @@ Many companies have started to modernize their architectures in order to build b
 
 But, as we have seen in the previous section, something is true: the most of features are end-to-end and they are  composed for elements in every layer:
 
-![why_microfrontends](/images/microfrontends/focus_in_backend.png)
+![focus_in_backend](/images/microfrontends/focus_in_backend.png)
 
 So, taking an approach only focused in backend services (or systems) is not enough efficient and productive:
 
 - If you build wonderful (backend) services around business capabilities but you don't build an UI associated to those business capabilities your will not be building unique or inmutable business capabilities. You are building differents flavours of the same business capability because you will build several UIs in different applications to perfom the same business capability (or very similar)  
 
-  ![why_microfrontends](/images/microfrontends/feature-different-views.png)
+  ![feature-different-views](/images/microfrontends/feature-different-views.png)
 
   You are building **"headless business features"** and you have to develop "different heads" in order to provide these features to the final users. 
 
@@ -65,11 +65,11 @@ So, taking an approach only focused in backend services (or systems) is not enou
 
 - If you achieve a great autonomy in backend systems but you don't do the same in the frontend apps, your (backend) autonomy is not real because you can not deliver end-to-end features to the end user without depending others. 
 
-  ![why_microfrontends](/images/microfrontends/autonomy.png)
+  ![autonomy](/images/microfrontends/autonomy.png)
 
 It seems that building end-to-end features leaded and owned by a team would be more efficient, isn't it? 
 
-![why_microfrontends](/images/microfrontends/end-to-end-features.png)
+![end-to-end-features](/images/microfrontends/end-to-end-features.png)
 
 If one team is able to develop all the necessary elements for deliver a feature, 
 
@@ -105,17 +105,19 @@ So, business capabilities provided by backend services owned by an specific team
 
 That means they are differents implementations of the same business capability:
 
-![example](/images/microfrontends/mutable-fetatures.png)
+![mutable features](/images/microfrontends/mutable-fetatures.png)
 
 The ideal situation would be that the business feature was reused from the top layers to the bottom layers, but in some cases you are not responsible for all the elements (for instance external services). The target is to build end-to-end blocks of business capabilities to be reused. 
 
 As we do in backend part, it we can isolate business capabilities in the frontend part (UI and Backend For Frontend), consuming instances of these business capabilities within the applications, calling the same backend services and releasing new versions when something changes, **we'll also be building inmutables business capabilities in the frontend layer and the end-to-end could be considered inmutable**:
 
-![example](/images/microfrontends/inmutable-fetatures.png)
+![inmutable features](/images/microfrontends/inmutable-fetatures.png)
 
 # Microfrontends: fully business components
 
-As I'm saying in the post, the target is to build end-to-end business components. If we could build independent and fully business components, composed of all the necessary elements, versionables, developed, owned and maintained by a team and **loaded and integrated at runtime in the application** we are building little end-to-end products to be delivered to the different applications that need to include these business features:
+As I'm saying in the previous sections, the target is to build end-to-end business components. If we could build independent and fully business components, composed of all the necessary elements, versionables, developed, owned and maintained by a team and loaded and integrated at runtime in the application we are building little end-to-end products to be delivered to the different applications that need to include these business features.
+
+The following picture summarizesummarizes the idea behind Microfrontends:
 
 ![microfrontends-idea](/images/microfrontends/microfrontends-idea.png)
 
@@ -123,38 +125,41 @@ As I'm saying in the post, the target is to build end-to-end business components
 
 ## What is a Microfrontend?
 
-The target associated to this concept is **to provide a "headfull" business service instead just a backend service or "headless" service**. Considering this perspective, obviously, the main part of a microfrontend is the frontend part. This part is what will be consumed and loaded by applications or another microfrontends. 
+The target associated to this concept is **to provide a "headfull" business service instead just a backend service or "headless" service**. So, when we say "Microfrontend" we mean **an unique end-to-end business component to be instantiated by the frontend part of the different applications**
 
-To get fully business capabilities, calling to backend services will be necessary. How is it managed? Here, there are several possibilities:
+Considering this perspective, obviously, the main part of a microfrontend is the frontend part. This part is what will be consumed and loaded by applications or another microfrontends. In order to get fully business capabilities, calling to backend services will be necessary. How is it managed? Here, there are several possibilities:
 
 - Building a backend piece (**backend for frontend**) in order to manage calls to business API, orchestration, information adaptation to the channel,...,etc. This piece will be also part of the microfrontend, sharing ownership. This approach will be the most usual because in real systems, orchestration of services is very common in the most functionalities.
 
-- Access to a business service already implemented in the same domain or in different domains or event external. In this case, the microfrontend is the part that is exposed to the consumer (it's the product), so it has to guarantee everything works. The consumer doesn't care about which services are consumed by the views provided for the microfrontend. The consumer only sees the UI part. 
+- Access directly to a business service already implemented in the same domain or in different domains or event external. In this case, the microfrontend is the part that is exposed to the consumer (it's the product), so it has to guarantee everything works. The consumer doesn't care about which services are consumed by the views provided for the microfrontend. The consumer only sees the UI part. 
 
-  If the services consumed by the microfrontend change, if it's necessary the microfrontend will have to be updated relasing a new version of the microfrontend. 
+  If the services consumed by the microfrontend change, if it's necessary the microfrontend will have to be updated relasing a new version of the microfrontend. If services are in the same domain or have the same owner it will be easier to keep the microfrontend updated than if the services are in other domains or they are external. 
 
-  If services are in the same domain or have the same owner it will be easier to keep the microfrontend updated than if the services are in other domains or they are external. 
 
 So, in the most of cases a microfrontend will be composed by:
 
-- An User Interface implemented in any frontend technology
+- An User Interface implemented in any frontend technology or framework.
 
 - A Backend for Frontend implemented in any technology that supports interaction with the UI component, the channels and the different backend services. It also manages the first level of security and the access to the business APIs
 
 It's very important to consider all the components associated to the microfrontend as a whole. That means that everything has the same owner and is released at the same time, as a product:
 
-![microfrontends-idea](/images/microfrontends/structure-basic.png)
+![microfrontend basic structure](/images/microfrontends/structure-basic.png)
+
+
 
 ## Loaded and integrated at runtime (like services)
 
-This is the key when we talk about independent and autonomy components. The devil is in the detail. Think about **Rest services** are consumed by the applications or another services:
+I want to write a section dedicated to this point because I think is a very important point when we talk about Microfrontends. This is the key when we talk about independent and autonomy components. The devil is in the detail. 
+
+Think about how **Rest services** are consumed by the applications or even another services:
 
 - There is a contract where the endpoint information is declared: request, response, security if needed, etc...
 - Consumers only send an HTTP call to an URL as the service contrat says and wait for a response. Consumers doen't know any detail about the internal implementation of the service or how the service manages its data. Languages/frameworks can be different between consumers and service.
 - Consumers are deployed in a different server that the service artifact
 - If the service needs to be updated by some reason (fix a bug for instance), the application doesn't need to be rebuilt and redeployed to get the changes.
 
-Now, think about **modern frontend apps** are working:
+Now, think about how **modern frontend apps** works:
 
 - The application is coded in a specific language/framework, mainly javascript
 - The application can be divided in components and components can be loaded on demand, at rutime, if the user navigates to the view using those components
@@ -162,9 +167,9 @@ Now, think about **modern frontend apps** are working:
 - The components and the application are deployed in the same server, as a whole
 - If a component needs to be updated by some reason (fix a bug for instance), the application needs to be rebuilt to package the new version of the component and redeployed. 
 
-These models are similar but different because a REST service is totally decoupled to the client application and, both of them are independent in development, deployment and maintaining. 
+These models are similar but a little different because **a REST service is totally decoupled to the client application because is consumed by a HTTP call instead being included in the application package**. 
 
-
+> Why don't do the same with the frontend components?
 
 
 
