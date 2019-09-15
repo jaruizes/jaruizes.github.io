@@ -113,11 +113,9 @@ As we do in backend part, it we can isolate business capabilities in the fronten
 
 ![example](/images/microfrontends/inmutable-fetatures.png)
 
-
-
 # Microfrontends: fully business components
 
-As we saw in the previous section, if we could build independent and fully business components, composed of all the necessary elements, versionables, developed, owned and maintained by a team and **loaded and integrated at runtime in the application** we are building little products
+As I'm saying in the post, the target is to build end-to-end business components. If we could build independent and fully business components, composed of all the necessary elements, versionables, developed, owned and maintained by a team and **loaded and integrated at runtime in the application** we are building little end-to-end products to be delivered to the different applications that need to include these business features:
 
 ![microfrontends-idea](/images/microfrontends/microfrontends-idea.png)
 
@@ -167,24 +165,6 @@ Now, think about **modern frontend apps** are working:
 These models are similar but different because a REST service is totally decoupled to the client application and, both of them are independent in development, deployment and maintaining. 
 
 
-
-### Web Components
-
-You can be thinking about Web Components and Microfrontends. It's true that a microfrontend is loaded like a web component by the parent application, using it like other HTML tag. But, once again, the different is when the component is integrated in the parent application. Buid-time? Runtime?  
-
-In the most of cases, the approach to use Web Components is mainly by NPM (or Bower) packages: 
-
-- need to be declared in development time (package.json / bower.json), 
-- need to be downloaded in development time
-- need to be packaged and deployed with the application 
-
-For instance, __[Webcomponents.org](https://www.webcomponents.org/introduction)__ and __[LitElement](https://lit-element.polymer-project.org/)__:
-
-![why_microfrontends](/images/microfrontends/webcomponents-publish.png)
-
-This approach isn't the ideal one because there is a "strong" coupling between the application and its components. 
-
-> The target is being able to consume fully functional components like services without packaging them inside the application
 
 
 
@@ -389,6 +369,24 @@ If the components are Web Components they can be imported in any application ind
 UI Components could be part of the visual layer of a microfrontend. Within a microfrontend, those UI Components plus backend components acquire real business capabilities to the final user:
 
 ![microfrontend-vs-uicomponents](/images/microfrontends/microfrontend-vs-uicomponents.png)
+
+### Web Components != Microfrontends
+
+You can be thinking about Web Components as Microfrontends. It's true that a microfrontend is loaded like a web component by the parent application, using it like other HTML tag. But, once again, the different is when the component is integrated in the parent application. Buid-time? Runtime?  
+
+In the most of cases, the approach to use Web Components is mainly by NPM (or Bower) packages: 
+
+- need to be declared in development time (package.json / bower.json), 
+- need to be downloaded in development time
+- need to be packaged and deployed with the application 
+
+For instance, __[Webcomponents.org](https://www.webcomponents.org/introduction)__ and __[LitElement](https://lit-element.polymer-project.org/)__:
+
+![why_microfrontends](/images/microfrontends/webcomponents-publish.png)
+
+This approach isn't the ideal one because there is a "strong" coupling between the application and its components. 
+
+> The target is being able to consume fully functional components like services without packaging them inside the application
 
 # Visual concerns 
 
