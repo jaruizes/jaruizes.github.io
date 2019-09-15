@@ -123,7 +123,7 @@ As I'm saying in the post, the target is to build end-to-end business components
 
 ## What is a Microfrontend?
 
-The target associated to this concept is to provide a "headfull" business service instead just a backend service ("headless"). So obviously, the main part of a microfrontend is the frontend part. This part is what will be consumed and loaded by applications or another microfrontends. 
+The target associated to this concept is **to provide a "headfull" business service instead just a backend service or "headless" service**. Considering this perspective, obviously, the main part of a microfrontend is the frontend part. This part is what will be consumed and loaded by applications or another microfrontends. 
 
 To get fully business capabilities, calling to backend services will be necessary. How is it managed? Here, there are several possibilities:
 
