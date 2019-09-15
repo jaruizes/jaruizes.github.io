@@ -81,11 +81,11 @@ If one team is able to develop all the necessary elements for deliver a feature,
 
 ## Keep the business features inmutables and reuse them
 
-Imagine this scenario. It's not the best approach to organize a company architecture but it could be something real in many companies:
+Imagine this scenario. Maybe it's not the best approach to organize a company architecture but it could be something real in many companies:
 
 ![example](/images/microfrontends/situation-example.png)
 
-We can see two applications: 
+We can see two applications consumed by different users: 
 
 - Customers: application in which customers (final users) perform business actions. 
 
@@ -97,9 +97,11 @@ We can see two applications:
 
 One approach could be that both applications have their own backend for frontend in order to orchestrate calls to different services and manage details regarding to different channels and different frontend developments are built in each application. Other approach could be to build a frontend module containing the functionality and this module is integrated in both applications. The backend for frontend usually depends on the application and it isn't reused and backend services are the same in both applications. In other companies, there will not be backend for frontend and frontend applications will consume directly backend services.
 
-In all the approaches, backend services are uniques but frontend parts are not uniques. If a backend service change and a new version is released, the backend for frontend or the frontend will consume this new version of the service. So, business capabilities provided by backed services could be defined as inmutables. 
+In all the approaches, backend services are uniques and developed by an specific team but frontend parts are not uniques and they are developed by different teams. If a backend service change and a new version is released, the backend for frontend or the frontend will consume this new version of the service. 
 
-If the implementations of similar business features between applications is not considered as a whole, they are **mutables**. That means they are differents implementations of the same business capability:
+> So, business capabilities provided by backend services owned by an specific team could be defined as **inmutables**. Frontend implementations of the same functionality across different applications are defined as **mutables**
+
+So, if the implementations of similar business features between applications is not considered as an end-to-end "product" and their components (services, frontend, etc) are developed by different teams, they are **mutables**. That means they are differents implementations of the same business capability:
 
 ![example](/images/microfrontends/mutable-fetatures.png)
 
