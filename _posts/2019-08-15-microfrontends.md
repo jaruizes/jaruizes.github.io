@@ -150,9 +150,9 @@ It's very important to consider all the components associated to the microfronte
 
 ## Loaded and integrated at runtime (like services)
 
-I want to write a section dedicated to this point because I think is a very important point when we talk about Microfrontends. This is the key when we talk about independent and autonomy components. The devil is in the detail. 
+I want to write a section dedicated to this point because I think is a very important point when we talk about Microfrontends. This is the key when we talk about independent and autonomy components. The devil is in the detail. I'm going to try to explain comparing rest services with modern frontend applications.
 
-Think about how **Rest services** are consumed by the applications or even another services:
+First, think about how **Rest services** are consumed by the applications or even another services:
 
 - There is a contract where the endpoint information is declared: request, response, security if needed, etc...
 - Consumers only send an HTTP call to an URL as the service contrat says and wait for a response. Consumers doen't know any detail about the internal implementation of the service or how the service manages its data. Languages/frameworks can be different between consumers and service.
