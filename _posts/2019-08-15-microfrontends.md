@@ -135,15 +135,13 @@ To get fully business capabilities, calling to backend services will be necessar
 
 So, in the most of cases a microfrontend will be composed by:
 
-- An user interface implemented in any frontend technology
+- An User Interface implemented in any frontend technology
 
-- A Backend for Frontend implemented in any technology that supports interaction with the UI component.
+- A Backend for Frontend implemented in any technology that supports interaction with the UI component, the channels and the different backend services. It also manages the first level of security and the access to the business APIs
 
-  
+It's very important to consider all the components associated to the microfrontend as a whole. That means that everything has the same owner and is released at the same time, as a product:
 
-It's very important to consider all the components associated to the microfrontend as a whole. 
-
-
+![microfrontends-idea](/images/microfrontends/structure-basic.png)
 
 ## Loaded and integrated at runtime (like services)
 
