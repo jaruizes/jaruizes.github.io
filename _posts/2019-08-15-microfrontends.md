@@ -99,15 +99,17 @@ One approach could be that both applications have their own backend for frontend
 
 In all the approaches, backend services are uniques and developed by an specific team but frontend parts are not uniques and they are developed by different teams. If a backend service change and a new version is released, the backend for frontend or the frontend will consume this new version of the service. 
 
-> So, business capabilities provided by backend services owned by an specific team could be defined as **inmutables**. Frontend implementations of the same functionality across different applications are defined as **mutables**
+So, business capabilities provided by backend services owned by an specific team could be defined as **inmutables**. Frontend implementations of the same functionality across different applications are defined as **mutables**
 
-So, if the implementations of similar business features between applications is not considered as an end-to-end "product" and their components (services, frontend, etc) are developed by different teams, they are **mutables**. That means they are differents implementations of the same business capability:
+> If the implementation of a complete business features between applications is not considered as a "product" and their components (services, frontend, etc) are developed by different teams, they are considered **mutables** from an end-to-end point of view.
+
+That means they are differents implementations of the same business capability:
 
 ![example](/images/microfrontends/mutable-fetatures.png)
 
 The ideal situation would be that the business feature was reused from the top layers to the bottom layers, but in some cases you are not responsible for all the elements (for instance external services). The target is to build end-to-end blocks of business capabilities to be reused. 
 
-It we can isolate business capabilities in the frontend part (UI and Backend For Frontend), consuming instances of these business capabilities and releasing new versions when something changes, we are building inmutables business capabilities in the frontend layer:
+As we do in backend part, it we can isolate business capabilities in the frontend part (UI and Backend For Frontend), consuming instances of these business capabilities and releasing new versions when something changes, we'll also be building inmutables business capabilities in the frontend layer and the end-to-end could be considered **inmutable**:
 
 ![example](/images/microfrontends/inmutable-fetatures.png)
 
