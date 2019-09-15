@@ -109,7 +109,7 @@ That means they are differents implementations of the same business capability:
 
 The ideal situation would be that the business feature was reused from the top layers to the bottom layers, but in some cases you are not responsible for all the elements (for instance external services). The target is to build end-to-end blocks of business capabilities to be reused. 
 
-As we do in backend part, it we can isolate business capabilities in the frontend part (UI and Backend For Frontend), consuming instances of these business capabilities and releasing new versions when something changes, we'll also be building inmutables business capabilities in the frontend layer and the end-to-end could be considered **inmutable**:
+As we do in backend part, it we can isolate business capabilities in the frontend part (UI and Backend For Frontend), consuming instances of these business capabilities within the applications, calling the same backend services and releasing new versions when something changes, **we'll also be building inmutables business capabilities in the frontend layer and the end-to-end could be considered inmutable**:
 
 ![example](/images/microfrontends/inmutable-fetatures.png)
 
