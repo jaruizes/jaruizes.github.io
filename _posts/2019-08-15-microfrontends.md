@@ -169,26 +169,11 @@ Now, think about how **modern frontend apps** works:
 
 These models are similar but with little differences: 
 
-- a REST service is totally decoupled to the client application because is consumed by a HTTP call instead being included in the application package. 
+- a REST service is decoupled from the client application because it is consumed by a HTTP call instead being included in the application package. 
+- the Rest service exposes a contract where it specificities input parameters, output structure and error codes.
 - the Rest service maybe can be implemented in a language totally different of the frontend applications or the other Rest services, but they interact by HTTP calls
 
 > Why don't do the same with the frontend components?
-
-
-
-## Stages
-
-I'm going to summarize the stages to go to Microfrontends in three:
-
-![why_microfrontends](/images/microfrontends/microfrontends-stages.png)
-
-- **No Microfrontend**: there is no UI components. There are just applications
-
-- **"Pseudo Microfrontends"**: there are UI components with a business sense. These components access to backend services to perform business actions and even could be owned and managed by independent teams, but they all deployed and published by libraries (NPM or similar) and the consumer applications integrate them in build-time. So, a complex integration phase is realized in order to build and package the final applications. A change in a component implies rebuild and repackage the affected applications. Problems related to responsive or not, channels (mobile, web,...,etc) should be alredy being managed in this stage
-
-- **Microfrontends**: it's an evolution of the previous stage. In this stage, UI business components are deployed and published independently, in a "Microfrontend (registry) server" that serves them to the parent applications in runtime. There is no complex integration phase. Parent applications and Microfrontends manage a contract in order to know how to use them. Like a service, if a Microfrontend changes and the contract is the same, the parent application doesn't need to be redeployed becase the new version of the Microfrontend will be loaded when the parent application is reloaded in the user browser.
-
-  
 
 # Microfrontends: an architectural style
 
@@ -539,4 +524,26 @@ For instance, Microfrontends may help you if:
 - Your company is used to work in autonomous teams around domains and subdomains
 
 
+
+## It's not black or white. Be flexible and evolvable 
+
+When we think about architectures, many times we think about a green field and the ideal architecture but we have to keep in mind that, at least you are a startup, these architectures have to live with other older architectures because business can't stop. 
+
+Having this in mind, I would like to summarize the frontend states in three:
+
+![why_microfrontends](/images/microfrontends/microfrontends-stages.png)
+
+- **"Just Applications"**: there is no UI components. There are just applications consuming backend services. Business features are re-implemented in each application. Maybe, a components catalog could exist.
+- **"Pseudo Microfrontends"**: there are UI components with a business sense, not just visual components. These components access to backend services to perform business actions and even could be owned and managed by independent teams, but they all deployed and published by libraries (NPM or similar) and the consumer applications integrate them in build-time. So, an integration phase (maybe complex) is realized in order to build and package the final applications. A change in a component implies rebuild and repackage the affected applications. Problems related to responsive or not, channels (mobile, web,...,etc) should be alredy being managed in this stage
+- **Microfrontends**: it's an evolution of the previous stage. In this stage, UI business components are deployed and published independently, in a "Microfrontend (registry) server" that serves them to the parent applications in runtime. There is no complex integration phase. Parent applications and Microfrontends manage a contract in order to know how to use them. Like a service, if a Microfrontend changes and the contract is the same, the parent application doesn't need to be redeployed becase the new version of the Microfrontend will be loaded when the parent application is reloaded in the user browser.
+
+Does it mean that you should build everything like a Microfrontend? I don't think so. 
+
+In my opinion, you should take a global picture of your company and how its business is. Once you know well your business and your company, think about where it's worth to build a Microntend because pros are better than cons, where it's worth to build "just an UI component" and where it's worth to build "just an application". It's not black or white. 
+
+I prefer the **"monolith first" strategy** but designing and building thinking in business components that eventually could be extract to a NPM package or a Microfrontend if a business need requires it.
+
+If there are several applications that don't share any business feature, are very stables and their maintenance is "easy", why are you going to build Microfrontends or "business UI components" from the beginning? You are going to add complexity to those applications and you are not going to get any benefit from appliying those strategies. Build good monoliths apps, well structured in modules and components, with a good testing strategy and, if in the future you need to extract some components in order to be reused by other application, it'll be easy to extract them.
+
+If you apply this strategy, the worst scenary could be that the technology used to build your applications doesn't allows to expose components as nom packages, web components or similar in order to be distributed or consumed by an HTTP request. But, if you have built a well designed applications and well tested, you will be able to build a new component in a different technology in order to be able to distribute those components requiered by others applications.
 
