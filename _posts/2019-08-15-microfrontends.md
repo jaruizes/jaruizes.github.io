@@ -186,9 +186,9 @@ Microfrontends are not about an specific implementation. Like some architecture 
 - which **kind of problems or challenges could resolve** and when it's worth applying or not.
 - which are the **main principles and patterns**
 
-Fowler and Lewis wrote a post in 2014 talking about Microservices and what they mean. It was some years ago but I think it is a "master post" we always have to keep in mind. In this post, nine principles are set:
+[Fowler and Lewis wrote a post in 2014 talking about Microservices](https://martinfowler.com/articles/microservices.html) and what they mean. It was some years ago but I think it is a "master post" we always have to keep in mind. In this post, nine principles are set:
 
-- Componentization via Services
+- [Componentization via Services](#compservices)
 - Organized around Business Capabilities
 - Products not Projects
 - Smart endpoints and dumb pipes
@@ -200,7 +200,7 @@ Fowler and Lewis wrote a post in 2014 talking about Microservices and what they 
 
 Let's try to apply microservices principles to frontend world:
 
-### Componentization via Services
+### <a name="compservices">Componentization via Services</a>
 
 We're used to build UI components, package them into libraries and publish them in the NPM (or bower) repository. This means that every application uses these components by importing them in build time, packaging all together. Although you are using lazy loading and components are loaded on demand, the application consist on a single package "deployed" in the same location. If a component changes, the whole application has to be rebuilt to get the changes and redeployed.
 
