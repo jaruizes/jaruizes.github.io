@@ -177,26 +177,27 @@ These models are similar but with little differences:
 
 # Microfrontends: an architectural style
 
-Microfrontends goes beyond frontend frameworks and their power fight: Angular vs React vs Vue vs ...
+When we talk about Microfrontends (or Microservices) we are talking about a way to build complex systems and how to structure the different pieces and their interactions. We don't talk about concrete technology. By this reason, Microfrontends goes beyond frontend frameworks and their power fight: Angular vs React vs Vue vs ...
 
-> Building microfrontends means adopting an **archytecture style**, building and delivering end-to-end business pieces, defined by a formal contract and with a clear ownership, packaged and deployed independently, to be integrated and consumed at runtime within a frontend application or even by other microfrontends.
+> Building Microfrontends means adopting an **archytecture style**, building and delivering end-to-end business pieces, defined by a formal contract and with a clear ownership, packaged and deployed independently, to be integrated and consumed at runtime within a frontend application or even by other microfrontends.
 
-Microfrontends are not about an specific implementation. Like some architecture styles, it's important to set:
+Like some architecture styles, it's important to set:
 
 - which **kind of problems or challenges could resolve** and when it's worth applying or not.
 - which are the **main principles and patterns**
+- which **cultural and methodology changes** are required (or not)
 
 [Fowler and Lewis wrote a post in 2014 talking about Microservices](https://martinfowler.com/articles/microservices.html) and what they mean. It was some years ago but I think it is a "master post" we always have to keep in mind. In this post, nine principles are set:
 
 - [Componentization via Services](#compservices)
-- Organized around Business Capabilities
-- Products not Projects
-- Smart endpoints and dumb pipes
-- Decentralized Governance
-- Decentralized Data Management
-- Infrastructure Automation
-- Design for failure
-- Evolutionary Design
+- [Organized around Business Capabilities](#businesscap)
+- [Products not Projects](#products)
+- [Smart endpoints and dumb pipes](#endpoints)
+- [Decentralized Governance](#governance)
+- [Decentralized Data Management](#data)
+- [Infrastructure Automation](#infrastructure)
+- [Design for failure](#failure)
+- [Evolutionary Design](#evolutionary)
 
 Let's try to apply microservices principles to frontend world:
 
@@ -228,7 +229,7 @@ This is similar to the target of Microfrontend: not packaging all the pieces wit
 
 
 
-### Organized around Business Capabilities
+### <a name="businesscap">Organized around Business Capabilities</a>
 
 Microfrontends aren't UI components (later we'll see the differences between them). Microfrontends means implementing end-to-end business features "as a service". Descomposing the system into business capabilities should be the first step if we want to adopt this architecural style.
 
@@ -240,7 +241,7 @@ In this point, the key is delivering a complete business feature to consumers in
 
 
 
-### Products not Projects
+### <a name="products">Products not Projects</a>
 
 Building Microfrontends means building products, not projects. A team builds and maintain one or more microfrontends of which is the owner. The team is responsible for the "UI Service" over its full lifecycle.
 
@@ -250,7 +251,7 @@ Besides that, several versions of a Microfrontend could be published and be cons
 
 
 
-### Smart endpoints and dumb pipes
+### <a name="endpoints">Smart endpoints and dumb pipes</a>
 
 Currently there are a lot of frameworks or products to build frontend applications and its business logic (ok, presentation logic). Communication between components within the application is supported by the framework choosen capabilities. 
 
@@ -260,7 +261,7 @@ Microfrontends communications must be supported by DOM standards: html tags, att
 
 
 
-### Decentralized Governance
+### <a name="governance">Decentralized Governance</a>
 
 Similar to Microservices, a centralized governance implies a single technology o framework. Once a framework is choosen then libraries or some components are built to be delivered to development teams in order to get more productivity. When several applications have been developed, changing the framework becomes a big challenge.
 
@@ -283,7 +284,7 @@ Similar with Security concerns. This needs to be defined globally and teams in c
 
 
 
-### Decentralized Data Management
+### <a name="data">Decentralized Data Management</a>
 
 In Microservices, when we talk about this subject we mean how to manage data associated to each microservice:  which database or which model the service is going to use.
 
@@ -300,7 +301,7 @@ Microfrontends need to know if the user is athenticated and how to get the token
 
 
 
-### Infrastructure Automation
+### <a name="infrastructure">Infrastructure Automation</a>
 
 As microfrontends are independent and fully deployable pieces of software, they also need independent processes for build, deploy and publish. 
 
@@ -310,7 +311,7 @@ Teams will also manage their microfrontends in production environments, releasin
 
 
 
-### Design for failure
+### <a name="failure">Design for failure</a>
 
 In a microfrontends context, where components are loaded in runtime and backend API calls are managed directly by microfrontends it's important to think what happens if something goes wrong. It's necessary to defing a microfrontend's lifecycle in order to know if the microfrontend is ready to be shown or the parent application (or event the parent microfrontend) has to take additional actions like showing a default component or hidiing this area to the user in order to the user isn't conscious of the fail.
 
@@ -324,7 +325,7 @@ Besides that, microfrontends must define a contract in which both input attribut
 
 
 
-### Evolutionary Design
+### <a name="evolutionary">Evolutionary Design</a>
 
 Working with microfrontends means working with components loaded in runtime, totally decoupled. There is pros and cons in this way of working. A relevant pro is that it's possible to change easily every component without affecting others (keeping the contract). It's also easy technology changes. 
 
