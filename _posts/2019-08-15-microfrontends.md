@@ -185,7 +185,7 @@ Like some architecture styles, it's important to set:
 
 - which **kind of problems or challenges could resolve** and when it's worth applying or not.
 - which are the **main principles and patterns**
-- which **cultural and methodology changes** are required (or not)
+- which **cultural and methodology changes** are required (maybe a changes in your company will have to be performed)
 
 [Fowler and Lewis wrote a post in 2014 talking about Microservices](https://martinfowler.com/articles/microservices.html) and what they mean. It was some years ago but I think it is a "master post" we always have to keep in mind. In this post, nine principles are set:
 
@@ -203,19 +203,21 @@ Let's try to apply microservices principles to frontend world:
 
 ### <a name="compservices">Componentization via Services</a>
 
-We're used to build UI components, package them into libraries and publish them in the NPM (or bower) repository. This means that every application uses these components by importing them in build time, packaging all together. Although you are using lazy loading and components are loaded on demand, the application consist on a single package "deployed" in the same location. If a component changes, the whole application has to be rebuilt to get the changes and redeployed.
+If you are using a modern frontend framework probably you're used to build UI components, package them into libraries and publish them in the NPM (or bower) repository. This means that every application uses these components by integrating them into the main application in build time and packaging all together in an unique package (although you are using lazy loading and components are loaded on demand). 
 
-So, in this scenario, autonomy isn't the main characteristic…But, the idea behind "microfrontends" is just the opposite:
+If a component changes, the whole application has to be rebuilt to get the changes and redeployed. So, in this scenario, autonomy isn't the main characteristic. **Application is built as a Lego system with a hard union between them.**
 
-> __what if we'd build artifacts that encapsulate end-to-end features and we could consume them at runtime by http calls?__ The idea behind Micro frontends is building "headfull services", that means, delivering end-to-end features by components consumed in runtime by http calls.
+The idea behind "microfrontends" is just the opposite:
 
-Consuming frontends as services means that:
+> __what if we could build artifacts encapsulating end-to-end features and we could consume them at runtime by simple http calls?__
 
-- Microfrontends encapsulate all the backend API calls they need, so they aren't just UI. They are end-to-end components
+Componentization frontends as services means that:
+
+- Microfrontends are developed and owned by a team
 - Microfrontends expose contracts as services do, input and outputs, events and styles.
 - Microfrontends are tested individually
-- Microfrontends are deployed independently, so it's not necessary to rebult the parent application is something change in the microfrontend
-- Microfrontends are developed and owned by a team
+- Microfrontends are deployed independently in a "Microfrontend server". They are not packaging within the main application, so it's not necessary to rebult the main application if something changes in the Microfrontend
+- Microfrontends encapsulate all the backend API calls they need, so they aren't just UI. They are end-to-end components
 
 
 
