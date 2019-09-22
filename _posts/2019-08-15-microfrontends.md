@@ -205,7 +205,11 @@ Let's try to apply microservices principles to frontend world:
 
 If you are using a modern frontend framework probably you're used to build UI components, package them into libraries and publish them in the NPM (or bower) repository. This means that every application uses these components by integrating them into the main application in build time and packaging all together in an unique package (although you are using lazy loading and components are loaded on demand). 
 
-If a component changes, the whole application has to be rebuilt to get the changes and redeployed. So, in this scenario, autonomy isn't the main characteristic. **Application is built as a Lego system with a hard union between them.**
+If a component changes, the whole application has to be rebuilt to get the changes and redeployed. So, in this scenario, autonomy isn't the main characteristic. 
+
+**Applications are built as a Lego system with a hard unions between them.** If you are building a house with Lego pieces and you need to change some part of the house, you'll have to "rebuilt" the house.
+
+![microfrontend basic structure](/images/microfrontends/frontend_as_lego.png)
 
 The idea behind "microfrontends" is just the opposite:
 
@@ -218,6 +222,8 @@ Componentization frontends as services means that:
 - Microfrontends are tested individually
 - Microfrontends are deployed independently in a "Microfrontend server". They are not packaging within the main application, so it's not necessary to rebult the main application if something changes in the Microfrontend
 - Microfrontends encapsulate all the backend API calls they need, so they aren't just UI. They are end-to-end components
+
+![microfrontend basic structure](/images/microfrontends/frontend_as_services.png)
 
 
 
@@ -233,7 +239,7 @@ This is similar to the target of Microfrontend: not packaging all the pieces wit
 
 ### <a name="businesscap">Organized around Business Capabilities</a>
 
-Microfrontends aren't UI components (later we'll see the differences between them). Microfrontends means implementing end-to-end business features "as a service". Descomposing the system into business capabilities should be the first step if we want to adopt this architecural style.
+Microfrontends aren't just UI components (later we'll see the differences between them). Microfrontends means implementing end-to-end business features "as a service". Descomposing the system into business capabilities should be the first step if we want to adopt this architectural style.
 
 We do this exercise when we're defining microservices associated to our system but we do not do the same from the UI point of view and we build the same views in many applications. 
 
@@ -365,6 +371,8 @@ If the components are Web Components they can be imported in any application ind
 UI Components could be part of the visual layer of a microfrontend. Within a microfrontend, those UI Components plus backend components acquire real business capabilities to the final user:
 
 ![microfrontend-vs-uicomponents](/images/microfrontends/microfrontend-vs-uicomponents.png)
+
+
 
 ### Web Components != Microfrontends
 
