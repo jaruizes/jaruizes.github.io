@@ -211,6 +211,8 @@ If a component changes, the whole application has to be rebuilt to get the chang
 
 ![microfrontend basic structure](/images/microfrontends/frontend_as_lego.png)
 
+<img src="/images/microfrontends/frontend_as_lego.png" alt="microfrontend basic structure" title="Microfrontend Basic Structure" width="640" height="500" />
+
 The idea behind "microfrontends" is just the opposite:
 
 > __what if we could build artifacts encapsulating end-to-end features and we could consume them at runtime by simple http calls?__
