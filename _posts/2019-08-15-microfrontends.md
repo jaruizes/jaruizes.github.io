@@ -144,8 +144,6 @@ So, in the most of cases a microfrontend will be composed by:
 
 It's very important to consider all the components associated to the microfrontend as a whole. That means that everything has the same owner and is released at the same time, as a product:
 
-![microfrontend basic structure](/images/microfrontends/structure-basic.png)
-
 <img src="/images/microfrontends/structure-basic.png" alt="basic structure" title="Microfrontend Basic Structure" width="480" height="320" />
 
 
@@ -233,9 +231,9 @@ Componentization frontends as services means that:
 
 If you use Maven, the most of the libraries are integrated in build-time and everything is packaged in the same artifact. If a dependency changes, rebuilt and repackage is necessary. 
 
-The most of times, we extract some dependencies and package them to be deployed independently as a service and consumed by a simple HTTP call. Using Maven, you also find dependencies with "provided" scope. Dependencies tagged with this scope will not be packaged and will be provided by the execution environment (usually an application server). In both cases, the code of these services are inside the parent application anymore. 
+In Maven, you also find dependencies with "provided" and "runtime" scope. Dependencies tagged with "provided" scope are needed during the build phase but they will not be packaged because they will be provided by the execution environment (usually an application server). Dependencies with "runtime" scope are not needed during build time but during the test or runtime phase.
 
-This is similar to the target of Microfrontend: not packaging all the pieces within the parent application and being integrated and consumed at runtime
+"Runtime" scope is similar to the target of Microfrontend: not need dependencies at build phase, not package all the pieces within the parent application but being consumed at runtime
 
 
 
