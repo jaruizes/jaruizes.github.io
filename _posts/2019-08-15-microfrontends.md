@@ -239,13 +239,17 @@ In Maven, you also find dependencies with "provided" and "runtime" scope. Depend
 
 ### <a name="businesscap">Organized around Business Capabilities</a>
 
-Microfrontends aren't just UI components (later we'll see the differences between them). Microfrontends means implementing end-to-end business features "as a service". Descomposing the system into business capabilities should be the first step if we want to adopt this architectural style.
+Microfrontends aren't just UI components. Microfrontends means implementing end-to-end business features "as a service". By this reason, descomposing the system into business capabilities should be the first step if we want to adopt this architectural style.
 
-We do this exercise when we're defining microservices associated to our system but we do not do the same from the UI point of view and we build the same views in many applications. 
+> The need to build a Microfrontend has to have its origin in a business need. It should not exist a Microfrontend without a business origin and without an owner from the business team. Building Microfrontends is not a refactor technique in which technical people extract pieces from frontend applicarions and expose them to be consumed as HTTP calls.
 
-It's also true that, in some companies, business capabilities are treated from the frontend but sometimes this exercise is done taking only one application.
+Business doesn't mean just final customer. Business could be an internal need from some department that could be potentially defined as "microfrontend". 
 
-In this point, the key is delivering a complete business feature to consumers instead of offering business APIs to the final applications implements the UI. Not confusing this with Open APIs.
+When I talk about "business need" I mean "business need" within a company not within an application. Building an application decomposing it in components and exposing them as Microfrontends without keeping in mind other applications within the company only it will introduce complexity to that application. 
+
+> Defining Microfrontends has to be a global exercise, taking into account the set of business needs within the company and how business artifacts could be reused by the different applications. 
+
+It's true that in the most of companies there isn't a green field and all the business needs are not always known when you are building applications. By this reason I recommend a "monolith first approach" and a set of business owners that have the global knowledge of the set of applications built in the company in order to determine when it's necessary  to extract a concrete functionality to a Microfrontend. 
 
 
 
@@ -253,7 +257,7 @@ In this point, the key is delivering a complete business feature to consumers in
 
 Building Microfrontends means building products, not projects. A team builds and maintain one or more microfrontends of which is the owner. The team is responsible for the "UI Service" over its full lifecycle.
 
-As the Microfrontend encapsulates backend API calls and the user of the Micro frontend only "receives" the UI Service, the team is also responsible to maintain these API calls updated and working. 
+As the Microfrontend also encapsulates backend API calls and the user of the Microfrontend only "receives" the UI piece, the team is also responsible to maintain these API calls updated and working. 
 
 Besides that, several versions of a Microfrontend could be published and be consumed, so the team also has to keep in mind this aspect and managing the retirement of versions out-of-date.
 
