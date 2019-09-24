@@ -209,9 +209,7 @@ If a component changes, the whole application has to be rebuilt to get the chang
 
 **Applications are built as a Lego system with a hard unions between them.** If you are building a house with Lego pieces and you need to change some part of the house, you'll have to "rebuilt" the house.
 
-![microfrontend basic structure](/images/microfrontends/frontend_as_lego.png)
-
-<img src="/images/microfrontends/frontend_as_lego.png" alt="microfrontend basic structure" title="Microfrontend Basic Structure" width="640" height="500" />
+<img src="/images/microfrontends/frontend_as_lego.png" alt="microfrontend basic structure" title="Microfrontend Basic Structure" width="480" height="320" />
 
 The idea behind "microfrontends" is just the opposite:
 
