@@ -265,25 +265,27 @@ Besides that, several versions of a Microfrontend could be published and be cons
 
 ### <a name="endpoints">Smart endpoints and dumb pipes</a>
 
-Currently there are a lot of frameworks or products to build frontend applications and its business logic (ok, presentation logic). Communication between components within the application is supported by the framework choosen capabilities. 
+Currently there are a lot of frameworks or products to build frontend applications. Communication between components within the application is supported by the framework choosen capabilities. Components are not built as a endpoints but they are built as a pieces integrated within a parent application.
 
 In a Microfrontend style, components are designed and developed as decoupled as possible, so components has to be independent, loaded in runtime and communications between components couldn't be supported by a framework. 
 
 Microfrontends communications must be supported by DOM standards: html tags, attributes and DOM events. It's possible to use some libraries to abstract the frontend event bus but this tool only has to be used to provide publish/sibscribe capabilities. Application logic never is in the event bus.
 
+Microfrontends have a defined responsibility, that means that a Microfrontend is designed to solve a concrete business need not a set of them. 
+
 
 
 ### <a name="governance">Decentralized Governance</a>
 
-Similar to Microservices, a centralized governance implies a single technology o framework. Once a framework is choosen then libraries or some components are built to be delivered to development teams in order to get more productivity. When several applications have been developed, changing the framework becomes a big challenge.
+A centralized governance implies a single technology o framework. Once a framework is set, libraries or some components are built to be delivered to development teams in order to get more productivity. Then, when several applications have been developed, changing the framework becomes a big challenge.
 
-Choosing just one technology or framework we could cause several problems like:
+Choosing just one technology or framework has some limitations like:
 
 - Not using the best tool to solve a problem
 - People gets bore because "it's always the same"
-- Locking to a framework, components or even a way (the framework way) to develop.
+- Lock-in to a framework, components or even a way (the framework way) to develop.
 
-> If we can load components in runtime by a http call and these components are used as the same way as other HTML components, why do I have to centralize the technology or frameworks?
+> If we could load components at runtime and these components were used as the same way as other HTML components, why would I have to centralize the technology or frameworks?
 >
 
 So adopting Microfrontends is not adopting one framework or technology. It's adopting a way to build UI Services that can be consumed at runtime by any application, similar to backend services (http) are consumed.
