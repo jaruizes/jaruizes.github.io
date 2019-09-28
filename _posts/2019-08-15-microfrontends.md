@@ -10,6 +10,8 @@ tags:
     - microfrontends
 ---
 
+![microfrontend basic structure](/images/microfrontends/Work-in-Progress.jpg) 
+
 I would like to begin this post with the term "Microservices" in order to introduce the term "Microfrontends". 
 
 Microservices are everywhere. Sometimes the experience is positive, sometimes is negative but the term is in the air. It is usually related to backend architecture and talking about how a system could be decomposed in autonomous and independent pieces, owned and developed by single teams, deployed independently and working all together.
