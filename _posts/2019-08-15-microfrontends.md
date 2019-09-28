@@ -366,7 +366,9 @@ The most of companies have developed a set of UI components, from simple inputs 
 
 
 
-A Microfrontend is a piece of software that makes sense for the end user by itself**. If the final user access to the Microfrontend directly, the final user gets value from that Microfrontend and he could do a business operation. For instance: 
+**A Microfrontend is a piece of software that makes sense for the end user by itself**. **If the final user could access to the Microfrontend independently, the final user gets value from that Microfrontend and he could do a business operation**. 
+
+For instance: 
 
 - Microfrontend - Account Detail: UI views and backend for frontend making the necessary API calls for getting the account info
 - Microfrontend - Products Catalog: UI views and backend API calls for showing the products catalog
