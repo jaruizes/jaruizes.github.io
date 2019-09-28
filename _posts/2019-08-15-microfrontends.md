@@ -255,9 +255,11 @@ It's true that in the most of companies there isn't a green field and all the bu
 
 ### <a name="products">Products not Projects</a>
 
-Building Microfrontends means building products, not projects. A team builds and maintain one or more microfrontends of which is the owner. The team is responsible for the "UI Service" over its full lifecycle.
+Building Microfrontends means building full products, not projects. A team builds and maintains one or more microfrontends of which is the owner. The team is responsible for the Microfrontend over its full lifecycle.
 
-As the Microfrontend also encapsulates backend API calls and the user of the Microfrontend only "receives" the UI piece, the team is also responsible to maintain these API calls updated and working. 
+As the Microfrontend also encapsulates backend API calls and the user of the Microfrontend only "receives" the UI piece, the team is also responsible to maintain these API calls updated and working.
+
+![microfrontend basic structure](/images/microfrontends/products-vs-projects.png) 
 
 Besides that, several versions of a Microfrontend could be published and be consumed, so the team also has to keep in mind this aspect and managing the retirement of versions out-of-date.
 
@@ -265,7 +267,7 @@ Besides that, several versions of a Microfrontend could be published and be cons
 
 ### <a name="endpoints">Smart endpoints and dumb pipes</a>
 
-Currently there are a lot of frameworks or products to build frontend applications. Communication between components within the application is supported by the framework choosen capabilities. Components are not built as a endpoints but they are built as a pieces integrated within a parent application.
+There are a lot of frameworks or products to build frontend applications or components. Communication between components within the application is performed following the rules set by the framework choosen. So, applications and components are not built as a endpoints but they are built as a pieces integrated within a parent application.
 
 In a Microfrontend style, components are designed and developed as decoupled as possible, so components has to be independent, loaded in runtime and communications between components couldn't be supported by a framework. 
 
@@ -277,7 +279,7 @@ Microfrontends have a defined responsibility, that means that a Microfrontend is
 
 ### <a name="governance">Decentralized Governance</a>
 
-A centralized governance implies a single technology o framework. Once a framework is set, libraries or some components are built to be delivered to development teams in order to get more productivity. Then, when several applications have been developed, changing the framework becomes a big challenge.
+A centralized governance usually implies a single technology o framework. Once a framework is set, libraries or some components are built to be delivered to development teams in order to get more productivity reusing components and libraries between applications. Time after, when several applications have been developed, changing the framework becomes a big challenge.
 
 Choosing just one technology or framework has some limitations like:
 
@@ -288,11 +290,13 @@ Choosing just one technology or framework has some limitations like:
 > If we could load components at runtime and these components were used as the same way as other HTML components, why would I have to centralize the technology or frameworks?
 >
 
-So adopting Microfrontends is not adopting one framework or technology. It's adopting a way to build UI Services that can be consumed at runtime by any application, similar to backend services (http) are consumed.
+**So adopting Microfrontends doesn't mean adopting one framework or technology**. 
 
-Microfrontends associated to business features can be developed with the best technology or framework according to the complexity, requirements or business context. 
+> It's adopting a way to build UI Services, technology agnostic, that can be consumed at runtime by any application, similar to backend services (http) are consumed.
 
-This doesn't mean that there is no Governance. Governace means principles, rules, patterns,...,etc not technical implementations. Normally, some "core actions" need to be defined to be implemented in every microfrontend. For instance, actions like language changing to suppont multilanguage sites: your company can set the principle that every Microfrontends should listen to an "language changed" event and reacting to it.
+Microfrontends can be developed with the best technology or framework according to the complexity, requirements or business context. 
+
+This doesn't mean that there is no Governance. Governace means principles, rules, patterns,...,etc but not technical implementations. Usually, some "core actions" need to be defined to be implemented in every microfrontend. For instance, actions like language changing to suppont multilanguage sites: your company can set the principle that every Microfrontends should listen to an "language changed" event and reacting to it.
 
 Similar with Security concerns. This needs to be defined globally and teams in charge of microfrontends must follow the patterns and rules.
 
