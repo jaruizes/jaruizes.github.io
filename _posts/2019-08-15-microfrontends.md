@@ -12,17 +12,15 @@ tags:
 
 ![microfrontend basic structure](/images/microfrontends/Work-in-Progress.jpg) 
 
-I would like to begin this post with the term "Microservices" in order to introduce the term "Microfrontends". 
+Do you know Microservices? Sure. Microservices are everywhere. Sometimes the experience is positive, sometimes is negative but the term is in the air. It is usually related to backend architecture and talking about how a system could be decomposed in autonomous and independent pieces, owned and developed by single teams, deployed independently and working all together.
 
-Microservices are everywhere. Sometimes the experience is positive, sometimes is negative but the term is in the air. It is usually related to backend architecture and talking about how a system could be decomposed in autonomous and independent pieces, owned and developed by single teams, deployed independently and working all together.
-
-But...,why most of the companies are only focusing on backend? When we are developing a product or features, we shouldn't forget that the most of features contains backend and frontend parts. If we really want to deliver value to the customers, we should deliver end-to-end features within a team. Having dedicated teams to frontend or backend layers isn't efficient and productive. Applying an architectural style to our backend (based on microservices or not) or trying to be organized in teams with no end-end skills, we won't get enough autonomy to deliver (and maintain) end-to-end features and provide value to the final user. I like so much [this tweet from Sam Newman](https://twitter.com/samnewman/status/1167062137006645249):
+But, is this valuable for the final user or customer? When we are developing a product or features, we shouldn't forget that the most of features contains backend and frontend parts. If we really want to deliver value to the customers, we should deliver end-to-end features within a team. Having dedicated teams to frontend or backend layers isn't efficient and productive. Applying an architectural style to our backend (based on microservices or not) or trying to be organized in teams with no end-end skills, we won't get enough autonomy to deliver (and maintain) end-to-end features and provide value to the final user. I like so much [this tweet from Sam Newman](https://twitter.com/samnewman/status/1167062137006645249):
 
 ![Sam Newman Tweet](/images/microfrontends/newman.png)
 
-Business is changing everyday. Companies doesn't know how their business needs will be in a few months. So, why does a company have to adopt a concrete framework or technology to build solutions to resolve all its business problems? 
+Business is changing everyday, customers are demanding more and more digital procedures. How can companies  know how their business needs will be in a few months?. They don't. 
 
-> Companies need an architecture based on independent pieces to build end-to-end solutions and technology agnostic in order to be able to evolve easily according to business needs.
+> Companies need architectures based on independent and decoupled pieces to build end-to-end solutions. These architectures must be technology agnostic in order to be able to evolve easily according to business needs and the evolution of the technology itself.
 
 So, it seems logical that the next step should be build end-to-end functionalities within a team. In this context, the term **Microfrontend** really begins to make sense
 
@@ -47,7 +45,9 @@ The truth is that if we want to provide business value to end users we will need
 
 ## End-to-end perspective
 
-Many companies have started to modernize their architectures in order to build better applications, more scalables and more evolvables. Some of theses companies use a Microservices style, others have decided to back to better monoliths and others are thinking about how improve the way to build software. In the most of them there is something common: they think about services, decomposition in pieces, independent teams, agility, etc but focused on backend systems (APIs, backend services, migration HOST to (micro) services, etc...). 
+Many companies have started to modernize their architectures in order to build better applications, more scalables and more evolvables. Some of theses companies use a Microservices style, others have decided to return to monoliths but building "better monoliths" and others are just thinking about how improve the way to build software. 
+
+The most of them have something common: they think about services, decomposition in pieces, independent teams, agility, etc but the most have started just focusing on backend systems (APIs, backend services, migration HOST to (micro) services, etc...). 
 
 But, as we have seen in the previous section, something is true: the most of features are end-to-end and they are  composed for elements in every layer:
 
@@ -55,7 +55,7 @@ But, as we have seen in the previous section, something is true: the most of fea
 
 So, taking an approach only focused in backend services (or systems) is not enough efficient and productive:
 
-- If you build wonderful (backend) services around business capabilities but you don't build an UI associated to those business capabilities your will not be building unique or inmutable business capabilities. You are building differents flavours of the same business capability because you will build several UIs in different applications to perfom the same business capability (or very similar)  
+- If you build wonderful (backend) services around business capabilities but you don't build an UI associated to those business capabilities your will not be building unique or inmutable business capabilities. You will be building differents flavours of the same business capability because you will build several UIs in different applications to perfom the same business capability (or very similar)  
 
   ![feature-different-views](/images/microfrontends/feature-different-views.png)
 
@@ -65,11 +65,11 @@ So, taking an approach only focused in backend services (or systems) is not enou
 
   
 
-- If you achieve a great autonomy in backend systems but you don't do the same in the frontend apps, your (backend) autonomy is not real because you can not deliver end-to-end features to the end user without depending others. 
+- If you achieve a great autonomy in backend systems but you don't do the same in the frontend apps, that means that your (backend) autonomy is not real because you can not deliver end-to-end features to the end user without depending others. 
 
   ![autonomy](/images/microfrontends/autonomy.png)
 
-It seems that building end-to-end features leaded and owned by a team would be more efficient, isn't it? 
+It seems that building end-to-end features leaded and owned by a unique team would be more efficient, isn't it? 
 
 ![end-to-end-features](/images/microfrontends/end-to-end-features.png)
 
@@ -83,21 +83,17 @@ If one team is able to develop all the necessary elements for deliver a feature,
 
 ## Keep the business features inmutables and reuse them
 
-Imagine this scenario. Maybe it's not the best approach to organize a company architecture but it could be something real in many companies:
+Imagine this situation. Maybe it's not the best approach to organize a company architecture but it could be something real in many companies:
 
 ![example](/images/microfrontends/situation-example.png)
 
-We can see two applications consumed by different users: 
+In this scenario, we can see two applications consumed by different users: 
 
 - Customers: application in which customers (final users) perform business actions. 
 
 - Customer Care: application used by employees to help to their customers. This application tries to be similar to the Customers application in order to give a good service to the customer.
 
-
-
-#### How could this be implemented?
-
-One approach could be that both applications have their own backend for frontend in order to orchestrate calls to different services and manage details regarding to different channels and different frontend developments are built in each application. Other approach could be to build a frontend module containing the functionality and this module is integrated in both applications. The backend for frontend usually depends on the application and it isn't reused and backend services are the same in both applications. In other companies, there will not be backend for frontend and frontend applications will consume directly backend services.
+There are many ways to implement this scenario: one approach could be that both applications have their own backend for frontend in order to orchestrate calls to different services and manage details regarding to different channels and different frontend developments are built in each application. Other approach could be to build a frontend module containing the functionality and this module is integrated in both applications. The backend for frontend usually depends on the application and it isn't reused and backend services are the same in both applications. In other companies, there will not be backend for frontend and frontend applications will consume directly backend services.
 
 In all the approaches, backend services are uniques and developed by an specific team but frontend parts are not uniques and they are developed by different teams. If a backend service change and a new version is released, the backend for frontend or the frontend will consume this new version of the service. 
 
@@ -119,7 +115,7 @@ As we do in backend part, it we can isolate business capabilities in the fronten
 
 As I'm saying in the previous sections, the target is to build end-to-end business components. If we could build independent and fully business components, composed of all the necessary elements, versionables, developed, owned and maintained by a team and loaded and integrated at runtime in the application we are building little end-to-end products to be delivered to the different applications that need to include these business features.
 
-The following picture summarizesummarizes the idea behind Microfrontends:
+The following picture summarizes the idea behind Microfrontends:
 
 ![microfrontends-idea](/images/microfrontends/microfrontends-idea.png)
 
@@ -129,7 +125,7 @@ The following picture summarizesummarizes the idea behind Microfrontends:
 
 The target associated to this concept is **to provide a "headfull" business service instead just a backend service or "headless" service**. So, when we say "Microfrontend" we mean **an unique end-to-end business component to be instantiated by the frontend part of the different applications**
 
-Considering this perspective, obviously, the main part of a microfrontend is the frontend part. This part is what will be consumed and loaded by applications or another microfrontends. In order to get fully business capabilities, calling to backend services will be necessary. How is it managed? Here, there are several possibilities:
+Considering this perspective, obviously, **the main part of a microfrontend is the frontend part**. This part is what will be consumed and loaded by applications or another microfrontends. In order to get fully business capabilities, calling to backend services will be necessary. How is it managed? Here, there are several possibilities:
 
 - Building a backend piece (**backend for frontend**) in order to manage calls to business API, orchestration, information adaptation to the channel,...,etc. This piece will be also part of the microfrontend, sharing ownership. This approach will be the most usual because in real systems, orchestration of services is very common in the most functionalities.
 
@@ -140,7 +136,7 @@ Considering this perspective, obviously, the main part of a microfrontend is the
 
 So, in the most of cases a microfrontend will be composed by:
 
-- An User Interface implemented in any frontend technology or framework.
+- An User Interface implemented in any frontend technology or framework supporting to be consumed by "an http call".
 
 - A Backend for Frontend implemented in any technology that supports interaction with the UI component, the channels and the different backend services. It also manages the first level of security and the access to the business APIs
 
