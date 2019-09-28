@@ -81,6 +81,8 @@ If one team is able to develop all the necessary elements for deliver a feature,
 
 
 
+
+
 ## Keep the business features inmutables and reuse them
 
 Imagine this situation. Maybe it's not the best approach to organize a company architecture but it could be something real in many companies:
@@ -111,9 +113,13 @@ As we do in backend part, it we can isolate business capabilities in the fronten
 
 ![inmutable features](/images/microfrontends/inmutable-fetatures.png)
 
+
+
 # Microfrontends: fully business components
 
-As I'm saying in the previous sections, the target is to build end-to-end business components. If we could build independent and fully business components, composed of all the necessary elements, versionables, developed, owned and maintained by a team and loaded and integrated at runtime in the application we are building little end-to-end products to be delivered to the different applications that need to include these business features.
+As I'm saying in the previous sections, the target is to build end-to-end business components that applications can load in a decoupled way (by a http call) and technology agnostic. 
+
+If we could build fully business components, independent and composed of all the necessary elements, versionables, developed, owned and maintained by a team and loaded and integrated at runtime in the application, we will be building little end-to-end products to be delivered to the different applications that need to include these business features.
 
 The following picture summarizes the idea behind Microfrontends:
 
@@ -121,9 +127,9 @@ The following picture summarizes the idea behind Microfrontends:
 
 
 
-## What is a Microfrontend?
+## So, what is a Microfrontend?
 
-The target associated to this concept is **to provide a "headfull" business service instead just a backend service or "headless" service**. So, when we say "Microfrontend" we mean **an unique end-to-end business component to be instantiated by the frontend part of the different applications**
+Microfrontend is just **to provide a "headfull" business service instead just a backend service or "headless" service**. So, when we say "Microfrontend" we mean **an unique end-to-end business component to be called and  instantiated at runtime by the frontend part of the different applications**
 
 Considering this perspective, obviously, **the main part of a microfrontend is the frontend part**. This part is what will be consumed and loaded by applications or another microfrontends. In order to get fully business capabilities, calling to backend services will be necessary. How is it managed? Here, there are several possibilities:
 
