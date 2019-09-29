@@ -12,25 +12,27 @@ tags:
 
 ![microfrontend basic structure](/images/microfrontends/Work-in-Progress.jpg) 
 
-Do you know Microservices? Sure. Microservices are everywhere. Sometimes the experience is positive, sometimes is negative but the term is in the air. It is usually related to backend architecture and talking about how a system could be decomposed in autonomous and independent pieces, owned and developed by single teams, deployed independently and working all together.
+Have you heard the term "Microservices"? Sure. Microservices are everywhere. Sometimes the experience is positive, sometimes is negative but "Microservices" are there. This concept is usually related to backend architecture and talking about how a system could be decomposed in autonomous and independent pieces, owned and developed by single teams, deployed independently and working all together.
 
-But, is this valuable for the final user or customer? When we are developing a product or features, we shouldn't forget that the most of features contains backend and frontend parts. If we really want to deliver value to the customers, we should deliver end-to-end features within a team. Having dedicated teams to frontend or backend layers isn't efficient and productive. Applying an architectural style to our backend (based on microservices or not) or trying to be organized in teams with no end-end skills, we won't get enough autonomy to deliver (and maintain) end-to-end features and provide value to the final user. I like so much [this tweet from Sam Newman](https://twitter.com/samnewman/status/1167062137006645249):
+But, how is this valuable for the final user or customer? When we are developing a product or features, we shouldn't forget that the most of features contains backend and frontend parts. If we really want to deliver real value to the customers, we should deliver end-to-end features within a team. 
+
+I like so much [this tweet from Sam Newman](https://twitter.com/samnewman/status/1167062137006645249):
 
 ![Sam Newman Tweet](/images/microfrontends/newman.png)
 
-Business is changing everyday, customers are demanding more and more digital procedures. How can companies  know how their business needs will be in a few months?. They don't. 
+Having dedicated teams to frontend or backend layers isn't efficient and productive. Applying an architectural style just to backend (based on microservices or not) or trying to be organized in teams with no end-end skills, we won't get enough autonomy to deliver (and maintain) end-to-end features and provide value to the final user.
 
-> Companies need architectures based on independent and decoupled pieces to build end-to-end solutions. These architectures must be technology agnostic in order to be able to evolve easily according to business needs and the evolution of the technology itself.
+What about Business? Business is changing everyday, customers are demanding more and more digital processes. How can companies know how their business needs will be in a few months?. They don't. 
 
-So, it seems logical that the next step should be build end-to-end functionalities within a team. In this context, the term **Microfrontend** really begins to make sense
+> Companies doesn't need static architectures. They need dynamic architectures based on independent and decoupled pieces to build end-to-end solutions for each moment. These architectures have to be end-to-end architectures and must be technology agnostic in order to be able to evolve easily according to business needs and the evolution of the technology itself.
 
-# Build products, not just "services"
+In this context, the term **Microfrontend** really begins to make sense
 
-If you think about software products, for sure you are thinking about applications where you perform business actions. You use these applications through the user interface and you don't care about what is behind that UI, do you? 
+# Build products, not just "headless services"
 
-For instance, you use your banking application to check your global balance, last movements of some account or make a transfer and you want actions to be done. You only interact with the user interface, not with the services behind that UI. You want the application to work well, just that.
+If you think about software products from an user perspective, for sure you are thinking about applications where you perform some business actions like making a purchase, ordering a transfer or booking an hotel. You use these applications through the user interface and you don't care about what is behind that UI, do you? For instance, when you use your banking application to check your global balance or last movements you only interact with the user interface, not with the services behind that UI. You want the application to work well, just that.
 
-As final user, you don't care If your bank release a new version of backend payment service or a new version of some frontend components. A final user wants an end-to-end solution. 
+As final user, you don't care If your bank release a new version of backend payment service or a new version of some frontend components. A final user demands an end-to-end solution or product where frontend and backend pieces works together.
 
 Ok, as software developers, we know that behind the UI there are services, data and other systems. But, everything needs to work together in order to provide business capabilities to the end users:
 
