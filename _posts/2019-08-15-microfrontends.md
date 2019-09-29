@@ -32,16 +32,14 @@ In this context, the term **Microfrontend** really begins to make sense
 
 If you think about software products from an user perspective, for sure you are thinking about applications where you perform some business actions like making a purchase, ordering a transfer or booking an hotel. You use these applications through the user interface and you don't care about what is behind that UI, do you? For instance, when you use your banking application to check your global balance or last movements you only interact with the user interface, not with the services behind that UI. You want the application to work well, just that.
 
-As final user, you don't care If your bank release a new version of backend payment service or a new version of some frontend components. A final user demands an end-to-end solution or product where frontend and backend pieces works together.
-
-Ok, as software developers, we know that behind the UI there are services, data and other systems. But, everything needs to work together in order to provide business capabilities to the end users:
+As final user, you don't care If your bank release a new version of backend payment service or a new version of some frontend components. A final user demands an end-to-end solution or product where frontend and backend pieces works together:
 
 - If the UI is great but backend services don't work well (or not exist) the UI will not provide value to the user. 
 - If backend services work well but there is no UI or the UI doesn't work, the system will not provide value to the user. If several applications have similar business need (features) and the UI looks different in each one or works differently (because UI or services), the user experience is so bad
 
 ![why_microfrontends](/images/microfrontends/products.png)
 
-The truth is that if we want to provide business value to end users we will need a good user interface working with good services like a whole. 
+So, in my opinion, "Microservices" are the beginning but they are not enough to deliver value. The truth is that if we want to provide business value to end users we will need a good user interface working with good services like a whole. Deliver value means deliver software products or end-to-end components.
 
 
 
@@ -57,7 +55,7 @@ But, as we have seen in the previous section, something is true: the most of fea
 
 So, taking an approach only focused in backend services (or systems) is not enough efficient and productive:
 
-- If you build wonderful (backend) services around business capabilities but you don't build an UI associated to those business capabilities your will not be building unique or inmutable business capabilities. You will be building differents flavours of the same business capability because you will build several UIs in different applications to perfom the same business capability (or very similar)  
+- If you build wonderful (backend) services around business capabilities but you don't build an UI associated to those business capabilities your will not be building unique business capabilities. You will be building differents flavours of the same business capability because you will build several UIs in different applications to perfom the same business capability (or very similar)  
 
   ![feature-different-views](/images/microfrontends/feature-different-views.png)
 
