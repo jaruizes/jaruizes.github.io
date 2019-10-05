@@ -10,8 +10,6 @@ tags:
     - microfrontends
 ---
 
-![microfrontend basic structure](/images/microfrontends/Work-in-Progress.jpg) 
-
 Have you heard the term "Microservices"? Sure. Microservices are everywhere. Sometimes the experience is positive, sometimes is negative but "Microservices" are there. This concept is usually related to backend architecture and talking about how a system could be decomposed in autonomous and independent pieces, owned and developed by single teams, deployed independently and working all together.
 
 But, how is this valuable for the final user or customer? When we are developing a product or features, we shouldn't forget that the most of features contains backend and frontend parts. If we really want to deliver real value to the customers, we should deliver end-to-end features within a team. 
