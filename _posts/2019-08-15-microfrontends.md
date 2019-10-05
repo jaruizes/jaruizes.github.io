@@ -1,7 +1,7 @@
 ---
 author: jaruizes
 layout: post
-title: "Microfrontends"
+title: "Thoughs about Microfrontends"
 date: 2019-10-01 01:30
 category : Microfrontends
 comments: false
@@ -26,7 +26,7 @@ What about Business? Business is changing everyday, customers are demanding more
 
 > Companies doesn't need static architectures. They need dynamic architectures based on independent and decoupled pieces to build end-to-end solutions for each moment. These architectures have to be end-to-end architectures and must be technology agnostic in order to be able to evolve easily according to business needs and the evolution of the technology itself.
 
-In this context, the term **Microfrontend** really begins to make sense
+In this context, the term **Microfrontend** really begins to make sense. In this post I'm not going to talk about technical implementations about Microfrontends (Zalando, DAZN, Ikea...) because I want to express my (logical) perspective about them.
 
 # Build products, not just "headless services"
 
