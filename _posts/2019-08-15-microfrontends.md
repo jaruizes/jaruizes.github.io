@@ -179,6 +179,38 @@ These models are similar but with little differences:
 
 > Why don't do the same with the frontend components?
 
+
+
+## Communications based in events
+
+We're talking about a fully decoupled pieces in a frontend application. These pieces are independent and each of them implement a business capability but there are some scenarios when an action in a business component fires another action in other component. 
+
+Imagine an online shop. The catalog could be implemented by a Microfrontend and it manages everything related to show the products to the user. When the user click the icon "add to cart", the Microfrontend implementing the cart capability has to be notified that a product needs to be added to the cart. But, maybe others Microfrontend want to be notified too (recent products added, history, etc...)
+
+The way to notify these actions can not be imperatively, that is, the catalog component calling other components directly. Why not? Because if the catalog knows which components need to be notified, we'll build a full coupled system. The idea isn't this. 
+
+The idea is that components should be totally independent, that means that they don't know which other components are loaded or if they have to call to concrete component when something happens. When something (important) happens an event is sent to the event bus and other components can listen to these events and react to them. These events contains information about the action performed and the component who has fired it.
+
+
+
+### What is important and should be notified?
+
+I don't know. Depends on your system or applications. What isn't important today could be important tomorrow. By this reason is so important that components are totally decoupled and fire and listen to events. 
+
+In this kind of architectures, design exercises are fundamental because it's necessary to model which events need to be notified, their information and who is going to react to them and how.
+
+That adds complexity to the system because it's more difficult to trace actions and to know the state of the system. 
+
+
+
+## Which is the state?
+
+The state? Each Microfrontend has to own state but the application composed by some Microfrontends and other pieces (no Microfrontends) has its state. 
+
+The state within a Microfrontend is controlled independently by that Microfrontend and it's doesn't care to the main application. This state changes by the events heard by the Microfrontend. The state of the main application is the state associated to the Microfrontend orchestration and it's complex to manage.
+
+Once again, design is so important. Time to design and design well is fundamental. You are going to fail if you don't take time to think about the system, its events, its components and how everything is going to work together.
+
 # Microfrontends: applying Microservices principles
 
 When we talk about Microfrontends (or Microservices) we are talking about a way to build complex systems and how to structure the different pieces and their interactions. We don't talk about concrete technology. By this reason, Microfrontends goes beyond frontend frameworks and their power fight: Angular vs React vs Vue vs ...
