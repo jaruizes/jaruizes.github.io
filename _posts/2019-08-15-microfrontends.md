@@ -444,9 +444,17 @@ If we want to treat Microfrontends as services we need to define a contract to b
 
 # Microfrontends is a company decission
 
-## Domain Driven Design
 
-Microfrontends are technical representation of a business subdomains and they birth because a business need. Within a domain or subdomain we'll find Backend Services but we'll also find "visual services" or Microfrontends. Both of them provide business capabilities and because of that, a business owner is required. 
+
+## Culture
+
+Sorry, **Culture is a key factor for success** when you work with architectures "micro-x". Applying some architectural patterns is not possible if the company isn't ready. This is it. 
+
+Cultural changes are necessary in order to get success. If you don’t transform your culture, you’re not going to success with “Microfrontends” or "Microservices". Culture is the more powerful strenght in your company.
+
+![culture](/images/microfrontends/culture.png)
+
+I'm not goint to talk about [Conway's law](https://en.wikipedia.org/wiki/Conway%27s_law) in this post but I do would like to remember this phrase from [Microsoft CEO Satya Nadella](https://news.microsoft.com/en-gb/2018/11/07/microsoft-ceo-satya-nadella-on-fuelling-tech-intensity-in-the-uk/) saying "every company is a software company". Nowdays, business means "digital business" and that is totally related to building software and delivering value faster than the competitors. 
 
 If people from business departments are not involved in adopting this architectural style, you are going to fail working with this architectural style because only are going to add complexity to the system. Microfrontends will appears everywhere and the governance will be impossible.
 
@@ -455,32 +463,29 @@ A Microfrontend is (should be) like an usual business service defined from the b
 - Resolves a business need
 - Changes in functionality must be always origined by business changes
 
+So, aspects like the following ones are fundamental in this kind of architectures (and in software development in general):
+
+- No silos. Global vision
+- Agile principles in software development
+- Business people integrated into teams
+- Ownership
+- Autonomy over control
+
+The way you build your software should be the way more suitable for your company and its characteristics: size, history, employees, maturity,...,etc.
+
 
 
 ## Where's the limit?
 
 As I said previously, one of the main principles is to provide (visual) fully functional independent components that manage API calls and backend services. 
 
-A microfrontend is a product that is offered to a consumer. The user of the microfrontend doesn't care about API calls or backend services that the microfrontend performs. The owner of the microfrontend is responsible for keeping the "business piece" up and running so, the ideal situation would be one in wich the owner is responsible for all the elements, from UI part till the backend for frontend or the deepest service and all of those components are managed by the same team
+A Microfrontend is a product that is offered to a consumer, external or internal. The user of the microfrontend doesn't care about API calls or which backend services the microfrontend uses. 
+
+The owner of the microfrontend is responsible for keeping this "business piece" up and running so, the ideal situation would be the one in wich the owner is responsible for all the elements, from UI part till the backend for frontend or the deepest service and all of those components are managed by the same team
 
 Depending of how the company is organized it may be more feasible or not. Therefore, once again, adopting an architectural style implies organization and cultural changes to be successful. 
 
 Microfrontends' style is not dividing frontend applications into pieces and managing backend calls within them. Microfrontends' style is to provide ownership and autonomy throughout full business functionalities. 
-
-
-
-## A silver bullet? 
-
-As I mentioned before, Microfrontends is an architectural style that try to resolve concrete problems. Maybe you have these problems in your entire company or only in certain areas. The key is to adopt this style when it was necessary because more complexity is being added to the system, more pieces and components that have to be managed.
-
-For instance, Microfrontends may help you if:
-
-- There are several business parts with different maintenance requirements than others. 
-- Building fast prototypes of new features is requiered by Business but the current technology and processes difficult it
-- The frontend team is very huge and compact and it would be better to distribute it in smaller teams around business capabilities
-- Frontend applications are complex and big
-- Applying a different technology (or framework) than the main one to build some functionalities is necessary 
-- Your company is used to work in autonomous teams around domains and subdomains
 
 
 
@@ -498,9 +503,9 @@ Having this in mind, I would like to summarize the frontend states in three:
 
 Does it mean that you should build everything like a Microfrontend? I don't think so. 
 
-In my opinion, you should take a global picture of your company and how its business is. Once you know well your business and your company, think about where it's worth to build a Microntend because pros are better than cons, where it's worth to build "just an UI component" and where it's worth to build "just an application". It's not black or white. 
+In my opinion, you should take a global picture of your company and how its business is. Apply Domain Driven Design techniques in order to model complex domains. Once you know well your business and your company, think about where it's worth to build a Microntend because pros are better than cons, where it's worth to build "just an UI component" and where it's worth to build "just an application". It's not black or white. 
 
-I prefer the **"monolith first" strategy** but designing and building thinking in business components that eventually could be extract to a NPM package or a Microfrontend if a business need requires it.
+I prefer the **"monolith first" strategy** but always designing and building software thinking in business components that eventually could be extract to a NPM package or a Microfrontend (called by Http request) if a business need requires it.
 
 If there are several applications that don't share any business feature, are very stables and their maintenance is "easy", why are you going to build Microfrontends or "business UI components" from the beginning? You are going to add complexity to those applications and you are not going to get any benefit from appliying those strategies. Build good monoliths apps, well structured in modules and components, with a good testing strategy and, if in the future you need to extract some components in order to be reused by other application, it'll be easy to extract them.
 
@@ -508,11 +513,20 @@ If you apply this strategy, the worst scenary could be that the technology used 
 
 
 
-## Culture
+## A silver bullet? 
 
-Applying some architectural patterns is not possible if the company isn't ready. Sometimes cultural changes are necessary in order to get success. The culture is a key factor. If you don’t transform your culture, you’re not going to success with “Microfrontends” or "Microservices". Culture is the more powerful strenght in your company.
+Microfrontends is an architectural style that try to resolve concrete problems. Maybe you have these problems in your entire company or only in certain areas. The key is to adopt this style when it was necessary because more complexity is being added to the system, more pieces and components that have to be managed.
 
-![culture](/images/microfrontends/culture.png)
+For instance, Microfrontends may help you if:
+
+- There are several business parts with different maintenance requirements than others. 
+- Building fast prototypes of new features is requiered by Business but the current technology and processes difficult it
+- The frontend team is very huge and compact and it would be better to distribute it in smaller teams around business capabilities
+- Frontend applications are complex and big
+- Applying a different technology (or framework) than the main one to build some functionalities is necessary 
+- Your company is used to work in autonomous teams around domains and subdomains
+
+
 
 
 
