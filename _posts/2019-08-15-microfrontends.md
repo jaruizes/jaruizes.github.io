@@ -484,7 +484,32 @@ If we want to treat Microfrontends as services we need to define a contract to b
 
 # Microfrontend lifecycle
 
-TO BE COMPLETED
+When we are working with components that are integrated to work together, the lifecycle is very important. When I talk about lifecycle I mean the different phases through which a Microfrontend passes, from the Microfrontend is requested to the Microfrontend Registry Server to the Microfrontend is completely instatiated and running within the application.
+
+I'm not going to set an standard lifecyle because I think this has to be customized depending on the company but I think at least two phases are necessary: loaded and ready. This phases are notified to the main application (and the rest component connected to the event bus) by events.
+
+
+
+#### Microfrontend loaded
+
+When a Microfrontend is requested to the Microfrontend Registry by an http call, the main file of the Microfrontend is delivered to the application. In this moment, 
+
+- the Microfrontend main file (usually a Javascript file) is loaded within the main application, 
+- an id is assigned by the Microfrontend Loader Component in order to identify a unique instance of the Microfrontend 
+- Microfrontend attributes are initialized
+- A "microfrontend loaded event" containing information about the Microfrontend is fired to the Event Bus
+
+The Microfrontend instance it isn't ready yet because, usually, the main file of the Microfrontend will begin to request other files (language files, config files, assets, etc) and it could be make some calls to the API in order to get the data necessary to work.
+
+The id assigned to the Microfrontend is very important because it will be used to determine which instance of a Microfrontend is working in every moment. 
+
+Scenarios in which more than one instance of a Microfrontend could be possible. Imagine for instance that a Microfrontend containing information about a product is available and it's necessary to implement a feature consisting on compare two products. The application could load two instances of the same Microfrontend and passing different products ids to each one. 
+
+
+
+#### Microfrontend ready
+
+Once the Microfrontend has loaded all the necessary files and the API calls in order to get the initial data to be shown, the Microfrontend is ready. In this moment, the application could make the microfrontend visible and the final user could interact with it. You could considered 
 
 # Microfrontends is a company decission
 
