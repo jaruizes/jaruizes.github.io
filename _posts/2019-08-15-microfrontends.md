@@ -179,7 +179,7 @@ These models are similar but with little differences:
 
 
 
-## Communications based in events
+## Event bus
 
 We're talking about a fully decoupled pieces in a frontend application. These pieces are independent and each of them implement a business capability but there are some scenarios when an action in a business component fires another action in other component. 
 
@@ -187,7 +187,9 @@ Imagine an online shop. The catalog could be implemented by a Microfrontend and 
 
 The way to notify these actions can not be imperatively, that is, the catalog component calling other components directly. Why not? Because if the catalog knows which components need to be notified, we'll build a full coupled system. The idea isn't this. 
 
-The idea is that components should be totally independent, that means that they don't know which other components are loaded or if they have to call to concrete component when something happens. When something (important) happens an event is sent to the event bus and other components can listen to these events and react to them. These events contains information about the action performed and the component who has fired it.
+The idea is that components should be totally independent, that means that they don't know which other components are loaded or if they have to call to concrete component when something happens. When something (important) happens, an event is sent to the event bus and other components can listen to these events and react to them. These events contains information about the action performed and the component who has fired it.
+
+<img src="/images/microfrontends/event-bus.png" alt="event bus" title="Event Bus" width="480" height="320" />
 
 
 
