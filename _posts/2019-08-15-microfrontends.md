@@ -26,6 +26,8 @@ What about Business? Business is changing everyday, customers are demanding more
 
 In this context, the term **Microfrontend** really begins to make sense. In this post I'm not going to talk about technical implementations about Microfrontends (Zalando, DAZN, Ikea...) because I want to express my (logical) perspective about them.
 
+<br>
+
 # Build products, not just "headless services"
 
 If you think about software products from an user perspective, for sure you are thinking about applications where you perform some business actions like making a purchase, ordering a transfer or booking an hotel. You use these applications through the user interface and you don't care about what is behind that UI, do you? For instance, when you use your banking application to check your global balance or last movements you only interact with the user interface, not with the services behind that UI. You want the application to work well, just that.
@@ -77,9 +79,7 @@ If one team is able to develop all the necessary elements for deliver a feature,
 - the feature is owned by a team (functionally and technically)
 - quality is applied end-to-end
 
-
-
-
+<br>
 
 ## Keep the business features inmutables and reuse them
 
@@ -111,7 +111,7 @@ As we do in backend part, it we can isolate business capabilities in the fronten
 
 ![inmutable features](/images/microfrontends/inmutable-fetatures.png)
 
-
+<br>
 
 # Microfrontends: fully business components
 
@@ -123,7 +123,7 @@ The following picture summarizes the idea behind Microfrontends:
 
 ![microfrontends-idea](/images/microfrontends/microfrontends-idea.png)
 
-
+<br>
 
 ## So, what is a Microfrontend?
 
@@ -203,13 +203,17 @@ That adds complexity to the system because it's more difficult to trace actions 
 
 
 
-## Which is the state?
+## Where is the state?
 
 The state? Each Microfrontend has to own state but the application composed by some Microfrontends and other pieces (no Microfrontends) has its state. 
 
-The state within a Microfrontend is controlled independently by that Microfrontend and it's doesn't care to the main application. This state changes by the events heard by the Microfrontend. The state of the main application is the state associated to the Microfrontend orchestration and it's complex to manage.
+The state within a Microfrontend is controlled independently by that Microfrontend and it's doesn't care to the main application. This state changes by the events heard by the Microfrontend. The state of the main application is the state associated to the Microfrontend choreography and it's complex to manage.
+
+<img src="/images/microfrontends/state.png" alt="state" title="State" width="480" height="320" />
 
 Once again, design is so important. Time to design and design well is fundamental. You are going to fail if you don't take time to think about the system, its events, its components and how everything is going to work together.
+
+<br>
 
 # Microfrontends: applying Microservices principles
 
