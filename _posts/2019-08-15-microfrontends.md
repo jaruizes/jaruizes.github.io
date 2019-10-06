@@ -148,7 +148,7 @@ It's very important to consider all the components associated to the microfronte
 
 <img src="/images/microfrontends/structure-basic.png" alt="basic structure" title="Microfrontend Basic Structure" width="480" height="320" />
 
-
+<br>
 
 ## Loaded and integrated at runtime (like services)
 
@@ -177,7 +177,7 @@ These models are similar but with little differences:
 
 > Why don't do the same with the frontend components?
 
-
+<br>
 
 ## Event bus
 
@@ -201,7 +201,7 @@ In this kind of architectures, design exercises are fundamental because it's nec
 
 That adds complexity to the system because it's more difficult to trace actions and to know the state of the system. 
 
-
+<br>
 
 ## Where is the state?
 
@@ -215,7 +215,7 @@ Once again, design is so important. Time to design and design well is fundamenta
 
 <br>
 
-# Microfrontends: applying Microservices principles
+# Microfrontends and Microservices principles
 
 When we talk about Microfrontends (or Microservices) we are talking about a way to build complex systems and how to structure the different pieces and their interactions. We don't talk about concrete technology. By this reason, Microfrontends goes beyond frontend frameworks and their power fight: Angular vs React vs Vue vs ...
 
@@ -397,7 +397,7 @@ But thinking about how to divide the system is crucial, not considering just one
 
 Build a microfrontend just for being consumed in runtime instead building the same functionality inside the application or in a package, could make sense if that business component has many changes or if it should be implemented in other technology, but if you don't have these kind of problems, only are adding complexity. 
 
-
+<br>
 
 # UI Components vs Microfrontends (Business Components)
 
@@ -430,7 +430,7 @@ UI Components could be part of the visual layer of a microfrontend. Within a mic
 
 ![microfrontend-vs-uicomponents](/images/microfrontends/microfrontend-vs-uicomponents.png)
 
-
+<br>
 
 ### Web Components != Microfrontends
 
@@ -465,6 +465,8 @@ Think about your UI catalog components and its complex components. They are desi
 
 Microfrontends don't have to be static and closed pieces from a visual point of view. They could declare some properties in order to customize their aspect or appliying themes. Custom CSS properties are very helpful to achieve this capability.
 
+<br>
+
 # Microfrontend contract
 
 If we want to treat Microfrontends as services we need to define a contract to be used by the customers to work with them. What should a Microfrontend define?
@@ -477,6 +479,12 @@ If we want to treat Microfrontends as services we need to define a contract to b
 - Events: 
   - Which events is it listening to
   - Which events are firing and when 
+
+<br>
+
+# Microfrontend lifecycle
+
+TO BE COMPLETED
 
 # Microfrontends is a company decission
 
@@ -564,6 +572,8 @@ For instance, Microfrontends may help you if:
 
 
 
+<br>
 
+<br>
 
 I hope you’ve liked this post. I've tried to explain how I understand the term Microfrontends. In next posts, I'll show a little practical example implementing Microfrontends
