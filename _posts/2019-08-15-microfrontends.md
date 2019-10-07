@@ -499,8 +499,6 @@ When a Microfrontend is requested to the Microfrontend Registry by an http call,
 - Microfrontend attributes are initialized
 - A "microfrontend loaded event" containing information about the Microfrontend is fired to the Event Bus
 
-The Microfrontend instance it isn't ready yet because, usually, the main file of the Microfrontend will begin to request other files (language files, config files, assets, etc) and it could be make some calls to the API in order to get the data necessary to work.
-
 The id assigned to the Microfrontend is very important because it will be used to determine which instance of a Microfrontend is working in every moment. 
 
 Scenarios in which more than one instance of a Microfrontend could be possible. Imagine for instance that a Microfrontend containing information about a product is available and it's necessary to implement a feature consisting on compare two products. The application could load two instances of the same Microfrontend and passing different products ids to each one. 
@@ -509,7 +507,19 @@ Scenarios in which more than one instance of a Microfrontend could be possible. 
 
 #### Microfrontend ready
 
-Once the Microfrontend has loaded all the necessary files and the API calls in order to get the initial data to be shown, the Microfrontend is ready. In this moment, the application could make the microfrontend visible and the final user could interact with it. You could considered 
+Once the Microfrontend is loaded, the main file of the Microfrontend will begin to request other files (language files, config files, assets, etc) and it could be make some calls to the API in order to get the data necessary to work.
+
+When the Microfrontend has loaded all the necessary files and the API calls in order to get the initial data to be shown, the Microfrontend is ready. In this moment, the application could make the microfrontend visible and the final user could interact with it. 
+
+In this moment, the Microfrontend will fire a "Microfrontend Ready Event" containing information about the Microfrontend. 
+
+
+
+#### Health check
+
+There is a capability that could be implemented by the Microfrontend Loader component consisting on not showing a Microfrontend till the ready event is fired by the Microfrontend. If the event isn't received in a defined seconds, the Microfrontend Loader could show a default component or another Microfrontend or do nothing visible for the user.
+
+By this way, the user doesn't realize that something could be wrong. For instance, think about in sites like Amazon where some components don't appear sometimes but you don't perceive that anthing isn't working well.
 
 # Microfrontends is a company decission
 
