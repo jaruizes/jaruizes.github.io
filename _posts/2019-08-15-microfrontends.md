@@ -484,15 +484,15 @@ If we want to treat Microfrontends as services we need to define a contract to b
 
 # Microfrontend lifecycle
 
-When we are working with components that are integrated to work together, the lifecycle is very important. When I talk about lifecycle I mean the different phases through which a Microfrontend passes, from the Microfrontend is requested to the Microfrontend Registry Server to the Microfrontend is completely instatiated and running within the application.
+When we are working with components that are integrated within an application to work together, managing the "lifecycle" is very important. When I talk about "lifecycle" I mean the different phases through which a Microfrontend passes, from the Microfrontend is requested to the Microfrontend Registry Server to the Microfrontend is completely instatiated and running within the application.
 
 I'm not going to set an standard lifecyle because I think this has to be customized depending on the company but I think at least two phases are necessary: loaded and ready. This phases are notified to the main application (and the rest component connected to the event bus) by events.
 
 
 
-#### Microfrontend loaded
+#### Loaded event
 
-When a Microfrontend is requested to the Microfrontend Registry by an http call, the main file of the Microfrontend is delivered to the application. In this moment, 
+When a Microfrontend is requested to the Microfrontend Registry, the main file of the Microfrontend is delivered to the application. In this moment, 
 
 - the Microfrontend main file (usually a Javascript file) is loaded within the main application, 
 - an id is assigned by the Microfrontend Loader Component in order to identify a unique instance of the Microfrontend 
@@ -505,7 +505,7 @@ Scenarios in which more than one instance of a Microfrontend could be possible. 
 
 
 
-#### Microfrontend ready
+#### Ready event
 
 Once the Microfrontend is loaded, the main file of the Microfrontend will begin to request other files (language files, config files, assets, etc) and it could be make some calls to the API in order to get the data necessary to work.
 
@@ -517,7 +517,9 @@ In this moment, the Microfrontend will fire a "Microfrontend Ready Event" contai
 
 #### Health check
 
-There is a capability that could be implemented by the Microfrontend Loader component consisting on not showing a Microfrontend till the ready event is fired by the Microfrontend. If the event isn't received in a defined seconds, the Microfrontend Loader could show a default component or another Microfrontend or do nothing visible for the user.
+When the application is composed by independent (business) components, sometimes some component could fail or not work as expected. In these scenarios, it's so useful not showing those components if they aren't work well. This capability can be implemented managing status events (loaded, ready) so that, initially the Microfrontends will be hidden until the ready events associated to them are catched. 
+
+There is a capability that could be implemented by the Microfrontend Loader. Once the Microfrontend Loader has received the main file of the Microfrontend and it has generated an ID for this Microfrontend, it waits for a ready event fired by this Microfrontend (containing the ID generated). When this event is received, the Microfrontend Loader shows the Microfrontend. If the event isn't received in a configured number of seconds, the Microfrontend Loader could show a default component, another Microfrontend or do nothing visible for the user and log the error to the backend layer in order to be analyzed
 
 By this way, the user doesn't realize that something could be wrong. For instance, think about in sites like Amazon where some components don't appear sometimes but you don't perceive that anthing isn't working well.
 
