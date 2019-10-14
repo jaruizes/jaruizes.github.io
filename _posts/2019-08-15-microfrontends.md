@@ -241,6 +241,8 @@ Like some architecture styles, it's important to set:
 
 Let's try to apply microservices principles to frontend world:
 
+<br>
+
 ### <a name="compservices">Componentization via Services</a>
 
 If you are using a modern frontend framework probably you're used to build UI components, package them into libraries and publish them in the NPM (or bower) repository. This means that every application uses these components by integrating them into the main application in build time and packaging all together in an unique package (although you are using lazy loading and components are loaded on demand). 
@@ -275,7 +277,7 @@ In Maven, you also find dependencies with "provided" and "runtime" scope. Depend
 
 "Runtime" scope is similar to the target of Microfrontend: not need dependencies at build phase, not package all the pieces within the parent application but being consumed at runtime
 
-
+<br>
 
 ### <a name="businesscap">Organized around Business Capabilities</a>
 
@@ -291,7 +293,7 @@ When I talk about "business need" I mean "business need" within a company not wi
 
 It's true that in the most of companies there isn't a green field and all the business needs are not always known when you are building applications. By this reason I recommend a "monolith first approach" and a set of business owners that have the global knowledge of the set of applications built in the company in order to determine when it's necessary  to extract a concrete functionality to a Microfrontend. 
 
-
+<br>
 
 ### <a name="products">Products not Projects</a>
 
@@ -309,7 +311,7 @@ As the Microfrontend also encapsulates backend API calls and the user of the Mic
 
 Besides that, several versions of a Microfrontend could be published and be consumed, so the team also has to keep in mind this aspect and managing the retirement of versions out-of-date.
 
-
+<br>
 
 ### <a name="endpoints">Smart endpoints and dumb pipes</a>
 
@@ -321,7 +323,7 @@ Microfrontends communications must be supported by DOM standards: html tags, att
 
 Microfrontends have a defined responsibility, that means that a Microfrontend is designed to solve a concrete business need not a set of them. 
 
-
+<br>
 
 ### <a name="governance">Decentralized Governance</a>
 
@@ -346,7 +348,7 @@ This doesn't mean that there is no Governance. Governace means principles, rules
 
 Similar with Security concerns. This needs to be defined globally and teams in charge of microfrontends must follow the patterns and rules.
 
-
+<br>
 
 ### <a name="data">Decentralized Data Management</a>
 
@@ -363,7 +365,7 @@ Microfrontends need to know if the user is athenticated and how to get the token
 - The main app intercepts all the backend calls and adds the security headers so microfrontends don't have to implement it
 - Microfrontends are allowed to get the tokens received when the user is authenticated and they are responsible for generating the security headers they need to access to the backend services.
 
-
+<br>
 
 ### <a name="infrastructure">Infrastructure Automation</a>
 
@@ -373,7 +375,7 @@ Remember that the key principle is autonomy so every microfrontend has to be its
 
 Teams will also manage their microfrontends in production environments, releasing new versions and maintaining current ones.
 
-
+<br>
 
 ### <a name="failure">Design for failure</a>
 
@@ -387,7 +389,7 @@ As I said, Microfrontends must be associated to a concrete runtime lifecycle to 
 
 Besides that, microfrontends must define a contract in which both input attributes and output events (even exceptions) should be defined. With these tools we can react to failure situations and manage them.
 
-
+<br>
 
 ### <a name="evolutionary">Evolutionary Design</a>
 
@@ -396,6 +398,8 @@ Working with microfrontends means working with components loaded in runtime, tot
 But thinking about how to divide the system is crucial, not considering just one application but a set of domains, subdomains and applications so that microfronteds could be consumed by several applications. 
 
 Build a microfrontend just for being consumed in runtime instead building the same functionality inside the application or in a package, could make sense if that business component has many changes or if it should be implemented in other technology, but if you don't have these kind of problems, only are adding complexity. 
+
+<br>
 
 <br>
 
@@ -450,6 +454,8 @@ This approach isn't the ideal one because there is a "strong" coupling between t
 
 > The target is being able to consume fully functional components like services without packaging them inside the application
 
+<br>
+
 # Visual concerns 
 
 When you listen the term "Microfrontend" for the first time maybe you wonder:
@@ -490,16 +496,16 @@ When we are working with components that are integrated within an application to
 
 I'm not going to set an standard lifecyle because I think this has to be customized depending on the company but I think at least two phases are necessary: loaded and ready. This phases are notified to the main application (and the rest component connected to the event bus) by events.
 
-
+<br>
 
 #### Loaded event
 
 When a Microfrontend is requested to the Microfrontend Registry, the main file of the Microfrontend is delivered to the application. In this moment, 
 
-- the Microfrontend main file (usually a Javascript file) is loaded within the main application, 
-- an id is assigned by the Microfrontend Loader Component in order to identify a unique instance of the Microfrontend 
-- Microfrontend attributes are initialized
-- A "microfrontend loaded event" containing information about the Microfrontend is fired to the Event Bus
+- the Microfrontend main file (usually a Javascript file) is loaded within the main application (1), 
+- an id is assigned by the Microfrontend Loader Component in order to identify a unique instance of the Microfrontend (2)
+- Microfrontend attributes are initialized (3)
+- A "microfrontend loaded event" containing information about the Microfrontend is fired to the Event Bus (4)
 
 ![loaded event](/images/microfrontends/loaded_event.png)
 
@@ -507,27 +513,35 @@ The id assigned to the Microfrontend is very important because it will be used t
 
 Scenarios in which more than one instance of a Microfrontend could be possible. Imagine for instance that a Microfrontend containing information about a product is available and it's necessary to implement a feature consisting on compare two products. The application could load two instances of the same Microfrontend and passing different products ids to each one. 
 
-
+<br>
 
 #### Ready event
 
-Once the Microfrontend is loaded, the main file of the Microfrontend will begin to request other files (language files, config files, assets, etc) and it could be make some calls to the API in order to get the data necessary to work.
+Once the Microfrontend is loaded, 
 
-When the Microfrontend has loaded all the necessary files and the API calls in order to get the initial data to be shown, the Microfrontend is ready. In this moment, the application could make the microfrontend visible and the final user could interact with it. 
-
-In this moment, the Microfrontend will fire a "Microfrontend Ready Event" containing information about the Microfrontend. 
+- the main file of the Microfrontend will begin to request other files (language files, config files, assets, etc) to the Registry Server (1)
+- some calls to the API could be made in order to get the data necessary to work (2)
+- the Microfrontend is ready and throws a "ready event" containing its ID (3)
+- the "ready event" is catched by the Loader and checks the ID contained in the "ready event" (4)
+- the Loader makes the microfrontend instance visible (5)
 
 ![ready event](/images/microfrontends/ready_event.png)
 
-
+<br>
 
 #### Health check
 
 When the application is composed by independent (business) components, sometimes some component could fail or not work as expected. In these scenarios, it's so useful not showing those components if they aren't work well. This capability can be implemented managing status events (loaded, ready) so that, initially the Microfrontends will be hidden until the ready events associated to them are catched. 
 
-There is a capability that could be implemented by the Microfrontend Loader. Once the Microfrontend Loader has received the main file of the Microfrontend and it has generated an ID for this Microfrontend, it waits for a ready event fired by this Microfrontend (containing the ID generated). When this event is received, the Microfrontend Loader shows the Microfrontend. If the event isn't received in a configured number of seconds, the Microfrontend Loader could show a default component, another Microfrontend or do nothing visible for the user and log the error to the backend layer in order to be analyzed
+Once the Microfrontend Loader has received the main file of the Microfrontend and it has generated an ID for this Microfrontend, it waits for a ready event fired by this Microfrontend (containing the ID generated). When this event is received, the Microfrontend Loader shows the Microfrontend. 
+
+If the Microfrontend can not fire the ready event (1) for some reason (error getting initial data for instance) or the event isn't received in a configured number of seconds (1), the Microfrontend Loader could show a default component (2), another Microfrontend or do nothing visible for the user and log the error to the backend layer in order to be analyzed
+
+![healthcheck](/images/microfrontends/healthcheck.png)
 
 By this way, the user doesn't realize that something could be wrong. For instance, think about in sites like Amazon where some components don't appear sometimes but you don't perceive that anthing isn't working well.
+
+<br>
 
 # Microfrontends is a company decission
 
@@ -560,7 +574,7 @@ So, aspects like the following ones are fundamental in this kind of architecture
 
 The way you build your software should be the way more suitable for your company and its characteristics: size, history, employees, maturity,...,etc.
 
-
+<br>
 
 ## Where's the limit?
 
@@ -574,7 +588,7 @@ Depending of how the company is organized it may be more feasible or not. Theref
 
 Microfrontends' style is not dividing frontend applications into pieces and managing backend calls within them. Microfrontends' style is to provide ownership and autonomy throughout full business functionalities. 
 
-
+<br>
 
 ## It's not black or white. Be flexible and evolvable 
 
@@ -598,7 +612,7 @@ If there are several applications that don't share any business feature, are ver
 
 If you apply this strategy, the worst scenary could be that the technology used to build your applications doesn't allows to expose components as nom packages, web components or similar in order to be distributed or consumed by an HTTP request. But, if you have built a well designed applications and well tested, you will be able to build a new component in a different technology in order to be able to distribute those components requiered by others applications.
 
-
+<br>
 
 ## A silver bullet? 
 
