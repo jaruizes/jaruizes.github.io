@@ -543,6 +543,8 @@ By this way, the user doesn't realize that something could be wrong. For instanc
 
 <br>
 
+<br>
+
 # Microfrontends is a company decission
 
 
