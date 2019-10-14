@@ -469,7 +469,7 @@ Microfrontends don't have to be static and closed pieces from a visual point of 
 
 # Microfrontend contract
 
-If we want to treat Microfrontends as services we need to define a contract to be used by the customers to work with them. What should a Microfrontend define?
+If we want to treat Microfrontends as services we need to define a contract to be used by the consumers to work with them. What should a Microfrontend define?
 
 ![contract](/images/microfrontends/contract.png)
 
@@ -479,6 +479,8 @@ If we want to treat Microfrontends as services we need to define a contract to b
 - Events: 
   - Which events is it listening to
   - Which events are firing and when 
+
+As the Microfrontend hides backend API calls, anything more isn't necessary for the customer in order to use the Microfrontend
 
 <br>
 
@@ -499,6 +501,8 @@ When a Microfrontend is requested to the Microfrontend Registry, the main file o
 - Microfrontend attributes are initialized
 - A "microfrontend loaded event" containing information about the Microfrontend is fired to the Event Bus
 
+![loaded event](/images/microfrontends/loaded_event.png)
+
 The id assigned to the Microfrontend is very important because it will be used to determine which instance of a Microfrontend is working in every moment. 
 
 Scenarios in which more than one instance of a Microfrontend could be possible. Imagine for instance that a Microfrontend containing information about a product is available and it's necessary to implement a feature consisting on compare two products. The application could load two instances of the same Microfrontend and passing different products ids to each one. 
@@ -512,6 +516,8 @@ Once the Microfrontend is loaded, the main file of the Microfrontend will begin 
 When the Microfrontend has loaded all the necessary files and the API calls in order to get the initial data to be shown, the Microfrontend is ready. In this moment, the application could make the microfrontend visible and the final user could interact with it. 
 
 In this moment, the Microfrontend will fire a "Microfrontend Ready Event" containing information about the Microfrontend. 
+
+![ready event](/images/microfrontends/ready_event.png)
 
 
 
