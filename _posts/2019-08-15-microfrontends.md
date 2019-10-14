@@ -10,6 +10,8 @@ tags:
     - microfrontends
 ---
 
+This post maybe is too long and I could write several posts but I considered a good option to write everything I think about Microfrontend in just one post, like a book...
+
 Have you heard the term "Microservices"? Sure. Microservices are everywhere. Sometimes the experience is positive, sometimes is negative but "Microservices" are there. This concept is usually related to backend architecture and talking about how a system could be decomposed in autonomous and independent pieces, owned and developed by single teams, deployed independently and working all together.
 
 But, how is this valuable for the final user or customer? When we are developing a product or features, we shouldn't forget that the most of features contains backend and frontend parts. If we really want to deliver real value to the customers, we should deliver end-to-end features within a team. 
@@ -201,7 +203,7 @@ In this kind of architectures, design exercises are fundamental because it's nec
 
 That adds complexity to the system because it's more difficult to trace actions and to know the state of the system. 
 
-<br>
+<br><br>
 
 ## Where is the state?
 
@@ -487,6 +489,38 @@ If we want to treat Microfrontends as services we need to define a contract to b
   - Which events are firing and when 
 
 As the Microfrontend hides backend API calls, anything more isn't necessary for the customer in order to use the Microfrontend
+
+<br>
+
+# Basic Architecture
+
+In this section I would like to show a basic elements to implement this kind of architecture. The main targets to archive are:
+
+- Components developed and deployed by independent teams
+- Not just one technology or framework to develop
+- Components consumed at runtime by an http call by any HTML & Javascript application
+
+How can we achieve these targets?
+
+<br>
+
+#### Microfrontends Registry Server
+
+The first problem to solve is how distributing the components to achieve autonomy and independent deployment in order to be consumed by applications. How will an application know where the Microfrontend is? 
+
+Imagine that each Microfrontend is served from a different server. Applications would need to storage all these URLs servers in order to consume them. What if a new Microfrontend is deployed? Does the application has to add the new URL in its config file? Think about you have many applications and a good number of Microfrontends. This isn't scale.
+
+We need a piece that I call "Microfrontend Registry Server". This piece is responsible for serving Microfrontends to the applications when they are requested. By this reason, it's also the place where teams deploy their Microfrontends. Applications only need to know where the Microfrontend Registry Server is (one URL) to consume any Microfrontend. If a new Microfrontend is deployed, applications doesn't have to do anything in order to get it. 
+
+![registry server](/images/microfrontends/registry_server.png)
+
+This piece can be so simple or complex. For instance:
+
+- **Microfrontend Versions**: this piece can allow just one version of a Microfrontend or the possibillity of storaging and serving different versions of a Microfrontend
+- **Security**: this piece can serve any Microfrontend requested by any application or, for instance, implementing a security mechanism consisting on rules so that a Microfrontend only can be consumed by authorized applications
+- **Storage**: this piece can be so simple that teams publish a ZIP file containing all the Microfrontend files and the ZIP is extracted inside the Registry Server to be served or by the opposite, the files associated to a Microfrontend can be storaged (deployed) in its own server and the Registry Server acts like a proxy in order to serve the Microfrontends to the consumers.
+
+I'm not going to concrete details about implementation of this piece because it could be implemented in any technology or even using existing tools like, for instance, a NGINX. 
 
 <br>
 
