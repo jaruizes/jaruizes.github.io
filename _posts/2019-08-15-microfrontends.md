@@ -10,7 +10,7 @@ tags:
     - microfrontends
 ---
 
-This post maybe is too long and I could write several posts but I considered a good option to write everything I think about Microfrontend in just one post, like a book...
+This post maybe is too long and I could write several posts but I considered a good option to write everything I think about Microfrontend and MicroX architectures in just one post, like a book...
 
 Have you heard the term "Microservices"? Sure. Microservices are everywhere. Sometimes the experience is positive, sometimes is negative but "Microservices" are there. This concept is usually related to backend architecture and talking about how a system could be decomposed in autonomous and independent pieces, owned and developed by single teams, deployed independently and working all together.
 
@@ -38,10 +38,11 @@ As final user, you don't care If your bank release a new version of backend paym
 
 - If the UI is great but backend services don't work well (or not exist) the UI will not provide value to the user. 
 - If backend services work well but there is no UI or the UI doesn't work, the system will not provide value to the user. If several applications have similar business need (features) and the UI looks different in each one or works differently (because UI or services), the user experience is so bad
+- If data managed by services and UI is not a valid information to the user or it hasn't enough quality, the value for the user is so poor.
 
 ![why_microfrontends](/images/microfrontends/products.png)
 
-So, in my opinion, "Microservices" are the beginning but they are not enough to deliver value. The truth is that if we want to provide business value to end users we will need a good user interface working with good services like a whole. Deliver value means deliver software products or end-to-end components.
+So, in my opinion, "Microservices" are the beginning but they are not enough to deliver value. The truth is that if we want to provide business value to end users we will need a good user interface working with good services and good data like a whole. Deliver value means deliver software products or end-to-end components.
 
 
 
@@ -61,7 +62,7 @@ So, taking an approach only focused in backend services (or systems) is not enou
 
   ![feature-different-views](/images/microfrontends/feature-different-views.png)
 
-  You are building **"headless business features"** and you have to develop "different heads" in order to provide these features to the final users. 
+  You are building **"headless business features"** and you have to develop "heads" in order to provide these features to the final users. 
 
   For instance, in a banking environment, why do you have to develop the account movements view in the main consumer application and you also develop a similar view in the backoffice application or in another application also used by the customers? 
 
@@ -70,6 +71,10 @@ So, taking an approach only focused in backend services (or systems) is not enou
 - If you achieve a great autonomy in backend systems but you don't do the same in the frontend apps, that means that your (backend) autonomy is not real because you can not deliver end-to-end features to the end user without depending others. 
 
   ![autonomy](/images/microfrontends/autonomy.png)
+  
+  
+  
+- What about Data? If you don't treat business capabilities as end-to-end features it's possible (or very likely) that your data is replicated in several systems, adding complexity, redundancy, security risks, etc...
 
 It seems that building end-to-end features leaded and owned by a unique team would be more efficient, isn't it? 
 
@@ -99,7 +104,7 @@ There are many ways to implement this scenario: one approach could be that both 
 
 In all the approaches, backend services are uniques and developed by an specific team but frontend parts are not uniques and they are developed by different teams. If a backend service change and a new version is released, the backend for frontend or the frontend will consume this new version of the service. 
 
-So, business capabilities provided by backend services owned by an specific team could be defined as **inmutables**. Frontend implementations of the same functionality across different applications are defined as **mutables**
+So, business capabilities provided by backend services owned by an specific team could be considered as **inmutables**. Frontend implementations of the same functionality across different applications are considered as **mutables**
 
 > If the implementation of a complete business features between applications is not considered as a "product" and their components (services, frontend, etc) are developed by different teams, they are considered **mutables** from an end-to-end point of view.
 
@@ -440,7 +445,7 @@ UI Components could be part of the visual layer of a microfrontend. Within a mic
 
 ### Web Components != Microfrontends
 
-You can be thinking about Web Components as Microfrontends. It's true that a microfrontend is loaded like a web component by the parent application, using it like other HTML tag. But, once again, the different is when the component is integrated in the parent application. Buid-time? Runtime?  
+You can be thinking about Web Components as Microfrontends. It's true that a microfrontend is loaded like a Web Component by the parent application, using it like other HTML tag. But, once again, the different is when the component is integrated in the parent application. Buid-time? Runtime?  
 
 In the most of cases, the approach to use Web Components is mainly by NPM (or Bower) packages: 
 
@@ -471,11 +476,17 @@ Think about your UI catalog components and its complex components. They are desi
 
 > A Microfrontend could have several views depending of the channel it was instantiated. The restriction is all those views belong to the same logical piece, are owned by the same owner (business and technical) and provide the same business functionality in order to be reused in another applications.
 
-Microfrontends don't have to be static and closed pieces from a visual point of view. They could declare some properties in order to customize their aspect or appliying themes. Custom CSS properties are very helpful to achieve this capability.
+<br>
+
+#### Themes
+
+Microfrontends don't have to be static and closed pieces from a visual point of view. They could declare some properties in order to customize their aspect or appliying themes. 
+
+Custom CSS properties are very helpful to achieve this capability. It's possible create **themes** grouping different customizations, changing colors, fonts, icons.... Applications can apply these themes and the microfrontends instantiated within them will take the visual aspect expected. For instance, we could design light and dark themes to be applied to microfronteds. 
 
 <br>
 
-# Microfrontend contract
+# Microfrontends contract
 
 If we want to treat Microfrontends as services we need to define a contract to be used by the consumers to work with them. What should a Microfrontend define?
 
@@ -537,6 +548,16 @@ This piece,
 - Assigns an unique identificator to microfrontends instances
 - Sets the initial attributes to microfrontends
 - Manages the microfrontends lifecycle 
+
+<br>
+
+#### Event bus
+
+This conceptual piece is responsible for providing channels used to communicate the different independent components (Microfrontends) loaded in the application. This piece doesn't store any logic.
+
+Technically can be implemented building a component, use an open source one or simpy using DOM Events.
+
+<img src="/images/microfrontends/event-bus.png" alt="event bus" title="Event Bus" width="480" height="320" />
 
 <br>
 
