@@ -510,7 +510,7 @@ The first problem to solve is how distributing the components to achieve autonom
 
 Imagine that each Microfrontend is served from a different server. Applications would need to storage all these URLs servers in order to consume them. What if a new Microfrontend is deployed? Does the application has to add the new URL in its config file? Think about you have many applications and a good number of Microfrontends. This isn't scale.
 
-We need a piece that I call "Microfrontend Registry Server". This piece is responsible for serving Microfrontends to the applications when they are requested. By this reason, it's also the place where teams deploy their Microfrontends. Applications only need to know where the Microfrontend Registry Server is (one URL) to consume any Microfrontend. If a new Microfrontend is deployed, applications doesn't have to do anything in order to get it. 
+We need an "external" piece that I call "Microfrontend Registry Server" (MRS). This piece is responsible for serving Microfrontends to the applications when they are requested. By this reason, it's also the place where teams deploy their Microfrontends. Applications only need to know where the Microfrontend Registry Server is (one URL) to consume any Microfrontend. If a new Microfrontend is deployed, applications doesn't have to do anything in order to get it. 
 
 ![registry server](/images/microfrontends/registry_server.png)
 
@@ -518,9 +518,25 @@ This piece can be so simple or complex. For instance:
 
 - **Microfrontend Versions**: this piece can allow just one version of a Microfrontend or the possibillity of storaging and serving different versions of a Microfrontend
 - **Security**: this piece can serve any Microfrontend requested by any application or, for instance, implementing a security mechanism consisting on rules so that a Microfrontend only can be consumed by authorized applications
-- **Storage**: this piece can be so simple that teams publish a ZIP file containing all the Microfrontend files and the ZIP is extracted inside the Registry Server to be served or by the opposite, the files associated to a Microfrontend can be storaged (deployed) in its own server and the Registry Server acts like a proxy in order to serve the Microfrontends to the consumers.
+- **Storage**: this piece can be so simple that teams publish a ZIP file containing all the Microfrontend files and the ZIP is extracted inside the Registry Server to be served or by the opposite, the files associated to a Microfrontend can be storaged (deployed) in its own server and the MRS acts like a proxy in order to serve the Microfrontends to the consumers.
 
 I'm not going to concrete details about implementation of this piece because it could be implemented in any technology or even using existing tools like, for instance, a NGINX. 
+
+<br>
+
+#### Microfrontends Loader
+
+If we want to load Microfrontends at runtime inside the applications we need a component or piece doing this capability. This piece is responsible for calling to Microfrontend Registry Server in order to get a Microfrontend (and its version if the MRS support this feature). 
+
+![microfrontends loader](/images/microfrontends/mf_loader.png)
+
+This piece,
+
+- Performs calls to MRS in order to get the microfrontends required by the application
+- Loads the main file of the Microfrontends inside the application
+- Assigns an unique identificator to microfrontends instances
+- Sets the initial attributes to microfrontends
+- Manages the microfrontends lifecycle 
 
 <br>
 
