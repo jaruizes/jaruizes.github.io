@@ -618,9 +618,17 @@ By this way, the user doesn't realize that something could be wrong. For instanc
 
 ## Microfrontends Development Lifecyle (DRAFT)
 
+Setting an archytectural style where pieces are distributed and the main principle is autonomy through the whole process (from the idea to the operation in production) requires a development lifecyle designed also around this principle.
+
+In this post I'm going to define a simple development lifecycle but it's could be more complete and complex.
+
 Working with Microfrontends is not different as working with backend services. First and the most important part is to design the microfrontend from a business point of view, setting its functionality and contract. Then, the Microfrontend will be developed and tested. Finally, the microfrontend needs to be deployed and published in a "Microfrontends  Server" or "Microfrontends Registry" to be consumed.
 
-## Desing
+![Dev Lifecycle](/images/microfrontends/dev_lifecycle.png)
+
+<br>
+
+## Definition
 
 This is the first phase and it's the most important because the microfrontend is a product that has to be defined from a business point of view. We have to keep in mind that a microfrontend isn't just an UI or visual components, so we need to have an end-to-end vision. 
 
@@ -629,9 +637,13 @@ We'll have to answer questions like these in order to define our product:
 - Why do we need a new microfrontend and what is the business need it resolves? There could be many reasons: many changes over the business capability, different technology needed, reusability between applications,...,etc
 - There is other microfrontend or component in any existing application to resolve the business need? I prefer "monolith-first approach" (modularized and well designed). Then, if a microfrontend is needed to cover some functionality implemented in the monolith, refactoring to a microfrontend shouldn't be so complex.
 - Which is the domain or subdomain that the microfrontend would belong to? We are building business pieces so it's very important set the microfrontend into a concrete domain.
-- Who is going to be the owner? The owner will be responsible for the microfrontend along all its life. 
+- Who is going to be the owner? The owner will be responsible for the microfrontend along all its life.
 
-Once these questions are resolved, then we have to answer other questions (almost technical) like:
+<br>
+
+## Desing
+
+Once these previous questions are resolved, then we have to answer other questions (almost technical) like:
 
 - UI Design
 
@@ -651,11 +663,17 @@ Once these questions are resolved, then we have to answer other questions (almos
   - Which services need to be consumed? All the services belong to the same domain or it's going to be necessary to consume services from several domains? 
   - How does security capabilities are implemented (or should be)?
 
-
+<br>
 
 ## Build
 
-Once requirements are set, building a Microfrontend is similar to develop a little application. Depending on the complexity of the Microfrontend may be necessary to include several views and routes, several API calls, loading language files in order to manage several languages,...,etc. Maybe, a backend for frontend will be necessary.
+Building a Microfrontend is similar to develop a little application. Depending on the complexity of the Microfrontend may be necessary to include several views and routes, several API calls, loading language files in order to manage several languages,...,etc. Maybe, a backend for frontend will be necessary.
+
+<br>
+
+## Test
+
+Building a Microfrontend is similar to develop a little application. Depending on the complexity of the Microfrontend may be necessary to include several views and routes, several API calls, loading language files in order to manage several languages,...,etc. Maybe, a backend for frontend will be necessary.
 
 Developers work the same way as the work when they are developing an application: code, test and review. Remember that Microfrontends are independent pieces that 
 
@@ -668,9 +686,9 @@ so they have to be tested end-to-end before releasing it: the frontend part, the
 
 
 
-## Publish
+## Deploy & Publish
 
-Microfrontends are like services and they need to be packaged and registered (deployed) in a "Microfrontend Registry Server" in order to be discovered by consumers, similar to "Register & Discovery" capabilities of a Microservices environment. 
+Microfrontends need to be packaged and registered (deployed) in a "Microfrontend Registry Server" in order to be discovered by consumers, similar to "Register & Discovery" capabilities of a Microservices environment. 
 
 The main part of a microfrontend is the UI that it'll be loaded for the consumers. The UI package should contain:
 
