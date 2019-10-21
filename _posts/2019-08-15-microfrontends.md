@@ -122,11 +122,11 @@ As we do in backend part, it we can isolate business capabilities in the fronten
 
 # Microfrontends: fully business components
 
-As I'm saying in the previous sections, the target is to build end-to-end business components that applications can load in a decoupled way (by a http call) and technology agnostic. 
+As I'm saying in the previous sections, **the target is to build end-to-end business components** that applications can load in a decoupled way (by a http call) and technology agnostic. 
 
 If we could build fully business components, independent and composed of all the necessary elements, versionables, developed, owned and maintained by a team and loaded and integrated at runtime in the application, we will be building little end-to-end products to be delivered to the different applications that need to include these business features.
 
-The following picture summarizes the idea behind Microfrontends:
+The following picture summarizes the idea behind this concept:
 
 ![microfrontends-idea](/images/microfrontends/microfrontends-idea.png)
 
@@ -134,15 +134,15 @@ The following picture summarizes the idea behind Microfrontends:
 
 ## So, what is a Microfrontend?
 
-Microfrontend is just **to provide a "headfull" business service instead just a backend service or "headless" service**. So, when we say "Microfrontend" we mean **an unique end-to-end business component to be called and  instantiated at runtime by the frontend part of the different applications**
+First at all I have to say thay I don't like the term "Microfrontend" (the same as Microservices). This term is associated only to frontend world and this is so wrong. The idea is **providing "headfull" business services instead just a backend services or "headless" services**. So, when we say "Microfrontend" we mean **an unique end-to-end business component to be called and  instantiated at runtime by the frontend part of the different applications**
 
-Considering this perspective, obviously, **the main part of a microfrontend is the frontend part**. This part is what will be consumed and loaded by applications or another microfrontends. In order to get fully business capabilities, calling to backend services will be necessary. How is it managed? Here, there are several possibilities:
+Considering this perspective, obviously, **the main part of a microfrontend is the frontend part** but not the only one. This part is what will be consumed and loaded by applications or another microfrontends but in order to get fully business capabilities, calling to backend services will be necessary. How is it managed? Here, there are several possibilities:
 
-- Building a backend piece (**backend for frontend**) in order to manage calls to business API, orchestration, information adaptation to the channel,...,etc. This piece will be also part of the microfrontend, sharing ownership. This approach will be the most usual because in real systems, orchestration of services is very common in the most functionalities.
+- Building a backend piece called **Backend for frontend** (BFF)) in order to manage calls to business API, orchestration, information adaptation to the channel,...,etc. This piece will be also part of the microfrontend, sharing ownership. This approach will be the most usual because in real systems, orchestration of services is very common in the most functionalities.
 
-- Access directly to a business service already implemented in the same domain or in different domains or event external. In this case, the microfrontend is the part that is exposed to the consumer (it's the product), so it has to guarantee everything works. The consumer doesn't care about which services are consumed by the views provided for the microfrontend. The consumer only sees the UI part. 
+- Access directly to a business service already implemented in the same domain or in different domains or event external. In this case, the microfrontend is the part that is exposed to the consumer (it's the product), so it has to guarantee everything works. 
 
-  If the services consumed by the microfrontend change, if it's necessary the microfrontend will have to be updated relasing a new version of the microfrontend. If services are in the same domain or have the same owner it will be easier to keep the microfrontend updated than if the services are in other domains or they are external. 
+  If the services consumed by the microfrontend change, maybe the frontend part of the microfrontend (and the one) will have to be updated relasing a new version of the microfrontend. If services are in the same domain or have the same owner it will be easier to keep the microfrontend updated than if the services are in other domains or they are external. 
 
 
 So, in the most of cases a microfrontend will be composed by:
@@ -186,15 +186,15 @@ These models are similar but with little differences:
 
 <br>
 
-## Event bus
+## Events
 
 We're talking about a fully decoupled pieces in a frontend application. These pieces are independent and each of them implement a business capability but there are some scenarios when an action in a business component fires another action in other component. 
 
 Imagine an online shop. The catalog could be implemented by a Microfrontend and it manages everything related to show the products to the user. When the user click the icon "add to cart", the Microfrontend implementing the cart capability has to be notified that a product needs to be added to the cart. But, maybe others Microfrontend want to be notified too (recent products added, history, etc...)
 
-The way to notify these actions can not be imperatively, that is, the catalog component calling other components directly. Why not? Because if the catalog knows which components need to be notified, we'll build a full coupled system. The idea isn't this. 
+The way to notify these actions shouldn't be imperatively, that is, the catalog component calling other components directly. Why not? Because the catalog should have to know which are the rest of the components and which components need to be notified and how (calling a public method) and once again, we'll build a full coupled system. The idea isn't this. 
 
-The idea is that components should be totally independent, that means that they don't know which other components are loaded or if they have to call to concrete component when something happens. When something (important) happens, an event is sent to the event bus and other components can listen to these events and react to them. These events contains information about the action performed and the component who has fired it.
+The idea is that components should be totally independent, that means that they don't know which other components are loaded or if they have to call to concrete component when something happens. When something (important) happens, an event is sent and other components can listen to these events and react to them. These events contains information about the action performed and the component who has fired it.
 
 <img src="/images/microfrontends/event-bus.png" alt="event bus" title="Event Bus" width="480" height="320" />
 
@@ -202,7 +202,7 @@ The idea is that components should be totally independent, that means that they 
 
 ### What is important and should be notified?
 
-I don't know. Depends on your system or applications. What isn't important today could be important tomorrow. By this reason is so important that components are totally decoupled and fire and listen to events. 
+Depends on your system or applications and your business. What isn't important today could be important tomorrow. By this reason is so important that components are totally decoupled by using events. 
 
 In this kind of architectures, design exercises are fundamental because it's necessary to model which events need to be notified, their information and who is going to react to them and how.
 
@@ -211,6 +211,8 @@ That adds complexity to the system because it's more difficult to trace actions 
 <br><br>
 
 ## Where is the state?
+
+
 
 The state? Each Microfrontend has to own state but the application composed by some Microfrontends and other pieces (no Microfrontends) has its state. 
 
@@ -412,32 +414,21 @@ Build a microfrontend just for being consumed in runtime instead building the sa
 
 # UI Components vs Microfrontends (Business Components)
 
-The most of companies have developed a set of UI components, from simple inputs to complex tables or elements. This components doesn't work by themselves because they don't call to the API to manage data. Instead, they need other components call to the API.
+We're used to work with UI Components. The most of companies have developed a set of UI components, from simple inputs to complex tables or elements. We build complex components or features using these UI Components because these UI Components don't make sense by themselves for the final user. 
 
-> Microfrontends means:
->
-> - End-to-end business components
-> - UI components, views and behaviours
-> - Backend API calls
-> - Logic or State
+Something make sense to the final user if it has an UI and manages Data. If the final user could see just the UI Component used in the "Movements table", he would see a dummy or a empty table and he couldn't perform any business operation over that component.
 
-
-
-**A Microfrontend is a piece of software that makes sense for the end user by itself**. **If the final user could access to the Microfrontend independently, the final user gets value from that Microfrontend and he could do a business operation**. 
+> A Microfrontend is a piece of software that makes sense for the end user by itself. If the final user could access to the Microfrontend independently, the final user gets value from that Microfrontend and he could do a business operation.
 
 For instance: 
 
-- Microfrontend - Account Detail: UI views and backend for frontend making the necessary API calls for getting the account info
+- Microfrontend - Account Detail: UI views and Backend for Frontend performing the necessary API calls for getting the account info
 - Microfrontend - Products Catalog: UI views and backend API calls for showing the products catalog
 - Microfrontend - Customer Profile: UI views and backend API calls for managing customer profile
 
-An UI Component, doesn't have sense by itself to the end user because it doesn't manage backend services. 
+> An UI Component doesn't make sense to the end user because it doesn't manage data by itself. Usually, calls to backend services are performed outside these UI Components. 
 
-As I said in the previous section, Microfrontends require to be loaded at runtime and not being packaging inside the application. Usually, the components catalog is published in NPM and it's declared in the application is going to use them. 
-
-If the components are Web Components they can be imported in any application independently of how it's built. This is OK for Microfrontends because we'll see later a principle of Microfrontends Architecture about different technology choices. But, if the components are built with an specific framework to be imported in applications built with the same framework there is a limitation about setting a Microfrontends Architecture because a "vendor coupling" is declared
-
-UI Components could be part of the visual layer of a microfrontend. Within a microfrontend, those UI Components plus backend components acquire real business capabilities to the final user:
+UI Components could be part of the visual layer of a Microfrontend. Within a Microfrontend, those UI Components plus backend components acquire real business capabilities to the final user:
 
 ![microfrontend-vs-uicomponents](/images/microfrontends/microfrontend-vs-uicomponents.png)
 
@@ -445,13 +436,13 @@ UI Components could be part of the visual layer of a microfrontend. Within a mic
 
 ### Web Components != Microfrontends
 
-You can be thinking about Web Components as Microfrontends. It's true that a microfrontend is loaded like a Web Component by the parent application, using it like other HTML tag. But, once again, the different is when the component is integrated in the parent application. Buid-time? Runtime?  
+You can be thinking about Web Components as Microfrontends. It's true that a Microfrontend is basically loaded like a Web Component by the parent application, using it like other HTML tag. But, how is the component integrated in the parent application. Buid-time? Runtime?  
 
-In the most of cases, the approach to use Web Components is mainly by NPM (or Bower) packages: 
+In the most of cases, the approach to use Web Components is mainly by NPM (or Bower) packages and : 
 
-- need to be declared in development time (package.json / bower.json), 
-- need to be downloaded in development time
-- need to be packaged and deployed with the application 
+- they need to be declared in development time (package.json / bower.json), 
+- they need to be downloaded in development time
+- they need to be packaged and deployed with the application 
 
 For instance, __[Webcomponents.org](https://www.webcomponents.org/introduction)__ and __[LitElement](https://lit-element.polymer-project.org/)__:
 
@@ -460,6 +451,8 @@ For instance, __[Webcomponents.org](https://www.webcomponents.org/introduction)_
 This approach isn't the ideal one because there is a "strong" coupling between the application and its components. 
 
 > The target is being able to consume fully functional components like services without packaging them inside the application
+
+Web Components standard is the way in which we can develop Microfrontends but if they don't have business sense or they are not integrated at runtime, 
 
 <br>
 
@@ -616,7 +609,7 @@ By this way, the user doesn't realize that something could be wrong. For instanc
 
 <br>
 
-## Microfrontends Development Lifecyle (DRAFT)
+## Microfrontends Development Lifecyle (WORK IN PROGRESS)
 
 Setting an archytectural style where pieces are distributed and the main principle is autonomy through the whole process (from the idea to the operation in production) requires a development lifecyle designed also around this principle.
 
