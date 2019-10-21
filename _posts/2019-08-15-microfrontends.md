@@ -609,11 +609,9 @@ By this way, the user doesn't realize that something could be wrong. For instanc
 
 <br>
 
-## Microfrontends Development Lifecyle (WORK IN PROGRESS)
+## Microfrontends Development Lifecyle 
 
-Setting an archytectural style where pieces are distributed and the main principle is autonomy through the whole process (from the idea to the operation in production) requires a development lifecyle designed also around this principle.
-
-In this post I'm going to define a simple development lifecycle but it's could be more complete and complex.
+Setting an archytectural style where pieces are distributed and the main principle is autonomy through the whole process (from the idea to the operation in production) requires a development lifecyle designed also around this principle. In this post I'm going to define a simple development lifecycle but it's could be more complete and complex.
 
 Working with Microfrontends is not different as working with backend services. First and the most important part is to design the microfrontend from a business point of view, setting its functionality and contract. Then, the Microfrontend will be developed and tested. Finally, the microfrontend needs to be deployed and published in a "Microfrontends  Server" or "Microfrontends Registry" to be consumed.
 
@@ -623,9 +621,9 @@ Working with Microfrontends is not different as working with backend services. F
 
 ## Definition
 
-This is the first phase and it's the most important because the microfrontend is a product that has to be defined from a business point of view. We have to keep in mind that a microfrontend isn't just an UI or visual components, so we need to have an end-to-end vision. 
+This is the first phase and, in my opinion, it's the most important because the microfrontend is a product that has to be defined from a business point of view. We have to keep in mind that a microfrontend isn't just an UI or visual components, so we need to have an end-to-end vision. 
 
-We'll have to answer questions like these in order to define our product:
+The objetive is to define **WHAT** is necessary and **WHY** a new Microfrontend has to be created in order to solve that need. Questions like these are made in this phase in order to define our product:
 
 - Why do we need a new microfrontend and what is the business need it resolves? There could be many reasons: many changes over the business capability, different technology needed, reusability between applications,...,etc
 - There is other microfrontend or component in any existing application to resolve the business need? I prefer "monolith-first approach" (modularized and well designed). Then, if a microfrontend is needed to cover some functionality implemented in the monolith, refactoring to a microfrontend shouldn't be so complex.
@@ -636,25 +634,30 @@ We'll have to answer questions like these in order to define our product:
 
 ## Desing
 
-Once these previous questions are resolved, then we have to answer other questions (almost technical) like:
+Once we know WHY and WHAT, the objetive is to define **HOW** is going to be built the Microfrontend in order to solve the business need.then we have to answer other questions (almost technical) like:
 
-- UI Design
+- Functional Design
 
-  - Which channels is it going to be consumed in?
-
-  - Which events is it going to listen to and fire?
-
+  - What is the use case or feature performed?
+- Which channels is it going to be consumed in?
+  - How is it going to be tested?
+- Which events is it going to listen to and fire?
   - Which visual properties are going to be customizables?
+- ...
+  
 
-  - Which framework or technology is the best suitable?
+  
+- Technical Design
 
-    
-
-- Backend Services
-
+  - Which parts does the Microfrontend need to solve the business problem?
+- Which framework or technology is the best suitable for the different parts (UI, BFF, ..., etc)?
   - How does data has to be managed? How many services does it to manage?
+
   - Which services need to be consumed? All the services belong to the same domain or it's going to be necessary to consume services from several domains? 
-  - How does security capabilities are implemented (or should be)?
+- How does security capabilities are implemented (or should be)?
+  - ...
+
+
 
 <br>
 
@@ -666,9 +669,7 @@ Building a Microfrontend is similar to develop a little application. Depending o
 
 ## Test
 
-Building a Microfrontend is similar to develop a little application. Depending on the complexity of the Microfrontend may be necessary to include several views and routes, several API calls, loading language files in order to manage several languages,...,etc. Maybe, a backend for frontend will be necessary.
-
-Developers work the same way as the work when they are developing an application: code, test and review. Remember that Microfrontends are independent pieces that 
+Remember that Microfrontends are independent pieces that 
 
 - receive some parameters (html attributes), 
 - listen to some events and react to them
@@ -676,6 +677,8 @@ Developers work the same way as the work when they are developing an application
 - declare some visual properties to be customized
 
 so they have to be tested end-to-end before releasing it: the frontend part, the backend part and everything together. 
+
+It's important to
 
 
 
