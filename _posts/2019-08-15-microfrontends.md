@@ -669,16 +669,16 @@ Building a Microfrontend is similar to develop a little application. Depending o
 
 ## Test
 
-Remember that Microfrontends are independent pieces that 
+Remember that Microfrontends are independent pieces that perform a business feature from a end-to-end perspective. So, end-to-end tests are mandatory and fundamental in this kind of architecture. Automatization of this tests is a key factor talking about Microfrontends.
 
-- receive some parameters (html attributes), 
-- listen to some events and react to them
-- throw some events responding to some actions
-- declare some visual properties to be customized
+We have to keep in mind that usually a Microfrontend is composed of a Frontend part and a Backend For Frontend part. Within the Frontend part, we have to remember that a Microfrontend
 
-so they have to be tested end-to-end before releasing it: the frontend part, the backend part and everything together. 
+- Receives some parameters (html attributes), 
+- Listens to some events and react to them
+- Throws some events responding to some actions
+- Declares some visual properties to be customized
 
-It's important to
+so tests cases should be defined to cover every scenario (firing events, receiven events, visual customizations, etc...). I recommend you to define a good users stories showing how the Microfrontend should be worked. That means that before coding, you should know why you need a new Microfrontend but you should also know how that Microfrontend has to be tested.
 
 
 
