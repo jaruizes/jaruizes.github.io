@@ -2,7 +2,7 @@
 author: jaruizes
 layout: post
 title: "Thoughs about Microfrontends"
-date: 2019-10-01 01:30
+date: 2019-10-23 01:30
 category : Microfrontends
 comments: false
 tags:
@@ -10,7 +10,7 @@ tags:
     - microfrontends
 ---
 
-This post maybe is too long and I could write several posts but I considered a good option to write everything I think about Microfrontend and MicroX architectures in just one post, like a book...
+This post maybe is too long and I could write several posts but I considered a good option to write all I think about Microfrontend and MicroX architectures in just one post, like a book. This post is a "living-post"...
 
 Have you heard the term "Microservices"? Sure. Microservices are everywhere. Sometimes the experience is positive, sometimes is negative but "Microservices" are there. This concept is usually related to backend architecture and talking about how a system could be decomposed in autonomous and independent pieces, owned and developed by single teams, deployed independently and working all together.
 
