@@ -1,7 +1,7 @@
 ---
 author: jaruizes
 layout: post
-title: "Thoughs about Microfrontends"
+title: "Thoughts about Microfrontends"
 date: 2019-10-23 01:30
 category : Microfrontends
 comments: false
