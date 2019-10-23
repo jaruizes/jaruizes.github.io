@@ -5,6 +5,7 @@ title: "Thoughs about Microfrontends"
 date: 2019-10-23 01:30
 category : Microfrontends
 comments: false
+imagefeature: microfrontends/header.png
 tags:
     - microservices
     - microfrontends
@@ -16,7 +17,7 @@ Have you heard the term "Microservices"? Sure. Microservices are everywhere. Som
 
 But, how is this valuable for the final user or customer? When we are developing a product or features, we shouldn't forget that the most of features contains backend and frontend parts. If we really want to deliver real value to the customers, we should deliver end-to-end features within a team. 
 
-I like so much [this tweet from Sam Newman](https://twitter.com/samnewman/status/1167062137006645249):
+I would like to show [this tweet from Sam Newman](https://twitter.com/samnewman/status/1167062137006645249):
 
 ![Sam Newman Tweet](/images/microfrontends/newman.png)
 
