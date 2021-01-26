@@ -24,6 +24,8 @@ So, I'm going to structure this post this way:
 - Kubernetes Architecture
 - Kubernetes Objects (from 20000 feet) 
 
+<br/>
+
 # What is Kubernetes?
 
 Kubernetes is a platform where your containers run. What does it mean?
