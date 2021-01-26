@@ -108,7 +108,7 @@ Now, I'm going to identify the main Kubernetes objects that take part from a dev
 
 There are other Kubernetes objects but I think these are the most important from a developer point of view. This picture summarize the points below:
 
-![k8s-objects](../images/k8s/k8s-objects.png)
+![k8s-objects](/images/k8s/k8s-objects.png)
 
 
 
