@@ -11,8 +11,6 @@ tags:
     - kubernetes
 ---
 
-# (WORK IN PROGRESS)
-
 # Kubernetes "The JARC way" (I)
 These days I'm preparing [CKAD](https://www.cncf.io/certification/ckad/). It's a certfication about developing applications for Kubernetes so, this post tries to be post about Kubernetes from the developer point of view. As I always said, the important thing is adquiring knowledge about something and making it yours, In my case, "the JARC way".
 
@@ -204,8 +202,6 @@ I'm not going to explain in detail every command because you can find a [really 
     ```
     kubectl delete pods <pod name>
     ```
-
-
 
 <br/>
 
