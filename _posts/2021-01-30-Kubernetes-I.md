@@ -11,6 +11,8 @@ tags:
     - kubernetes
 ---
 
+# (WORK IN PROGRESS)
+
 # Kubernetes "The JARC way" (I)
 These days I'm preparing [CKAD](https://www.cncf.io/certification/ckad/). It's a certfication about developing applications for Kubernetes so, this post tries to be post about Kubernetes from the developer point of view. As I always said, the important thing is adquiring knowledge about something and making it yours, In my case, "the JARC way".
 
@@ -36,7 +38,7 @@ Kubernetes is a platform where your containers run. What does it mean?
 - Kubernetes schedules containers and it can run several containers from the same image, mananging and distributing requests between them. This ability makes application horizontal scalability possible
 
 
-
+<br/>
 ## Why Kubernetes is associated with Microservices?
 
 I'm not going to explain what microservices are in detail. Basically, a Microservice is an independent component in  performing a business capability and needs some scalability requirements, given by business needs. When a microservice scales, it's necessary to distribute load among the instances. 
@@ -46,11 +48,12 @@ A characteristic of microservices is polyglotism, that means, they can be built 
 As I said, Kubernetes is a platform where containers run within an specific scalability rules, and working with containers means that every kind of workload can be executed. So, Kubernetes is the perfect tool for microservices.
 
 
-
+<br/>
 # Kubernetes Architecture
 
 Kubernetes architecture could be summarized in a cluster of nodes where workloads are executed. This is called "the cluster"
 
+<br/>
 ## The cluster
 
 Kubernetes is a cluster of nodes, that means a set of machines where workloads are executed. So, why Kubernetes is so popular? Workloads are executed as containers and it implies executing any kind of workload. 
@@ -60,7 +63,7 @@ Kubernetes is not associated to a specific infrastructure technology. It just ne
 These nodes are commonly known as __workers__ or __workers nodes__.
 
 
-
+<br/>
 ### The Control Plane
 
 Maybe, you're wondering how Kubernetes knows in which Pod has to run a container or how nodes are managed. Those kind of tasks are managed by "the control plane". The Control Plane has the following components:
@@ -85,6 +88,7 @@ I like this image from the Kubernetes main page to show the architecture:
 
 ![Kubernetes architecture](https://d33wubrfki0l68.cloudfront.net/2475489eaf20163ec0f54ddc1d92aa8d4c87c96b/e7c81/images/docs/components-of-kubernetes.svg)
 
+<br/>
 # Kubernetes Objects
 
 Kubernetes works in a declarative way, that means that the desired state of the system is declared and Kubernetes will try to provide this state. The state could be about containers, like "X containers running of service A", "Y containers running of service B" or "a container executing every day at 10 o'clock " but it also about how containers and other elements work together, for instance: "container A could not call to container B", "container B can't not consumer more CPU than X", "container C stores its data in that space" or "container D has to expose outside the cluster".
@@ -94,7 +98,7 @@ An object in Kubernetes is represented by a YAML file. This file shows how the d
 Till now, I've not talking about Pods, Services, Volumes or Deployments because I think it was better understand the concept of Kubernetes. From now, I'll introduce those objects from the use cases
 
 
-
+<br/>
 ## Kubernetes objects from 20000 feet
 
 Now, I'm going to identify the main Kubernetes objects that take part from a developer point of view:
@@ -113,7 +117,7 @@ There are other Kubernetes objects but I think these are the most important from
 ![k8s-objects](/images/k8s/k8s-objects.png)
 
 
-
+<br/>
 ## Basic structure of a Kubernetes Object
 
 Every Kubernetes object is defined by __four parts__:
@@ -125,9 +129,84 @@ Every Kubernetes object is defined by __four parts__:
 
 The physical representation of these four parts is made by a file, YAML or JSON. As Kubernetes is "state oriented", every object has its YAML or JSON representation.
 
-
+<br />
 
 # Kubectl
 
-Kubernetes works in a declarative way, that means that the desired state of the system is declared and Kubernetes will try to provide this state. The state could be a
+__Kubectl__ is the command line tool used to manage a Kubernetes cluster. This tool, behind the scenes, performs HTTP request
+agains Kubernetes API.
 
+Kubectl sintaxis is normalized. The pattern is:
+
+```
+kubectl <command> <kubernetes object group> <aditional info>
+```
+
+Where:
+
+- __command__: get, edit, delete, describe, logs, exec....
+- __kubernetes object group__: pods, services, deployments, configmaps, etc...
+
+__Aditional info__ depends on the command executed. For instance, if we want to get the detail of an specific pod, we'll execute:
+
+```
+kubectl describe pods <pod name>
+```
+
+I'm not going to explain in detail every command because you can find a [really good cheatsheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/) in the official product's page but the most common commands could be:
+
+- You need information about components in any namespace:
+
+  
+
+  - Get pods in all the namespaces
+
+    ```
+    kubectl get pods --all-namespaces
+    ```
+
+  - Get all objects within a namespace
+
+    ```
+    kubectl get all --namespace=<namespace>
+    ```
+
+    
+
+- Deploying components:
+
+  - Apply a YAML file or a set of YAML files:
+
+    ```
+    kubectl apply -f <YAML file / folder containing YAML files>
+    ```
+
+    
+
+- Checking is everything's ok:
+
+  
+
+  - Get information about pods in a concrete namespace
+
+    ```
+    kubectl get pods --namespace=<namespace>
+    ```
+
+  - Get pod's detail
+
+    ```
+    kubectl describe pods <name> --namespace=<namespace>
+    ```
+
+  - Delete a pod (default namespace):
+
+    ```
+    kubectl delete pods <pod name>
+    ```
+
+
+
+<br/>
+
+This is the first post on "Kubernetes - The JARC way". In the next posts, we'll see in detail the most important Kubernetes objects associated to development aspects instead of learning each one without more context....
