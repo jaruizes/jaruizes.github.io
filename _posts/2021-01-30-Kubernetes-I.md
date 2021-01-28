@@ -166,6 +166,8 @@ Kubectl sintaxis is normalized. The pattern is:
 kubectl <command> <kubernetes object group> <aditional info>
 ```
 
+<br/>
+
 Where:
 
 - __command__: get, edit, delete, describe, logs, exec....
@@ -176,6 +178,8 @@ __Aditional info__ depends on the command executed. For instance, if we want to 
 ```shell
 kubectl describe pods <pod name>
 ```
+
+<br/>
 
 I'm not going to explain in detail every command because you can find a [really good cheatsheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/) in the official product's page but the most common commands could be:
 
