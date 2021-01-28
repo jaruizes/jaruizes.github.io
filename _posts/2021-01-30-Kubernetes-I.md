@@ -189,13 +189,15 @@ I'm not going to explain in detail every command because you can find a [really 
     kubectl get pods --all-namespaces
     ```
 
+    <br/>
+
   - Get all objects within a namespace
 
     ```shell
     kubectl get all --namespace=<namespace>
     ```
 
-    
+    <br/>
 
 - Deploying components:
 
@@ -205,7 +207,7 @@ I'm not going to explain in detail every command because you can find a [really 
     kubectl apply -f <YAML file / folder containing YAML files>
     ```
 
-    
+    <br/>
 
 - Checking is everything's ok:
 
@@ -217,14 +219,18 @@ I'm not going to explain in detail every command because you can find a [really 
     kubectl get pods --namespace=<namespace>
     ```
 
-  - Get pod's detail
+    <br/>
 
+  - Get pod's detail
+  
     ```shell
-    kubectl describe pods <name> --namespace=<namespace>
+  kubectl describe pods <name> --namespace=<namespace>
     ```
 
+    <br/>
+  
   - Delete a pod (default namespace):
-
+  
     ```shell
     kubectl delete pods <pod name>
     ```
@@ -238,6 +244,8 @@ As I said, **kubectl** executes calls to Kubernetes API. If you want to check ho
 ```shell
 kubectl get pods --namespace=jenkins --v=7
 ```
+
+<br/>
 
 I see the HTTP request:
 
