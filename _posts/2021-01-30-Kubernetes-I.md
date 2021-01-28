@@ -12,7 +12,7 @@ tags:
 ---
 
 # Kubernetes "The JARC way" (I)
-These days I'm preparing [CKAD](https://www.cncf.io/certification/ckad/). It's a certfication about developing applications for Kubernetes so, this post tries to be post about Kubernetes from the developer point of view. As I always said, the important thing is adquiring knowledge about something and making it yours, In my case, "the JARC way".
+This post tries to be post about Kubernetes from the developer point of view, relating Kubernetes concepts with application development. As I always said, the important thing is adquiring knowledge about something and making it yours, In my case, "the JARC way".
 
 I'm not going to enter in details about how a Kubernetes cluster can be installed or managed but how applications can take advantage of Kubernetes possibillities in order to be scalable and so on.
 
@@ -28,20 +28,20 @@ So, I'm going to structure this post this way:
 
 # What is Kubernetes?
 
-Kubernetes is a platform where your containers run. What does it mean?
+Basically, Kubernetes is a platform where containers run. Think about what it means:
 
-- Kubernetes doesn't provide machines. Kubernetes is a platform running over machines, physicals or virtuals. This machines can be located on premise or in cloud. 
-- Kubernetes doesn't work with source code, just with binaries. The way you build your images is up to you.
-- Kubernetes can execute every kind of containerized workload. Kubernetes is "language/framework" agnostic
-- Kubernetes schedules containers and it can run several containers from the same image, mananging and distributing requests between them. This ability makes application horizontal scalability possible
+- __Kubernetes doesn't provide machines__. Kubernetes is not infrastructure. Kubernetes is a platform running over machines, physicals or virtuals. This machines can be located on premise or in cloud. 
+- __Kubernetes doesn't work with source code__, just with binaries. The way you build your images is up to you.
+- __Kubernetes can execute every kind of containerized workload__. Kubernetes is "language/framework" agnostic because it can execute any kind of application while it's containerized
+- __Kubernetes schedules containers__ and it can run several containers from the same image, mananging and distributing requests between them. This ability makes application horizontal scalability possible
 
 
 <br/>
-## Why Kubernetes is associated with Microservices?
+## Why Kubernetes is so associated with Microservices?
 
-I'm not going to explain what microservices are in detail. Basically, a Microservice is an independent component in  performing a business capability and needs some scalability requirements, given by business needs. When a microservice scales, it's necessary to distribute load among the instances. 
+Basically, a Microservice is an independent component, performing a business capability and usually needs some scalability requirements, given by business needs. And, when a microservice scales, it's necessary to distribute load among the instances. 
 
-A characteristic of microservices is polyglotism, that means, they can be built using any language or framework. If we package our microservices in containers we don't need a different server to execute them. We just need a container scheduler. 
+Other characteristic of microservices is polyglotism, that means, they can be built using any language or framework. If we package our microservices in containers we don't need a different server to execute them. We just need a container scheduler. 
 
 As I said, Kubernetes is a platform where containers run within an specific scalability rules, and working with containers means that every kind of workload can be executed. So, Kubernetes is the perfect tool for microservices.
 
@@ -49,22 +49,29 @@ As I said, Kubernetes is a platform where containers run within an specific scal
 <br/>
 # Kubernetes Architecture
 
-Kubernetes architecture could be summarized in a cluster of nodes where workloads are executed. This is called "the cluster"
+Kubernetes architecture could be summarized in a __cluster of nodes where workloads are executed__. That cluster is composed by nodes (machines) and some of then adquire the role of workers while the rest adquires the role to coordinate workers and, for instance, decide when and where (worker node) a workload has to be executed.
+
+So, Kubernetes architecture could divide in:
+
+- Worker nodes
+- Control plane
 
 <br/>
-## The cluster
+## Worker nodes
 
-Kubernetes is a cluster of nodes, that means a set of machines where workloads are executed. So, why Kubernetes is so popular? Workloads are executed as containers and it implies executing any kind of workload. 
+Workloads are executed as containers and it implies executing any kind of workload and to do that, it's necessary to have a set of machines.
 
-Kubernetes is not associated to a specific infrastructure technology. It just needs a set of machines to create its cluster and manage containers on them. It's possible to install Kubernetes on premise or in cloud because it just needs a set of machines. 
+Kubernetes is not associated to a specific infrastructure technology. It just needs a set of machines to create its cluster and manage containers on them. It's possible to install Kubernetes on premise or in cloud.
 
 These nodes are commonly known as __workers__ or __workers nodes__.
 
+Kubernetes can work with only a node but in the real world, multiple nodes are necessary. The number of nodes depends on, for instance, the number of environments (dev, pre, pro...) or the compute needs that applications, running in the cluster, require. 
 
 <br/>
-### The Control Plane
 
-Maybe, you're wondering how Kubernetes knows in which Pod has to run a container or how nodes are managed. Those kind of tasks are managed by "the control plane". The Control Plane has the following components:
+## Control Plane
+
+For sure, you're wondering how Kubernetes knows in which Pod has to run a container or how nodes are managed. Those kind of tasks are managed by "the control plane". The Control Plane has the following components:
 
 - An API to expose Kubernetes features outside the cluster. This is called __kube-apiserver__
 - A component to store Kubernetes data. This piece is __etcd__ and stores Kubernetes data in a key-value way
@@ -127,6 +134,25 @@ Every Kubernetes object is defined by __four parts__:
 
 The physical representation of these four parts is made by a file, YAML or JSON. As Kubernetes is "state oriented", every object has its YAML or JSON representation.
 
+For instante, this is the YAML associated to a Pod:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example-pod
+  labels:
+    post: kubernetes
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      ports:
+        - name: web
+          containerPort: 80
+          protocol: TCP
+```
+
 <br />
 
 # Kubectl
@@ -136,7 +162,7 @@ agains Kubernetes API.
 
 Kubectl sintaxis is normalized. The pattern is:
 
-```
+```shell
 kubectl <command> <kubernetes object group> <aditional info>
 ```
 
@@ -147,7 +173,7 @@ Where:
 
 __Aditional info__ depends on the command executed. For instance, if we want to get the detail of an specific pod, we'll execute:
 
-```
+```shell
 kubectl describe pods <pod name>
 ```
 
@@ -159,13 +185,13 @@ I'm not going to explain in detail every command because you can find a [really 
 
   - Get pods in all the namespaces
 
-    ```
+    ```shell
     kubectl get pods --all-namespaces
     ```
 
   - Get all objects within a namespace
 
-    ```
+    ```shell
     kubectl get all --namespace=<namespace>
     ```
 
@@ -175,7 +201,7 @@ I'm not going to explain in detail every command because you can find a [really 
 
   - Apply a YAML file or a set of YAML files:
 
-    ```
+    ```shell
     kubectl apply -f <YAML file / folder containing YAML files>
     ```
 
@@ -187,22 +213,63 @@ I'm not going to explain in detail every command because you can find a [really 
 
   - Get information about pods in a concrete namespace
 
-    ```
+    ```shell
     kubectl get pods --namespace=<namespace>
     ```
 
   - Get pod's detail
 
-    ```
+    ```shell
     kubectl describe pods <name> --namespace=<namespace>
     ```
 
   - Delete a pod (default namespace):
 
-    ```
+    ```shell
     kubectl delete pods <pod name>
     ```
 
 <br/>
+
+#### Bonus track
+
+As I said, **kubectl** executes calls to Kubernetes API. If you want to check how these calls are you can add a parameter to shows "debug" information. For instance, if I execute the command to get pods in the namespace "jenkins" but add the flag "--v=7":
+
+```shell
+kubectl get pods --namespace=jenkins --v=7
+```
+
+I see the HTTP request:
+
+```
+
+I0128 10:53:06.370206    3279 loader.go:375] Config loaded from file:  /Users/jaruiz/.kube/config
+I0128 10:53:06.394297    3279 round_trippers.go:420] GET https://0.0.0.0:56093/api/v1/namespaces/jenkins/pods?limit=500
+I0128 10:53:06.394320    3279 round_trippers.go:427] Request Headers:
+I0128 10:53:06.394326    3279 round_trippers.go:431]     Accept: application/json;as=Table;v=v1;g=meta.k8s.io,application/json;as=Table;v=v1beta1;g=meta.k8s.io,application/json
+I0128 10:53:06.394336    3279 round_trippers.go:431]     User-Agent: kubectl/v1.19.3 (darwin/amd64) kubernetes/1e11e4a
+I0128 10:53:06.410273    3279 round_trippers.go:446] Response Status: 200 OK in 15 milliseconds
+NAME                       READY   STATUS    RESTARTS   AGE
+jenkins-7498d554cc-smsrf   1/1     Running   1          34h
+```
+
+<br />
+
+# How can I have "my local cluster"?
+
+There are some possibilities to create a local Kubernetes cluster to make some PoCs or simply having a quick start. 
+
+I can talk about these alternatives that I've used without entering into details:
+
+- **Minikube**: this is the most popular one and I've been using it for several years. It's easy to install and manage. The main page is [here](https://minikube.sigs.k8s.io/docs/start/)
+- **K3D**: this is the one I've using currently and, for now, the impressions are really good. The main page is [here](https://k3d.io/). 
+
+There are other local alternatives like [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
+
+And if you don't want to have a local cluster, you can use any Cloud solution like [Okteto](https://okteto.com/)
+
+
+
+<br />
 
 This is the first post on "Kubernetes - The JARC way". In the next posts, we'll see in detail the most important Kubernetes objects associated to development aspects instead of learning each one without more context....
