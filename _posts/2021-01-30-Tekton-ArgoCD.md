@@ -46,8 +46,8 @@ Argo CD, like Tekton, also creates [its own Kubernetes objects](https://github.c
 
 At the moment in which this post is being written, both tools are very "young". For instance, if we check the last releases we can see:
 
-- **Argo CD**: última versión liberada **1.8.7**
-- **Tekton**: última versión liberada **0.21.0**
+- **Argo CD**: 1.8.7
+- **Tekton**: 0.21.0
 
 I also like to check ThoughtWorks Technology Radar and if we check them in the radar, will see:
 
@@ -89,7 +89,7 @@ We're talking a lot about "cloud native" associated to Tekton y Argo CD but, wha
 
 We are going to build a simple CI/CD process, on Kubernetes, with these stages:
 
-![pipeline-stages](../images/tekton-argocd/pipeline-stages.png)
+![pipeline-stages](/images/tekton-argocd/pipeline-stages.png)
 
 
 
@@ -116,7 +116,7 @@ To execute this PoC it's you need to have:
 
 I've used a single repo to manage the different projects. The repository is structured in this way:
 
-![repo_org](../images/tekton-argocd/repo_org.png)
+![repo_org](/images/tekton-argocd/repo_org.png)
 
 
 
@@ -258,25 +258,25 @@ Once everything is installed, you can:
 
   In the dashboard, you need to select "tekton-poc" namespace to see the pipelines used in this PoC:
   
-  ![tekton-dashboard-namespace](../images/tekton-argocd/tekton-dashboard-namespace.png)
+  ![tekton-dashboard-namespace](/images/tekton-argocd/tekton-dashboard-namespace.png)
   
   
   
   There is a pipeline created (example-ci-pipeline):
   
-  ![example-pipeline](../images/tekton-argocd/example-pipeline.png)
+  ![example-pipeline](/images/tekton-argocd/example-pipeline.png)
   
   
   
   To see pipeline executions, we have to go to "PipelineRuns" options in the sidebar:
   
-  ![pipeline-runs](../images/tekton-argocd/pipeline-runs.png)
+  ![pipeline-runs](/images/tekton-argocd/pipeline-runs.png)
   
   
   
   At this dashboard, you can check pipeline executions and trigger new ones:
 
-![pipeline](../images/tekton-argocd/pipeline.png)
+![pipeline](/images/tekton-argocd/pipeline.png)
 
 
 
