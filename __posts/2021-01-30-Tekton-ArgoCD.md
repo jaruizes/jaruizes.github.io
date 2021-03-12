@@ -42,6 +42,8 @@ Argo CD, like Tekton, also creates [its own Kubernetes objects](https://github.c
 
 
 
+<br />
+
 ## State of the art
 
 At the moment in which this post is being written, both tools are very "young". For instance, if we check the last releases we can see:
@@ -64,12 +66,16 @@ For instance, **Tekton**:
 - **Tanzu**: https://tanzu.vmware.com/developer/guides/ci-cd/tekton-what-is/
 - **Jenkins X**: pipelines based on Tekton  (https://jenkins-x.io/es/docs/concepts/jenkins-x-pipelines)
 
+<br />
+
 And, talking about **Argo CD**:
 
 - **Red Hat**: https://developers.redhat.com/blog/2020/08/17/openshift-joins-the-argo-cd-community-kubecon-europe-2020/
 - **IBM**: https://www.ibm.com/cloud/blog/simplify-and-automate-deployments-using-gitops-with-ibm-multicloud-manager-3-1-2
 
 
+
+<br />
 
 ## ¿CI/CD Cloud Native?
 
@@ -130,9 +136,11 @@ Basically:
   - sources-repo: source code of the service used in this poc to test the CI/CD process
   - gitops_repo: repository where Kubernetes files associated to the service to be deployed are
 
-
+<br /><br />
 
 ### Ok, how do I execute it?
+
+<br />
 
 #### 1) Fork
 
