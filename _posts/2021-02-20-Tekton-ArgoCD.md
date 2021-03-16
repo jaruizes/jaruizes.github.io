@@ -2,14 +2,14 @@
 author: jaruizes
 layout: post
 title: "Kubernetes - CI/CD with Tekton & Argo CD"
-date: 2021-03-08 01:30
+date: 2021-03-20 01:30
 category : Kubernetes
 comments: false
-imagefeature: k8s/k8s-objects.png
+imagefeature: tekton-argocd/pipelinerun-stages.png
 tags:
-    - microservices
-    - kubernetes
-    - ci/cd
+- microservices
+- kubernetes
+- cicd
 ---
 
 # Kubernetes - CI/CD with Tekton & Argo CD
@@ -19,26 +19,27 @@ I'm going to use two different tools:
 - **Tekton**: to implement CI stages
 - **Argo CD**: to implement CD stages (Gitops)
 
+You can check and clone all the code associated to this PoC in my [Github](https://github.com/jaruizes/tekton-argocd-poc)
 <br />
 
 
 ## ¿Tekton?
 
-**Tekton** is an Open Source framework to build CI/CD pipelines directly over a Kuberentes cluster. 
+**Tekton** is an Open Source framework to build CI/CD pipelines directly over a Kuberentes cluster. It was originally developed at Google and was known as *Knative* pipelines
 
-**How can it do that?** Because Tekton defines a series of Kubernetes objects extending the Kubernetes API. Sorry, **what that means?** Ok, if we go to the [Kubernetes official page](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/), we can read the following definition:
+Tekton defines a series of Kubernetes custom resources (CRDs) extending the Kubernetes API. Sorry, **what that means?** Ok, if we go to the [Kubernetes official page](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/), we can read the following definition:
 
 > *Kubernetes objects* are persistent entities in the Kubernetes system. Kubernetes uses these entities to represent the state of your cluster
 
 So, examples of Kubernetes objects are: Pod, Service, Deployment, etc...**Tekton builds its own objects to Kubernetes and deploys them into the cluster**. If you feel curious about custom objects, here [the official documentation](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) is and you can also check the Tekton Github to see how these objects are. For instance, [Pipeline](https://github.com/tektoncd/pipeline/blob/master/config/300-pipeline.yaml) or [Task](https://github.com/tektoncd/pipeline/blob/master/config/300-task.yaml)
 
-
+<br />
 
 ## ¿Argo CD?
 
 **Argo CD** is a delivery tool (CD) built for Kubernetes, based on [GitOps movement](https://www.cloudbees.com/gitops/what-is-gitops). So, what that means? Basically that Argo CD works synchronizing "Kubernetes files" between a git repository and a Kubernetes cluster. That is, if there is a change in a YAML file, Argo CD will detect that there are changes and will try to apply those changes in the cluster. 
 
-Argo CD, like Tekton, also creates [its own Kubernetes objects](https://github.com/argoproj/argo-cd/tree/master/manifests/crds) that are installed into the Kubernetes cluster. 
+Argo CD, like Tekton, also creates [its own Kubernetes custom resources](https://github.com/argoproj/argo-cd/tree/master/manifests/crds) that are installed into the Kubernetes cluster. 
 
 
 
@@ -211,36 +212,29 @@ This step is the most important because installs and configures everything neces
 
 - Installs Tekton y Argo CD, including secrets to access to Git repo
 - Creates the volume and claim necessary to execute pipelines
-
 - Deploys Tekton dashboard
-
 - Deploys Sonarqube
-
-- Deploys Nexus
-
+- Deploys Nexus and configure an standard instance
 - Creates the configmap associated to Maven settings.xml, ready to publish artifacts in Nexus (with user and password)
-
 - Installs Tekton tasks and pipelines
-
   - Git-clone (from Tekton Hub)
   - Maven (from Tekton Hub)
   - Buildah (from Tekton Hub)
   - Prepare Image (custom task: poc/conf/tekton/tasks/prepare-image-task.yaml)
-  - Deploy with Argo CD (custom task: poc/conf/tekton/tasks/deploy-with-argocd.yaml)
-
+  - Push to GitOps repo (custom task: poc/conf/tekton/tasks/push-to-gitops-repo.yaml)
 - Installs Argo CD application, configured to check changes in gitops repository (resources/gitops_repo)
+- Update Argo CD password
 
-> ** Be patient. The process takes some minutes.
+> ** **Be patient**. The process takes some minutes.
 
-<br />
 
-** **This message isn't an error**. It just waiting for to Nexus admin password created when the container starts. When the Nexus container starts, at some moment, it creates a file containing the default password.
-
-```
-Configuring settings.xml (MAVEN) to work with Nexus
-cat: /nexus-data/admin.password: No such file or directory
-command terminated with exit code 1
-```
+> ** **This message isn't an error**. It just waiting for to Nexus admin password created when the container starts. When the Nexus container starts, at some moment, it creates a file containing the default password.
+>
+> ```
+> Configuring settings.xml (MAVEN) to work with Nexus
+> cat: /nexus-data/admin.password: No such file or directory
+> command terminated with exit code 1
+> ```
 
 <br />
 
@@ -248,60 +242,75 @@ command terminated with exit code 1
 
 Once everything is installed, you can:
 
-- Check Tekton dashboard:
+- **Check Tekton dashboard:**
 
   Tekton dashboard could be exposed locally using this command:
 
   ```bash
   kubectl proxy --port=8080
   ```
-
+  <br />
   Then, just open this url in the browser:
 
   ```bash
-  http://localhost:8080/api/v1/namespaces/tekton-pipelines/services/tekton-dashboard:http/proxy/#/namespaces/default/pipelines
+  http://localhost:8080/api/v1/namespaces/tekton-pipelines/services/tekton-dashboard:http/proxy/#/namespaces/cicd/pipelineruns
   ```
 
   <br />
 
-  In the dashboard, you need to select "tekton-poc" namespace to see the pipelines used in this PoC:
+  By that link you'll access to PipelineRuns options and you'll see a pipeline executing:
   
-  ![tekton-dashboard-namespace](/images/tekton-argocd/tekton-dashboard-namespace.png)
+  ![pipeline_running](/images/tekton-argocd/pipeline_running.png)
   
+  <br />
   
+  If you click in this pipelinerun you'll see the different stages:
   
-  There is a pipeline created (example-ci-pipeline):
+  ![pipelinerun-stages](/images/tekton-argocd/pipelinerun-stages.png)
   
-  ![example-pipeline](/images/tekton-argocd/example-pipeline.png)
+  <br />
   
+  If you want to check what Tasks are installed, you can navigate to Tasks option:
   
+  ![installed_tasks](/images/tekton-argocd/installed_tasks.png)
   
-  To see pipeline executions, we have to go to "PipelineRuns" options in the sidebar:
-  
-  ![pipeline-runs](/images/tekton-argocd/pipeline-runs.png)
-  
-  
-  
-  At this dashboard, you can check pipeline executions and trigger new ones:
+  <br />
 
-![pipeline](/images/tekton-argocd/pipeline.png)
+- **Check Argo CD dashboard**
 
+  To access to Argo CD dashboard you need to perform a port-forward:
 
+  ```bash
+  kubectl port-forward svc/argocd-server -n argocd 9080:443
+  ```
+<br />
+  Then, just open this url in the browser:
 
-La acción de **deploy** realiza un push al repositorio de gitops y ArgoCD sincroniza el despliegue
+  ```bash
+  https://localhost:9080/
+  ```
 
-El dashboard de ArgoCD se puede exponer mediante el comando:
+  I've set the admin user with these credentials: admin / admin123
 
-```
-kubectl port-forward svc/argocd-server -n argocd 9080:443
-```
+  In this dashboard you should be the "product service" application that manages synchronization between Kubernetes cluster and GitOps repository
 
-Y se accede al mismo en la url http://localhost:9080:
+  ![argocd_initial](/images/tekton-argocd/argocd_initial.png)
 
-![argocd](poc/doc/img/argocd.png)
+  <br />
 
-El usuario es admin y la contraseña se indica al finalizar el proceso de setup (script **setup_poc.sh** ) pero también se puede obtener con el comando:
+  This application is "healthy" but as the objects associated with Product Service (Pods, Services, Deployment,...etc) aren't still deployed to
+  the Kubernetes cluster, you'll find a "unknown" sync status. 
 
-```bash
-kubectl get pods -n argocd -l app.kubernetes.io/name=argocd-server -o name | cut -d'/' -f 2
-```
+  
+  Once the "pipelinerun" ends and changes are pushed to GitOps repository, Argo CD compares content deployed in the Kubernetes cluster (associated to Products Service) 
+  with content pushed to the GitOps repository and synchronize Kubernetes cluster against the repository:
+
+  ![argocd-products](/images/tekton-argocd/argocd-products.png)
+
+  Finally, the sync status become "Synced":
+
+  ![argocd_initial](/images/tekton-argocd/argocd_final.png)
+
+<br/>
+<br/>
+I hope you’ve liked this post. In next posts we'll cover **Tekton triggers**.
