@@ -2,7 +2,7 @@
 author: jaruizes
 layout: post
 title: "Kubernetes - CI/CD with Tekton & Argo CD"
-date: 2021-03-20 01:30
+date: 2021-03-16 01:30
 category : Kubernetes
 comments: false
 imagefeature: tekton-argocd/pipelinerun-stages.png
