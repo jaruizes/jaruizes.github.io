@@ -19,6 +19,8 @@ I'm going to use two different tools:
 - **Tekton**: to implement CI stages
 - **Argo CD**: to implement CD stages (Gitops)
 
+This post doesn't try to be a master class about Tekton or Argo CD. Just, to set an starting point to explore both tools by using them directly in a cluster. 
+
 You can check and clone all the code associated to this PoC in my [Github](https://github.com/jaruizes/tekton-argocd-poc)
 <br />
 
@@ -90,24 +92,34 @@ We're talking a lot about "cloud native" associated to Tekton y Argo CD but, wha
 
 
 
-## Hands-on!
-
-### What are we going to build?
+## What are we going to build?
 
 We are going to build a simple CI/CD process, on Kubernetes, with these stages:
 
 ![pipeline-stages](/images/tekton-argocd/pipeline-stages.png)
 
-
+<br />
 
 In this pipeline, we can see two different parts:
 
 - **CI part**, implemented by Tekton and ending with a stage in which a push to a repository is done.
+
+  - *Checkout*: in this stage, source code repository is cloned
+  - *Build & Test*: in this stage, we use Maven to build and execute test
+  - *Code Analisys:* code is evaluated by Sonarqube
+  - *Publish*: if everything is ok, artifact is published to Nexus
+  - *Build image*: in this stage, we build the image and publish to local registry
+  - *Push to GitOps repo*: this is the final CI stage, in which Kubernetes descriptors are cloned from the GitOps repository, they are modified in order to insert commit info and then, a push action is performed to upload changes to GitOps repository
+
+    <br />
+
 - **CD part**, implemented by Argo CD, in which Argo CD detects that the repository has changed and perform the sync action against the Kubernetes cluster.
 
 **Does it mean that we can not implement the whole process using Tekton?** No, it doesn't. It's possible to implement the whole process using Tekton but in this case, I want to show the **Gitops concept**.
 
 <br />
+
+## Hands-on!
 
 ### Requirements
 
@@ -240,76 +252,113 @@ This step is the most important because installs and configures everything neces
 
 ### 5) Explore and play
 
-Once everything is installed, you can:
+Once everything is installed, you can play with this project:
 
-- **Check Tekton dashboard:**
+#### **Tekton Part**
 
-  Tekton dashboard could be exposed locally using this command:
+Tekton dashboard could be exposed locally using this command:
 
-  ```bash
-  kubectl proxy --port=8080
-  ```
-  <br />
-  Then, just open this url in the browser:
-
-  ```bash
-  http://localhost:8080/api/v1/namespaces/tekton-pipelines/services/tekton-dashboard:http/proxy/#/namespaces/cicd/pipelineruns
-  ```
-
-  <br />
-
-  By that link you'll access to PipelineRuns options and you'll see a pipeline executing:
-  
-  ![pipeline_running](/images/tekton-argocd/pipeline_running.png)
-  
-  <br />
-  
-  If you click in this pipelinerun you'll see the different stages:
-  
-  ![pipelinerun-stages](/images/tekton-argocd/pipelinerun-stages.png)
-  
-  <br />
-  
-  If you want to check what Tasks are installed, you can navigate to Tasks option:
-  
-  ![installed_tasks](/images/tekton-argocd/installed_tasks.png)
-  
-  <br />
-
-- **Check Argo CD dashboard**
-
-  To access to Argo CD dashboard you need to perform a port-forward:
-
-  ```bash
-  kubectl port-forward svc/argocd-server -n argocd 9080:443
-  ```
+```bash
+kubectl proxy --port=8080
+```
 <br />
-  Then, just open this url in the browser:
+Then, just open this url in the browser:
 
-  ```bash
-  https://localhost:9080/
-  ```
+```bash
+http://localhost:8080/api/v1/namespaces/tekton-pipelines/services/tekton-dashboard:http/proxy/#/namespaces/cicd/pipelineruns
+```
 
-  I've set the admin user with these credentials: admin / admin123
+<br />
 
-  In this dashboard you should be the "product service" application that manages synchronization between Kubernetes cluster and GitOps repository
+By that link you'll access to **PipelineRuns options** and you'll see a pipeline executing:
 
-  ![argocd_initial](/images/tekton-argocd/argocd_initial.png)
+![pipeline_running](/images/tekton-argocd/pipeline_running.png)
 
-  <br />
+<br />
 
-  This application is "healthy" but as the objects associated with Product Service (Pods, Services, Deployment,...etc) aren't still deployed to
-  the Kubernetes cluster, you'll find a "unknown" sync status. 
+If you want to **check what Tasks are installed in the cluster**, you can navigate to Tasks option:
 
-  
-  Once the "pipelinerun" ends and changes are pushed to GitOps repository, Argo CD compares content deployed in the Kubernetes cluster (associated to Products Service) 
-  with content pushed to the GitOps repository and synchronize Kubernetes cluster against the repository:
+![installed_tasks](/images/tekton-argocd/installed_tasks.png)
 
-  ![argocd-products](/images/tekton-argocd/argocd-products.png)
+<br />
 
-  Finally, the sync status become "Synced":
+If you click in this pipelinerun you'll see the different executed **stages**:
 
-  ![argocd_initial](/images/tekton-argocd/argocd_final.png)
+![pipelinerun-stages](/images/tekton-argocd/pipelinerun-stages.png)
+
+<br />
+
+**Each stage is executed by a pod**. For instance, you can execute:
+
+```bash
+ kubectl get pods -n cicd -l "tekton.dev/pipelineRun=products-ci-pipelinerun"
+```
+
+<br />
+
+to see how different pods are created to execute different stages:
+
+![pipelinerun-stages-pods](/images/tekton-argocd/stages-pod.png)
+
+<br />
+
+It's possible to **access to Sonarqube** to check quality issues, opening this [url](http://localhost:9000/projects) in the browser:
+
+![sonarqube](/images/tekton-argocd/sonarqube.png)
+
+<br />
+
+And It's also possible to **access to Nexus** to check how the artifact has been published:
+
+![nexus](/images/tekton-argocd/nexus.png)
+
+<br />
+
+As I said before, the last stage in CI part consist on performing a push action to GitOps repository. In this stage, content from GitOps repo is cloned, commit information is updated in cloned files (Kubernentes descriptors) and a push is done. The following picture shows an example of this changes:
+
+![commit changes](/images/tekton-argocd/commit-changes.png)
+
+<br />
+
+#### **Argo CD Part**
+
+To access to **Argo CD dashboard** you need to perform a port-forward:
+
+```bash
+kubectl port-forward svc/argocd-server -n argocd 9080:443
+```
+<br />
+Then, just open this url in the browser:
+
+```bash
+https://localhost:9080/
+```
+
+I've set the admin user with these credentials: admin / admin123
+
+In this dashboard you should be the "product service" application that manages synchronization between Kubernetes cluster and GitOps repository
+
+![argocd_initial](/images/tekton-argocd/argocd_initial.png)
+
+<br />
+
+This application is "healthy" but as the objects associated with Product Service (Pods, Services, Deployment,...etc) aren't still deployed to
+the Kubernetes cluster, you'll find a "unknown" sync status. 
+
+
+Once the "pipelinerun" ends and changes are pushed to GitOps repository, Argo CD compares content deployed in the Kubernetes cluster (associated to Products Service) with content pushed to the GitOps repository and synchronize Kubernetes cluster against the repository:
+
+![argocd-products](/images/tekton-argocd/argocd-products.png)
+
+Finally, the sync status become "Synced":
+
+![argocd_initial](/images/tekton-argocd/argocd_final.png)
+
+<br />
+
+### 6) Delete the local cluster (optional )
+
+If you create a local cluster in step 3, there is an script to remove the local cluster. This script is **poc/delete-local-cluster.sh**
 
 <br/>
 <br/>
