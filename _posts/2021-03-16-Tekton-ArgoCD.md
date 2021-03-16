@@ -5,7 +5,7 @@ title: "Kubernetes - CI/CD with Tekton & Argo CD"
 date: 2021-03-16 01:30
 category : Kubernetes
 comments: false
-imagefeature: tekton-argocd/pipelinerun-stages.png
+imagefeature: tekton-argocd/cover.png
 tags:
 - microservices
 - kubernetes
@@ -90,7 +90,7 @@ We're talking a lot about "cloud native" associated to Tekton y Argo CD but, wha
 
 - **Reusability**: the different elements within the CI/CD process use the Kubernetes objects defined by Tekton and Argo CD in the same way that you work with deployments o service objects. That means that stages, tasks or applications are YAML files that you can store in some repository and use in every cluster with Tekton and Argo CD installed. For instance, it's possible to use artifacts from [Tekton catalog](hub/catálogo asociado directamente al proyecto Tekton) or even, it's possible to use the [Openshift catalog](https://github.com/openshift/pipelines-catalog) or building a custom one. 
 
-
+<br />
 
 ## What are we going to build?
 
@@ -111,7 +111,7 @@ In this pipeline, we can see two different parts:
   - *Build image*: in this stage, we build the image and publish to local registry
   - *Push to GitOps repo*: this is the final CI stage, in which Kubernetes descriptors are cloned from the GitOps repository, they are modified in order to insert commit info and then, a push action is performed to upload changes to GitOps repository
 
-    <br />
+    
 
 - **CD part**, implemented by Argo CD, in which Argo CD detects that the repository has changed and perform the sync action against the Kubernetes cluster.
 
@@ -120,6 +120,8 @@ In this pipeline, we can see two different parts:
 <br />
 
 ## Hands-on!
+
+<br />
 
 ### Requirements
 
@@ -137,8 +139,6 @@ I've used a single repo to manage the different projects. The repository is stru
 
 ![repo_org](/images/tekton-argocd/repo_org.png)
 
-
-
 Basically:
 
 - **poc**: this is the main folder. Here, you can find three scripts:
@@ -149,9 +149,9 @@ Basically:
   - sources-repo: source code of the service used in this poc to test the CI/CD process
   - gitops_repo: repository where Kubernetes files associated to the service to be deployed are
 
-<br /><br />
+<br />
 
-### Ok, how do I execute it?
+### Ok, how can I execute it?
 
 <br />
 
@@ -216,7 +216,7 @@ Once the token is created, you have to copy it in these files (## INSERT TOKEN H
 
 This step is optional. If you already have a cluster, perfect, but if not, you can create a local one based on K3D, just executing the script **poc/create-local-cluster.sh**. This script creates the local cluster and configure the private image registry to manage Docker images.
 
-<br />
+
 
 ### 4) Setup
 
@@ -236,6 +236,8 @@ This step is the most important because installs and configures everything neces
   - Push to GitOps repo (custom task: poc/conf/tekton/tasks/push-to-gitops-repo.yaml)
 - Installs Argo CD application, configured to check changes in gitops repository (resources/gitops_repo)
 - Update Argo CD password
+
+<br />
 
 > ** **Be patient**. The process takes some minutes.
 
@@ -274,19 +276,19 @@ By that link you'll access to **PipelineRuns options** and you'll see a pipeline
 
 ![pipeline_running](/images/tekton-argocd/pipeline_running.png)
 
-<br />
+
 
 If you want to **check what Tasks are installed in the cluster**, you can navigate to Tasks option:
 
 ![installed_tasks](/images/tekton-argocd/installed_tasks.png)
 
-<br />
+
 
 If you click in this pipelinerun you'll see the different executed **stages**:
 
 ![pipelinerun-stages](/images/tekton-argocd/pipelinerun-stages.png)
 
-<br />
+
 
 **Each stage is executed by a pod**. For instance, you can execute:
 
@@ -294,7 +296,7 @@ If you click in this pipelinerun you'll see the different executed **stages**:
  kubectl get pods -n cicd -l "tekton.dev/pipelineRun=products-ci-pipelinerun"
 ```
 
-<br />
+
 
 to see how different pods are created to execute different stages:
 
@@ -306,15 +308,17 @@ It's possible to **access to Sonarqube** to check quality issues, opening this [
 
 ![sonarqube](/images/tekton-argocd/sonarqube.png)
 
+> ** In this pipeline, it doesn't check if quality gate is passed.
+
 <br />
 
 And It's also possible to **access to Nexus** to check how the artifact has been published:
 
 ![nexus](/images/tekton-argocd/nexus.png)
 
-<br />
 
-As I said before, the last stage in CI part consist on performing a push action to GitOps repository. In this stage, content from GitOps repo is cloned, commit information is updated in cloned files (Kubernentes descriptors) and a push is done. The following picture shows an example of this changes:
+
+As I said before, the last stage in CI part consist on **performing a push action to GitOps repository**. In this stage, content from GitOps repo is cloned, commit information is updated in cloned files (Kubernentes descriptors) and a push is done. The following picture shows an example of this changes:
 
 ![commit changes](/images/tekton-argocd/commit-changes.png)
 
