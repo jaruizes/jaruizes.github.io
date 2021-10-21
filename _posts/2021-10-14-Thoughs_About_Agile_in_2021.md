@@ -52,7 +52,7 @@ It's the truth. As Software Developers or Engineers, we are paid to build softwa
 >
 > ([Agile Manifesto - Principles](https://agilemanifesto.org/principles.html))
 
-Nowdays, Agile is a business itself. Companies sell "agile frameworks", "agile coaches" or just certifications to other companies. Almost nothing is free. Also, there is a lot of marketing around those frameworks or certifications and every company wants to say that is doing Agile or showing how the teams are performing stand-up meetings or have many post-its everywhere. Agile is the business nor the software that it's suppose to be building.
+Nowadays, Agile is a business itself. Companies sell "agile frameworks", "agile coaches" or just certifications to other companies. Almost nothing is free. Also, there is a lot of marketing around those frameworks or certifications and every company wants to say that is doing Agile or showing how the teams are performing stand-up meetings or have many post-its everywhere. Agile is the business nor the software that it's suppose to be building.
 
 **If you think carefully about it, it hasn't sense.** 
 
@@ -74,7 +74,7 @@ If your team work as a salad, you're not working as a real team. You are just wo
 
 If your team works as a "gazpacho", you are really working as a team because success depends on the mix of everything. Some ingredients complement the others. The chef puts in some ingredients and makes a mixture. Everything is mixed. Perhaps the chef will put more of one ingredient and less of another to get a good flavor. When you eat a "gazpacho" you cannot decide which ingredient to eat and which not. And you will like (or not) the whole, not the parts. Everyone wins or everyone loses, including the chef. 
 
-So, in a salad, interactions are managed by someone external who decide how to eat the salad. In a gazpacho, interactions are managed by the chef, mixing everything, complementing some ingredients with others. 
+In a salad, interactions are managed by someone external who decide how to eat the salad. In a gazpacho, interactions are full because all the ingredients are mixed from the beginning, working as a whole and complementing some of them with others. 
 
 This is how an agile team has to work. The method doesn't matter. What really matters is how team members interact each other and how one of them complementing others. The team wins, the team loses. And, in order to win, to get the target, the team will decide how to work depending on its context. If you, that are not going to be with the team, decide how it has to work, how they have to organize and which tools have to they use, maybe you are not easing the way...maybe you are putting stones in the way.
 
