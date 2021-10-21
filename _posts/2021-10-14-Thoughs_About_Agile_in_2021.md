@@ -1,7 +1,7 @@
 ---
 author: jaruizes
 layout: post
-title: "Thoughs about Agile in 2021 from a Software Developer (WIP)"
+title: "Thoughts about Agile from a Software Developer (WIP)"
 date: 2021-10-15 01:30
 category : Data
 comments: false
@@ -13,7 +13,7 @@ tags:
 
 
 
-First of all, I have to say that I'm not a professional "Agile Coach" or similar. The idea of this post came from a debate in LinkedIn about the role of the Scrum Master and wether it's similar to a soccer coach or not (no, this post isn't about Scrum or the role of the Scrum Manager). From my experience building software for many years I realize that, at least in the software world, we should return to the basics of Agile, The Agile Manifesto, and put the focus, again, on building software instead of the method.
+First of all, I have to say that I'm not a professional "Agile Coach". The idea of this post came from a debate in LinkedIn about the role of the Scrum Master and whether it's similar to a soccer coach or not (no, this post isn't about Scrum or the role of the Scrum Manager). From my experience building software for many years I realize that, at least in the software world, we should return to the basics of Agile, The Agile Manifesto, and put the focus, again, on building software instead of the method.
 
 In this post I'm trying to explain my point of view of applying "Agile to building software"
 
@@ -192,7 +192,7 @@ Maybe you're thinking that someone knowing the company is going to explain every
 
 <br/>
 
-# Think more and coding less
+# Think more, coding less
 
 Many people think that being Agile is starting to code as soon as posible, without desinging anything. It's a big error. 
 
@@ -251,4 +251,8 @@ So, if we mark tasks as done without being accepted by the user, we are fooling 
 > ([Agile Manifesto - Principles](https://agilemanifesto.org/principles.html))
 
 Build, deliver frequently, receive feedback from the users and improve. This is the process. Simple. **If you use Jira, Jenkins, 2-weeks sprints, Scrum, the most recent frontend framework, Kubernetes,whatever... it doesn't matter if you don't deliver, continuosly, working software to the final user** 
+
+<br /><br />
+
+So, I hope you liked it, whether you agree or not with my vision. That's all folks. I ho
 
