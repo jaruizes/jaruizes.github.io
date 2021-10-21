@@ -113,8 +113,6 @@ When a company decides to apply a "methodoloy framework" as a whole, deciding th
 
 <br />
 
-
-
 # Industrial Agile
 
 If we look at the industrial sector, when some prototype or product is ready to be industrialized to maximize the amount of money earned, means that the same fabrication process is applied to all the items. For example, a car, a mobile, a TV.... You don't choose how the car chasis is going to be or the capacity of the fuel tank. You only choose the color and some extras, no more. The product you buy is the same independent of the context you have.
@@ -131,7 +129,7 @@ Teams don't need people to say them how they have to work or communicate because
 
 <br />
 
-# To be or not to be, that isn't the question
+# To be or not to be
 
 In my opinion, "to be or not to be" Agile, it doesn't matter. As I said before, the important is focusing on doing things (software) well and delivering them when the user expect them. Simple.
 
@@ -166,6 +164,8 @@ Agile doesn't mean doing things faster. Agile means doing things better, maximiz
 We can talk a lot about what is "value". In my opinion, "value" stands for doing what the final users need when they need. Agile isn't goingo to help you to get impossible deadlines. Agile can help to define a goal and to adopt the best way of working to achive the goal. 
 
 Agile can help teams (and companies) to be concious that the way choosen isn't the right way and it have to be changed. Agile can help to avoid waste. 
+
+<br/>
 
 # Agile does includes documentation
 
@@ -228,7 +228,7 @@ Only step number 7 is related to code. Don't go directly to step 7. Be agile. Un
 
 **Coding without understanding the problem is waste. The best code is the one that is not written.**
 
-
+<br/>
 
 # Deliver, deliver and deliver
 
@@ -251,6 +251,4 @@ So, if we mark tasks as done without being accepted by the user, we are fooling 
 > ([Agile Manifesto - Principles](https://agilemanifesto.org/principles.html))
 
 Build, deliver frequently, receive feedback from the users and improve. This is the process. Simple. **If you use Jira, Jenkins, 2-weeks sprints, Scrum, the most recent frontend framework, Kubernetes,whatever... it doesn't matter if you don't deliver, continuosly, working software to the final user** 
-
-# 
 
