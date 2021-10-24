@@ -1,8 +1,8 @@
 ---
 author: jaruizes
 layout: post
-title: "Thoughts about Agile from a Software Developer (WIP)"
-date: 2021-10-15 01:30
+title: "Thoughts about Agile from a Software Developer"
+date: 2021-10-25 01:30
 category : Data
 comments: false
 imagefeature: agile/agile.jpg
@@ -13,9 +13,11 @@ tags:
 
 
 
-First of all, I have to say that I'm not a professional "Agile Coach". The idea of this post came from a debate in LinkedIn about the role of the Scrum Master and whether it's similar to a soccer coach or not (no, this post isn't about Scrum or the role of the Scrum Manager). From my experience building software for many years I realize that, at least in the software world, we should return to the basics of Agile, The Agile Manifesto, and put the focus, again, on building software instead of the method.
+First of all, I have to say that I'm not a professional "Agile Coach". The idea of this post came from a debate in LinkedIn about the role of the Scrum Master and whether it's similar to a soccer coach or not (no, this post isn't about Scrum or the role of the Scrum Manager) and whether the Scrum Master has to know how to build software or not. 
 
-In this post I'm trying to explain my point of view of applying "Agile to building software"
+From my experience building software for many years I realize that, **at least in the software world**, we should return to the basics: The Agile Manifesto, and put the focus, again, on building software instead of just following the method.
+
+In this post I'm trying to explain my point of view of "**Agile to building software**"
 
 
 <br />
@@ -26,8 +28,6 @@ In this post I'm trying to explain my point of view of applying "Agile to buildi
 I'm not going to explain what is "[The Agile Manifesto](https://agilemanifesto.org/)" but I just would like to highlight some points:
 
 - The title is "Manifesto for Agile Software Development" 
-
-- It begins with "***We are uncovering better ways of developing software by doing it and helping others do it***"
 
 - The authors (17) are software developers (although not all of them studied a grade in computer)
 
@@ -42,27 +42,29 @@ I'm not going to explain what is "[The Agile Manifesto](https://agilemanifesto.o
   >
   > ([Agile Manifesto - History](https://agilemanifesto.org/history.html))
 
+
+
+I get to the point, if the question is: "Should an Agile Coach/Scrum Master, working with development teams, has built software before?", in my opinion, "yes, it should be necessary". Why? Because building software is different to build houses, cars or whatever.... if you want to help how to pilot a plane (and how to improve it) to someone you need real practice not only working in the simulator.  
+
+To me, the path to Agile Coach should start working in a development team, coding, and then, after some years of experiences (and failures), leading the team and try to improve the way to build better software and deliver more value.
+
+> We are uncovering **better ways of developing software** by doing it and helping others do it
+>
+> ([Agile Manifesto - Values](https://agilemanifesto.org/))
+
 <br />
 
 # We are here to building software
 
-It's the truth. As Software Developers or Engineers, we are paid to build software. Clients buy software not methods. 
+It's the truth. As a professional software developers or engineers, we are paid to build products, applications or tools using software. Clients buy software not the methods used to built it. 
 
-> Our highest priority is to satisfy the customer through early and continuous delivery of valuable software.
->
-> ([Agile Manifesto - Principles](https://agilemanifesto.org/principles.html))
-
-Nowadays, Agile is a business itself. Companies sell "agile frameworks", "agile coaches" or just certifications to other companies. Almost nothing is free. Also, there is a lot of marketing around those frameworks or certifications and every company wants to say that is doing Agile or showing how the teams are performing stand-up meetings or have many post-its everywhere. Agile is the business nor the software that it's suppose to be building.
+But, nowadays, **Agile is a business itself**. Companies sell "agile frameworks", "agile coaches" or just certifications to other companies. Almost nothing is free. Also, there is a lot of marketing around those frameworks or certifications and every company wants to say that is doing Agile or showing how the teams are performing stand-up meetings or have many post-its everywhere. Agile is the business nor the software that it's suppose to be building.
 
 **If you think carefully about it, it hasn't sense.** 
 
-Why? Because the target wasn't to make a business form Agile or showing how you do "agile"....**The target is building better software** in order to improve the business, time-to-market, reduce cost associated to missunderstandings, minimizing risks, delivering sooner,...,etc. The target isn't show to the world how I build software. The target is show to the world the sotfware I build.
+Why? Because the target wasn't to make a business form Agile or showing how you do "agile"....**The target is building better software** in order to improve the business, time-to-market, reduce cost associated to missunderstandings, minimizing risks, delivering sooner,...,etc. The target isn't show to the world how I build software. 
 
-> We are uncovering better ways of developing software by doing it and helping others do it
->
-> ([Agile Manifesto - Values](https://agilemanifesto.org/))
-
-Show to everyone the awesome software products you are building and how your business has improved and then, if you want, show "the agile you are" adding features or fixing failures or how your teams work. But, **first at all, show the product and the working code not the post-its or the cool meetings
+The target is show to the world the sotfware I build. Show to everyone the awesome software products you are building and how your business has improved and then, if you want, show "the agile you are" adding features or fixing failures or how your teams work. But, **first at all, show the product and the working code not the post-its or the cool meetings**
 
 <br />
 
@@ -90,6 +92,8 @@ The key is that the team knows clearly what objetives it has to achieve (and whe
 # Do not copy models
 
 I'm sure you know the Spotify model and you have heard terms like "tribes", chapter", "squads",... **Do you know that Spotify doesn't really use this model?** **So, why are you try to copy it?**
+
+![agile_attitude](agile/spotify_copy.jpg)
 
 To "Spotify model" works in your company you need to copy more than its way of working, you need to copy all the organization and its business model. And, by the way, get the Spotify model shouldn't be a goal, your goal. Your goal should be improving time-to-market, reducing bugs,...,etc. 
 
@@ -149,13 +153,47 @@ The Scrum Guide also sets a role to guaranty that the methodology is applied lik
 
 I'm not going to talk about whether Scrum is good or bad because it's not the important. The important isn't to say "I'm doing Scrum", **the important is to say "I'm building the software that my customers really want or need and I deliver them when they expect it"**
 
+![agile_attitude](agile/agile_attitude.jpg)
+
 <br />
 
+# You should have a plan to change it
 
+Although you are practicing Agile you need a plan. Yes, in my opinion there is (should be) a plan to achive a goal. Maybe you are thinking, again, about this value of the manifesto:
+
+> Responding to change over following a plan
+>
+> ([Agile Manifesto - Values](https://agilemanifesto.org/))
+
+**The key is that the plan can change because there are changes and being Agile is responding to them.** As a team you should always know "what the goal is" but, depending of the circunstances, "*how we are going to achieve the goal*" and "*when we are going to achieve the goal*", could change. 
+
+> We plan, but recognize the limits of planning in a turbulent environment. 
+>
+> ([Agile Manifesto - History](https://agilemanifesto.org/history.html))
+
+For instance, when you decide where to go somewhere you have a plan to do it and, initially, you know more or less when you are going to arrive there. Maybe there isn't a formal plan but, in your head, you have a goal (or goals) and a plan to achive them. 
+
+If, on your way to the goal, you find a road closed you'll change your path, but the goal is still the same although, you know you could arrive later. Then, an event more happens; your mother calls to ask to you if you can buy something she needs. You'll change your path again and you already know you are going to arrive later and you call to your wife/husband to notify the delay, at that moment in order to your wife/husband can react to the event.  
+
+As a company, you should know where you want to go in a medium or long term, what you want to do with your business because you want to earn money because you have to pay the payrolls of your employees and also, get some benefits. Because life is hard, there are more players playing at the same game and they want to win, you'll have to adapt your plan continuously in order to provide the best product or service to your customers (and potential ones). That is being Agile.
+
+> Our highest priority is to satisfy the customer through early and continuous delivery of valuable software.
+>
+> ([Agile Manifesto - Principles](https://agilemanifesto.org/principles.html))
+
+Maybe you are thinking "having a plan at a company level is ok but I'm just working in a team.". Each team also should be a plan to achive the goals and respond to change updating that plan in order to manage changes and keeping providing value to the customer. The backlog is a plan to achive something (an MVP, for instance). The team should introduce changes in that backlog in order to react to unpredictable events, "feedback" (bugs, improvements,...) from users, managing risks, reducing technical debt,...,etc. 
+
+
+
+<br />
 
 # Agile isn't going faster
 
-Do you know the book "[Scrum: The Art of Doing Twice the Work in Half the Time](https://www.amazon.es/Scrum-Doing-Twice-Work-Half/dp/1847941109/ref=asc_df_1847941109/?tag=googshopes-21&linkCode=df0&hvadid=66129295635&hvpos=&hvnetw=g&hvrand=10053239917135273927&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=20296&hvtargid=pla-154607740875&psc=1)"? Forget it. The title is wrong. 
+Do you know the book "[Scrum: The Art of Doing Twice the Work in Half the Time](https://www.amazon.es/Scrum-Doing-Twice-Work-Half/dp/1847941109/ref=asc_df_1847941109/?tag=googshopes-21&linkCode=df0&hvadid=66129295635&hvpos=&hvnetw=g&hvrand=10053239917135273927&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=20296&hvtargid=pla-154607740875&psc=1)"? 
+
+![agile_attitude](agile/scrum_book.jpg)
+
+Forget it. The title is false. **You are not going to "do twice the work in the half the time".**
 
 Do you think that if you do Scrum, the amount of code needed to implement an application is going to be less than if you don't do Scrum? Do you think that you are going to find a good solution faster than if you don't use Scrum? I don't think so. 
 
@@ -250,7 +288,17 @@ So, if we mark tasks as done without being accepted by the user, we are fooling 
 >
 > ([Agile Manifesto - Principles](https://agilemanifesto.org/principles.html))
 
-Build, deliver frequently, receive feedback from the users and improve. This is the process. Simple. **If you use Jira, Jenkins, 2-weeks sprints, Scrum, the most recent frontend framework, Kubernetes,whatever... it doesn't matter if you don't deliver, continuosly, working software to the final user** 
+Build, deliver frequently, receive feedback from the users and improve. This is the process. Simple.  
+
+**If you use Jira, Jenkins, 2-weeks sprints, Scrum, the most recent frontend framework, Kubernetes,whatever... it doesn't matter if you don't deliver, continuosly, working software to the final user**. 
+
+How you can deliver frequently? Design, technical excellence, KISS, YAGNI and CI/CD are your best friends
+
+> Continuous attention to technical excellence and good design enhances agility.
+>
+> ([Agile Manifesto - Principles](https://agilemanifesto.org/principles.html))
+
+
 
 <br /><br />
 
