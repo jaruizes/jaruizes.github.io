@@ -93,7 +93,7 @@ The key is that the team knows clearly what objetives it has to achieve (and whe
 
 I'm sure you know the Spotify model and you have heard terms like "tribes", chapter", "squads",... **Do you know that Spotify doesn't really use this model?** **So, why are you try to copy it?**
 
-![agile_attitude](/agile/spotify_copy.jpg)
+![agile_attitude](/images/agile/spotify_copy.jpg)
 
 To "Spotify model" works in your company you need to copy more than its way of working, you need to copy all the organization and its business model. And, by the way, get the Spotify model shouldn't be a goal, your goal. Your goal should be improving time-to-market, reducing bugs,...,etc. 
 
@@ -153,7 +153,7 @@ The Scrum Guide also sets a role to guaranty that the methodology is applied lik
 
 I'm not going to talk about whether Scrum is good or bad because it's not the important. The important isn't to say "I'm doing Scrum", **the important is to say "I'm building the software that my customers really want or need and I deliver them when they expect it"**
 
-![agile_attitude](/agile/agile_attitude.jpg)
+![agile_attitude](/images/agile/agile_attitude.jpg)
 
 <br />
 
@@ -191,7 +191,7 @@ Maybe you are thinking "having a plan at a company level is ok but I'm just work
 
 Do you know the book "[Scrum: The Art of Doing Twice the Work in Half the Time](https://www.amazon.es/Scrum-Doing-Twice-Work-Half/dp/1847941109/ref=asc_df_1847941109/?tag=googshopes-21&linkCode=df0&hvadid=66129295635&hvpos=&hvnetw=g&hvrand=10053239917135273927&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=20296&hvtargid=pla-154607740875&psc=1)"? 
 
-![agile_attitude](/agile/scrum_book.jpg)
+![agile_attitude](/images/agile/scrum_book.jpg)
 
 Forget it. The title is false. **You are not going to "do twice the work in the half the time".**
 
