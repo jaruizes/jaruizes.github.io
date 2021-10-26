@@ -13,11 +13,11 @@ tags:
 
 
 
-First of all, I have to say that I'm not a professional "Agile Coach". The idea of this post came from a debate in LinkedIn about the role of the Scrum Master and whether it's similar to a soccer coach or not (no, this post isn't about Scrum or the role of the Scrum Manager) and whether the Scrum Master has to know how to build software or not. 
+The idea of this post came from a debate in LinkedIn about the role of the Scrum Master and whether it's similar to a soccer coach or not (no, this post isn't about Scrum or the role of the Scrum Manager) and whether the Scrum Master has to know how to build software or not. 
 
-From my experience building software for many years I realize that, **at least in the software world**, we should return to the basics: The Agile Manifesto, and put the focus, again, on building software instead of just following the method.
+I have to say that I'm not a professional "Agile Coach" although I got some agile certifications and I like so much "the methodoly part" of building software. From my experience building software for many years, I realize that, **at least in the software sector**, we should return to the basics, "[The Agile Manifesto](https://agilemanifesto.org/)", and put the focus, again, on building software instead of just following a method.
 
-In this post I'm trying to explain my point of view of "**Agile to building software**"
+In this post I'm trying to explain my point of view and it could be probably wrong. I'm not expect you to agree with it because my context and my experiencia isn't yours. 
 
 
 <br />
@@ -25,26 +25,26 @@ In this post I'm trying to explain my point of view of "**Agile to building soft
 
 # Return to the "The Agile Manifesto"
 
-I'm not going to explain what is "[The Agile Manifesto](https://agilemanifesto.org/)" but I just would like to highlight some points:
+I'm not going to explain what is "[The Agile Manifesto](https://agilemanifesto.org/)" but I recommend you to read it again. From this manifesto, I just would like to highlight some points:
 
-- The title is "Manifesto for Agile Software Development" 
+- The title is "Manifesto for Agile Software Development", so it a manifesto from developers to people working in software. 
 
 - The authors (17) are software developers (although not all of them studied a grade in computer)
 
-- The first value is "***Individuals and interactions over processes and tools***" and all of them wanted to put it on the first position.
+- The first value is "***Individuals and interactions over processes and tools***" and all of them agreed to put it on the first position.
 
-- Within the twelve values there are no mention to adopt an specific framework
+- Besides reading values and principles, read also the history. I like this paragraph: 
 
-- Besides reading values and principles, read also the history. I like this sentence: 
-
-  > The Agile movement is not anti-methodology, in fact, many of us want to restore credibility to the word methodology. We want to restore a balance. We embrace modeling, but not in order to file some diagram in a dusty corporate repository. We embrace documentation, but not hundreds of pages of never-maintained and rarely-used tomes. We plan, but recognize the limits of planning in a turbulent environment. Those who would brand proponents of XP or SCRUM or any of the other Agile Methodologies as "hackers" are ignorant of both the methodologies and the original definition of the term hacker.
+  > The Agile movement is not anti-methodology, in fact, many of us want to restore credibility to the word methodology. We want to restore a balance. 
+  >
+  > We embrace modeling, but not in order to file some diagram in a dusty corporate repository. We embrace documentation, but not hundreds of pages of never-maintained and rarely-used tomes. We plan, but recognize the limits of planning in a turbulent environment. Those who would brand proponents of XP or SCRUM or any of the other Agile Methodologies as "hackers" are ignorant of both the methodologies and the original definition of the term hacker.
   >
   >
   > ([Agile Manifesto - History](https://agilemanifesto.org/history.html))
 
 
 
-I get to the point, if the question is: "Should an Agile Coach/Scrum Master, working with development teams, has built software before?", in my opinion, "yes, it should be necessary". Why? Because building software is different to build houses, cars or whatever.... if you want to help how to pilot a plane (and how to improve it) to someone you need real practice not only working in the simulator.  
+Ok, I get to the point, if the question is: "Should an Agile Coach/Scrum Master, working with development teams, has built software before?", in my opinion, "yes, it should be necessary". Why? Because building software is different to build houses, cars or whatever.... if you want to help someone to improve the way she/he pilots a plane, you'll need real practice and not only working in the simulator in order to give her/him better advices
 
 To me, the path to Agile Coach should start working in a development team, coding, and then, after some years of experiences (and failures), leading the team and try to improve the way to build better software and deliver more value.
 
@@ -59,6 +59,8 @@ To me, the path to Agile Coach should start working in a development team, codin
 It's the truth. As a professional software developers or engineers, we are paid to build products, applications or tools using software. Clients buy software not the methods used to built it. 
 
 But, nowadays, **Agile is a business itself**. Companies sell "agile frameworks", "agile coaches" or just certifications to other companies. Almost nothing is free. Also, there is a lot of marketing around those frameworks or certifications and every company wants to say that is doing Agile or showing how the teams are performing stand-up meetings or have many post-its everywhere. Agile is the business nor the software that it's suppose to be building.
+
+![agile_car](/images/agile/coche.jpg)
 
 **If you think carefully about it, it hasn't sense.** 
 
@@ -78,7 +80,7 @@ If your team works as a "gazpacho", you are really working as a team because suc
 
 In a salad, interactions are managed by someone external who decide how to eat the salad. In a gazpacho, interactions are full because all the ingredients are mixed from the beginning, working as a whole and complementing some of them with others. 
 
-This is how an agile team has to work. The method doesn't matter. What really matters is how team members interact each other and how one of them complementing others. The team wins, the team loses. And, in order to win, to get the target, the team will decide how to work depending on its context. If you, that are not going to be with the team, decide how it has to work, how they have to organize and which tools have to they use, maybe you are not easing the way...maybe you are putting stones in the way.
+This is how an agile team has to work. The method doesn't matter. What really matters is how team members interact each other and how one of them complementing others. One team wins, one team loses. And, in order to win, to get the target, the team will decide how to work depending on its context. If you, that are not going to be with the team, decide how it has to work, how they have to organize and which tools have to they use, maybe you are not easing the way...maybe you are putting stones in the way.
 
 The key is that the team knows clearly what objetives it has to achieve (and when) and, then, let them to do their job. 
 
