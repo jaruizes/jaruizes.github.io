@@ -298,7 +298,7 @@ For instance, if we read the Scrum Guide, we found the [following point](https:/
 
 > The Scrum framework, as outlined herein, is immutable. While implementing only parts of Scrum is possible, the result is not Scrum. Scrum exists only in its entirety and functions well as a container for other techniques, methodologies, and practices.
 
-**It doesn't care if the result isn't Scrum because the goal isn't the process. The goal is building better software**
+
 
 The Scrum Guide also sets a role to guaranty that the methodology is applied like the guide says:
 
@@ -306,15 +306,21 @@ The Scrum Guide also sets a role to guaranty that the methodology is applied lik
 >
 > The Scrum Master is accountable for the Scrum Team’s effectiveness. They do this by enabling the Scrum Team to improve its practices, within the Scrum framework.
 
-**Don't you think, again, that this is putting the focus mostly on the process?** 
+**Don't you think, again, that this is putting the focus mostly on the process?** **It doesn't care whether the result is Scrum or not because, again, the goal isn't the process. The goal is building better software, the software that the users expect**
 
-I'm not going to talk about whether Scrum is good or bad because it's not the important. The important isn't to say "I'm doing Scrum", **the important is to say "I'm building the software that my customers really want or need and I deliver them when they expect it"**
+<br />
+
+# Agile is an attitude
+
+I would like to finish this post with this quote from one of the signatories of The Agile Manifesto:
 
 ![agile_attitude](/images/agile/agile_attitude.jpg)
 
 <br />
 
-
-
 So, I hope you liked it, whether you agree or not with my vision. That's all folks. 
+
+
+
+
 
