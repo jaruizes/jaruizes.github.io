@@ -13,11 +13,11 @@ tags:
 
 
 
+In this post I'm trying to explain my point of view and probably, it isn't the same of you or I'm wrong.
+
 The idea of this post came from a debate in LinkedIn about the role of the Scrum Master and whether it's similar to a soccer coach or not (no, this post isn't about Scrum or the role of the Scrum Manager) and whether the Scrum Master has to know how to build software or not. 
 
-I have to say that I'm not a professional "Agile Coach" although I got some agile certifications and I like so much "the methodoly part" of building software. From my experience building software for many years, I realize that, **at least in the software sector**, we should return to the basics, "[The Agile Manifesto](https://agilemanifesto.org/)", and put the focus, again, on building software instead of just following a method.
-
-In this post I'm trying to explain my point of view and it could be probably wrong. I'm not expect you to agree with it because my context and my experiencia isn't yours. 
+I have to say that I'm not a professional "Agile Coach" although I got some agile certifications and I like so much "the methodoly part" of building software. From my experience building software for many years, I realize that, **at least in the software sector**, we should return to the basics, "[The Agile Manifesto](https://agilemanifesto.org/)", and put the focus, again, on building software instead of just following a method. 
 
 
 <br />
@@ -56,15 +56,15 @@ To me, the path to Agile Coach should start working in a development team, codin
 
 # We are here to building software
 
-It's the truth. As a professional software developers or engineers, we are paid to build products, applications or tools using software. Clients buy software not the methods used to built it. 
+It's the truth. As a professional software developers or engineers, we are paid to build products, applications or tools using software. Clients want our software not the methods used to built it.
 
-But, nowadays, **Agile is a business itself**. Companies sell "agile frameworks", "agile coaches" or just certifications to other companies. Almost nothing is free. Also, there is a lot of marketing around those frameworks or certifications and every company wants to say that is doing Agile or showing how the teams are performing stand-up meetings or have many post-its everywhere. Agile is the business nor the software that it's suppose to be building.
+But, nowadays, **Agile is a business itself**. Some companies sell "agile frameworks", "agile coaches" or just certifications to other companies.There is a lot of marketing around those frameworks or certifications and every company wants to say that is doing Agile or showing how the teams are performing stand-up meetings or have many post-its everywhere:
 
 ![agile_car](/images/agile/coche.jpg)
 
-**If you think carefully about it, it hasn't sense.** 
+Agile and its frameworks and certfications are now the business instead the software that they suppose to help to build. **If you think carefully about that, it hasn't sense.** 
 
-Why? Because the target wasn't to make a business form Agile or showing how you do "agile"....**The target is building better software** in order to improve the business, time-to-market, reduce cost associated to missunderstandings, minimizing risks, delivering sooner,...,etc. The target isn't show to the world how I build software. 
+Why? Because the original target (I want to believe it) wasn't to make Agile a business....**The target was (and is) building better software by improving the way to do it**, and as a consequence of that, better time-to-market, cost reduction associated to missunderstandings, risk minimization, early and continuos delivering and so on...
 
 The target is show to the world the sotfware I build. Show to everyone the awesome software products you are building and how your business has improved and then, if you want, show "the agile you are" adding features or fixing failures or how your teams work. But, **first at all, show the product and the working code not the post-its or the cool meetings**
 
@@ -93,25 +93,31 @@ The key is that the team knows clearly what objetives it has to achieve (and whe
 
 # Do not copy models
 
-I'm sure you know the Spotify model and you have heard terms like "tribes", chapter", "squads",... **Do you know that Spotify doesn't really use this model?** **So, why are you try to copy it?**
+I'm sure you know the Spotify model and you have heard terms like "tribes", chapter", "squads",... If you know more than about the model, you can read the paper "[Scaling Agile @Spotify](https://blog.crisp.se/wp-content/uploads/2012/11/SpotifyScaling.pdf)". This picture, from that paper, summarizes the model:
+
+![agile_car](/images/agile/spotify_model.jpg)
+
+**Do you know that Spotify doesn't really use this model?** ** In the first page of the paper you'll find the following disclaimer:
+
+![spotify_disclaimer](/images/agile/spotify_disclaimer.jpg)
+
+Spotify had a goal, "turning the music business upside down", and worked to improve its way of working to achieve the goal. It was its context and its circumstances, not yours. They didn't copy the model, they created a new one taking some ideas from some frameworks and they tried to applied to its context.
+
+![kent_beck_spotify](/images/agile/kent_beck_spotify.jpg)
+
+**So, why are you try to copy it?** 
+
+** Beside that, some people from Spotify say that "the Spotify model" never worked (you can find more details [here](https://www.jeremiahlee.com/posts/failed-squad-goals/)). 
+
+In order to "the Spotify model" works in your company you need to copy more than its way of working, you need to copy all the organization and its business model or goals. And, by the way, getting the Spotify model shouldn't be a goal, your goal. Your goal should be improving time-to-market, reducing bugs,...,etc. 
 
 ![agile_attitude](/images/agile/spotify_copy.jpg)
 
-To "Spotify model" works in your company you need to copy more than its way of working, you need to copy all the organization and its business model. And, by the way, get the Spotify model shouldn't be a goal, your goal. Your goal should be improving time-to-market, reducing bugs,...,etc. 
-
-For instance, do you really think that if you perform a retrospective every two weeks using post-it to show what is working, what is not,....etc everyhing is going to be better? This is, again, put the focus on the process instead of in the results. Performing retrosprectives, plannings, whatever...isn't a goal. 
+For instance, do you really think that just performing a retrospective every two weeks using post-it to show what is working, what is not,....etc everyhing is going to be better? This is, again, put the focus on the process instead of in the results. Performing retrosprectives, plannings, whatever...isn't a goal.  and then, Spotify evolved that model according its context in every moment. 
 
 If you can't (or you don't want to) perform the retro every two weeks or if you don't use post-its, it doesn't matter. What really matter is that your team (and your company) talks about how is working and how it could do better. If your team talks about that drinking some beers every friday, in the office every two weeks or at home every day, it doesn't matter. The important is knowing what could be improved and setting steps to try it and it that isn't the way, change the way.
 
-In my opinion, being Agile means having your own model at all leves, from top (company) to down (teams) and evolving it whenever necessary. I like so much how Martin Fowler talks about that:
-
-> The point is, the team doing work decides how to do it. That is a fundamental agile principle. That even means if the team doesn't want to work in an agile way, then agile probably isn't appropriate in that context, and *[not using agile]* is the most agile way they can do things in some kind of strangely twisted world of logic. 
->
-> ([Martin Fowler](https://martinfowler.com/articles/agile-aus-2018.html))
-
-
-
-When a company decides to apply a "methodoloy framework" as a whole, deciding that all your teams are going to work using it. The company is imposing the methodology that thinks is the best for everyone, every team, every department...Again, the methodology shouldn't be the goal. Let's return to the first value:
+In my opinion, being Agile also means having the possibility to implement different ways of working at all levels, from the top (company) to the bottom (teams), and evolve them whenever necessary according to each context and goals. For that reason, from a point of view, when a company decides to apply a "methodoloy framework" as a whole, deciding that all your teams are going to work using it, the company is really imposing a methodology that thinks is the best for everyone, every team, every department...Again, the methodology shouldn't be the goal. Let's return to the first value:
 
 > Individuals and interactions over processes and tools
 >
@@ -121,45 +127,25 @@ When a company decides to apply a "methodoloy framework" as a whole, deciding th
 
 # Industrial Agile
 
-If we look at the industrial sector, when some prototype or product is ready to be industrialized to maximize the amount of money earned, means that the same fabrication process is applied to all the items. For example, a car, a mobile, a TV.... You don't choose how the car chasis is going to be or the capacity of the fuel tank. You only choose the color and some extras, no more. The product you buy is the same independent of the context you have.
+Sometimes I have the feeling that Agile has become a factory: "how many Scrum Masters do you need? Are you going to need someone knowing SAFe? Ok, perfect. I'll send you three of them next week"
 
-> Sometimes I have the feeling that Agile has become a factory: "how many Scrum Masters do you need? Are you going to need someone knowing SAFe? Ok, perfect. I'll send you three of them next week"
+Agile isn't something like programming in Java and get certified because you're going to use Java in the same way independently of the context but you can't use the same "Agile framework" independently of the context. You'll have to adapt the way of working according to the goals to achieve. Because of that, for instance, just having an Scrum certification isn't enough, because Scrum could not work well with some contexts or teams. 
 
-Setting up a way of working isn't like coding in Java or Python. Setting up a way of working means that perhaps, today you need Java but tomorrow you'll have to coding in Python and the day after tomorrow, the team could decide that the best will be using bash. In my opinion, allowing this kind of changes is really being Agile.
+Agile shouldn't be hiring a set of Scrum Masters or Agile coaches to explain to the teams how they have to work. Agile should be to allow teams to adopt the best way of working to achieve the objetives, whatever that way of working. I like so much how Martin Fowler talks about that:
 
-In my opinion this isn't be industrialized. Agile shouldn't be hire a set of Scrum Masters or Agile coaches to say to the teams how they have to work. Agile should be to allow teams to adopt the best way of working to achieve the objetives, whichever be those ways of working. 
-
-So, teams don't need an external figure like the Scrum Master or the Agile Coach trying to convince them to adopt a concrete way of working. Teams do need people who eases them communications with business people, with the final user or people who removes silos within the company. Teams do need people who helps managers and teams to set the goals. Teams do need people having a global vision, who helps them to manage dependencies. All these things have to be managed in a different way in each company because of that, Agile should not be industrialized. What works in a company could not work in other companies
-
-Teams don't need people to say them how they have to work or communicate because that is exclusively of the team and each team is different. Because of that, Agile should not be industrialized. What works in a team could not work in other teams.
-
-<br />
-
-# To be or not to be
-
-In my opinion, "to be or not to be" Agile, it doesn't matter. As I said before, the important is focusing on doing things (software) well and delivering them when the user expect them. Simple.
-
-For instance, if we read the Scrum Guide, we found the [following point](https://scrumguides.org/scrum-guide.html#end-note):
-
-> The Scrum framework, as outlined herein, is immutable. While implementing only parts of Scrum is possible, the result is not Scrum. Scrum exists only in its entirety and functions well as a container for other techniques, methodologies, and practices.
-
-**It doesn't care if the result isn't Scrum because the goal isn't the process. The goal is building better software**
-
-The Scrum Guide also sets a role to guaranty that the methodology is applied like the guide says:
-
-> The Scrum Master is accountable for establishing Scrum as defined in the Scrum Guide. They do this by helping everyone understand Scrum theory and practice, both within the Scrum Team and the organization.
+> The point is, the team doing work decides how to do it. That is a fundamental agile principle. That even means if the team doesn't want to work in an agile way, then agile probably isn't appropriate in that context, and *[not using agile]* is the most agile way they can do things in some kind of strangely twisted world of logic. 
 >
-> The Scrum Master is accountable for the Scrum Team’s effectiveness. They do this by enabling the Scrum Team to improve its practices, within the Scrum framework.
+> ([Martin Fowler](https://martinfowler.com/articles/agile-aus-2018.html))
 
-**Don't you think, again, that this is putting the focus mostly on the process?** 
+So, teams don't need an external figure like the Scrum Master or the Agile Coach trying to convince them to adopt a concrete way of working. Teams do need people to make it easy for them to interact with business people or the final user. Teams need people to help to remove silos. Teams do need people. Teams do need people to help them to manage dependencies with other teams,... All these things have to be managed in a different way depending on each company, each context. Because of that, Agile should not be industrialized. What works in a company could not work in other companies
 
-I'm not going to talk about whether Scrum is good or bad because it's not the important. The important isn't to say "I'm doing Scrum", **the important is to say "I'm building the software that my customers really want or need and I deliver them when they expect it"**
+Teams don't need "outsiders" to tell them how to work because that is, exclusively, a matter of the team and each team is different. Because of that, Agile should not be industrialized. What works in a team could not work in other teams. 
 
-![agile_attitude](/images/agile/agile_attitude.jpg)
+I don't need some certified Scrum Masters (although I also have the cerfication....) because if Scrum doesn't work well with my teams, what do I do with them? Do I have to fire them? This is another reason for me to say that the Scrum Master must be a role within the team rather than an "external" people and if Scrum doesn't work and the team decides to change to a way of working where there is no Scrum Master role, it's ok.
 
 <br />
 
-# You should have a plan to change it
+# Agile is having a plan to change it
 
 Although you are practicing Agile you need a plan. Yes, in my opinion there is (should be) a plan to achive a goal. Maybe you are thinking, again, about this value of the manifesto:
 
@@ -232,7 +218,7 @@ Maybe you're thinking that someone knowing the company is going to explain every
 
 <br/>
 
-# Think more, coding less
+# Agile is thinking more and coding less
 
 Many people think that being Agile is starting to code as soon as posible, without desinging anything. It's a big error. 
 
@@ -270,7 +256,7 @@ Only step number 7 is related to code. Don't go directly to step 7. Be agile. Un
 
 <br/>
 
-# Deliver, deliver and deliver
+# Agile is delivering, delivering and delivering functional software
 
 > Working software is the primary measure of progress.
 >
@@ -302,7 +288,33 @@ How you can deliver frequently? Design, technical excellence, KISS, YAGNI and CI
 
 
 
-<br /><br />
+<br />
 
-So, I hope you liked it, whether you agree or not with my vision. That's all folks. I ho
+# To be or not to be Agile
+
+In my opinion, "to be or not to be" Agile, it doesn't matter. As I said before, the important is focusing on doing things (software) well and delivering them when the user expect them. Simple.
+
+For instance, if we read the Scrum Guide, we found the [following point](https://scrumguides.org/scrum-guide.html#end-note):
+
+> The Scrum framework, as outlined herein, is immutable. While implementing only parts of Scrum is possible, the result is not Scrum. Scrum exists only in its entirety and functions well as a container for other techniques, methodologies, and practices.
+
+**It doesn't care if the result isn't Scrum because the goal isn't the process. The goal is building better software**
+
+The Scrum Guide also sets a role to guaranty that the methodology is applied like the guide says:
+
+> The Scrum Master is accountable for establishing Scrum as defined in the Scrum Guide. They do this by helping everyone understand Scrum theory and practice, both within the Scrum Team and the organization.
+>
+> The Scrum Master is accountable for the Scrum Team’s effectiveness. They do this by enabling the Scrum Team to improve its practices, within the Scrum framework.
+
+**Don't you think, again, that this is putting the focus mostly on the process?** 
+
+I'm not going to talk about whether Scrum is good or bad because it's not the important. The important isn't to say "I'm doing Scrum", **the important is to say "I'm building the software that my customers really want or need and I deliver them when they expect it"**
+
+![agile_attitude](/images/agile/agile_attitude.jpg)
+
+<br />
+
+
+
+So, I hope you liked it, whether you agree or not with my vision. That's all folks. 
 
