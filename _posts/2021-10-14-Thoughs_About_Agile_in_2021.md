@@ -15,7 +15,7 @@ tags:
 
 In this post I'm trying to explain my point of view and probably, it isn't the same of you or I'm wrong.
 
-The idea of this post came from a debate in LinkedIn about the role of the Scrum Master and whether it's similar to a soccer coach or not (no, this post isn't about Scrum or the role of the Scrum Manager) and whether the Scrum Master has to know how to build software or not. 
+The idea of this post came from a debate in LinkedIn about the role of the Scrum Master and whether it's similar to a soccer coach or not (no, this post isn't about Scrum or the role of the Scrum Manager) and whether the Scrum Master has to know how to build software or not. To be honest, to me, the idea of Scrum Master being like a soccer coach, giving orders from the bench, deciding who is going to play and who isn't, setting the strategy,...,etc isn't my idea of Agile.
 
 I have to say that I'm not a professional "Agile Coach" although I got some agile certifications and I like so much "the methodoly part" of building software. From my experience building software for many years, I realize that, **at least in the software sector**, we should return to the basics, "[The Agile Manifesto](https://agilemanifesto.org/)", and put the focus, again, on building software instead of just following a method. 
 
@@ -44,13 +44,15 @@ I'm not going to explain what is "[The Agile Manifesto](https://agilemanifesto.o
 
 
 
-Ok, I get to the point, if the question is: "Should an Agile Coach/Scrum Master, working with development teams, has built software before?", in my opinion, "yes, it should be necessary". Why? Because building software is different to build houses, cars or whatever.... if you want to help someone to improve the way she/he pilots a plane, you'll need real practice and not only working in the simulator in order to give her/him better advices
+Ok, I get to the point, if the question is: "Should an Agile Coach/Scrum Master, working with development teams, has built software before?", in my opinion, "yes, it should be necessary". Why? Because building software is different to build houses, cars or whatever.... if you want to help someone to improve the way she/he pilots a plane, you'll need real practice and not only working in the simulator in order to give her/him better advices. 
 
-To me, the path to Agile Coach should start working in a development team, coding, and then, after some years of experiences (and failures), leading the team and try to improve the way to build better software and deliver more value.
+For instance, someone, with no experience in building software, can not got to the "Agile School", getting a title and next say how a development team has to work. To me, the path to Agile Coach should start working in a development team and then, after some years of experiences (and failures), leading the team and try to improve the way to build better software and deliver more value.
 
 > We are uncovering **better ways of developing software** by doing it and helping others do it
 >
 > ([Agile Manifesto - Values](https://agilemanifesto.org/))
+
+Obviously, there are more skills needed to lead how the way of working should be, but one of those skills, from my point of view, should be having experience building and delivering software. 
 
 <br />
 
