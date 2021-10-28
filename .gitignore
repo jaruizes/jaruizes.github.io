@@ -3,3 +3,11 @@ _site
 .jekyll-cache
 .jekyll-metadata
 .DS_Store
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
