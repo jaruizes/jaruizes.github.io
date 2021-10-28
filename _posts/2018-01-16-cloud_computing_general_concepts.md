@@ -1,13 +1,10 @@
 ---
-author: jaruizes
 layout: post
-title: "Cloud Computing: basic concepts"
-date: 2018-04-17 18:30
-category : Cloud
-comments: false
-tags:
-    - Cloud Computing
-imagefeature: cloud-computing/cloud-computing.jpg
+title:  "Cloud Computing: basic concepts"
+date:   2018-04-17 18:30 +0300
+image: "/images/cloud-computing/cloud-computing.jpg"
+description: "What is Cloud computing?"
+tags:   [Cloud]
 ---
 
 # Context

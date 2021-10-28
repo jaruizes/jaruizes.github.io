@@ -1,15 +1,12 @@
 ---
-author: jaruizes
 layout: post
-title: "Thoughts about Microfrontends"
-date: 2019-10-23 01:30
-category : Microfrontends
-comments: false
-imagefeature: microfrontends/header.png
-tags:
-    - microservices
-    - microfrontends
+title:  "Thoughts about Microfrontends"
+date:   2019-10-23 14:30 +0300
+image: "/images/microfrontends/header.png"
+description: "This post maybe is too long and I could write several posts but I considered a good option to write all I think about Microfrontend and MicroX architectures in just one post, like a book."
+tags:   [Microfrontends]
 ---
+
 
 This post maybe is too long and I could write several posts but I considered a good option to write all I think about Microfrontend and MicroX architectures in just one post, like a book. This post is a "living-post"...
 

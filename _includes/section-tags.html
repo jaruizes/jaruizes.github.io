@@ -1,0 +1,28 @@
+{% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+{% assign tag_words = site_tags | split:',' | sort %}
+<!-- begin tags -->
+<section class="tags">
+
+  <div class="tag__head">
+
+    <div class="container">
+      <div class="row">
+        <div class="col col-12">
+
+          <h1 class="tag__title">Tags</h1>
+
+          <ul class="tag__list list-reset">
+            {% for item in (0..site.tags.size) %}
+            {% unless forloop.last %}
+            {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
+            <li class="tag__item"><a href="#{{ this_word | cgi_escape }}" class="tag__link">{{ this_word }}</a></li>
+            {% endunless %}
+            {% endfor %}
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

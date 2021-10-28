@@ -1,14 +1,9 @@
 ---
-author: jaruizes
 layout: post
-title: "Angular: Routing Basics"
-date: 2017-02-06 10:00
-category : Angular
-comments: false
-tags:
- - Angular 2
- - Javascript
- - Routing
+title:  "Angular: Routing Basics"
+date:   2017-02-06 10:00 +0300
+description: In this post I would like to talk about the routing in Angular 2. The idea is to write several posts about this topic, from the basic aspects to the advanced ones.
+tags:   [Angular, SPA]
 ---
 
 If you are new in this kind of frameworks "SPA oriented" or you're used to build server-side applications, you have to keep in mind that a navigation action doesn't have to be a request to the server. Actually, in a SPA, it isn't. 

@@ -1,0 +1,62 @@
+title:            José Alberto Ruiz
+description:      "Architecture & Software Development"
+disqus_shortname: jaruizes
+share:            true
+dropcap:	   true
+# Change url to your domain. Leave localhost server or blank when working locally.
+# or use the hint from http://jekyllrb.com/docs/github-pages/ to keep this the same 
+# whether working locally or remotely. Start Jekyll with: jekyll serve --baseurl ''
+url:        	 https://jaruizes.github.io
+
+# Owner/author information
+owner:
+  name:           José Alberto Ruiz
+  avatar:         logo.jpg
+  email:          jalb80@gmail.com
+  twitter:        jalb80
+  github:         jaruizes
+  linkedin: jalb80
+
+# Links to include in footer navigation
+# For external links add external: true
+links:
+  - title: Home
+    url: /
+    external: false
+    icon: home
+  - title: Categories
+    url: /categories
+  - title: About
+    url: /about
+
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone:    Europe/Madrid
+future:      true
+rouge: pygments
+markdown:    kramdown
+paginate:    5
+paginate_path: "page:num"
+
+# https://github.com/mojombo/jekyll/wiki/Permalinks
+permalink:   pretty
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  enable_coderay: false
+
+  coderay:
+    coderay_line_numbers: 
+    coderay_line_numbers_start: 1
+    coderay_tab_width: 4
+    coderay_bold_every: 10
+    coderay_css: class
+
+plugins:
+- jemoji
+- jekyll-paginate
+
+# Google services
+google_analytics: UA-112622712-1

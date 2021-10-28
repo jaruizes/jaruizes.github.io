@@ -1,18 +1,12 @@
 ---
-author: jaruizes
 layout: post
-title: "Kubernetes - CI/CD with Tekton & Argo CD"
-date: 2021-03-16 01:30
-category : Kubernetes
-comments: false
-imagefeature: tekton-argocd/cover.png
-tags:
-- microservices
-- kubernetes
-- cicd
+title:  "Kubernetes - CI/CD with Tekton & Argo CD"
+date:   2021-03-16 14:30 +0300
+image: "/images/tekton-argocd/cover.png"
+description: "This post tries to be post about Kubernetes from the developer point of view, relating Kubernetes concepts with application development. As I always said, the important thing is adquiring knowledge about something and making it yours, In my case, the JARC way."
+tags:   [Kubernetes, CI/CD, Tekton, Gitops, Argo CD]
 ---
 
-# Kubernetes - CI/CD with Tekton & Argo CD
 With this post I'm going to show how a modern and cloud native CI/CD could be implemented within a Kubernetes environment. I'll use two different tools:
 
 - **Tekton**: to implement CI stages
@@ -162,13 +156,13 @@ The first step is to fork the repo https://github.com/jaruizes/tekton-argocd-poc
 
 It's necessary to add a Github Personal Access Token to Tekton can perform git operations, like push to gitops repo. If you need help to create this token, you can follow these instructions: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
 
-> ** The token needs to be allowed with "repo" grants.
+> The token needs to be allowed with "repo" grants.
 
 Once the token is created, you have to copy it in these files (## INSERT TOKEN HERE:
 
 - **poc/conf/argocd/git-repository.yaml**
 
-  ```
+  ``` yaml
   apiVersion: v1
   kind: Secret
   metadata:
@@ -186,7 +180,7 @@ Once the token is created, you have to copy it in these files (## INSERT TOKEN H
 
 - **poc/conf/tekton/git-access/secret.yaml**
 
-  ```
+  ``` yaml
   apiVersion: v1
   kind: Secret
   metadata:
@@ -202,7 +196,7 @@ Once the token is created, you have to copy it in these files (## INSERT TOKEN H
 
 <br />
 
-> ** In fact, for Argo CD, create secret with the token isn't necessary because the gitops repository in Github has public access but I think it's interesting to keep it in order to know what you need to do in case the repository be private.
+> In fact, for Argo CD, create secret with the token isn't necessary because the gitops repository in Github has public access but I think it's interesting to keep it in order to know what you need to do in case the repository be private.
 
 <br />
 
@@ -233,10 +227,10 @@ This step is the most important because installs and configures everything neces
 
 <br />
 
-> ** **Be patient**. The process takes some minutes.
+> **Be patient**. The process takes some minutes.
 
 
-> ** **This message isn't an error**. It just waiting for to Nexus admin password created when the container starts. When the Nexus container starts, at some moment, it creates a file containing the default password.
+> **This message isn't an error**. It just waiting for to Nexus admin password created when the container starts. When the Nexus container starts, at some moment, it creates a file containing the default password.
 >
 > ```
 > Configuring settings.xml (MAVEN) to work with Nexus
@@ -260,7 +254,7 @@ kubectl proxy --port=8080
 <br />
 Then, just open this url in the browser:
 
-```bash
+``` bash
 http://localhost:8080/api/v1/namespaces/tekton-pipelines/services/tekton-dashboard:http/proxy/#/namespaces/cicd/pipelineruns
 ```
 
@@ -286,7 +280,7 @@ If you click in this pipelinerun you'll see the different executed **stages**:
 
 **Each stage is executed by a pod**. For instance, you can execute:
 
-```bash
+``` bash
  kubectl get pods -n cicd -l "tekton.dev/pipelineRun=products-ci-pipelinerun"
 ```
 
@@ -302,7 +296,7 @@ It's possible to **access to Sonarqube** to check quality issues, opening this [
 
 ![sonarqube](/images/tekton-argocd/sonarqube.png)
 
-> ** In this pipeline, it doesn't check if quality gate is passed.
+> In this pipeline, it doesn't check if quality gate is passed.
 
 <br />
 
@@ -322,13 +316,13 @@ As I said before, the last stage in CI part consist on **performing a push actio
 
 To access to **Argo CD dashboard** you need to perform a port-forward:
 
-```bash
+``` bash
 kubectl port-forward svc/argocd-server -n argocd 9080:443
 ```
 <br />
 Then, just open this url in the browser:
 
-```bash
+``` bash
 https://localhost:9080/
 ```
 

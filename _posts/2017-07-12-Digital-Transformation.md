@@ -1,12 +1,9 @@
 ---
-author: jaruizes
 layout: post
-title: "Digital Transformation: is it just about technology?"
-date: 2017-07-12 19:00
-category : DigitalTransformation
-comments: false
-tags:
- - Digital Transformation
+title:  "Digital Transformation: is it just about technology?"
+date:   2017-07-12 19:00 +0300
+description: "Every company is doing its own Digital Transformation, hiring many people, making many projects, replacing its old technology architecture and all this new stuff"
+tags:   [Digital Transformation]
 ---
 
 Nowadays, we are listening these two words wherever we go: 'Digital Transformation'. Every company is doing its own Digital Transformation, hiring many people, making many projects, replacing its "old technology architecture" and all this "new stuff".

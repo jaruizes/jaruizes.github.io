@@ -1,62 +1,34 @@
-title:            José Alberto Ruiz
-description:      "Architecture & Software Development"
-disqus_shortname: jaruizes
-share:            true
-dropcap:	   true
-# Change url to your domain. Leave localhost server or blank when working locally.
-# or use the hint from http://jekyllrb.com/docs/github-pages/ to keep this the same 
-# whether working locally or remotely. Start Jekyll with: jekyll serve --baseurl ''
-url:        	 https://jaruizes.github.io
+#-------------------------------
+# General Site Settings
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
-# Owner/author information
-owner:
-  name:           José Alberto Ruiz
-  avatar:         logo.jpg
-  email:          jalb80@gmail.com
-  twitter:        jalb80
-  github:         jaruizes
-  linkedin: jalb80
 
-# Links to include in footer navigation
-# For external links add external: true
-links:
-  - title: Home
-    url: /
-    external: false
-    icon: home
-  - title: Categories
-    url: /categories
-  - title: About
-    url: /about
-
-# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-timezone:    Europe/Madrid
-future:      true
-rouge: pygments
-markdown:    kramdown
-paginate:    5
-paginate_path: "page:num"
-
-# https://github.com/mojombo/jekyll/wiki/Permalinks
-permalink:   pretty
-
-kramdown:
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-  enable_coderay: false
-
-  coderay:
-    coderay_line_numbers: 
-    coderay_line_numbers_start: 1
-    coderay_tab_width: 4
-    coderay_bold_every: 10
-    coderay_css: class
-
+#-------------------------------
+# Build Settings
+markdown: kramdown
+permalink: /:title
 plugins:
-- jemoji
-- jekyll-paginate
+  - jekyll-paginate
+  - jekyll-sitemap
 
-# Google services
-google_analytics: UA-112622712-1
+paginate: 9
+paginate_path: "/blog/page/:num"
+
+# Pages Path
+defaults:
+  - scope:
+      path: '_pages'
+    values:
+      permalink: /:basename:output_ext
+  - scope:
+      path: '_posts'
+    values:
+      permalink: /blog/:slug
+
+include:
+  - _pages
+
+sass:
+  sass_dir: _sass
+  style: compressed

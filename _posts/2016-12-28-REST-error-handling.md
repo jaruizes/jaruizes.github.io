@@ -1,13 +1,10 @@
 ---
-author: jaruizes
 layout: post
-title: "REST API: Error handling"
-date: 2016-12-28 00:30
+title:  "REST API: Error handling"
+date:   2018-04-21 15:01:35 +0300
 category : API
-comments: false
-tags:
- - API
- - REST
+description: "One of the most important thing when you're designing an API is **how it's going to handle errors** and how will be the content and the status of the responses that it's going to send to its clients"
+tags:   [API, Rest]
 ---
 One of the most important thing when you're designing an API is **how it's going to handle errors** and how will be the content and the status of the responses that it's going to send to its clients 
 

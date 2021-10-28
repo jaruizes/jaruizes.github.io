@@ -1,0 +1,121 @@
+#-------------------------------
+# Site Settings
+title: José Alberto Ruiz
+logo: # You can add own logo. For example '/images/logo.png'.
+author: José Alberto Ruiz
+description: Ideas and thoughts about Software Development.
+
+
+#-------------------------------
+# Menu Settings
+menu__settings:
+  menu__items:
+    - title: 'Blog'
+      url: '/blog'
+    - title: 'About'
+      url: '/about/'
+    - title: 'CV'
+      url: '/cv/'
+
+
+#-------------------------------
+# Hero Settings
+hero:
+  hero__title: Welcome to my personal site
+  hero__description: "This is my personal site to talk about technology, that is also my work. <br/><blockquote>Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven’t found it yet, keep looking. Don’t settle. As with all matters of the heart, you’ll know when you find it.<br/><br/>(Steve Jobs)</blockquote>"
+
+books:
+  - image: /images/books/design_data-intensive_applications.jpeg
+    title: Design Data Intensive Applications
+    link: "https://www.amazon.es/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321"
+
+  - image: /images/books/design_data-intensive_applications.jpeg
+    title: Design Data Intensive Applications
+    link: "https://www.amazon.es/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321"
+
+  - image: /images/books/design_data-intensive_applications.jpeg
+    title: Design Data Intensive Applications
+    link: "https://www.amazon.es/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321"
+
+
+#-------------------------------
+# Portfolio Settings
+portfolio:
+  portfolio__title: Portfolio
+  portfolio__gallery:
+    - image: /images/gallery-01.jpg
+      title: Samantha Gades
+      description: Brown photo frame beside wall <a href="https://unsplash.com/photos/8Od75hgzb9Y">Unsplash</a>
+
+    - image: /images/gallery-02.jpg
+      title: Paula Vermeulen
+      description: Gray mountain covered by mountain <a href="https://unsplash.com/photos/_f2m3mEkaaU">Unsplash</a>
+
+    - image: /images/gallery-03.jpg
+      title: Bench Accounting
+      description: White wooden table near brown chair <a href="https://unsplash.com/photos/nvzvOPQW0gc">Unsplash</a>
+
+    - image: /images/gallery-04.jpg
+      title: Nord Wood
+      description: White ceramic mug <a href="https://unsplash.com/photos/nDd3dIkkOLo">Unsplash</a>
+
+    - image: /images/gallery-05.jpg
+      title: Luca Bravo
+      description: White ribs in a facade against a white sky <a href="https://unsplash.com/photos/alS7ewQ41M8">Unsplash</a>
+
+    - image: /images/gallery-06.jpg
+      title: Isaac Benhesed
+      description: Minimalist black coffee <a href="https://unsplash.com/photos/onLbXleIkds">Unsplash</a>
+
+    - image: /images/gallery-07.jpg
+      title: Water Journal
+      description: Water Journal is a bi-annual publication exploring the beauty and complexity of all things water <a href="https://unsplash.com/photos/EbuaKnSm8Zw">Unsplash</a>
+
+    - image: /images/gallery-08.jpg
+      title: Luca Bravo
+      description: Worms eye view of city buildings <a href="https://unsplash.com/photos/a6x7YPiNxwI">Unsplash</a>
+
+    - image: /images/gallery-09.jpg
+      title: Books and Laptop
+      description: Silver laptop computer with two books on the top <a href="https://unsplash.com/photos/fFIAKABImf4">Unsplash</a>
+
+
+#-------------------------------
+# Subscribe Settings
+mailchimp:
+  mailchimp__title: Get updates and digital art inspiration # Add your Title
+  mailchimp__identifier: # Add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
+  mailchimp__button__text: Subscribe # Add your button text.
+  mailchimp__bg__color: "#f2eef8" # To change the color of the figure, add a hexadecimal color code (HEX). For example - "#f2eef8" (You can generate any color here - https://htmlcolorcodes.com/).
+
+
+#-------------------------------
+# Footer Settings
+social:
+  - {icon: "ion-logo-twitter", link: "https://twitter.com/jalb80"}
+  - {icon: "ion-logo-github", link: "https://github.com/jaruizes"}
+  - {icon: "ion ion-logo-linkedin", link: "https://www.linkedin.com/in/jaruizcasarrubios/?locale=en_US"}
+
+# Example of adding a new link to the footer section - {icon: "ion-logo-github", color: "#24292e, label: Github, link: "https://github.com"}
+# Other icons can be found at https://ionicons.com/v4/
+
+
+#-------------------------------
+# Contact Settings
+contact:
+  email: your@email.com # Add your email for contact form
+  description: Clancy comes with a built-in contact form, that you can use with Formspree service to handle up to 50 submissions per month for free. You could also easily switch to another contact form service if you want. # Add a description of your form.
+
+# NOTE
+# Clancy comes with a built-in contact form, that you can use with Formspree service to handle up to 50 submissions per month for free. You could also easily switch to another contact form service if you want.
+
+
+#-------------------------------
+# Comment Section (Disqus)
+
+disqus-identifier: anvodstudio-demo # add your shortname for Disqus Comment. For example anvodstudio-demo
+
+
+#-------------------------------
+# Google Analytics
+google-analytics: UA-112622712-1

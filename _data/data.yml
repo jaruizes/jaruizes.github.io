@@ -1,0 +1,200 @@
+#
+# Be aware that even a small syntax error here can lead to failures in output.
+#
+
+sidebar:
+  about: True # set to False or comment line if you want to remove the "how to use?" in the sidebar
+  education: True # set to False if you want education in main section instead of in sidebar
+
+  # Profile information
+  name: José Alberto Ruiz
+  tagline: Hands-on Solutions Architect
+  avatar: profile.png  #place a 100x100 picture inside /assets/images/ folder and provide the name of the file below
+
+  # Sidebar links
+  email:
+  phone:
+  website: jaruiz.io
+  linkedin: jaruizcasarrubios
+  xing:
+  github: jaruizes
+  telegram:
+  gitlab:
+  bitbucket:
+  twitter: '@jalb80'
+  stack-overflow: # Number/Username, e.g. 123456/alandoe
+  codewars:
+  goodreads: # Number-Username, e.g. 123456-alandoe
+  pdf: #http://www.africau.edu/images/default/sample.pdf
+
+  languages:
+    - idiom: Spanish
+      level: Native
+
+    - idiom: English
+      level: Professional
+
+  interests:
+    - item: Technology
+      link:
+
+    - item: Sports
+      link:
+
+
+career-profile:
+  title: Career Profile
+  summary: |
+    More than 15 years building, professionally, software. I've assumed the most of the roles, from Developer
+    to Project Manager or Architect. I've worked in consultancy, product development and final customer.
+    I'm not an specialist in anything because I like to be an all-terrain, from frontend to backend or devops.
+education:
+  - degree: Computer Science
+    university: Universidad Autonoma de Madrid
+    time: 1998 - 2004
+    details:
+  - degree: Master in Innovation Management
+    university: Instituto Universitario de Postgrado
+    time: 2005 - 2006
+    details:
+experiences:
+  - role: Senior Solutions Architect
+    time: 2021/01 - Present
+    company: Paradigma Digital
+    details: |
+      Working within the Architecture and Innovation team, my main duties are:
+      - Technical leadership and support for digital transformation projects
+      - Standardization of best practices and principles within the organization, technical and no-technical
+      - Preparation of technical offers and presale.
+      - Design and development components, archetypes or artifacts in order to provide common assets to the different projects
+      - Design and development  proof of concepts for the evaluation of new solutions or products at the company strategy level
+  - role: Head of Modern Architecture (Spain)
+    time: 09/2015 - 01/2021
+    company: Sopra Steria
+    details: |
+      Leading the architecture group of Sopra Steria Spain, my main tasks are:
+      - Leadership of the community of architects of Sopra Steria Spain
+      - Selection, tutoring and development of technical profiles within Sopra Steria.
+      - Participation in events and talks at a technical level. Technical evangelization
+      - Design, selection and implementation of end-to-end architecture solutions and frameworks, from
+      front levels to backend levels and integration with other systems: API, microservice-oriented architectures, EDA, DDD, CQRS, Microfrontends and web components, containers, cloud architectures, ChatBots, mobility, legacy system migration or "monolith breaking", ..., etc.
+      - Design and implementation of methodologies and good development practices, frameworks, automation, integration and continuous delivery. DevOps Orientation
+      - Technical leadership and support for digital transformation projects, designing and implementing central and complex components, in different technologies and different layers.
+      - Development proof of concept for the evaluation of new solutions or products at the company strategy level (Sopra Steria) as a customer strategy.
+      - Preparation of technical offers and presale.
+      - Practical and deeply practical mentality and orientation.
+  - role: Senior Solutions Architect
+    time: 01/2015 - 09/2015
+    company: Capgemini
+    details: |
+      As head of the banking / insurance web architecture and reporting directly to the company's technology director, I perform my own IT architecture and technical project management tasks:
+      - Design and implementation of solutions architecture and business architecture.
+      - Design and implementation of methodologies and good development practices.
+      - Preparation of offers and presale.
+      - Creation and management of development groups.
+      - Technical leadership and project execution.
+      - Project management with strong technical component.
+  - role: Head of SOA & Backend Architecture
+    time: 05/2014 - 01/2015
+    company: Aegon
+    details: |
+      Within the Aegon insurance group, I play the role of Chief of Architecture SOA - J2EE performing the following functions:
+      - Project management of the Architecture area.
+      - Architecture team management.
+      - Definition, implementation and management of the Software Quality Plan.
+      - Definition, implementation and management of the SOA - J2EE architecture.
+      - Design and development of complex components.
+      - Technological support for business projects.
+  - role: Solutions Architect / Project Manager
+    time: 01/2009 - 05/2014
+    company: Capgemini
+    details: |
+      Within the area of financial insurance, my main tasks are:
+      - Creation and management of JEE development groups, both local and remote (6 to 12 people).
+      - Definition of architecture, work methodology, standards and good development practices.
+      - Quality management of deliverables (designs, code, ..., etc.) and incidents.
+      - Design and development of JEE components.
+      - Functional analysis and tests.
+      - Estimation, planning and monitoring of projects and service requests.
+      - Customer management both technical and functional / management.
+  - role: Project Manager
+    time: 08/2008 - 01/2009
+    company: Dominion
+    details: |
+      Project Manager in Dominion, within the Mambrino XXI project - Hospital Pharmacy (SESCAM).
+      - Monitoring and control of the status of the project,
+      - Interlocution with different customers and suppliers
+      - Coordination of implantations.
+      - Performance of functional and technical analysis (J2EE) of new product modules (Farmatools /
+      Dietools) and improvements requested by the customer.
+      - Migration management of modules made in PowerBuilder to J2EE environment.
+  - role: Technical Manager
+    time: 07/2005 - 08/2008
+    company: Southern Star - Hewlett-Packard
+    details: |
+      Technical Manager of the Electronic Prescription and Unit Dose Management projects belonging to the HP- HCIS product.
+      Among the tasks carried out during this period, there are technical and functional analyzes, development tasks, coordination of the development team (5-6 people),
+      monitoring and control of development and maintenance tasks, obtaining and studying requirements, Functional definition of the modules, demonstrations and
+      presentations to clients and implementation support.
+  - role: Software Engineer
+    time: 09/2004 - 07/2005
+    company: Vector Software Factory
+    details: |
+      Software Engineer performing development tasks J2EE (FatWire Divine Content Server) and DB2 database. Participation in multiple projects
+      around Portals and Banksphere group, for Santander Group
+
+projects:
+  title: Projects I am proud of
+  intro: >
+    Among the projects carried out professionally, I want to highlight the following ones:
+  assignments:
+    - title: "Pelayo - Backend architecture"
+      link: "https://news.microsoft.com/es-es/2021/02/23/pelayo-agiliza-la-respuesta-a-sus-clientes-con-una-infraestructura-tecnologica-lider/"
+      tagline: "Why am I proud of it? I was leading the project of the new backend framework based on microservices, Openshift and Azure. Setting CI/CD tools and practices and designing the modernization and coexistence strategy
+      in order to modernize and migrate legacy applications and services"
+
+    - title: "Bankinter - Popcoin"
+      link: "https://www.popcoin.es/es/#/home"
+      tagline: "Technical Manager of the Popcoin application, evolving global frontend architecture and designing and building a middleware layer in order to use the bank core services"
+
+    - title: "ING - Maggie"
+      link: "https://www.popcoin.es/es/#/home"
+      tagline: "Domain architect within the payments and information domains"
+
+    - title: "Sanitas - Digital Transformation"
+      link: "#hook"
+      tagline: "Sanitas (BUPA) Digital Transformation: technical manager of the new mobile application and web portal for customers"
+
+    - title: "Pelayo - Claims Management System Modernization"
+      link: "https://news.microsoft.com/es-es/2021/02/23/pelayo-agiliza-la-respuesta-a-sus-clientes-con-una-infraestructura-tecnologica-lider/"
+      tagline: "Leading the modernization and migration of the Claims Management System from Host to a SOA Architecture"
+
+publications:
+  title: Personal projects
+  intro: |
+  papers:
+    - title: Gitlab Group Clone Tool
+      link: "https://www.npmjs.com/package/gitlab-group-clone"
+      description: Tool for clonning every project associated to a group and its subgroups
+
+skills:
+  title: Skills &amp; Proficiency
+
+  toolset:
+    - name: Python & Django
+      level: 98%
+
+    - name: Javascript & jQuery
+      level: 98%
+
+    - name: Angular
+      level: 98%
+
+    - name: HTML5 & CSS
+      level: 95%
+
+    - name: Ruby on Rails
+      level: 85%
+
+    - name: Sketch & Photoshop
+      level: 60%

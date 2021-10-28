@@ -1,17 +1,12 @@
 ---
-author: jaruizes
 layout: post
-title: "Kubernetes - The JARC way (I)"
-date: 2021-01-31 01:30
-category : Kubernetes
-comments: false
-imagefeature: k8s/k8s-objects.png
-tags:
-    - microservices
-    - kubernetes
+title:  "Kubernetes - The JARC way (I)"
+date:   2021-01-31 14:30 +0300
+image: "/images/k8s/k8s-objects.png"
+description: "This post tries to be post about Kubernetes from the developer point of view, relating Kubernetes concepts with application development. As I always said, the important thing is adquiring knowledge about something and making it yours, In my case, the JARC way."
+tags:   [Kubernetes]
 ---
 
-# Kubernetes "The JARC way" (I)
 This post tries to be post about Kubernetes from the developer point of view, relating Kubernetes concepts with application development. As I always said, the important thing is adquiring knowledge about something and making it yours, In my case, "the JARC way".
 
 I'm not going to enter in details about how a Kubernetes cluster can be installed or managed but how applications can take advantage of Kubernetes possibillities in order to be scalable and so on.

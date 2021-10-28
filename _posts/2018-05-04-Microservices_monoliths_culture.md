@@ -1,14 +1,10 @@
 ---
-author: jaruizes
 layout: post
-title: "Monoliths, Microservices and Culture"
-date: 2018-05-04 00:30
-category : Microservices
-comments: false
-tags:
- - Digital Transformation
- - Microservices
-imagefeature: monolith/iceberg.png
+title:  "Monoliths, Microservices and Culture"
+date:   2018-05-03 19:00 +0300
+image: "/images/monolith/iceberg.png"
+description: "do you think that Microservices are only related to technology?"
+tags:   [Digital Transformation, Microservices]
 ---
 
 Microservices are in the air, in everywhere but when someone talk about Microservices, the most of times, they are talking about "technical" aspects:
