@@ -9,11 +9,16 @@ tags: [Agile, Culture]
 
 
 
-In this post I'm trying to explain my point of view and probably, it isn't the same of you or I'm wrong.
+The idea of this post came from a debate in LinkedIn about the role of the Scrum Master and whether it's similar to a soccer coach or not (no, this post isn't about Scrum or the role of the Scrum Manager) and whether the Scrum Master has to know how to build software or not. To be honest, to me, the idea of Scrum Master being like a soccer coach, giving orders from the bench, deciding who is going to play and who isn't, setting the strategy,...,etc isn't my idea of Agile. Of course someone have to make decisions but in my opinion, that person could not be always the same and should be working "from (inside) and for the team" instead of "just for the team"
 
-The idea of this post came from a debate in LinkedIn about the role of the Scrum Master and whether it's similar to a soccer coach or not (no, this post isn't about Scrum or the role of the Scrum Manager) and whether the Scrum Master has to know how to build software or not. To be honest, to me, the idea of Scrum Master being like a soccer coach, giving orders from the bench, deciding who is going to play and who isn't, setting the strategy,...,etc isn't my idea of Agile.
+I realized that there is no a shared vision about Agile and how it's applied to build better software. And I also realized that, sometimes, there are different goals depending on the roles:
 
-I have to say that I'm not a professional "Agile Coach" although I got some agile certifications and I like so much "the methodoly part" of building software. From my experience building software for many years, I realize that, **at least in the software sector**, we should return to the basics, "[The Agile Manifesto](https://agilemanifesto.org/)", and put the focus, again, on building software instead of just following a method. 
+- One, focused on applied the full process (Scrum, SAFe, Less, ..., whatever) and leaded by the "agile team"
+- One, focused on try to build (not to deliver) the software required and leaded by the "dev team"
+
+**To me, there should be a common goal: delivering good software when it's expected**
+
+I have to say that I'm not a professional "Agile Coach" although I got some agile certifications and I like so much "the methodoly part" of building software. From my experience building software for many years, I think we should return to the basics, "[The Agile Manifesto](https://agilemanifesto.org/)", and put the focus, again, on building software instead of just following a method. 
 
 
 <br />
