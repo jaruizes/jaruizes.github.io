@@ -115,15 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
   /* =================================
   // Smooth scroll to the tags page
   ================================= */
-  document.querySelectorAll(".tag__link").forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
 
-      document.querySelector(this.getAttribute("href")).scrollIntoView({
-        behavior: "smooth"
-      });
-    });
-  });
 
 
   /* =======================
