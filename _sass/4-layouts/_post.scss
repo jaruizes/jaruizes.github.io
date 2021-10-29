@@ -18,6 +18,8 @@
   img, .js-reframe {
     border-radius: 8px;
     overflow: hidden;
+    margin: 0 auto;
+    display: block;
 
     &.lightense-open {
       border-radius: 0;
