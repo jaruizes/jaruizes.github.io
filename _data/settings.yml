@@ -21,7 +21,7 @@ menu__settings:
 #-------------------------------
 # Hero Settings
 hero:
-  hero__title: Welcome to my personal site
+  hero__title: Some stuff about Software Development
   hero__description: "This is my personal site to talk about technology, that is also my work. <br/><blockquote>Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven’t found it yet, keep looking. Don’t settle. As with all matters of the heart, you’ll know when you find it.<br/><br/>(Steve Jobs)</blockquote>"
 
 books:
