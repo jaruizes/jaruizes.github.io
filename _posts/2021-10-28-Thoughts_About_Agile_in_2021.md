@@ -9,7 +9,7 @@ tags: [Agile, Culture]
 
 
 
-The idea of this post came from a debate in LinkedIn about the role of the Scrum Master and whether it's similar to a soccer coach or not (no, this post isn't about Scrum or the role of the Scrum Manager) and whether the Scrum Master has to know how to build software or not. To be honest, to me, the idea of Scrum Master being like a soccer coach, giving orders from the bench, deciding who is going to play and who isn't, setting the strategy,...,etc isn't my idea of Agile. Of course someone have to make decisions but in my opinion, that person could not be always the same and should be working "from (inside) and for the team" instead of "just for the team"
+The idea of this post came from a debate in LinkedIn about the role of the Scrum Master and whether it's similar to a soccer coach or not (no, this post isn't about Scrum or the role of the Scrum Master) and whether the Scrum Master has to know how to build software or not. To be honest, to me, the idea of Scrum Master being like a soccer coach, giving orders from the bench, deciding who is going to play and who isn't, setting the strategy,...,etc isn't my idea of Agile. Of course someone have to make decisions but in my opinion, that person could not be always the same and should be working "from (inside) and for the team" instead of "just for the team"
 
 I realized that there is no a shared vision about Agile and how it's applied to build better software. And I also realized that, sometimes, there are different goals depending on the roles:
 
