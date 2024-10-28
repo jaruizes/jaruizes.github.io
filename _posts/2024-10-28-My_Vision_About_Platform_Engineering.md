@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "My Vision About Platform Engineering"
+title: "My Vision About Platform Engineering (WIP)"
 date: 2024-10-28 01:30
 image: "/images/pe/intro/pe_intro.jpg"
 description: "In this post I'm trying to explain my point of view about platform engineering"
