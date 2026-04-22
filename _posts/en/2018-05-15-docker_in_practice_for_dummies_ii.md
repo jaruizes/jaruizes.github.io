@@ -5,8 +5,8 @@ date:   2018-05-16 14:30 +0300
 image: "/images/docker/docker-logo.png"
 description: "In the previous post we saw a starting point to work with Docker. We learnt how to pull an image and run it."
 tags:   [Docker]
+lang: en
 ---
-
 In the [previous post](/docker/2018/05/11/docker_in_practice_for_dummies) we saw a starting point to work with Docker. We learnt how to
 pull an image and run it.
 

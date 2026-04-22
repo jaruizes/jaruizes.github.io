@@ -4,8 +4,8 @@ title:  "Angular Router Hooks: Guards"
 date:   2017-02-20 19:00 +0300
 description: "In this post we are going to see how we can protect some views or components. The use case is very simple: building a login component and if the credentials (user and password) are right, go to a protected view."
 tags:   [Angular, SPA]
+lang: en
 ---
-
 In this post we're going to see how we can protect some views or components. The use case is very simple: building a login component and if the credentials (user and password) are right, go to a protected view. 
 
 You can find the code in [github](https://github.com/jaruizes/angular2-routing/tree/router-hooks). To launch the project you have to execute this command:

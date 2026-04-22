@@ -4,8 +4,8 @@ title:  "Digital Transformation: is it just about technology?"
 date:   2017-07-12 19:00 +0300
 description: "Every company is doing its own Digital Transformation, hiring many people, making many projects, replacing its old technology architecture and all this new stuff"
 tags:   [Digital Transformation]
+lang: en
 ---
-
 Nowadays, we are listening these two words wherever we go: 'Digital Transformation'. Every company is doing its own Digital Transformation, hiring many people, making many projects, replacing its "old technology architecture" and all this "new stuff".
 
 If you looking carefully at many of this companies, people working there keep working more or less the same way. Sorry, it's true that there are "new roles" like "Scrum Master", "Product Owner", "Functional Architect", "Digital Channels Manager", "Devops Engineer", "Big Data Engineer", "Data Analyst"...,etc and maybe they are working in an "agile way", having meetings at the beginning of the day, using post-it everywhere and coding in the latest language or framework known.

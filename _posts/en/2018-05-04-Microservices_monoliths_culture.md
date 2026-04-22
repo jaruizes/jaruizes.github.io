@@ -5,8 +5,8 @@ date:   2018-05-03 19:00 +0300
 image: "/images/monolith/iceberg.png"
 description: "do you think that Microservices are only related to technology?"
 tags:   [Digital Transformation, Microservices]
+lang: en
 ---
-
 Microservices are in the air, in everywhere but when someone talk about Microservices, the most of times, they are talking about "technical" aspects:
 
 - Take your code and refactor it in independent services.

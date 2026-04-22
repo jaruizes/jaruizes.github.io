@@ -5,6 +5,7 @@ date:   2018-04-21 15:01:35 +0300
 category : API
 description: "One of the most important thing when you're designing an API is **how it's going to handle errors** and how will be the content and the status of the responses that it's going to send to its clients"
 tags:   [API, Rest]
+lang: en
 ---
 One of the most important thing when you're designing an API is **how it's going to handle errors** and how will be the content and the status of the responses that it's going to send to its clients 
 

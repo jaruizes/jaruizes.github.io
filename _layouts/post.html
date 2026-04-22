@@ -21,6 +21,20 @@ layout: default
           <a class="post__author" href="{{site.baseurl}}/about/">{{site.data.settings.author}}</a> – <time class="post__date" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_long_string }}</time>
         </div>
 
+        {% if page.ref %}
+          {% assign posts = site.posts | where: "ref", page.ref | sort: 'lang' %}
+          {% if posts.size > 1 %}
+            <div class="post__translations" style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">
+              <i class="ion ion-md-globe"></i>
+              {% for post in posts %}
+                {% if post.lang != page.lang %}
+                  {{ site.data.translations[page.lang].read_in }} <a href="{{ post.url | relative_url }}" style="text-decoration: underline;">{{ site.data.translations[post.lang].other_language }}</a>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endif %}
+
       </div>
     </div>
   </div>

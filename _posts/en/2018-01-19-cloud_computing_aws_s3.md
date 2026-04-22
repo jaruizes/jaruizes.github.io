@@ -5,8 +5,8 @@ date:   2018-01-19 00:30 +0300
 image: "/images/aws_s3_1/s3_logo_ext.png"
 description: "AWS S3 is one of the first services that Amazon introduced and it's used for storing data (objects) in the cloud."
 tags:   [Cloud]
+lang: en
 ---
-
 AWS S3 is one of the first services that Amazon introduced and it's used for storing data (objects) in the cloud. By an API you can performance
 CRUD operations in S3. This service is billed for the storage you really use so you don't have to worry about capacity estimated and so on.
 

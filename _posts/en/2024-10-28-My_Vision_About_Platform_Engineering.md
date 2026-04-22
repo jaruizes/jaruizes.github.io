@@ -5,6 +5,8 @@ date: 2024-10-28 01:30
 image: "/images/pe/intro/pe_intro.jpg"
 description: "In this post I'm trying to explain my point of view about platform engineering"
 tags: [Culture, Platform Engineering, DevEx]
+lang: en
+ref: platform-engineering
 ---
 
 **(WIP)**

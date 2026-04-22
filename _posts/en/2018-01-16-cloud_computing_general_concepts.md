@@ -5,8 +5,8 @@ date:   2018-04-17 18:30 +0300
 image: "/images/cloud-computing/cloud-computing.jpg"
 description: "What is Cloud computing?"
 tags:   [Cloud]
+lang: en
 ---
-
 # Context
 
 I would like to start showing you three common scenarios in IT:

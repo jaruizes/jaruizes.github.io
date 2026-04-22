@@ -5,10 +5,8 @@ date: 2021-10-28 01:30
 image: "/images/agile/agile.jpg"
 description: "In this post I'm trying to explain my point of view about applying Agile methods to software development"
 tags: [Agile, Culture]
+lang: en
 ---
-
-
-
 The idea of this post came from a debate in LinkedIn about the role of the Scrum Master and whether it's similar to a soccer coach or not (no, this post is not about Scrum or the role of the Scrum Master) and whether the Scrum Master has to know how to build software or not. To be honest, to me the idea of a Scrum Master being like a soccer coach, giving orders from the bench, deciding who is going to play and who isn't, setting the strategy, etc. is not my idea of Agile. Of course someone has to make decisions but in my opinion that person could not be always the same and should be someone working "from (inside) and for the team" instead of "just for the team".
 
 I realized that there is no shared vision about Agile and how it's applied to build better software. And I also realized that, sometimes, there are different goals depending on the roles:

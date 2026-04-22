@@ -5,8 +5,8 @@ date:   2021-03-16 14:30 +0300
 image: "/images/tekton-argocd/cover.png"
 description: "This post tries to be post about Kubernetes from the developer point of view, relating Kubernetes concepts with application development. As I always said, the important thing is adquiring knowledge about something and making it yours, In my case, the JARC way."
 tags:   [Kubernetes, CI/CD, Tekton, Gitops, Argo CD]
+lang: en
 ---
-
 With this post I'm going to show how a modern and cloud native CI/CD could be implemented within a Kubernetes environment. I'll use two different tools:
 
 - **Tekton**: to implement CI stages

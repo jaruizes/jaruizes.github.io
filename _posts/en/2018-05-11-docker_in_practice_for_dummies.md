@@ -5,8 +5,8 @@ date:   2018-05-11 14:30 +0300
 image: "/images/docker/docker-logo.png"
 description: "In this post I'm not going to talk about containers technology and differences between Docker and Virtual Machines I think that there is a lot of documentation about that."
 tags:   [Docker]
+lang: en
 ---
-
 In this post I'm not going to talk about containers technology and differences between Docker and Virtual Machines I think that there is a lot of documentation about
 that.
 
