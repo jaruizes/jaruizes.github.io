@@ -28,7 +28,7 @@ layout: default
               <i class="ion ion-md-globe"></i>
               {% for post in posts %}
                 {% if post.lang != page.lang %}
-                  {{ site.data.translations[page.lang].read_in }} <a href="{{ post.url | relative_url }}" style="text-decoration: underline;">{{ site.data.translations[post.lang].other_language }}</a>
+                  {{ site.data.translations[page.lang].read_in }} <a href="{{ post.url | relative_url }}" style="text-decoration: underline;">{{ site.data.translations[post.lang].label }}</a>
                 {% endif %}
               {% endfor %}
             </div>

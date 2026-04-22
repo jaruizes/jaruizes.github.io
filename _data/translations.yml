@@ -1,10 +1,6 @@
 en:
   read_in: "Read in"
-  other_language: "Spanish"
-  other_lang_code: "es"
-  date_format: "%b %-d, %Y"
+  label: "English"
 es:
   read_in: "Leer en"
-  other_language: "Inglés"
-  other_lang_code: "en"
-  date_format: "%-d de %b, %Y"
+  label: "Español"
