@@ -1,45 +1,37 @@
 <!-- begin blog -->
-<section class="blog section">
-
-  <div class="container">
-    <div class="row">
-      <div class="col col-12">
-        <div class="section__info">
-          <div class="section__head">
-            <h2 class="section__title">Read my recent posts</h2>
-            <a class="section__link" href="{{ '/blog' | relative_url }}">View all posts</a>
-          </div>
-        </div>
-      </div>
+<section class="blog section" style="padding: 0;">
+  <div class="section__info">
+    <div class="section__head">
+      <h2 class="section__title">Recent Posts</h2>
     </div>
   </div>
 
-  <div class="container">
-    <div class="row">
-      {% if site.posts.size > 0 %}
-        {% assign count = 0 %}
-        {% for post in site.posts %}
-          {% if count >= 6 %}{% break %}{% endif %}
-          
-          {% comment %} logic: show if lang is 'en' OR if it has no 'en' translation {% endcomment %}
-          {% assign show_post = false %}
-          {% if post.lang == 'en' or post.lang == nil %}
+  <div class="row">
+    {% if site.posts.size > 0 %}
+      {% assign count = 0 %}
+      {% for post in site.posts %}
+        {% if count >= 4 %}{% break %}{% endif %}
+        
+        {% assign show_post = false %}
+        {% if post.lang == 'en' or post.lang == nil %}
+          {% assign show_post = true %}
+        {% else %}
+          {% assign en_version = site.posts | where: "ref", post.ref | where: "lang", "en" %}
+          {% if en_version.size == 0 %}
             {% assign show_post = true %}
-          {% else %}
-            {% assign en_version = site.posts | where: "ref", post.ref | where: "lang", "en" %}
-            {% if en_version.size == 0 %}
-              {% assign show_post = true %}
-            {% endif %}
           {% endif %}
+        {% endif %}
 
-          {% if show_post %}
-            {% include article.html %}
-            {% assign count = count | plus: 1 %}
-          {% endif %}
-        {% endfor %}
-      {% endif %}
-    </div>
+        {% if show_post %}
+          {% include article.html class="col col-6 col-d-6 col-t-12" %}
+          {% assign count = count | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
   </div>
 
+  <div style="text-align: right; margin-top: 10px;">
+    <a class="section__link" href="{{ '/blog' | relative_url }}">View all posts &rarr;</a>
+  </div>
 </section>
 <!-- end blog -->

@@ -1,0 +1,34 @@
+- title: "Commit Conf 2024: Plataformas, DevEx y otras muchas cosas que entender"
+  id: "SAeFqfqy0JMY"
+  url: "https://www.youtube.com/watch?v=SAeFqfqy0JMY"
+  slides: "https://jaruiz.io/downloads/commit2024/Plataformas_DevEx_y_otras_muchas_cosas_que_entender.pdf"
+  event: "Commit Conf 2024"
+  date: 2018-11-23
+
+- title: "Commit Conf 2018: Una visión moderna de las arquitecturas"
+  id: "MtqI6Yp4nIY"
+  url: "https://www.youtube.com/watch?v=MtqI6Yp4nIY"
+  slides: "https://jaruiz.io/downloads/commit2018/Vision_Moderna_Arquitecturas.pdf"
+  event: "Commit Conf 2018"
+  date: 2018-11-23
+
+- title: "OpenExpo 2021: CDC como llave al real-time"
+  id: "7OQSG3ibvfo"
+  url: "https://www.youtube.com/watch?v=7OQSG3ibvfo?t=152m42s"
+  slides: ""
+  event: "OpenExpo 2021"
+  date: 2021-06-10
+
+- title: "Paradigma Digital: CDC & Debezium Webinar"
+  id: "y2A4x5ZF7dY"
+  url: "https://www.youtube.com/watch?v=y2A4x5ZF7dY"
+  slides: "https://www.paradigmadigital.com/dev/cdc-debezium/"
+  event: "Paradigma Digital"
+  date: 2020-05-20
+
+- title: "Paradigma Digital: CDC & Debezium Podcast"
+  id: "eXYXsyNGqRE"
+  url: "https://www.youtube.com/watch?v=eXYXsyNGqRE"
+  slides: ""
+  event: "Paradigma Digital"
+  date: 2020-06-15

@@ -1,0 +1,38 @@
+<!-- begin talks -->
+<section class="section talks" style="padding: 0;">
+  <div class="section__info">
+    <div class="section__head">
+      <h2 class="section__title" style="font-size: 1.5rem;">Talks</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    {% for talk in site.data.talks limit:5 %}
+    <div class="article col col-12" style="margin-bottom: 25px;">
+      <div class="article__inner" style="display: flex; align-items: flex-start; gap: 15px; background: transparent; padding: 0; box-shadow: none; border: none;">
+        <div class="article__head" style="flex: 0 0 120px; margin: 0; position: relative; overflow: hidden; border-radius: 4px;">
+          <a href="{{ talk.url }}" target="_blank" rel="noopener">
+            <img class="lazy" data-src="https://img.youtube.com/vi/{{ talk.id }}/mqdefault.jpg" alt="{{ talk.title }}" style="width: 100%; border-radius: 4px;">
+          </a>
+        </div>
+        <div class="article__content" style="padding: 0;">
+          <h3 class="article__title" style="font-size: 0.9rem; margin-bottom: 5px; line-height: 1.3;">
+            <a href="{{ talk.url }}" target="_blank" rel="noopener">{{ talk.title }}</a>
+          </h3>
+          <p class="article__excerpt" style="font-size: 0.75rem; opacity: 0.7; margin-bottom: 5px;">{{ talk.event }}</p>
+          {% if talk.slides != "" and talk.slides != nil %}
+            <a href="{{ talk.slides }}" target="_blank" rel="noopener" style="font-size: 0.7rem; color: var(--accent-color); font-weight: bold;">
+              <i class="ion ion-md-images"></i> View Slides
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div style="text-align: right; margin-top: 10px;">
+    <a class="section__link" href="{{ '/about' | relative_url }}">View all talks &rarr;</a>
+  </div>
+</section>
+<!-- end talks -->

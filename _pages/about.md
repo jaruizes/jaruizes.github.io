@@ -43,22 +43,14 @@ You can find me in social networks:
 
 ### Talks
 
-I also participate in public events like **Commit Conf 2018, "Una visión moderna de las arquitecturas"**:
-
-<p><iframe src="https://www.youtube.com/embed/MtqI6Yp4nIY" frameborder="0" allowfullscreen></iframe></p>
-
+{% for talk in site.data.talks %}
+**{{ talk.title }}**
+{% if talk.slides != "" and talk.slides != nil %}
+  – [View Slides]({{ talk.slides }})
+{% endif %}
+<p><iframe src="https://www.youtube.com/embed/{{ talk.id }}" frameborder="0" allowfullscreen></iframe></p>
 <br />
-**OpenExpo 2021: "CDC como llave al real-time"**
-
-<p><iframe src="https://www.youtube.com/embed/7OQSG3ibvfo?t=152m42s" frameborder="0" allowfullscreen></iframe></p>
-
-<br />
-**Paradigma Digital: CDC & Debezium Webinar**
-<p><iframe src="https://www.youtube.com/embed/y2A4x5ZF7dY" frameborder="0" allowfullscreen></iframe></p>
-
-<br />
-**Paradigma Digital: CDC & Debezium Podcast**
-<p><iframe src="https://www.youtube.com/embed/eXYXsyNGqRE" frameborder="0" allowfullscreen></iframe></p>
+{% endfor %}
 
 <hr>
 

@@ -1,13 +1,13 @@
-<div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
+<div class="article {{ include.class }}">
+  <div class="article__inner" style="width: 100%; max-width: none;">
 
-    <div class="article__head">
+    <div class="article__head" style="position: relative;">
       <time class="article__date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time>
       
       {% if post.ref %}
         {% assign translations = site.posts | where: "ref", post.ref %}
         {% if translations.size > 1 %}
-          <span class="article__lang" style="font-size: 10px; background: var(--accent-color, #000); color: #fff; padding: 2px 6px; border-radius: 4px; margin-left: 8px; font-weight: bold; vertical-align: middle;">
+          <span class="article__lang" style="position: absolute; right: 0; top: 0; font-size: 10px; background: var(--accent-color, #000); color: #fff; padding: 2px 6px; border-radius: 4px; font-weight: bold; z-index: 10;">
             {% for trans in translations %}
               {{ trans.lang | upcase }}
             {% endfor %}

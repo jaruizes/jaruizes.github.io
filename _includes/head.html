@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
   <script>
-    if (localStorage.getItem("theme") === "dark") {
+    if (localStorage.getItem("theme") === "dark" || !localStorage.getItem("theme")) {
       document.documentElement.setAttribute("dark", "");
       document.documentElement.classList.add('dark-mode');
     }
