@@ -12,7 +12,19 @@ better!'
   <div class="row animate">
     {% if site.posts.size > 0 %}
       {% for post in paginator.posts %}
-        {% include article.html %}
+        {% assign show_post = false %}
+        {% if post.lang == 'en' or post.lang == nil %}
+          {% assign show_post = true %}
+        {% else %}
+          {% assign en_version = site.posts | where: "ref", post.ref | where: "lang", "en" %}
+          {% if en_version.size == 0 %}
+            {% assign show_post = true %}
+          {% endif %}
+        {% endif %}
+
+        {% if show_post %}
+          {% include article.html %}
+        {% endif %}
       {% endfor %}
     {% endif %}
   </div>
