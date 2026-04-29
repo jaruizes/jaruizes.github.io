@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Entrevistando al radar de Thoughtworks en la era de la IA"
-date: 2026-04-23 10:00
+date: 2026-04-29 10:00
 image: "/images/radar_interview/interview_pdf.jpg"
 description: "Realizamos una entrevista al radar de Thoughtworks en la era de la IA, preguntando por temas candentes como la deuda cognitiva, el rol del programador o el impacto de la IA en la industria del software."
 tags: [AI, Engineering, Culture, Thoughtworks, Radar]
