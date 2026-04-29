@@ -59,7 +59,7 @@ Para realizar este análisis he decidido establecer un rango temporal más o men
 
 # El medio para la entrevista: un RAG avanzado
 
-Como no podía ser de otra forma en los tiempos que corren **me he apoyado en la IA para realizar la entrevista pero no como se puede pensar a priori**, utilizando ChatGPT, Gemini o similar para que analice el radar y emita conclusiones sino **preparando un sistema al que he intentado dotar de un pensamiento lo más "humano" posible que permita que esto parezca una entrevista de verdad**. 
+Como no podía ser de otra forma en los tiempos que corren **me he apoyado en la IA para realizar la entrevista pero no como se puede pensar a priori**, utilizando ChatGPT, Gemini, NotebookLM o similar para que analice el radar y emita conclusiones sino **preparando un sistema al que he intentado dotar de un pensamiento lo más "humano" posible que permita que esto parezca una entrevista de verdad**. 
 
 
 
