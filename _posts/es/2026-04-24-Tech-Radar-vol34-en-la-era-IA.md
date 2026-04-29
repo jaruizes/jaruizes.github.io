@@ -15,7 +15,7 @@ Es un documento de sobra conocido. Evidentemente, su contenido no está escrito 
 
 Creo que en este momento de brutal cambio e incertidumbre en el sector, consultar documentos de este tipo y calidad es de vital importancia para saber qué va siendo una realidad contrastada o qué hay que tomar con precaución.
 
- 
+<br /> 
 
 # La fuente de conocimiento: el radar de Thoughtworks
 
@@ -42,19 +42,7 @@ De cada pilar se analizan una serie de "cosas o ítems interesantes" (**blips** 
 **Lo reamente interesante no es tanto qué blips hay en cada bloque sino cuál es la tendencia**, qué blips aparecen, cuáles son "promocionados" a probar o adoptar y cuáles hay que tratar con precaución, bien porque su madurez así lo indica o porque se han detectado riesgos o carencias que hay que tener en cuenta.
 
 
-
-Para realizar este análisis he decidido establecer un rango temporal más o menos de dos años, analizando los últimos cuatro volúmenes:
-
-📊 [Volumen 31 (octubre 2024)](https://www.thoughtworks.com/content/dam/thoughtworks/documents/radar/2024/10/tr_technology_radar_vol_31_en.pdf)
-
-📊 [Volumen 32 (abril 2025)](https://www.thoughtworks.com/content/dam/thoughtworks/documents/radar/2025/04/tr_technology_radar_vol_32_en.pdf)
-
-📊 [Volumen 33 (noviembre 2025)](https://www.thoughtworks.com/content/dam/thoughtworks/documents/radar/2025/11/tr_technology_radar_vol_33_en.pdf)
-
-📊 [Volumen 34 (abril 2026)](https://www.thoughtworks.com/content/dam/thoughtworks/documents/radar/2025/11/tr_technology_radar_vol_33_en.pdf)
-
-
-
+<br />
 
 
 # El medio para la entrevista: un RAG avanzado
@@ -93,7 +81,7 @@ La UI, a la que he intentado dar un estilo editorial periodístico, permite conf
 
 No voy a dar muchos más detalles del proyecto en este articulo porque no es el objeto del mismo (es la entrevista en sí) y crearé un artículo más técnico en los próximos días con todos los detalles
 
-
+<br />
 
 # Ahora sí, la entrevista
 
@@ -281,7 +269,7 @@ Si queréis tener el contenido de la entrevista en PDF, haced click [aquí](/dow
 
 [![homepage](/images/radar_interview/interview_pdf.jpg)](/downloads/radar-interview/tech_radar_interview_2026_04_29.pdf)
 
-
+<br />
 
 # Conclusiones
 
