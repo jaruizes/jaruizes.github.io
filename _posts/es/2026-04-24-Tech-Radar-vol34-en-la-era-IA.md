@@ -139,22 +139,6 @@ Una vez detallado el contexto en el que se realiza la entrevista, procedamos a s
 
 
 
-- **¿Cuáles crees que son los principales riesgos o antipatrones que se han detectado durante estos últimos años y que pueden hacer mucho daño de no tomar medidas?**
-
-  > Esta es quizás la pregunta más importante que podemos hacernos ahora mismo, porque estamos en un momento donde la velocidad de adopción supera claramente la velocidad de comprensión de las consecuencias.
-  >
-  > **El primero y más peligroso: la complacencia con el código generado por IA.** No es nuevo —lo llevamos poniendo en Hold desde hace varios volúmenes— pero se está agravando. Lo que antes era un desarrollador revisando sugerencias de Copilot, ahora es un agente modificando decenas de ficheros en paralelo mientras el desarrollador supervisa a alto nivel. El riesgo de automation bias se multiplica exponencialmente. Y lo que obtienes no es código malo —es código que *funciona* pero que nadie entiende del todo. Eso nos lleva directamente al segundo antipatrón.
-  >
-  > **La deuda cognitiva del codebase.** Este término lo introdujimos recientemente en Caution y creo que es uno de los conceptos más importantes que hemos articulado en años. No es deuda técnica clásica —es la brecha entre lo que el sistema hace y lo que el equipo *comprende* que hace. Con agentes generando cambios a alta velocidad, esa brecha se ensancha silenciosamente hasta que un día un cambio pequeño rompe algo inesperado, y nadie sabe por qué.
-  >
-  > **Tercero: MCP by default.** Lo pusimos en Caution explícitamente. El patrón que vemos es: "tengo una API, la convierto en MCP server, listo." Sin pensar en el modelo de seguridad, sin analizar los flujos tóxicos, sin preguntarse si realmente necesitas MCP o si un CLI script resuelve el problema igual de bien. La conversión naïve de APIs a MCP es una superficie de ataque que la mayoría de organizaciones no está gestionando.
-  >
-  > **Y cuarto, uno que me preocupa especialmente a nivel organizacional: el shadow IT acelerado por IA.** No-coders construyendo workflows agenticos que procesan datos sensibles, sin governance, sin audit trail, sin que IT lo sepa. La diferencia con el shadow IT clásico es la escala y la velocidad. Lo que antes tardaba meses en convertirse en un problema crítico, ahora tarda semanas.
-  >
-  > El patrón común en todos estos antipatrones es el mismo: **la IA amplifica la velocidad antes de que la organización haya construido los mecanismos de control necesarios.** Y cuando algo falla, falla rápido y a escala.
-
-
-
 - **A nivel de tecnologías, durante estos últimos años, ¿cuáles son las que se asentado totalmente y cuáles se han perdido por el camino o se van diluyendo?**
 
   > Esta es una pregunta que me encanta porque el movimiento entre rings es donde realmente se ve si algo tiene sustancia o si era ruido.
@@ -179,7 +163,7 @@ Una vez detallado el contexto en el que se realiza la entrevista, procedamos a s
 
 
 
-- ¿Cuáles crees que son los principales riesgos o antipatrones que se han detectado durante estos últimos años y que pueden hacer mucho daño de no tomar medidas?
+- **¿Cuáles crees que son los principales riesgos o antipatrones que se han detectado durante estos últimos años y que pueden hacer mucho daño de no tomar medidas?**
 
   > Esta es quizás la pregunta más importante que podemos hacernos ahora mismo, porque estamos en un momento donde la velocidad de adopción supera claramente la velocidad de comprensión de las consecuencias.
   >
