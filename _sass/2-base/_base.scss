@@ -12,7 +12,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   @media only screen and (max-width: $mobile) {
-    font-size: 18px;
+    font-size: 14px;
   }
 }
 
@@ -63,7 +63,7 @@ blockquote {
   position: relative;
   margin: 40px 0;
   padding-left: 26px;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.7;
   font-weight: 500;
   border-left: 4px solid var(--heading-font-color);
@@ -84,7 +84,7 @@ blockquote {
   }
 
   @media only screen and (max-width: $mobile) {
-    font-size: 21px;
+    font-size: 15px;
   }
 }
 
@@ -420,7 +420,7 @@ table td {
     font-weight: 400;
     margin-top: 0;
     margin-bottom: 5px;
-    color: darken($theme-color, 15%);
+    color: var(--brand-color);
   }
   .projects-section {
     .intro {
@@ -469,7 +469,7 @@ table td {
   }
   .level-bar-inner {
     height: 12px;
-    background: lighten($theme-color, 15%);
+    background: var(--brand-color);
   }
 }
 

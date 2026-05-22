@@ -6,11 +6,12 @@
 
         <div class="logo">
           <a class="logo__link" href="{{ site.baseurl }}/">
-          {% if site.data.settings.logo %}
-            <img class="logo__image" src="{{ site.baseurl }}{{ site.data.settings.logo }}" alt="{{ site.data.settings.title }}">
-          {% else %}
-            {{ site.data.settings.title }}
-          {% endif %}
+            {% if site.data.settings.logo %}
+              <img class="logo__image" src="{{ site.baseurl }}{{ site.data.settings.logo }}" alt="{{ site.data.settings.title }}">
+            {% else %}
+              <span class="logo__icon">{{ site.data.settings.title | slice: 0 }}</span>
+              {{ site.data.settings.title }}
+            {% endif %}
           </a>
         </div>
 

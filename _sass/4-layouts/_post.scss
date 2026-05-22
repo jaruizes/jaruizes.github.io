@@ -1,3 +1,14 @@
+/* Post header background */
+.post__header-bg {
+  background-color: var(--background-alt-color);
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 48px;
+
+  @media only screen and (max-width: $mobile) {
+    margin-bottom: 32px;
+  }
+}
+
 /* Post + Page */
 .post,
 .page {
@@ -7,11 +18,12 @@
 
   a {
     font-weight: 500;
-    border-bottom: 1px solid var(--border-color);
+    color: var(--brand-color);
+    border-bottom: 1px solid rgba(37, 99, 235, 0.3);
 
     &:hover {
-      color: var(--link-color);
-      border-bottom-color: var(--link-color-hover);
+      color: var(--brand-color-hover);
+      border-bottom-color: var(--brand-color-hover);
     }
   }
 
@@ -35,16 +47,16 @@
 .post__info,
 .page__info {
   max-width: 760px;
-  margin: 96px auto 48px;
+  margin: 48px auto 48px;
   text-align: center;
 
   @media only screen and (max-width: $desktop) {
     max-width: 100%;
-    margin: 40px auto;
+    margin: 32px auto;
   }
 
   @media only screen and (max-width: $mobile) {
-    margin: 40px auto 32px;
+    margin: 24px auto 24px;
   }
 }
 
@@ -53,23 +65,24 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  gap: 8px;
   margin-bottom: 20px;
-  
+
   .post__tag {
-    padding: 12px 16px;
-    margin: 4px 8px 4px 0;
-    font-size: 14px;
+    padding: 5px 12px;
+    font-size: 13px;
     line-height: 1;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: capitalize;
     border: none;
-    border-radius: 8px;
-    color: var(--heading-font-color);
-    transition: none;
-    background-color: var(--background-alt-color);
-  
-    &:last-child {
-      margin-right: 0;
+    border-radius: 6px;
+    color: #fff;
+    transition: background 0.2s;
+    background-color: var(--brand-color);
+
+    &:hover {
+      background-color: var(--brand-color-hover);
+      color: #fff;
     }
   }
 }
@@ -77,20 +90,17 @@
 .post__title,
 .page__title {
   margin-bottom: 20px;
-  font-size: 62px;
+  font-size: 48px;
   line-height: 1.2;
-
-  @media only screen and (max-width: 1140px) {
-    font-size: 64px;
-  }
+  letter-spacing: -0.5px;
 
   @media only screen and (max-width: $desktop) {
-    font-size: 48px;
+    font-size: 40px;
   }
 
   @media only screen and (max-width: $mobile) {
-    margin-bottom: 24px;
-    font-size: 32px;
+    margin-bottom: 16px;
+    font-size: 28px;
   }
 }
 

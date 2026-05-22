@@ -1,31 +1,45 @@
 <!-- begin footer -->
 <footer class="footer">
-
   <div class="container">
-    <div class="row">
-      <div class="col col-12">
+    <div class="footer__inner">
 
-        <div class="footer__inner">
-          {% if site.data.settings.social %}
-            <div class="social">
-              <ul class="social__list list-reset">
-                {% for social in site.data.settings.social %}
-                  <li class="social__item">
-                    <a class="social__link" href="{{social.link}}" target="_blank" rel="noopener" aria-label="{{social.label}} link"><i class="ion {{social.icon}}" style="color: {{social.color}};"></i> {{social.label}}</a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          {% endif %}
-        </div>
-
-        <div class="footer__info">
-          <div class="copyright">{{site.time | date: '%Y'}} &copy; <a href="/">{{site.data.settings.title}}</a></div>
-        </div>
-
+      <div class="footer__brand">
+        <a class="footer__logo" href="{{ site.baseurl }}/">
+          <span class="logo__icon">{{ site.data.settings.title | slice: 0 }}</span>
+          {{ site.data.settings.title }}
+        </a>
+        <p class="footer__tagline">{{ site.data.settings.description }}</p>
       </div>
+
+      {% if site.data.settings.social %}
+        <div class="footer__social">
+          <h4 class="footer__heading">Connect</h4>
+          <ul class="social__list list-reset">
+            {% for social in site.data.settings.social %}
+              <li class="social__item">
+                <a class="social__link" href="{{social.link}}" target="_blank" rel="noopener" aria-label="{{social.label}} link">
+                  <i class="ion {{social.icon}}"></i> {{social.label}}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
+      <div class="footer__nav">
+        <h4 class="footer__heading">Links</h4>
+        <ul class="list-reset">
+          {% for item in site.data.settings.menu__settings.menu__items %}
+            <li><a class="footer__link" href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <div class="copyright">{{site.time | date: '%Y'}} &copy; {{ site.data.settings.title }}</div>
     </div>
   </div>
-
 </footer>
 <!-- end footer -->

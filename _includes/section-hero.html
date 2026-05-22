@@ -1,11 +1,36 @@
 <!-- begin hero -->
 <section class="hero">
+  <div class="hero__bg"></div>
   <div class="container">
-    <div class="row">
-      <div class="col col-12 col-d-12">
-        <div class="hero__inner">
-          <h1 class="hero__title">{{ site.data.settings.hero.hero__title }}</h1>
-          <p class="hero__description">{{ site.data.settings.hero.hero__description }}</p>
+    <div class="hero__card">
+      <div class="hero__avatar-wrap">
+        {% if site.data.settings.hero.hero__avatar %}
+          <img class="hero__avatar" src="{{ site.data.settings.hero.hero__avatar | relative_url }}" alt="{{ site.data.settings.hero.hero__title }}">
+        {% else %}
+          <div class="hero__avatar-placeholder">{{ site.data.settings.hero.hero__title | slice: 0 }}</div>
+        {% endif %}
+      </div>
+      <div class="hero__content">
+        <h1 class="hero__title">{{ site.data.settings.hero.hero__title }}</h1>
+        {% if site.data.settings.hero.hero__badges %}
+          <div class="hero__badges">
+            {% for badge in site.data.settings.hero.hero__badges %}
+              <span class="hero__badge">{{ badge }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+        <p class="hero__description">{{ site.data.settings.hero.hero__description }}</p>
+        <div class="hero__actions">
+          {% if site.data.settings.hero.hero__cta_primary %}
+            <a href="{{ site.data.settings.hero.hero__cta_primary.url | relative_url }}" class="button button--primary hero__cta">
+              {{ site.data.settings.hero.hero__cta_primary.label }} &rarr;
+            </a>
+          {% endif %}
+          {% if site.data.settings.hero.hero__cta_secondary %}
+            <a href="{{ site.data.settings.hero.hero__cta_secondary.url | relative_url }}" class="button hero__cta">
+              {{ site.data.settings.hero.hero__cta_secondary.label }}
+            </a>
+          {% endif %}
         </div>
       </div>
     </div>
