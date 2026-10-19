@@ -381,11 +381,39 @@ La correspondencia entre conceptos resulta llamativa:
 | `Score`      | `score`              | Asignar una puntuación según criterios.               |
 | `Noul`       | `predicate`          | Evaluar cuánto respalda el contexto una condición.    |
 
+Además, el la forma de invocación es similar a la de System One: hay que indicar el modelo, las entradas y las preguntas/instrucciones. Por ejemplo (de la misma [doc de OpenAI](https://developers.openai.com/api/docs/guides/decisions#check-an-image-for-visible-damage)):
+```
+IMAGE_BASE64="$(base64 < product.png | tr -d '\r\n')"
+
+curl https://api.openai.com/v1/decisions \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  --data-binary @- <<JSON
+{
+  "model": "gpt-6-luna",
+  "input": [{
+    "role": "user",
+    "content": [
+      {"type": "input_text", "text": "Inspect the product in this photo."},
+      {"type": "input_image", "image_url": "data:image/png;base64,$IMAGE_BASE64"}
+    ]
+  }],
+  "questions": [{
+    "type": "predicate",
+    "name": "visible_damage",
+    "instructions": "Does the product have visible damage, such as a crack, tear, or dent? Ignore shadows and damage to the packaging."
+  }]
+}
+JSON
+```
+
+
+
 Las dos propuestas permiten trabajar con decisiones acotadas y múltiples preguntas sobre un contexto. La [documentación de OpenAI](https://developers.openai.com/api/docs/guides/decisions) describe además decisiones sobre **texto e imágenes** y señales de probabilidad o confianza en determinados tipos de respuesta.
 
 OpenAI afirma que esta API puede ser **aproximadamente diez veces más rápida que utilizar su Responses API** para este tipo de tareas. Hay que interpretar bien esa cifra: **es una comparación publicada por OpenAI frente a otra API propia, no una medición independiente contra Jev**. Tampoco podemos concluir de ella que Luna sea más preciso, más rápido o más barato que Jev en nuestro escenario concreto.
 
-Por cierto, el artículo [OpenAI Decisions API vs. Jev, de OrcaRouter](https://www.orcarouter.ai/es/blog/openai-decisions-api-first-client-vs-jev) es una referencia interesante para profundizar en esta comparación. Para las capacidades y fechas he tomado como base la documentación oficial de OpenAI.
+Por cierto, el artículo [OpenAI Decisions API vs. Jev, de OrcaRouter](https://www.orcarouter.ai/es/blog/openai-decisions-api-first-client-vs-jev) es una referencia interesante para profundizar en esta comparación.
 
 Aquí sí creo que podemos hablar de **una alternativa directa al enfoque de Jev**, aunque con un matiz: se trata de una API en beta y todavía necesitamos pruebas representativas para comparar su comportamiento real.
 
