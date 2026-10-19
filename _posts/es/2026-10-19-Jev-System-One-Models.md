@@ -463,9 +463,8 @@ Si necesitamos generar, explicar o diseñar, un LLM tiene mucho sentido. Si nece
 - [TypeSafe AI — Caso de uso de Jack & Jill en producción](https://typesafe.ai/blog/jack-jill-jev-case-study).
 - [TypeSafe AI — Información para empresas](https://typesafe.ai/enterprise).
 - [TypeSafe AI — Estado del servicio](https://status.typesafe.ai/).
-- [Jev Decision Lab — Repositorio y código de la PoC](https://github.com/jaruizes/jev-use-cases).
-
 - [TypeSafe — Oferta comercial para empresas](https://typesafe.ai/enterprise).
+
 - [TypeSafe — Anuncio de financiación y hoja de ruta empresarial (9 de octubre de 2026)](https://typesafe.ai/blog/series-ai).
 - [OpenAI — Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs).
 - [Anthropic — Structured Outputs y uso estricto de herramientas](https://platform.claude.com/docs/en/build-with-claude/structured-outputs).
