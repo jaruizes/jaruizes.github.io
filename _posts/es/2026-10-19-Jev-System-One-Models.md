@@ -138,6 +138,104 @@ Esto me recuerda un principio de arquitectura bastante clásico: **utilizar cada
 
 
 
+## ¿Para qué casos de uso puede ser una buena opción?
+
+Creo que donde de verdad tiene potencial es en los escenarios que cumplen condiciones como estas: 
+
+- disponen de **muchos eventos o entradas**, 
+- necesitan **tomar decisiones repetibles**, 
+- tienen un **espacio de respuesta conocido**
+- se busca **reducir coste o latencia**.
+
+
+
+Dentro de estos condicionantes encontramos casos como:
+
+- **Clasificación y routing:** por ejemplo, determinar si un correo corresponde a facturación, soporte o ventas; enviar tickets al equipo correcto; clasificar solicitudes; o decidir qué modelo generativo usar para cada tarea.
+
+- **Scoring y priorización:** por ejemplo,  valorar la madurez de oportunidades comerciales, ordenar incidencias según impacto y urgencia, o identificar solicitudes que merecen revisión prioritaria.
+
+- **Guardrails semánticos:** por ejemplo, detectar si una instrucción parece intentar saltarse una aprobación o incumplir una regla expresada en lenguaje natural. La detección sería una señal adicional; **no reemplaza los controles deterministas de seguridad**.
+
+- **Verificación de contenido y flujos de agentes:** por ejemplo, evaluar si una respuesta cumple determinados criterios o si debe escalarse a un humano; introducir puntos de decisión acotados en flujos más amplios.
+
+- **Decisiones múltiples sobre un mismo evento:** por ejemplo, ante una incidencia, determinar a la vez prioridad, riesgo de seguridad y equipo responsable.
+
+
+
+Desde un punto de vista de arquitecto, para mí no deja de ser un **componente/servicio de decisión semántica** que convive con reglas de negocio, APIs, eventos y modelos generativos, que es necesario en escenarios en los que un `if/else` convencional se queda corto, pero un LLM completo parece excesivo.
+
+Eso sí, **no sustituye a las reglas deterministas cuando podemos expresar y verificar completamente la decisión mediante código**.
+
+
+
+## ¿Y dónde puede no encajar?
+
+A veces, al analizar una tecnología nueva, nos centramos tanto en sus ventajas que dejamos de mirar el otro lado. En este caso creo que conviene ser especialmente cuidadosos. Por ejemplo:
+
+- Generación de contenido
+- Requisitos de explicabilidad
+- Soberanía y control
+- Decisiones de alto impacto con necesidad de supervision
+
+
+
+Veamos estos escenarios con más detalle
+
+
+
+### Generación de contenido
+
+Si necesitamos redactar un informe, desarrollar una arquitectura, explicar alternativas técnicas, programar, resumir un documento o mantener una conversación, **Jev no es el modelo adecuado para producir ese artefacto**.
+
+Podría participar en decisiones del flujo, pero la generación seguiría correspondiendo a un LLM u otro sistema especializado.
+
+
+
+### Explicabilidad: ¿por qué ha elegido o decidido esa opción o resultado?
+
+**Jev no proporciona una explicación de por qué ha elegido una categoría o ha asignado una puntuación**. Podemos obtener señales asociadas a la decisión, pero no una descripción verificable de su razonamiento interno.
+
+Pensemos en un correo que Jev clasifica como `BILLING` cuando un analista lo consideraría `OTHER`. Podemos saber qué devolvió y compararlo con la etiqueta esperada. Lo que no podemos pedirle es que nos detalle cuáles fueron sus razones internas para escoger esa opción.
+
+
+
+> La explicabilidad asociada a la IA es un requisito de mucha importancia en determinados contextos por lo que es un punto a tener muy en cuenta.
+
+ 
+
+#### Una alternativa: Jev decide y un LLM explica
+
+Podemos plantear una arquitectura híbrida:
+
+1. **Jev toma la decisión** sobre el contexto disponible.
+2. **La aplicación devuelve esa decisión** al consumidor.
+3. **Se publica un evento o se encola una tarea**, identificada con el ID de la decisión.
+4. **Un modelo generativo económico, como Claude Haiku**, recibe el contexto, la decisión y las señales disponibles y elabora una justificación basada en las evidencias del texto.
+5. **La explicación se almacena** asociada a la decisión para consulta posterior.
+
+
+
+La ventaja es que, **si la explicación no es necesaria para continuar**, podemos generarla de manera asíncrona y mantener fuera del camino crítico la latencia del segundo modelo.
+
+Aquí la precisión importa: **no eliminamos la latencia de la explicación; la desacoplamos de la latencia de la decisión**. Además, incorporamos un coste adicional, una dependencia y la necesidad de gestionar colas, reintentos y errores.
+
+Y existe una limitación todavía más importante: **la justificación que redacte el LLM (ej: Haiku) sería una explicación posterior (*post-hoc*) no el razonamiento interno de Jev** . Puede resultar útil para interpretar las evidencias y facilitar la revisión, pero también podría construir un argumento que no sea fiel al motivo real de la predicción.
+
+Por eso, en procesos regulados o críticos que exijan una **explicación validada antes de actuar**, no podemos simplemente moverla a segundo plano y dar el requisito por resuelto.
+
+
+
+### Cuando necesitamos control absoluto del despliegue
+
+Como he comentado anteriormente, en el momento en que estoy escribiendo el artículo, si necesitamos ejecutar el modelo sin conectividad externa, dentro de nuestra infraestructura o en una ubicación contractual concreta que TypeSafe no pueda ofrecer, **Jev puede no cumplir los requisitos**, independientemente de lo bien que clasifique.
+
+
+
+### Decisiones de alto impacto sin supervisión
+
+Rechazar una candidatura, bloquear una cuenta, autorizar un pago o desplegar a producción son acciones con consecuencias importantes. Jev puede ayudar a evaluar señales, **pero una puntuación alta no equivale a una garantía y nunca debería ser el único control de autorización**.
+
 
 
 ## Hablemos de la madurez...¿es usable en producción?
@@ -265,97 +363,6 @@ La propuesta de TypeSafe resulta interesante, pero no aparece en el vacío. La i
 
 
 La tendencia que veo es clara y de sentido común: **la salida estructurada debe ser una capacidad estándar y, en este escenario, la especialización gana peso**. 
-
-
-
-## ¿Para qué casos de uso puede ser una buena opción?
-
-Creo que donde de verdad tiene potencial es en los escenarios que cumplen condiciones como estas: 
-
-- disponen de **muchos eventos o entradas**, 
-- necesitan **tomar decisiones repetibles**, 
-- tienen un **espacio de respuesta conocido**
-- se busca **reducir coste o latencia**.
-
-
-
-Dentro de estos condicionantes encontramos casos como:
-
-- **Clasificación y routing:** por ejemplo, determinar si un correo corresponde a facturación, soporte o ventas; enviar tickets al equipo correcto; clasificar solicitudes; o decidir qué modelo generativo usar para cada tarea.
-
-- **Scoring y priorización:** por ejemplo,  valorar la madurez de oportunidades comerciales, ordenar incidencias según impacto y urgencia, o identificar solicitudes que merecen revisión prioritaria.
-
-- **Guardrails semánticos:** por ejemplo, detectar si una instrucción parece intentar saltarse una aprobación o incumplir una regla expresada en lenguaje natural. La detección sería una señal adicional; **no reemplaza los controles deterministas de seguridad**.
-
-- **Verificación de contenido y flujos de agentes:** por ejemplo, evaluar si una respuesta cumple determinados criterios o si debe escalarse a un humano; introducir puntos de decisión acotados en flujos más amplios.
-
-- **Decisiones múltiples sobre un mismo evento:** por ejemplo, ante una incidencia, determinar a la vez prioridad, riesgo de seguridad y equipo responsable.
-
-
-
-Desde un punto de vista de arquitecto, para mí no deja de ser un **componente/servicio de decisión semántica** que convive con reglas de negocio, APIs, eventos y modelos generativos, que es necesario en escenarios en los que un `if/else` convencional se queda corto, pero un LLM completo parece excesivo.
-
-Eso sí, **no sustituye a las reglas deterministas cuando podemos expresar y verificar completamente la decisión mediante código**.
-
-
-
-## ¿Y dónde puede no encajar?
-
-A veces, al analizar una tecnología nueva, nos centramos tanto en sus ventajas que dejamos de mirar el otro lado. En este caso creo que conviene ser especialmente cuidadosos.
-
-
-
-### Generación de contenido y razonamiento abierto
-
-Si necesitamos redactar un informe, desarrollar una arquitectura, explicar alternativas técnicas, programar, resumir un documento o mantener una conversación, **Jev no es el modelo adecuado para producir ese artefacto**.
-
-Podría participar en decisiones del flujo, pero la generación seguiría correspondiendo a un LLM u otro sistema especializado.
-
-
-
-### Explicabilidad: ¿por qué ha elegido o decidido esa opción o resultado?
-
-**Jev no proporciona una explicación de por qué ha elegido una categoría o ha asignado una puntuación**. Podemos obtener señales asociadas a la decisión, pero no una descripción verificable de su razonamiento interno.
-
-Pensemos en un correo que Jev clasifica como `BILLING` cuando un analista lo consideraría `OTHER`. Podemos saber qué devolvió y compararlo con la etiqueta esperada. Lo que no podemos pedirle es que nos detalle cuáles fueron sus razones internas para escoger esa opción.
-
-
-
-> La explicabilidad asociada a la IA es un requisito de mucha importancia en determinados contextos por lo que es un punto a tener muy en cuenta.
-
- 
-
-#### Una alternativa: Jev decide y un LLM explica
-
-Podemos plantear una arquitectura híbrida:
-
-1. **Jev toma la decisión** sobre el contexto disponible.
-2. **La aplicación devuelve esa decisión** al consumidor.
-3. **Se publica un evento o se encola una tarea**, identificada con el ID de la decisión.
-4. **Un modelo generativo económico, como Claude Haiku**, recibe el contexto, la decisión y las señales disponibles y elabora una justificación basada en las evidencias del texto.
-5. **La explicación se almacena** asociada a la decisión para consulta posterior.
-
-
-
-La ventaja es que, **si la explicación no es necesaria para continuar**, podemos generarla de manera asíncrona y mantener fuera del camino crítico la latencia del segundo modelo.
-
-Aquí la precisión importa: **no eliminamos la latencia de la explicación; la desacoplamos de la latencia de la decisión**. Además, incorporamos un coste adicional, una dependencia y la necesidad de gestionar colas, reintentos y errores.
-
-Y existe una limitación todavía más importante: **la justificación que redacte el LLM (ej: Haiku) sería una explicación posterior (*post-hoc*) no el razonamiento interno de Jev** . Puede resultar útil para interpretar las evidencias y facilitar la revisión, pero también podría construir un argumento que no sea fiel al motivo real de la predicción.
-
-Por eso, en procesos regulados o críticos que exijan una **explicación validada antes de actuar**, no podemos simplemente moverla a segundo plano y dar el requisito por resuelto.
-
-
-
-### Cuando necesitamos control absoluto del despliegue
-
-Como he comentado anteriormente, en el momento en que estoy escribiendo el artículo, si necesitamos ejecutar el modelo sin conectividad externa, dentro de nuestra infraestructura o en una ubicación contractual concreta que TypeSafe no pueda ofrecer, **Jev puede no cumplir los requisitos**, independientemente de lo bien que clasifique.
-
-
-
-### Decisiones de alto impacto sin supervisión
-
-Rechazar una candidatura, bloquear una cuenta, autorizar un pago o desplegar a producción son acciones con consecuencias importantes. Jev puede ayudar a evaluar señales, **pero una puntuación alta no equivale a una garantía y nunca debería ser el único control de autorización**.
 
 
 
