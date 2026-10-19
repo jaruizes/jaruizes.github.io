@@ -2,8 +2,8 @@
 layout: post
 title: "Jev y los System One Models: ¿necesitamos un LLM para tomar cada decisión? (WIP)"
 date: 2026-10-18 17:00
-description: "Analizo Jev, el modelo de decisiones de TypeSafe: qué aporta frente a los LLM, su madurez, limitaciones y una PoC para ponerlo a prueba."
 image: "/images/jev/jev.png"
+description: "Analizo Jev, el modelo de decisiones de TypeSafe: qué aporta frente a los LLM, su madurez, limitaciones y una PoC para ponerlo a prueba."
 tags: [AI, Engineering, Architecture, LLM, Jev]
 lang: es
 ref: jev-system-one-models
