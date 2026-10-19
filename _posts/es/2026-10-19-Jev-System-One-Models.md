@@ -344,25 +344,70 @@ En una comparativa rigurosa incluiría al menos **un baseline determinista y un 
 
 
 
+
+
 ## ¿Qué están haciendo OpenAI, Anthropic y otros proveedores?
 
 La propuesta de TypeSafe resulta interesante, pero no aparece en el vacío. La industria está avanzando hacia **resultados cada vez más estructurados, modelos más pequeños y servicios especializados**, aunque no todos siguen el mismo camino.
 
-- **OpenAI** incorpora [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs), que permite restringir las respuestas de modelos generativos mediante esquemas JSON. Esto resuelve buena parte de los problemas de integración que antes obligaban a validar y reintentar respuestas mal formadas. **No convierte al modelo en un equivalente de Jev**: sigue siendo un generativo cuya salida está restringida.
-
-- **Anthropic** ofrece [Structured Outputs y strict tool use](https://platform.claude.com/docs/en/build-with-claude/structured-outputs) para producir objetos tipados y llamadas a herramientas sujetas a esquemas. Es relevante porque desmonta una comparación simplista: **Jev no es el único capaz de devolver estructuras fiables**. Para valorar su aportación diferencial debemos mirar calidad de decisión, coste, latencia, experiencia de definición de criterios y operación.
-
-- **AWS** lleva tiempo ofreciendo clasificación sin necesidad de un LLM generativo mediante [Amazon Comprehend](https://docs.aws.amazon.com/comprehend/latest/dg/concepts-custom.html). 
-- **Google Cloud**, por su parte, mantiene [Document AI Custom Classifier](https://docs.cloud.google.com/document-ai/docs/custom-classifier), que ya incorpora modelos basados en Gemini junto a alternativas entrenables. Son muestras de una tendencia a **empaquetar tareas de negocio**, no solo a exponer modelos generalistas.
-- en el ecosistema abierto, **ModernBERT**, presentado por [Answer.AI y LightOn en Hugging Face](https://huggingface.co/blog/modernbert), representa otra dirección: modelos *encoder* modernos optimizados para tareas como clasificación y recuperación, que pueden ajustarse y ejecutarse bajo nuestro propio control. [SetFit](https://huggingface.co/blog/setfit) lleva esa idea al terreno del aprendizaje con pocas etiquetas.
+Aquí conviene distinguir dos movimientos que, aunque están relacionados, **no son lo mismo**: conseguir que un modelo generativo respete un esquema y ofrecer una API pensada específicamente para tomar decisiones.
 
 
 
-¿Están naciendo competidores directos o "copias" de Jev, con la misma interfaz de `Choice`, `Score` y `Noul` y el mismo modelo comercial? **Al igual que he comentado antes, en el momento de escribir este artículo, no he encontrado ninguna "copia" pero no tengo dudas de que aparecerán**.
+### Alternativas que ya existían antes de Jev: structured outputs
+
+OpenAI presentó [Structured Outputs el 6 de agosto de 2024](https://openai.com/index/introducing-structured-outputs-in-the-api/), más de dos años antes de la aparición pública de Jev. Antes incluso existían mecanismos como *function calling* o el modo JSON. Esta capacidad permite restringir las respuestas de un modelo generativo para que respeten un esquema JSON. Por ejemplo, podemos pedirle que clasifique un correo y devuelva un campo `category` cuyo valor pertenezca a un conjunto de opciones.
+
+> Es muy útil para integrar LLM en aplicaciones, pero **no implica que estemos utilizando un modelo especializado en decisiones**: seguimos trabajando con un modelo generativo, aunque hayamos delimitado la estructura de su respuesta.
+>
 
 
 
-La tendencia que veo es clara y de sentido común: **la salida estructurada debe ser una capacidad estándar y, en este escenario, la especialización gana peso**. 
+**Anthropic**, por su parte, también ya ofrece [Structured Outputs y *strict tool use*](https://platform.claude.com/docs/en/build-with-claude/structured-outputs) para producir objetos tipados y llamadas a herramientas que respeten contratos. 
+
+
+
+### OpenAI Decisions API y GPT-6 Luna
+
+El movimiento más interesante es mucho más reciente. Según el [registro oficial de cambios de OpenAI](https://developers.openai.com/api/docs/changelog), el **6 de octubre de 2026** se lanzó en **beta** la **[Decisions API](https://developers.openai.com/api/docs/guides/decisions)** con el modelo `gpt-6-luna`.
+
+**Decisions API es una interfaz específica para evaluar entradas y devolver decisiones tipadas**, con preguntas acotadas. Su planteamiento se parece bastante más al de System One de TypeSafe.
+
+La correspondencia entre conceptos resulta llamativa:
+
+| TypeSafe Jev | OpenAI Decisions API | Para qué sirve                                        |
+| ------------ | -------------------- | ----------------------------------------------------- |
+| `Choice`     | `choice`             | Seleccionar una alternativa entre opciones conocidas. |
+| `Score`      | `score`              | Asignar una puntuación según criterios.               |
+| `Noul`       | `predicate`          | Evaluar cuánto respalda el contexto una condición.    |
+
+Las dos propuestas permiten trabajar con decisiones acotadas y múltiples preguntas sobre un contexto. La [documentación de OpenAI](https://developers.openai.com/api/docs/guides/decisions) describe además decisiones sobre **texto e imágenes** y señales de probabilidad o confianza en determinados tipos de respuesta.
+
+OpenAI afirma que esta API puede ser **aproximadamente diez veces más rápida que utilizar su Responses API** para este tipo de tareas. Hay que interpretar bien esa cifra: **es una comparación publicada por OpenAI frente a otra API propia, no una medición independiente contra Jev**. Tampoco podemos concluir de ella que Luna sea más preciso, más rápido o más barato que Jev en nuestro escenario concreto.
+
+Por cierto, el artículo [OpenAI Decisions API vs. Jev, de OrcaRouter](https://www.orcarouter.ai/es/blog/openai-decisions-api-first-client-vs-jev) es una referencia interesante para profundizar en esta comparación. Para las capacidades y fechas he tomado como base la documentación oficial de OpenAI.
+
+Aquí sí creo que podemos hablar de **una alternativa directa al enfoque de Jev**, aunque con un matiz: se trata de una API en beta y todavía necesitamos pruebas representativas para comparar su comportamiento real.
+
+
+
+### ¿Y el resto del mercado?
+
+No todas las alternativas siguen ese enfoque específico de `Choice`, `Score` o `Predicate`:
+
+- **AWS** lleva tiempo ofreciendo clasificación mediante [Amazon Comprehend](https://docs.aws.amazon.com/comprehend/latest/dg/concepts-custom.html), sin necesidad de resolver la tarea mediante un LLM generativo.
+- **Google Cloud** dispone de [Document AI Custom Classifier](https://docs.cloud.google.com/document-ai/docs/custom-classifier), orientado a clasificar documentos mediante servicios especializados.
+- En el ecosistema abierto, **[ModernBERT](https://huggingface.co/blog/modernbert)** y enfoques como **[SetFit](https://huggingface.co/blog/setfit)** ofrecen otra posibilidad: adaptar y desplegar clasificadores bajo nuestro control, con sus propias necesidades de datos, entrenamiento y mantenimiento.
+
+Estas opciones no son equivalentes exactos de Jev ni de Decisions API. Pero refuerzan algo que ya comentaba en el apartado anterior: **cuando el problema es clasificar, puntuar o decidir, hay que comparar más cosas que un LLM generativo**.
+
+
+
+Este tipo de movimientos refuerzan el trabajo de arquitectura a la hora de diseñar soluciones: **¿qué necesitamos realmente: un clasificador tradicional entrenado con nuestros datos, un LLM con salida estructurada o una API de decisiones como Jev o Decisions API?** La respuesta dependerá de calidad, coste, latencia, explicabilidad, privacidad, madurez y posibilidades de despliegue.
+
+<br/>
+
+
 
 
 
