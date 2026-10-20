@@ -35,7 +35,7 @@ De ahí nace una propuesta diferente: construir modelos especializados en recibi
 
 
 
-¿Y por qué *Jev*? Según [TypeSafe](https://typesafe.ai/blog/introducing-system-one-models-and-jev), el nombre es un homenaje a **William Stanley Jevons**, conocido, entre otras cosas, por la paradoja que lleva su apellido: cuando una tecnología se vuelve más eficiente, su consumo total puede aumentar en lugar de reducirse. Aplicado a la IA, la hipótesis es que abaratar radicalmente cada decisión permitirá introducir inteligencia en muchos más procesos.
+¿Y por qué *Jev*? Según [TypeSafe](https://typesafe.ai/blog/introducing-system-one-models-and-jev), el nombre es un homenaje a **William Stanley Jevons**, conocido, entre otras cosas, por **la paradoja que lleva su apellido**: cuando una tecnología se vuelve más eficiente, su consumo total puede aumentar en lugar de reducirse. Aplicado a la IA, la hipótesis es que abaratar radicalmente cada decisión permitirá introducir inteligencia en muchos más procesos.
 
 <img src="../../images/jev/jevons-paradox.jpg" alt="jevons-paradox" style="zoom: 33%;" />
 
@@ -169,16 +169,13 @@ Eso sí, **no sustituye a las reglas deterministas cuando podemos expresar y ver
 
 
 
-## ¿Y dónde puede no encajar?
+## ¿Cuándo puede no ser una buena opción?
 
 A veces, al analizar una tecnología nueva, nos centramos tanto en sus ventajas que dejamos de mirar el otro lado. En este caso creo que conviene ser especialmente cuidadosos. Por ejemplo:
 
 - Generación de contenido
 - Requisitos de explicabilidad
 - Soberanía y control
-- Decisiones de alto impacto con necesidad de supervision
-
-
 
 Veamos estos escenarios con más detalle
 
@@ -186,13 +183,13 @@ Veamos estos escenarios con más detalle
 
 ### Generación de contenido
 
-Si necesitamos redactar un informe, desarrollar una arquitectura, explicar alternativas técnicas, programar, resumir un documento o mantener una conversación, **Jev no es el modelo adecuado para producir ese artefacto**.
+Tenemos que tener claro que **Jev no es un modelo generativo**. Por lo tanto, si necesitamos redactar un informe, desarrollar una arquitectura, explicar alternativas técnicas, programar, resumir un documento o mantener una conversación, **Jev no es el modelo adecuado para producir ese artefacto**.
 
 Podría participar en decisiones del flujo, pero la generación seguiría correspondiendo a un LLM u otro sistema especializado.
 
 
 
-### Explicabilidad: ¿por qué ha elegido o decidido esa opción o resultado?
+### La explicabilidad es un must
 
 **Jev no proporciona una explicación de por qué ha elegido una categoría o ha asignado una puntuación**. Podemos obtener señales asociadas a la decisión, pero no una descripción verificable de su razonamiento interno.
 
@@ -216,27 +213,21 @@ Podemos plantear una arquitectura híbrida:
 
 
 
-La ventaja es que, **si la explicación no es necesaria para continuar**, podemos generarla de manera asíncrona y mantener fuera del camino crítico la latencia del segundo modelo.
+Este modelo híbrido sólo es aplicable **si la explicación no es necesaria para continuar** ya que podemos generarla de manera asíncrona y mantener fuera del camino crítico la latencia del segundo modelo. En este caso, **no eliminamos la latencia de la explicación; la desacoplamos de la latencia de la decisión**. Además, por otro lado, incorporamos un coste adicional, una dependencia y la necesidad de gestionar colas, reintentos y errores.
 
-Aquí la precisión importa: **no eliminamos la latencia de la explicación; la desacoplamos de la latencia de la decisión**. Además, incorporamos un coste adicional, una dependencia y la necesidad de gestionar colas, reintentos y errores.
-
-Y existe una limitación todavía más importante: **la justificación que redacte el LLM (ej: Haiku) sería una explicación posterior (*post-hoc*) no el razonamiento interno de Jev** . Puede resultar útil para interpretar las evidencias y facilitar la revisión, pero también podría construir un argumento que no sea fiel al motivo real de la predicción.
+Ojo, existe una limitación todavía más importante: **la justificación que redacte el LLM (ej: Haiku) sería una explicación posterior (*post-hoc*) no el razonamiento interno de Jev** . Puede resultar útil para interpretar las evidencias y facilitar la revisión, pero también podría construir un argumento que no sea fiel al motivo real de la predicción.
 
 Por eso, en procesos regulados o críticos que exijan una **explicación validada antes de actuar**, no podemos simplemente moverla a segundo plano y dar el requisito por resuelto.
 
 
 
-### Cuando necesitamos control absoluto del despliegue
+### Cuando necesitamos control absoluto del despliegue o soberanía del dato
 
 Como he comentado anteriormente, en el momento en que estoy escribiendo el artículo, si necesitamos ejecutar el modelo sin conectividad externa, dentro de nuestra infraestructura o en una ubicación contractual concreta que TypeSafe no pueda ofrecer, **Jev puede no cumplir los requisitos**, independientemente de lo bien que clasifique.
 
 
 
-### Decisiones de alto impacto sin supervisión
-
-Rechazar una candidatura, bloquear una cuenta, autorizar un pago o desplegar a producción son acciones con consecuencias importantes. Jev puede ayudar a evaluar señales, **pero una puntuación alta no equivale a una garantía y nunca debería ser el único control de autorización**.
-
-
+<br/>
 
 ## Hablemos de la madurez...¿es usable en producción?
 
@@ -260,8 +251,7 @@ No podemos decir que **TypeSafe no tenga soporte empresarial** ya que dispone de
 - despliegue privado, 
 - cumplimiento específico, 
 - portabilidad,
-- compromisos de continuidad,
-- ...
+- compromisos de continuidad
 
 
 
@@ -275,11 +265,7 @@ En mi opinion, **en este momento, en un contexto empresarial, iría por utilizar
 
 
 
-**Mi lectura es que Jev merece ser evaluado para producción en casos acotados, pero exige especial atención a su madurez operativa y a las garantías contractuales.**
-
-
-
-Antes de adoptarlo para una función crítica, revisaría al menos:
+**Mi lectura es que Jev merece ser evaluado para producción en casos acotados, pero exige especial atención a su madurez operativa y a las garantías contractuales.** Antes de adoptarlo para una función crítica, revisaría al menos:
 
 - **Calidad sobre nuestro dominio:** dataset representativo, etiquetas revisadas y pruebas con entradas ambiguas y fuera de distribución.
 - **Versionado:** fijar versiones cuando la estabilidad sea necesaria y repetir evaluaciones antes de migrar.
@@ -311,7 +297,7 @@ En resumen: **podemos desarrollar y desplegar nuestro software donde queramos, p
 
 
 
-## ¿Y si no necesitáramos Jev? La alternativa del Machine Learning tradicional
+## ¿Y si realmente no necesitáramos Jev?
 
 Hasta ahora he comparado Jev con modelos generativos empujado por el hype de la IA Generativa pero no debemos olvidar que las capacidades que ofrece Jev ya estaban disponibles antes de la explosion de la IA Generativa. 
 
@@ -339,8 +325,6 @@ La comparación, por tanto, no debería limitarse a **Jev frente a un LLM**:
 **No hay un ganador universal.** Si disponemos de millones de correos históricos bien etiquetados y las clases apenas cambian, un clasificador especializado desplegado en nuestra infraestructura podría ser una opción excelente. Si, por el contrario, estamos explorando un proceso nuevo, tenemos pocas etiquetas y necesitamos cambiar los criterios con frecuencia, Jev puede reducir muchísimo la fricción inicial.
 
 Tampoco sería correcto afirmar que el ML tradicional es necesariamente más lento de desarrollar o más caro de operar en todos los escenarios. Hay herramientas *AutoML*, modelos preentrenados y enfoques *few-shot* que han reducido mucho esa barrera. Y hay modelos supervisados que permiten inspeccionar qué variables han influido en una predicción, aunque **eso tampoco garantiza por sí solo una explicación causal**.
-
-En una comparativa rigurosa incluiría al menos **un baseline determinista y un clasificador supervisado**, además de Jev y un LLM. Mi repositorio **no incluye aún esas alternativas**, por lo que no atribuiré a Jev ventajas frente a ellas basándome en las gráficas de la PoC.
 
 
 
@@ -419,6 +403,32 @@ Aquí sí creo que podemos hablar de **una alternativa directa al enfoque de Jev
 
 
 
+### Laya, el competidor open source
+
+Otro proyecto que merece la pena conocer es **[Laya](https://github.com/NandhaKishorM/laya)**, impulsado por **Convai Innovations**. Su planteamiento es muy similar al de Jev: tomar decisiones semánticas sobre un contexto mediante preguntas acotadas, en lugar de generar texto libre. De hecho, utiliza las mismas primitivas: **`Choice`, `Score` y `Noul`**, y puede resolver varias preguntas en una sola evaluación.
+
+**La diferencia más interesante está en el modelo de distribución**. Laya es un proyecto **open source**, con código y pesos disponibles públicamente y una **licencia Apache 2.0** declarada en su [repositorio](https://github.com/NandhaKishorM/laya). Esto permite descargar el modelo y ejecutarlo localmente, dentro de un contenedor Docker o en infraestructura propia, en lugar de depender necesariamente de un servicio de inferencia externo.
+
+Desde el punto de vista empresarial, de control y soberanía, esto puede ser bastante relevante ya que podemos **controlar dónde se procesan los datos, qué versión ejecutamos y cómo integramos el modelo**. Imaginemos una aseguradora que necesita clasificar documentación o priorizar incidencias y no puede enviar determinados datos a una API de terceros. Laya abre la posibilidad de desplegar ese componente dentro de sus propios límites de red.
+
+Pero esto no es "gratis" ya que **open source no equivale a una solución lista para producción empresarial**. Como cualquier otro despliegue, hay que tener en cuenta que:
+
+- hay que proporcionar y analizar los costes asociados a la infraestructura, energia, personal, etc...
+- hay que gestionar la capacidad, escalado, monitorización, etc...
+- hay que mantener el modelo y las nuevas versiones que se generen del mismo
+- la responsabilidad operativa y el soporte cae del lado de la propia empresa
+- al ser un proyecto Open Source, no tenemos soporte empresarial y tampoco tenemos la garantía de que vaya a ser mantenido en el tiempo (ojo, puede ser interesante que participemos como contribuidores)
+
+
+
+Para una empresa con capacidades maduras de Platform Engineering y MLOps esto puede ser asumible; para otra puede ser un esfuerzo mayor que consumir una API.
+
+Y tampoco debemos olvidar la **calidad de las decisiones**. Necesitaríamos contrastar sus resultados con **nuestro propio dataset**, incluyendo textos ambiguos, distintos idiomas, distribuciones de categorías y casos donde conviene escalar a revisión humana. La precisión, la calibración y el comportamiento ante errores importan más que el hecho de ser abierto o propietario.
+
+En mi opinión, **Laya tiene mucho sentido como candidato para PoCs y para escenarios donde la ejecución local sea un requisito**, pero para producción crítica exigiría el mismo rigor que a Jev: pruebas representativas, garantías de continuidad, controles de seguridad y un modelo de soporte claro.
+
+
+
 ### ¿Y el resto del mercado?
 
 No todas las alternativas siguen ese enfoque específico de `Choice`, `Score` o `Predicate`:
@@ -443,9 +453,9 @@ Este tipo de movimientos refuerzan el trabajo de arquitectura a la hora de dise�
 
 Como me suele pasar cuando descubro algo interesante, llega un momento en el que leer documentación no me parece suficiente y quiero probarlo.
 
-Para eso he preparado **[Jev Decision Lab](https://github.com/jaruizes/jev-use-cases)**, una PoC que compara **Jev con Claude Haiku y Claude Sonnet** sobre un conjunto de situaciones donde podemos medir resultados.
+Para eso he preparado este repositorio **[Jev Decision Lab](https://github.com/jaruizes/jev-use-cases)** que consiste en una PoC que compara **Jev con Claude Haiku y Claude Sonnet** sobre un conjunto de situaciones donde podemos medir resultados. Además, **he incluído Laya para que lo puedas ejecutar en local**.
 
-No pretende ser un benchmark universal ni demostrar que Jev gana siempre. Su objetivo es más práctico: **ver cuándo una decisión acotada puede resolverse sin recurrir a un modelo generativo generalista, y qué sucede con la calidad, el coste y el tiempo de respuesta**.
+No pretende ser un benchmark universal ni demostrar que Jev gana siempre. Su objetivo es más práctico:  **poder jugar con ello y ver cuándo una decisión acotada puede resolverse sin recurrir a un modelo generativo generalista, y qué sucede con la calidad, el coste y el tiempo de respuesta**.
 
 
 
@@ -463,29 +473,12 @@ Dentro de la PoC he implementado estos casos de uso
 | **Incident Triage** | Obtener prioridad, riesgo de seguridad y equipo responsable a la vez. | `Score` + `Noul` + `Choice` |
 | **Architecture Decision & Planning** | Diseñar y justificar una arquitectura. | **Solo generativos** |
 
-El último caso es deliberado: **también quiero enseñar dónde Jev no es la herramienta adecuada**.
-
-
-
-### Dos formas de experimentar
+El último caso es deliberado ya que **también quiero mostrar dónde Jev no es la herramienta adecuada**.
 
 En la PoC hay dos modos de uso:
 
 -  **Playground,** donde podemos introducir nuestro propio texto, seleccionar proveedores y comparar una ejecución individual.
 - **Test Scenarios,** donde podemos ejecutar baterías repetidas sobre un dataset de referencias. La versión del proyecto que utilizo incluye **30 escenarios por caso de uso** (210 en total), permite seleccionar proveedores, repetir las pruebas y **subir un dataset JSON propio**, que se valida antes de iniciar el proceso.
-
-
-
-La aplicación compara:
-
-- **Acierto frente a la referencia** definida para cada escenario.
-- **Decisiones incorrectas**, diferenciándolas de los errores técnicos de API.
-- **Latencia observada** de las llamadas.
-- **Consumo y coste estimado** según las tarifas configuradas.
-
-
-
-En el caso de diseño de arquitectura, el resultado requiere **revisión cualitativa**: no tendría sentido fingir una métrica de acierto binaria para un diseño abierto.
 
 
 
@@ -525,7 +518,7 @@ Después de revisar la propuesta de TypeSafe y desarrollar la PoC, me quedo con 
 
 **4. La madurez, el soporte empresarial y el modelo de despliegue cuentan:** es cierto que hay casos reales en producción ya con Jev pero es una herramienta reciente que depende de la oferta de TypeSafe. Para organizaciones con requisitos estrictos de soberanía, operación o continuidad, el análisis no termina en la precisión del modelo o de las características indicadas por el fabricante en su web sino que también es necesario disponer de características de uso empresarial sólidas.
 
-**5. No olvidemos el ML tradicional:** un buen clasificador supervisado, o incluso reglas convencionales, puede ser la solución más razonable. Antes de introducir otra API deberíamos medir también esas opciones.
+**5. No olvidemos otras alternativas como ML tradicional:** un buen clasificador supervisado, o incluso reglas convencionales, puede ser la solución más razonable. Antes de introducir otra API deberíamos medir también esas opciones.
 
 
 
