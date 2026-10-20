@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Jev y los System One Models: ¿necesitamos un LLM para tomar cada decisión? (WIP)"
+title: "Jev y los System One Models: ¿necesitamos un LLM para tomar cada decisión?"
 date: 2026-10-18 17:00
 image: "/images/jev/jev.png"
 description: "Analizo Jev, el modelo de decisiones de TypeSafe: qué aporta frente a los LLM, su madurez, limitaciones y una PoC para ponerlo a prueba."
@@ -239,7 +239,7 @@ TypeSafe continúa publicando versiones y funcionalidades. Por ejemplo, en el [a
 
 
 
-### Pero...¿y el soporte empresarial?
+### Pero...¿tiene soporte empresarial?
 
 Aquí hay un matiz que creo que merece un apartado propio, especialmente si estamos pensando en introducir Jev en una empresa grande y/o muy tradicional. 
 
@@ -289,7 +289,7 @@ Si una organización quiere utilizarlo desde alguna de esas nubes, el escenario 
 
 
 
-### ¿Y ejecutarlo localmente?
+### ¿Se puede ejecutar localmente?
 
 Tampoco he encontrado que se pueda ejecutar localmente. Esta limitación importa en organizaciones con requisitos estrictos de aislamiento, soberanía del dato o despliegue completamente *on-premise*.
 
@@ -328,26 +328,37 @@ Tampoco sería correcto afirmar que el ML tradicional es necesariamente más len
 
 
 
+<br/>
 
+## ¿Hay reacción en el sector?
 
-## ¿Qué están haciendo OpenAI, Anthropic y otros proveedores?
-
-La propuesta de TypeSafe resulta interesante, pero no aparece en el vacío. La industria está avanzando hacia **resultados cada vez más estructurados, modelos más pequeños y servicios especializados**, aunque no todos siguen el mismo camino.
-
-Aquí conviene distinguir dos movimientos que, aunque están relacionados, **no son lo mismo**: conseguir que un modelo generativo respete un esquema y ofrecer una API pensada específicamente para tomar decisiones.
-
-
-
-### Alternativas que ya existían antes de Jev: structured outputs
-
-OpenAI presentó [Structured Outputs el 6 de agosto de 2024](https://openai.com/index/introducing-structured-outputs-in-the-api/), más de dos años antes de la aparición pública de Jev. Antes incluso existían mecanismos como *function calling* o el modo JSON. Esta capacidad permite restringir las respuestas de un modelo generativo para que respeten un esquema JSON. Por ejemplo, podemos pedirle que clasifique un correo y devuelva un campo `category` cuyo valor pertenezca a un conjunto de opciones.
-
-> Es muy útil para integrar LLM en aplicaciones, pero **no implica que estemos utilizando un modelo especializado en decisiones**: seguimos trabajando con un modelo generativo, aunque hayamos delimitado la estructura de su respuesta.
->
+La industria está avanzando hacia **resultados cada vez más estructurados, modelos más pequeños y servicios especializados**, aunque no todos siguen el mismo camino.
 
 
 
-**Anthropic**, por su parte, también ya ofrece [Structured Outputs y *strict tool use*](https://platform.claude.com/docs/en/build-with-claude/structured-outputs) para producir objetos tipados y llamadas a herramientas que respeten contratos. 
+### Laya, el competidor open source
+
+Otro proyecto que merece la pena conocer es **[Laya](https://github.com/NandhaKishorM/laya)**, impulsado por **Convai Innovations**. Su planteamiento es muy similar al de Jev: tomar decisiones semánticas sobre un contexto mediante preguntas acotadas, en lugar de generar texto libre. De hecho, utiliza las mismas primitivas: **`Choice`, `Score` y `Noul`**, y puede resolver varias preguntas en una sola evaluación.
+
+**La diferencia más interesante está en el modelo de distribución**. Laya es un proyecto **open source**, con código y pesos disponibles públicamente y una **licencia Apache 2.0** declarada en su [repositorio](https://github.com/NandhaKishorM/laya). Esto permite descargar el modelo y ejecutarlo localmente, dentro de un contenedor Docker o en infraestructura propia, en lugar de depender necesariamente de un servicio de inferencia externo.
+
+Desde el punto de vista empresarial, de control y soberanía, esto puede ser bastante relevante ya que podemos **controlar dónde se procesan los datos, qué versión ejecutamos y cómo integramos el modelo**. Imaginemos una aseguradora que necesita clasificar documentación o priorizar incidencias y no puede enviar determinados datos a una API de terceros. Laya abre la posibilidad de desplegar ese componente dentro de sus propios límites de red.
+
+Pero esto no es "gratis" ya que **open source no equivale a una solución lista para producción empresarial**. Como cualquier otro despliegue, hay que tener en cuenta que:
+
+- hay que proporcionar y analizar los costes asociados a la infraestructura, energia, personal, etc...
+- hay que gestionar la capacidad, escalado, monitorización, etc...
+- hay que mantener el modelo y las nuevas versiones que se generen del mismo
+- la responsabilidad operativa y el soporte cae del lado de la propia empresa
+- al ser un proyecto Open Source, no tenemos soporte empresarial y tampoco tenemos la garantía de que vaya a ser mantenido en el tiempo (ojo, puede ser interesante que participemos como contribuidores)
+
+
+
+Para una empresa con capacidades maduras de Platform Engineering y MLOps esto puede ser asumible; para otra puede ser un esfuerzo mayor que consumir una API.
+
+Y tampoco debemos olvidar la **calidad de las decisiones**. Necesitaríamos contrastar sus resultados con **nuestro propio dataset**, incluyendo textos ambiguos, distintos idiomas, distribuciones de categorías y casos donde conviene escalar a revisión humana. La precisión, la calibración y el comportamiento ante errores importan más que el hecho de ser abierto o propietario.
+
+En mi opinión, **Laya tiene mucho sentido como candidato para PoCs y para escenarios donde la ejecución local sea un requisito**, pero para producción crítica exigiría el mismo rigor que a Jev: pruebas representativas, garantías de continuidad, controles de seguridad y un modelo de soporte claro.
 
 
 
@@ -403,29 +414,15 @@ Aquí sí creo que podemos hablar de **una alternativa directa al enfoque de Jev
 
 
 
-### Laya, el competidor open source
+### Alternativas que ya existían antes de Jev: structured outputs
 
-Otro proyecto que merece la pena conocer es **[Laya](https://github.com/NandhaKishorM/laya)**, impulsado por **Convai Innovations**. Su planteamiento es muy similar al de Jev: tomar decisiones semánticas sobre un contexto mediante preguntas acotadas, en lugar de generar texto libre. De hecho, utiliza las mismas primitivas: **`Choice`, `Score` y `Noul`**, y puede resolver varias preguntas en una sola evaluación.
+OpenAI presentó [Structured Outputs el 6 de agosto de 2024](https://openai.com/index/introducing-structured-outputs-in-the-api/), más de dos años antes de la aparición pública de Jev. Antes incluso existían mecanismos como *function calling* o el modo JSON. Esta capacidad permite restringir las respuestas de un modelo generativo para que respeten un esquema JSON. Por ejemplo, podemos pedirle que clasifique un correo y devuelva un campo `category` cuyo valor pertenezca a un conjunto de opciones.
 
-**La diferencia más interesante está en el modelo de distribución**. Laya es un proyecto **open source**, con código y pesos disponibles públicamente y una **licencia Apache 2.0** declarada en su [repositorio](https://github.com/NandhaKishorM/laya). Esto permite descargar el modelo y ejecutarlo localmente, dentro de un contenedor Docker o en infraestructura propia, en lugar de depender necesariamente de un servicio de inferencia externo.
-
-Desde el punto de vista empresarial, de control y soberanía, esto puede ser bastante relevante ya que podemos **controlar dónde se procesan los datos, qué versión ejecutamos y cómo integramos el modelo**. Imaginemos una aseguradora que necesita clasificar documentación o priorizar incidencias y no puede enviar determinados datos a una API de terceros. Laya abre la posibilidad de desplegar ese componente dentro de sus propios límites de red.
-
-Pero esto no es "gratis" ya que **open source no equivale a una solución lista para producción empresarial**. Como cualquier otro despliegue, hay que tener en cuenta que:
-
-- hay que proporcionar y analizar los costes asociados a la infraestructura, energia, personal, etc...
-- hay que gestionar la capacidad, escalado, monitorización, etc...
-- hay que mantener el modelo y las nuevas versiones que se generen del mismo
-- la responsabilidad operativa y el soporte cae del lado de la propia empresa
-- al ser un proyecto Open Source, no tenemos soporte empresarial y tampoco tenemos la garantía de que vaya a ser mantenido en el tiempo (ojo, puede ser interesante que participemos como contribuidores)
+> Es muy útil para integrar LLM en aplicaciones, pero **no implica que estemos utilizando un modelo especializado en decisiones**: seguimos trabajando con un modelo generativo, aunque hayamos delimitado la estructura de su respuesta.
 
 
 
-Para una empresa con capacidades maduras de Platform Engineering y MLOps esto puede ser asumible; para otra puede ser un esfuerzo mayor que consumir una API.
-
-Y tampoco debemos olvidar la **calidad de las decisiones**. Necesitaríamos contrastar sus resultados con **nuestro propio dataset**, incluyendo textos ambiguos, distintos idiomas, distribuciones de categorías y casos donde conviene escalar a revisión humana. La precisión, la calibración y el comportamiento ante errores importan más que el hecho de ser abierto o propietario.
-
-En mi opinión, **Laya tiene mucho sentido como candidato para PoCs y para escenarios donde la ejecución local sea un requisito**, pero para producción crítica exigiría el mismo rigor que a Jev: pruebas representativas, garantías de continuidad, controles de seguridad y un modelo de soporte claro.
+**Anthropic**, por su parte, también ya ofrece [Structured Outputs y *strict tool use*](https://platform.claude.com/docs/en/build-with-claude/structured-outputs) para producir objetos tipados y llamadas a herramientas que respeten contratos. 
 
 
 
@@ -437,9 +434,9 @@ No todas las alternativas siguen ese enfoque específico de `Choice`, `Score` o 
 - **Google Cloud** dispone de [Document AI Custom Classifier](https://docs.cloud.google.com/document-ai/docs/custom-classifier), orientado a clasificar documentos mediante servicios especializados.
 - En el ecosistema abierto, **[ModernBERT](https://huggingface.co/blog/modernbert)** y enfoques como **[SetFit](https://huggingface.co/blog/setfit)** ofrecen otra posibilidad: adaptar y desplegar clasificadores bajo nuestro control, con sus propias necesidades de datos, entrenamiento y mantenimiento.
 
-Estas opciones no son equivalentes exactos de Jev ni de Decisions API. Pero refuerzan algo que ya comentaba en el apartado anterior: **cuando el problema es clasificar, puntuar o decidir, hay que comparar más cosas que un LLM generativo**.
 
 
+Estas opciones no son equivalentes exactos de Jev, Laya o de Decisions API. Pero refuerzan algo que ya comentaba en el apartado anterior: **cuando el problema es clasificar, puntuar o decidir, hay que comparar más cosas que un LLM generativo**.
 
 Este tipo de movimientos refuerzan el trabajo de arquitectura a la hora de diseñar soluciones: **¿qué necesitamos realmente: un clasificador tradicional entrenado con nuestros datos, un LLM con salida estructurada o una API de decisiones como Jev o Decisions API?** La respuesta dependerá de calidad, coste, latencia, explicabilidad, privacidad, madurez y posibilidades de despliegue.
 
@@ -510,15 +507,15 @@ Os animo especialmente a probar **correos ambiguos** y **situaciones de incident
 
 Después de revisar la propuesta de TypeSafe y desarrollar la PoC, me quedo con varias ideas.
 
-**1. No toda necesidad de IA requiere generación:** como suele pasar cuando hay hype, hemos normalizado utilizar LLM para cualquier entrada de lenguaje natural, pero hay problemas cuyo resultado es simplemente una decisión entre opciones conocidas. Merece la pena distinguir ambos escenarios.
-
-**2. Latencia y coste son ventajas potenciales pero no garantías en todos los escenarios:** los datos publicados por TypeSafe llaman la atención y justifican probarlo pero, la decisión de arquitectura tiene que estar basada en los requisitos del escenario, del propio dataset de información que manejemos, de las latencias y nuestros criterios de calidad requeridos .
-
-**3. La explicabilidad es un punto clave:** podemos pedir a otro modelo que elabore una justificación, incluso de forma asíncrona, pero eso no convierte la explicación en el razonamiento verificable de Jev. En determinados contextos, esta diferencia marca el "go" o "no go" a Jev.
-
-**4. La madurez, el soporte empresarial y el modelo de despliegue cuentan:** es cierto que hay casos reales en producción ya con Jev pero es una herramienta reciente que depende de la oferta de TypeSafe. Para organizaciones con requisitos estrictos de soberanía, operación o continuidad, el análisis no termina en la precisión del modelo o de las características indicadas por el fabricante en su web sino que también es necesario disponer de características de uso empresarial sólidas.
-
-**5. No olvidemos otras alternativas como ML tradicional:** un buen clasificador supervisado, o incluso reglas convencionales, puede ser la solución más razonable. Antes de introducir otra API deberíamos medir también esas opciones.
+> **1. No toda necesidad de IA requiere generación:** como suele pasar cuando hay hype, hemos normalizado utilizar LLM para cualquier entrada de lenguaje natural, pero hay problemas cuyo resultado es simplemente una decisión entre opciones conocidas. Merece la pena distinguir ambos escenarios.
+>
+> **2. Latencia y coste son ventajas potenciales pero no garantías en todos los escenarios:** los datos publicados por TypeSafe llaman la atención y justifican probarlo pero, la decisión de arquitectura tiene que estar basada en los requisitos del escenario, del propio dataset de información que manejemos, de las latencias y nuestros criterios de calidad requeridos .
+>
+> **3. La explicabilidad es un punto clave:** podemos pedir a otro modelo que elabore una justificación, incluso de forma asíncrona, pero eso no convierte la explicación en el razonamiento verificable de Jev. En determinados contextos, esta diferencia marca el "go" o "no go" a Jev.
+>
+> **4. La madurez, el soporte empresarial y el modelo de despliegue cuentan:** es cierto que hay casos reales en producción ya con Jev pero es una herramienta reciente que depende de la oferta de TypeSafe. Para organizaciones con requisitos estrictos de soberanía, operación o continuidad, el análisis no termina en la precisión del modelo o de las características indicadas por el fabricante en su web sino que también es necesario disponer de características de uso empresarial sólidas.
+>
+> **5. No olvidemos otras alternativas como ML tradicional:** un buen clasificador supervisado, o incluso reglas convencionales, puede ser la solución más razonable. Antes de introducir otra API deberíamos medir también esas opciones.
 
 
 
